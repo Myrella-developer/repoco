@@ -1,10 +1,14 @@
-let app= angular.module('projecteco',['ngRoute']);
+let app= angular.module('repoco',['ngRoute']);
 
 app.config(['$routeProvider',function($routeProvider){
 	$routeProvider
 	.when('/',{
-		templateUrl:'views/principal.php',
-		controller:'PrincipalController'
+		templateUrl:'./index.html',
+		controller:'IndexController'
+	})
+	.when('/home',{
+		templateUrl:'views/home.html',
+		controller:'HomeController'
 	})
 	
 	.otherwise({

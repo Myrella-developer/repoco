@@ -1,4 +1,4 @@
-let app= angular.module('projecteco',['ngRoute']);
+let app= angular.module('repoco',['ngRoute']);
 
 app.config(['$routeProvider',function($routeProvider){
 	$routeProvider

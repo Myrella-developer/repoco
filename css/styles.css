@@ -1,0 +1,18 @@
+a{
+	text-decoration: none;
+	color: black;
+}
+header{
+	font-size: 1em;
+}
+.brandIcons{
+	background-color: #f2f2f2;
+}
+.brandIcons i{
+	margin: 0 5px;
+}
+.login{
+	background-color: #666;
+	color: white;
+	padding: 5px;
+}

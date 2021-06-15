@@ -3,12 +3,12 @@ let app= angular.module('repoco',['ngRoute']);
 app.config(['$routeProvider',function($routeProvider){
 	$routeProvider
 	.when('/',{
-		templateUrl:'../index.html',
+		templateUrl:'views/home.html',
 		controller:'IndexController'
 	})
-	.when('/home',{
-		templateUrl:'views/home.html',
-		controller:'HomeController'
+	.when('/login',{
+		templateUrl:'views/login.php',
+		controller:'LoginController'
 	})
 	
 	.otherwise({

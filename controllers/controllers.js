@@ -10,6 +10,7 @@ angular.module("repoco")
 	// .catch((err)=>{console.log(err.statusText)})
 
 	// .finally(()=>{});
+	console.log("Carga controller ");
 })
 
 .controller("LoginController", function($scope, $http, $q, $location, $rootScope){
@@ -19,6 +20,8 @@ angular.module("repoco")
 	$scope.tipo = "a"
 	$scope.errorLogin=false;
 	$scope.entrar = function(){
+		if ($scope.email=="" || $scope.pass=="") alert ("verifica datos") 
+			else{
 		let data = new FormData()
 
 		data.append("acc","l");
@@ -30,11 +33,9 @@ angular.module("repoco")
 		$http.post("models/login.php", data, {
 			headers:{"Content-type" : undefined}, transformRequest: angular.identity
 		})
-		console.log("LLegamos breoow")
 		.then((res)=>{
-			defered.resole(res);
+			defered.resolve(res);
 			if (res.data == false) {
-				console.log("LLegamos breoow");
 				$scope.errorLogin = true;
 			} else{
 				window.location.href ="home.html";
@@ -44,14 +45,29 @@ angular.module("repoco")
 		.catch((err)=>{console.log(err.statusText)})
 
 		.finally(()=>{})
+		}
+	}
+	$scope.tancar=()=>{
+		let data = new FormData;
+		data.append("acc","logout");
+
+		let defered =$q.defer();
+		$http.post("models/login.php",data,{
+
+			headers:{"Content-type" : undefined}, transformRequest: angular.identity})
+
+		.then((res) =>{
+			defered.resolve(res);
+			$scope.datos=res.data;
+			$location.path("/");
+			console.log($scope.datos);
+		})
+		.catch((err)=>{console.log(err.statusText)})
+		.finally(()=>{});
 	}
 
 })
      
-.controller("HomeController", function(){
-    // console.log("dasd");
- })
-
 .controller("RecuperarController", ($q, $scope, $http) => {
     $scope.email = "pancracio@gmail.com";
     $scope.nuevaContra = "nueva contra";
@@ -69,4 +85,9 @@ angular.module("repoco")
     })
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})
+})
+
+.controller("GestorController", ($scope) => {
+	$scope.nombre = "Admin";
+	$scope.tipo = "d";
 })

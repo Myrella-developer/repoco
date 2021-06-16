@@ -47,17 +47,19 @@ angular.module("repoco")
 		.finally(()=>{})
 		}
 	}
-	$scope.logout=()=>{
+	$scope.tancar=()=>{
 		let data = new FormData;
 		data.append("acc","logout");
 
 		let defered =$q.defer();
 		$http.post("models/login.php",data,{
+
 			headers:{"Content-type" : undefined}, transformRequest: angular.identity})
 
 		.then((res) =>{
 			defered.resolve(res);
 			$scope.datos=res.data;
+			$location.path("/");
 			console.log($scope.datos);
 		})
 		.catch((err)=>{console.log(err.statusText)})

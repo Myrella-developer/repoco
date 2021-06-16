@@ -12,6 +12,5 @@
 	    <input type="password" class="form-control" id="exampleInputPassword1" value="1111">
 	  </div>
 	  <button type="submit" class="btn btn-primary" ng-click="entrar">Entrar</button>
-	  <span ng-click="tancar()">Tancar sessió</span>
 	</form>
 </div>

@@ -10,7 +10,7 @@ angular.module("repoco")
 	// .catch((err)=>{console.log(err.statusText)})
 
 	// .finally(()=>{});
-	console.log("Carga controller losaddgin");
+	console.log("Carga controller ");
 })
 
 .controller("LoginController", function($scope, $http, $q, $location, $rootScope){

@@ -20,6 +20,8 @@ angular.module("repoco")
 	$scope.tipo = "a"
 	$scope.errorLogin=false;
 	$scope.entrar = function(){
+		if ($scope.email=="" || $scope.pass=="") alert ("verifica datos") 
+			else{
 		let data = new FormData()
 
 		data.append("acc","l");
@@ -32,9 +34,8 @@ angular.module("repoco")
 			headers:{"Content-type" : undefined}, transformRequest: angular.identity
 		})
 		.then((res)=>{
-			defered.resole(res);
+			defered.resolve(res);
 			if (res.data == false) {
-				console.log("LLegamos breoow");
 				$scope.errorLogin = true;
 			} else{
 				window.location.href ="home.html";
@@ -44,6 +45,23 @@ angular.module("repoco")
 		.catch((err)=>{console.log(err.statusText)})
 
 		.finally(()=>{})
+		}
+	}
+	$scope.logout=()=>{
+		let data = new FormData;
+		data.append("acc","logout");
+
+		let defered =$q.defer();
+		$http.post("models/login.php",data,{
+			headers:{"Content-type" : undefined}, transformRequest: angular.identity})
+
+		.then((res) =>{
+			defered.resolve(res);
+			$scope.datos=res.data;
+			console.log($scope.datos);
+		})
+		.catch((err)=>{console.log(err.statusText)})
+		.finally(()=>{});
 	}
 
 })

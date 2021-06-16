@@ -19,7 +19,7 @@ header{
 }
 
 #primer {
-/* background-image:url("../img/home-prueba.PNG"); */
+ background-image:url("../img/home-prueba.PNG"); 
 }
 #segonc {
     /* background-image:url("../img/rojo-prueba.PNG"); */
@@ -60,19 +60,16 @@ header{
     transition: 1.5s;
     font-size: 16.8px;
 }
+
 .navbar{
     border-radius: 10px;
-	padding-bottom: 0.7rem;
-	padding-top: 0.7rem;
-	padding-left: 1.2rem;
-	padding-right: 1.2rem;
-	/*margin-right: 0.7rem;*/
-
-}
-
-.menu li{
-	margin-left: 1rem;
-}
+	padding: 0;
+	}
 .navbar-light .navbar-nav .nav-link {
    color: black;
+}
+.nav-item{
+	font-size: 14px;
+	letter-spacing: 0;
+	line-height: 24px;
 }

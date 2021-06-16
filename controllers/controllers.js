@@ -35,6 +35,7 @@ angular.module("repoco")
 		})
 		.then((res)=>{
 			defered.resolve(res);
+			$scope.datos=res.data;
 			if (res.data == false) {
 				$scope.errorLogin = true;
 			} else{

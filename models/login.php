@@ -22,6 +22,7 @@
             $_SESSION['login']['nom'] = $row['nom'];
             $_SESSION['login']['correu'] = $row['correu'];
 		}
+	header('Location: http://localhost/repoco/index.html#/gestor')	
 	}
 	if (isset($_POST['acc']) && $_POST['acc'] == "tancar") {
 		session_unset();

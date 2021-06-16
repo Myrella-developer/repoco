@@ -26,7 +26,7 @@
 	if (isset($_POST['acc']) && $_POST['acc'] == "tancar") {
 		session_unset();
 		session_destroy();
-		header('Location: http://localhost/repoco/index.html#/');
+		//header('Location: http://localhost/repoco/index.html#/');
 	}
 }
 ?>

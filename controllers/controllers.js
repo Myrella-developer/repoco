@@ -1,16 +1,21 @@
 angular.module("repoco")
 .controller("IndexController", function($scope, $http, $q, $rootScope){
-	 //   console.log("dasd");
-	// $http.post("models/index.php")
+	let data = new FormData();
+	   data.append("acc", "r");
+	  
+	   let defered = $q.defer();
 
-	// .then((res)=>{
-	// 	defered.resolve(res);
-	// })
-
-	// .catch((err)=>{console.log(err.statusText)})
-
-	// .finally(()=>{});
-	console.log("Carga controller ");
+	   $http.post("models/index.php", data, {
+	      headers:{ "Content-type" : undefined }, transformRequest : angular.identity 
+	   })
+	   .then((res) => { 
+	       defered.resolve(res);
+	       $scope.cases=res.data;
+	       console.log($scope.cases);
+	   })
+	   .catch((err) => { console.log(err.statusText) })
+	   .finally(() => {});
+	
 })
 
 .controller("LoginController", function($scope, $http, $q, $location, $rootScope){
@@ -38,7 +43,7 @@ angular.module("repoco")
 			if (res.data == false) {
 				$scope.errorLogin = true;
 			} else{
-				window.location.href ="home.html";
+				$location.path("/gestor");
 			}
 		})
 
@@ -89,5 +94,34 @@ angular.module("repoco")
 
 .controller("GestorController", ($scope) => {
 	$scope.nombre = "Admin";
-	$scope.tipo = "d";
+	$scope.tipo = "a";
 })
+
+.controller("EdicionesController", ($q, $http, $scope) => {
+	let data= new FormData;
+    let defered = $q.defer();
+    data.append("acc","edicions");
+
+    $http.post("models/projYedi.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+    .then((res) => { 
+        defered.resolve(res);
+        $scope.edicions = res.data;
+    })
+    .catch((err) => { console.log(err.statusText) })
+    .finally(() => {})
+})
+
+.controller("ProjectesController", ($q, $http, $scope) => {
+	let data= new FormData;
+    let defered = $q.defer();
+    data.append("acc","projectes");
+
+    $http.post("models/projYedi.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+    .then((res) => { 
+        defered.resolve(res);
+        $scope.projectes = res.data;
+    })
+    .catch((err) => { console.log(err.statusText) })
+    .finally(() => {})
+})
+

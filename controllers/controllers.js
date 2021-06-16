@@ -43,7 +43,7 @@ angular.module("repoco")
 			if (res.data == false) {
 				$scope.errorLogin = true;
 			} else{
-				window.location.href ="home.html";
+				$location.path("/gestor");
 			}
 		})
 

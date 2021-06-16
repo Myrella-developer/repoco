@@ -1,4 +1,9 @@
 <div class="container-fluid">
+    <h2>Edicions</h2>
+    
+    <i class="fas fa-plus-square ms-4 mt-5 text-primary"></i>
+    <label class="ms-1 fw-bold">AFEGIR</label>
+
     <div class="row">
         <div class="card cardGestor m-5" style="width: 18rem;" ng-repeat="edicio in edicions">
             <div class="card-body">

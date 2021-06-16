@@ -30,7 +30,6 @@ angular.module("repoco")
 		$http.post("models/login.php", data, {
 			headers:{"Content-type" : undefined}, transformRequest: angular.identity
 		})
-		console.log("LLegamos breoow")
 		.then((res)=>{
 			defered.resole(res);
 			if (res.data == false) {

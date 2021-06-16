@@ -15,7 +15,14 @@ app.config(['$routeProvider',function($routeProvider){
 		templateUrl:'views/gestor.php',
 		controller:'GestorController'
 	})	
-
+	.when('/ediciones',{
+		templateUrl:'views/ediciones.php',
+		controller:'EdicionesController'
+	})	
+	.when('/projectes',{
+		templateUrl:'views/projectes.php',
+		controller:'ProjectesController'
+	})	
 	.when('/barrisdigitals',{
 		templateUrl:'views/barrisdigitals.html',
 		controller:'DigitalsController'

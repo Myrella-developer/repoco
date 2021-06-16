@@ -31,11 +31,35 @@ header{
 .brandIcons{
 	background-color: #f2f2f2;
 }
+.brandLogo{
+	
+	margin-right: 2rem;
+	margin-left: 2rem;
+}
+.brandIcons{
+	padding: 0.5rem;
+}
+
 .brandIcons i{
-	margin: 0 5px;
+	margin: 0 4px;
 }
 .login{
 	background-color: #666;
 	color: white;
-	padding: 5px;
+	padding-bottom: 0.7rem;
+	padding-top: 0.7rem;
+	padding-left: 1.2rem;
+	padding-right: 1.2rem;
+	margin-right: 0.7rem;
+
+}
+.menu{
+	margin-right: 2rem;
+	margin-left: 2rem;
+}
+.menu li{
+	margin-left: 1rem;
+}
+.menu a{
+	color: black;
 }

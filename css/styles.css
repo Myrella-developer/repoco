@@ -37,9 +37,11 @@ header{
 .brandLogo, .brandIcons, .menu{
 	margin-right: 248px;
 	margin-left: 248px;
+
 }
 .brandIcons{
-	padding: 0.5rem;
+	padding-bottom: 0.2rem;
+	padding-top: 0.2rem;
 }
 
 .brandIcons i{
@@ -48,7 +50,10 @@ header{
 .login{
 	background-color: #666;
 	color: white;
-	padding: 5px;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	padding-right: 15px;
+	padding-left: 15px;
 }
 .hoverMenu:hover{
     background-color: black;

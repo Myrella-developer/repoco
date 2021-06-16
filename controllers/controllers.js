@@ -10,6 +10,7 @@ angular.module("repoco")
 	// .catch((err)=>{console.log(err.statusText)})
 
 	// .finally(()=>{});
+	console.log("Carga controller losaddgin");
 })
 
 .controller("LoginController", function($scope, $http, $q, $location, $rootScope){
@@ -47,10 +48,6 @@ angular.module("repoco")
 
 })
      
-.controller("HomeController", function(){
-    // console.log("dasd");
- })
-
 .controller("RecuperarController", ($q, $scope, $http) => {
     $scope.email = "pancracio@gmail.com";
     $scope.nuevaContra = "nueva contra";

@@ -63,6 +63,6 @@ header{
 .menu li{
 	margin-left: 1rem;
 }
-.menu a{
-	color: black;
+.navbar-light .navbar-nav .nav-link {
+   color: black;
 }

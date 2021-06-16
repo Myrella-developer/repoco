@@ -10,7 +10,10 @@ app.config(['$routeProvider',function($routeProvider){
 		templateUrl:'views/login.php',
 		controller:'LoginController'
 	})
-	
+	.when('/gestor',{
+		templateUrl:'views/gestor.php',
+		controller:'GestorController'
+	})	
 	.otherwise({
 		redirectTo: '/'
 	})

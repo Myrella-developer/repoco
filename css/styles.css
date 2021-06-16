@@ -39,3 +39,11 @@ header{
 	color: white;
 	padding: 5px;
 }
+.hoverMenu:hover{
+    background-color: black;
+    transition: 1.5s;
+    font-size: 16.8px;
+}
+.navbar{
+    border-radius: 10px;
+}

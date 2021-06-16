@@ -31,13 +31,12 @@ header{
 .pi{
     font-size: 2rem;
 }
-.brandIcons{
+.filaGris{
 	background-color: #f2f2f2;
 }
-.brandLogo{
-	
-	margin-right: 2rem;
-	margin-left: 2rem;
+.brandLogo, .brandIcons, .menu{
+	margin-right: 248px;
+	margin-left: 248px;
 }
 .brandIcons{
 	padding: 0.5rem;
@@ -62,13 +61,10 @@ header{
 	padding-top: 0.7rem;
 	padding-left: 1.2rem;
 	padding-right: 1.2rem;
-	margin-right: 0.7rem;
+	/*margin-right: 0.7rem;*/
 
 }
-.menu{
-	margin-right: 2rem;
-	margin-left: 2rem;
-}
+
 .menu li{
 	margin-left: 1rem;
 }

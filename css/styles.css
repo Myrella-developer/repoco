@@ -49,6 +49,15 @@ header{
 .login{
 	background-color: #666;
 	color: white;
+	padding: 5px;
+}
+.hoverMenu:hover{
+    background-color: black;
+    transition: 1.5s;
+    font-size: 16.8px;
+}
+.navbar{
+    border-radius: 10px;
 	padding-bottom: 0.7rem;
 	padding-top: 0.7rem;
 	padding-left: 1.2rem;

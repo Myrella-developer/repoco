@@ -66,3 +66,6 @@ header{
 .menu a{
 	color: black;
 }
+.hover {
+    cursor: pointer;
+}

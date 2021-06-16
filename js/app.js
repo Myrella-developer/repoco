@@ -10,6 +10,12 @@ app.config(['$routeProvider',function($routeProvider){
 		templateUrl:'views/login.php',
 		controller:'LoginController'
 	})
+
+	.when('/gestor',{
+		templateUrl:'views/gestor.php',
+		controller:'GestorController'
+	})	
+
 	.when('/barrisdigitals',{
 		templateUrl:'views/barrisdigitals.html',
 		controller:'DigitalsController'
@@ -26,6 +32,7 @@ app.config(['$routeProvider',function($routeProvider){
 		templateUrl:'views/contacte.html',
 		controller:'ContacteController'
 	})
+
 	.otherwise({
 		redirectTo: '/'
 	})

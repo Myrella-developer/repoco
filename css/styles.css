@@ -1,14 +1,14 @@
 
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 @import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro');
 
 body {
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;;
     background-color: rgb(255, 255, 255);
-    font-family: 'Roboto';
-   
+  
 }
 a{
 	text-decoration: none;
@@ -19,7 +19,7 @@ header{
 }
 
 #primer {
-/* background-image:url("../img/home-prueba.PNG"); */
+ background-image:url("../img/home-prueba.PNG"); 
 }
 #segonc {
     /* background-image:url("../img/rojo-prueba.PNG"); */
@@ -31,16 +31,17 @@ header{
 .pi{
     font-size: 2rem;
 }
-.brandIcons{
+.filaGris{
 	background-color: #f2f2f2;
 }
-.brandLogo{
-	
-	margin-right: 2rem;
-	margin-left: 2rem;
+.brandLogo, .brandIcons, .menu{
+	margin-right: 248px;
+	margin-left: 248px;
+
 }
 .brandIcons{
-	padding: 0.5rem;
+	padding-bottom: 0.2rem;
+	padding-top: 0.2rem;
 }
 
 .brandIcons i{
@@ -49,20 +50,30 @@ header{
 .login{
 	background-color: #666;
 	color: white;
-	padding-bottom: 0.7rem;
-	padding-top: 0.7rem;
-	padding-left: 1.2rem;
-	padding-right: 1.2rem;
-	margin-right: 0.7rem;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+.hoverMenu:hover{
+    background-color: black;
+    transition: 1.5s;
+    font-size: 16.8px;
+}
 
-}
-.menu{
-	margin-right: 2rem;
-	margin-left: 2rem;
-}
-.menu li{
-	margin-left: 1rem;
-}
+.navbar{
+    border-radius: 10px;
+	padding: 0;
+	}
 .navbar-light .navbar-nav .nav-link {
    color: black;
 }
+.nav-item{
+	font-size: 14px;
+	letter-spacing: 0;
+	line-height: 24px;
+}
+.hover {
+    cursor: pointer;
+}
+

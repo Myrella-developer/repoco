@@ -87,3 +87,8 @@ angular.module("repoco")
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})
 })
+
+.controller("GestorController", ($scope) => {
+	$scope.nombre = "Admin";
+	$scope.tipo = "d";
+})

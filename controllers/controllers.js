@@ -94,5 +94,34 @@ angular.module("repoco")
 
 .controller("GestorController", ($scope) => {
 	$scope.nombre = "Admin";
-	$scope.tipo = "d";
+	$scope.tipo = "a";
 })
+
+.controller("EdicionesController", ($q, $http, $scope) => {
+	let data= new FormData;
+    let defered = $q.defer();
+    data.append("acc","edicions");
+
+    $http.post("models/projYedi.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+    .then((res) => { 
+        defered.resolve(res);
+        $scope.edicions = res.data;
+    })
+    .catch((err) => { console.log(err.statusText) })
+    .finally(() => {})
+})
+
+.controller("ProjectesController", ($q, $http, $scope) => {
+	let data= new FormData;
+    let defered = $q.defer();
+    data.append("acc","projectes");
+
+    $http.post("models/projYedi.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+    .then((res) => { 
+        defered.resolve(res);
+        $scope.projectes = res.data;
+    })
+    .catch((err) => { console.log(err.statusText) })
+    .finally(() => {})
+})
+

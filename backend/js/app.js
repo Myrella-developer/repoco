@@ -5,6 +5,14 @@ app.config(['$routeProvider',function($routeProvider){
 		templateUrl:'views/home.html',
 		controller:'IndexController'
 	})
+	.when('/gestor',{
+		templateUrl:'views/gestor.php',
+		controller:'GestorController'
+	})
+	.when('/gestorcases',{
+		templateUrl:'views/gestorcases.php',
+		controller:'GestorCasesController'
+	})
 	.when('/ediciones',{
 		templateUrl:'views/ediciones.php',
 		controller:'EdicionesController'

@@ -92,8 +92,10 @@ angular.module("repoco")
 	   })
 	   .then((res) => { 
 	       defered.resolve(res);
-	       $scope.cases=res.data;
-	       console.log($scope.cases);
+	       $scope.casa=res.data;
+	       console.log($scope.casa);
+	       $scope.url=$scope.casa[5];
+	       
 	   })
 	   .catch((err) => { console.log(err.statusText) })
 	   .finally(() => {});

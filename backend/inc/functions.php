@@ -2,9 +2,8 @@
 
 function conectar(){
 
-    //$conexion = @mysqli_connect("bbdd.cobd.es", "ddb171025", "Repo@2021", "ddb171025");
-    
-    $conexion = @mysqli_connect("localhost", "root", "", "ddb171025");
+    $conexion = @mysqli_connect("bbdd.cobd.es", "ddb171025", "Repo@2021", "ddb171025");
+    //$conexion = @mysqli_connect("localhost", "root", "", "ddb171025");
 
     if(!$conexion){
         die("No se ha podido conectar" . mysqli_connect_error());

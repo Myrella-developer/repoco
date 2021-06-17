@@ -13,7 +13,7 @@ app.config(['$routeProvider',function($routeProvider){
 		templateUrl:'views/projectes.php',
 		controller:'ProjectesController'
 	})	
-	.when('/gestesp',{
+	.when('/gestesp/:idcasa',{
         templateUrl:'views/gestesp.php',
         controller:'GestorEspController'
     })

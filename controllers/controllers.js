@@ -125,3 +125,7 @@ angular.module("repoco")
     .finally(() => {})
 })
 
+
+.controller("CasesController", ($q, $http, $scope) => {
+	console.log("LLego a casas");
+})

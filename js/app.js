@@ -23,17 +23,9 @@ app.config(['$routeProvider',function($routeProvider){
 		templateUrl:'views/projectes.php',
 		controller:'ProjectesController'
 	})	
-	.when('/barrisdigitals',{
-		templateUrl:'views/barrisdigitals.html',
-		controller:'DigitalsController'
-	})
-	.when('/barrissostenibles',{
-		templateUrl:'views/barrissostenibles.html',
-		controller:'SosteniblesController'
-	})
-	.when('/espectacleenviu',{
-		templateUrl:'views/espectacleenviu.html',
-		controller:'EspectacleController'
+	.when('/cases',{
+		templateUrl:'views/cases.html',
+		controller:'CasesController'
 	})
 	.when('/contacte',{
 		templateUrl:'views/contacte.html',

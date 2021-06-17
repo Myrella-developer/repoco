@@ -1,5 +1,5 @@
 angular.module("repoco")
-.controller("IndexController", function($scope, $http, $q, $rootScope){
+.controller("IndexController", function($scope, $http, $q, $rootScope, $routeParams){
 	let data = new FormData();
 	   data.append("acc", "r");
 	  
@@ -15,6 +15,7 @@ angular.module("repoco")
 	   })
 	   .catch((err) => { console.log(err.statusText) })
 	   .finally(() => {});
+
 	
 })
 
@@ -73,6 +74,25 @@ angular.module("repoco")
 
 })     
 
-.controller("CasesController", ($q, $http, $scope) => {
-	console.log("LLego a casas");
+.controller("CasesController", ($q, $http, $scope, $routeParams) => {
+	
+	$scope.param1=$routeParams.idCasa;
+
+	let data = new FormData();
+	   data.append("acc", "r");
+	   data.append("idcasa",$scope.param1);
+	  
+	   let defered = $q.defer();
+
+	   $http.post("models/cases.php", data, {
+	      headers:{ "Content-type" : undefined }, transformRequest : angular.identity 
+	   })
+	   .then((res) => { 
+	       defered.resolve(res);
+	       $scope.cases=res.data;
+	       console.log($scope.cases);
+	   })
+	   .catch((err) => { console.log(err.statusText) })
+	   .finally(() => {});
+	
 })

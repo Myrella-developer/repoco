@@ -24,7 +24,7 @@
     <div class="row">
         <div class="card cardGestor m-5" style="width: 18rem;" ng-repeat="projecte in projectes">
             <div class="card-body">
-                <img ng-src="../img/{{projecte.url}}.png"/>
+                <img ng-src="../img/{{projecte.url}}" width="200"/>
                 <h5 class="card-title">{{projecte.nom}}</h5>
                 <p class="card-text">{{projecte.descripcio}} </p>
                 <p class="card-text">{{projecte.dataInici}} - {{projecte.dataFi}}</p>

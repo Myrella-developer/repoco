@@ -26,7 +26,7 @@ app.config(['$routeProvider',function($routeProvider){
 		templateUrl:'views/projectes.php',
 		controller:'ProjectesController'
 	})	
-	.when('/cases',{
+	.when('/cases/:idCasa',{
 		templateUrl:'views/cases.html',
 		controller:'CasesController'
 	})

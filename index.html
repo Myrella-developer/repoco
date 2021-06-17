@@ -49,15 +49,9 @@
 						        <li class="nav-item">
 						          <a class="nav-link active fw-bold" aria-current="page" ng-href="#/home">Inici</a>
 						        </li>
-						        <li class="nav-item">
-						          <a class="nav-link"  ng-href="#/cases">Barris Digitals</a>
+						        <li class="nav-item" ng-repeat="casa in cases">
+						          <a class="nav-link" href="#/cases/{{casa.idcasa}}">{{casa.nom}}</a>
 						        </li>
-						        <li class="nav-item">
-						          <a class="nav-link"ng-href="#/cases">Barris sostenibles</a>
-						        </li>
-						        <li class="nav-item">
-						          <a class="nav-link" ng-href="#/cases">Espectacle en viu</a>
-						        </li>  
 						        <li class="nav-item">
 						          <a class="nav-link" ng-href="#/contacte">Contacte</a>
 						        </li>     

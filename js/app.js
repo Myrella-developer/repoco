@@ -14,6 +14,10 @@ app.config(['$routeProvider',function($routeProvider){
 	.when('/gestor',{
 		templateUrl:'views/gestor.php',
 		controller:'GestorController'
+	})
+	.when('gestorcases',{
+		templateUrl:'views/gestorcases.php',
+		controller:'GestorCases'
 	})	
 
 	.when('/barrisdigitals',{

@@ -12,7 +12,7 @@
             <div class="navbar-nav me-auto mb-2 mb-lg-0">
                 <button ng-controller="LoginController" class="btn btn-warning" ng-click="tancar()">Tancar sesio</button>
                 <a ng-if="tipo == 'd'" class="nav-link active text-white ms-5 hoverMenu" href="#">Gestionar home</a>
-                <a class="nav-link active text-white ms-5 hoverMenu" href="#">Gestionar cases</a>    
+                <a class="nav-link active text-white ms-5 hoverMenu" href="#" ng-controller="GestorCasesController" ng-click="gestorcases()">Gestionar cases</a>    
                 <a class="nav-link active text-white ms-5 hoverMenu" href="#">Gestionar directors</a>    
                 <a class="nav-link active text-white ms-5 hoverMenu" href="#">Gestionar edicions</a>    
                 <a class="nav-link active text-white ms-5 hoverMenu" href="#">Gestionar especialitats</a>    

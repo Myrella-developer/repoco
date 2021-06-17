@@ -9,15 +9,6 @@ app.config(['$routeProvider',function($routeProvider){
 		templateUrl:'views/login.php',
 		controller:'LoginController'
 	})
-
-	.when('/gestor',{
-		templateUrl:'views/gestor.php',
-		controller:'GestorController'
-	})
-	.when('/gestorcases',{
-		templateUrl:'views/gestorcases.php',
-		controller:'GestorCasesController'
-	})	
 	.when('/ediciones',{
 		templateUrl:'views/ediciones.php',
 		controller:'EdicionesController'
@@ -34,7 +25,6 @@ app.config(['$routeProvider',function($routeProvider){
 		templateUrl:'views/contacte.html',
 		controller:'ContacteController'
 	})
-
 	.otherwise({
 		redirectTo: '/'
 	})

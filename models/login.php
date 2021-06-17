@@ -4,14 +4,13 @@
 	session_start();
 
 	if (isset($_POST['acc']) && $_POST['acc'] == "entrar") {
-		$sql="SELECT `idDir`, `nom`, `cog1`, `cog2`, `correu`, `contrasenya`, `recontra`, `tipus` 
-			FROM `directors` 
-			WHERE `correu`='".$_POST['correu']."' AND `contrasenya`='".$_POST['pass']."'.`tipus`='a'";
+		$sql="SELECT `idDir`, `nom`, `cog1`, `cog2`, `correu`, `contrasenya`, `recontra`, `tipus` FROM `directors` WHERE `correu`='".$_POST['correu']."' AND `contrasenya`='".$_POST['pass']."'";
 
-		$conexion=conectar();
-		$resultUser=mysqli_query($conexion, $sql);
-	$desconectar($conexion);
+	$conexion=conectar();
+	$resultUser=mysqli_query($conexion, $sql);
+	desconectar($conexion);
 
+	
 
 	if ((mysqli_num_rows($resultUser)) !==0){
 		echo "existe el user";
@@ -24,10 +23,14 @@
             $_SESSION['login']['nom'] = $row['nom'];
             $_SESSION['login']['correu'] = $row['correu'];
 		}
-		header('Location: #/gestor');	
+
+
+		echo "ok";	
+		
 	}
 	else{
-		header('Location: #/gestorcases');	
+
+		echo "ko";
 	}
 	if (isset($_POST['acc']) && $_POST['acc'] == "tancar") {
 		session_unset();

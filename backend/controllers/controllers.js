@@ -35,6 +35,24 @@ angular.module("backend")
     })
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})
+
+    $scope.afegir = (dataInici, dataFi, nomEdicio) => {
+        dataInici = dataInici.getFullYear() + "-" + (dataInici.getMonth()+1) + "-" + dataInici.getDate()
+        dataFi = dataFi.getFullYear() + "-" + (dataFi.getMonth()+1) + "-" + dataFi.getDate()
+        alert("Edicio afegida")
+        console.log(nomEdicio)
+        console.log(dataInici)
+        console.log(dataFi)
+    }
+
+    $scope.modificar = (nomEdicio, dataInici, dataFi) => {
+        dataInici = dataInici.getFullYear() + "-" + (dataInici.getMonth()+1) + "-" + dataInici.getDate()
+        dataFi = dataFi.getFullYear() + "-" + (dataFi.getMonth()+1) + "-" + dataFi.getDate()
+        alert("Edicio modificada")
+        console.log(nomEdicio)
+        console.log(dataInici)
+        console.log(dataFi)
+    }
 })
 
 .controller("ProjectesController", ($q, $http, $scope) => {
@@ -49,6 +67,14 @@ angular.module("backend")
     })
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})
+
+    $scope.afegir = () => {
+
+    }
+
+    $scope.modificar = () => {
+        
+    }
 })
 .controller("GestorEspController", ($q, $http, $scope) => {
     let data= new FormData;

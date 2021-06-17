@@ -1,5 +1,4 @@
 let app= angular.module('repoco',['ngRoute']);
-
 app.config(['$routeProvider',function($routeProvider){
 	$routeProvider
 	.when('/',{
@@ -14,6 +13,10 @@ app.config(['$routeProvider',function($routeProvider){
 	.when('/gestor',{
 		templateUrl:'views/gestor.php',
 		controller:'GestorController'
+	})
+	.when('/gestorcases',{
+		templateUrl:'views/gestorcases.php',
+		controller:'GestorCasesController'
 	})	
 	.when('/ediciones',{
 		templateUrl:'views/ediciones.php',

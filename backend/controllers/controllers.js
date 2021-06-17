@@ -50,3 +50,16 @@ angular.module("backend")
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})
 })
+.controller("GestorEspController", ($q, $http, $scope) => {
+    let data= new FormData;
+    let defered = $q.defer();
+    data.append("acc","especialitats");
+    $http.post("models/gestDirEsp.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+    .then((res) => { 
+        defered.resolve(res);
+        $scope.especialitats = res.data;
+        console.log($scope.especialitats);
+    })
+    .catch((err) => { console.log(err.statusText) })
+    .finally(() => {})
+})

@@ -11,7 +11,7 @@ angular.module("repoco")
 	   .then((res) => { 
 	       defered.resolve(res);
 	       $scope.cases=res.data;
-	       console.log($scope.cases);
+	       // console.log($scope.cases);
 	   })
 	   .catch((err) => { console.log(err.statusText) })
 	   .finally(() => {});
@@ -161,3 +161,7 @@ angular.module("repoco")
     .finally(() => {})
 })
 
+
+.controller("CasesController", ($q, $http, $scope) => {
+	console.log("LLego a casas");
+})

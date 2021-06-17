@@ -20,13 +20,13 @@ header{
 /* #segonc {
     background-image:url("../img/rojo-prueba.PNG");
     } */
-.primer {
+/* .primer {
  background-image:url("../img/home-prueba.PNG") ; 
- /* display: inline-block; */
+
 }
 .cambia:hover{
     background-image:url("../img/espectaculo.jpg") ;
-}
+} */
 .textoc{
     font-size: 4rem;
     margin-top: 6rem;

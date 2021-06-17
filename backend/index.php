@@ -76,7 +76,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <button class="btn btn-warning me-2">Tancar sesio</button>
+                    <button class="btn btn-warning me-2" ng-click="tancar()">Tancar sesio</button>
                 
                     <a ng-if="tipo == 'a'" class="nav-link active text-white ms-5 hoverMenu" href="#">Gestionar home</a>
                     <a class="nav-link active text-white ms-5 hoverMenu" href="#/cases">Gestionar cases</a> 

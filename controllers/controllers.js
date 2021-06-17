@@ -17,62 +17,65 @@ angular.module("repoco")
 	   .finally(() => {});
 
 	
-})
+})  
 
 .controller("LoginController", function($scope, $http, $q, $location, $rootScope){
-	console.log("Carga controller login");
-	$scope.email = "pancracio@gmail.com";
-	$scope.pass = "1111";
-	$scope.tipo = "a"
-	$scope.errorLogin=false;
-	$scope.entrar = function(){
-		if ($scope.email=="" || $scope.pass=="") alert ("verifica datos") 
-			else{
-		let data = new FormData()
+    console.log("Carga controller login");
+    $scope.email = "pancracio@gmail.com";
+    $scope.pass = "1111";
+    $scope.tipo = "a";
+    $scope.errorLogin=false;
+    $scope.entrar = function(){
+        if ($scope.email=="" || $scope.pass=="") alert ("verifica datos") 
+            else{
+        let data = new FormData()
 
-		data.append("acc","l");
-		data.append("email", $scope.email)
-		data.append("pass", $scope.pass)
+        data.append("acc","entrar");
+        data.append("correu", $scope.email)
+        data.append("pass", $scope.pass)
 
-		let defered=$q.defer();
+        let defered=$q.defer();
 
-		$http.post("models/login.php", data, {
-			headers:{"Content-type" : undefined}, transformRequest: angular.identity
-		})
-		.then((res)=>{
-			defered.resolve(res);
-			$scope.datos=res.data;
-			$location.path("/gestor");
-			if (res.data == false) {
-				$scope.errorLogin = true;
-			} else{
-				$location.path("/gestor");
-			}
-		})
+        $http.post("models/login.php", data, {headers:{"Content-type" : undefined}, transformRequest: angular.identity})
+        .then((res)=>{
+            defered.resolve(res);
+            $scope.datos=res.data;
+            console.log(res.data);
+            if ($scope.datos == "ko") {
 
-		.catch((err)=>{console.log(err.statusText)})
+            	$scope.errorLogin=true;
+            }
+            else{
+            	console.log("else");
+            	//$location.path("./backend/index.html");
+            	window.location.href="./backend/index.php";
+            }
+        })
 
-		.finally(()=>{})
-		}
-	}
-	$scope.tancar=()=>{
-		let data = new FormData;
-		data.append("acc","logout");
+        .catch((err)=>{console.log(err.statusText)})
 
-		let defered =$q.defer();
-		$http.post("models/login.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
+        .finally(()=>{})
+        }
+    }
+    // $scope.tancar=()=>{
+    //     let data = new FormData;
+    //     data.append("acc","tancar");
 
-		.then((res) =>{
-			defered.resolve(res);
-			$scope.datos=res.data;
-			$location.path("/");
-			console.log($scope.datos);
-		})
-		.catch((err)=>{console.log(err.statusText)})
-		.finally(()=>{});
-	}
+    //     let defered =$q.defer();
+    //     $http.post("models/login.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
 
-})     
+    //     .then((res) =>{
+    //         defered.resolve(res);
+    //         $scope.datos=res.data;
+    //         //$location.path("./index.html");
+    //         window.location.href="../index.html";
+    //         console.log($scope.datos);
+    //     })
+    //     .catch((err)=>{console.log(err.statusText)})
+    //     .finally(()=>{});
+    // }
+
+})   
 
 .controller("CasesController", ($q, $http, $scope, $routeParams) => {
 	

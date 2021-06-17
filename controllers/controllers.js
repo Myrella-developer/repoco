@@ -91,6 +91,8 @@ angular.module("repoco")
 	       defered.resolve(res);
 	       $scope.casa=res.data;
 	       console.log($scope.casa);
+	       $scope.nom=$scope.casa[1];
+	       $scope.descripcio=$scope.casa[3];
 	       $scope.url=$scope.casa[5];
 	       
 	   })

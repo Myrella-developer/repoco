@@ -20,13 +20,13 @@ header{
 /* #segonc {
     background-image:url("../img/rojo-prueba.PNG");
     } */
-.primer {
+/* .primer {
  background-image:url("../img/home-prueba.PNG") ; 
- /* display: inline-block; */
+
 }
 .cambia:hover{
     background-image:url("../img/espectaculo.jpg") ;
-}
+} */
 .textoc{
     font-size: 4rem;
     margin-top: 6rem;
@@ -37,7 +37,7 @@ header{
 .filaGris{
 	background-color: #f2f2f2;
 }
-.brandLogo, .brandIcons, .menu{
+.brandLogo, .brandIcons, .menu, .textCentral{
 	margin-right: 248px;
 	margin-left: 248px;
 
@@ -125,4 +125,8 @@ header{
 .mouse {
     cursor: pointer;
 }
+.textCentral{
+	margin-top: 50px;
+}
+
 

@@ -1,9 +1,28 @@
 angular.module("backend")
-.controller("IndexController", () => {
+.controller("IndexController", ($scope,$q,$http) => {
+       $scope.tancar=()=>{
+        let data = new FormData;
+        data.append("acc","tancar");
+
+        let defered =$q.defer();
+        $http.post("../models/login.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
+
+        .then((res) =>{
+            defered.resolve(res);
+            $scope.datos=res.data;
+            //$location.path("./index.php");
+            window.location.href="../index.html";
+            console.log($scope.datos);
+        })
+        .catch((err)=>{console.log(err.statusText)})
+        .finally(()=>{});
+    }
     
 })
 .controller("HomeController", () => {
 })
+
+
 .controller("RecuperarController", ($q, $scope, $http) => {
     $scope.email = "pancracio@gmail.com";
     $scope.nuevaContra = "nueva contra";
@@ -23,6 +42,10 @@ angular.module("backend")
     .finally(() => {})
 })
 
+.controller("GestorCasesController", ($q, $scope, $http) => {
+    $scope.tipo="a";
+})
+
 .controller("EdicionesController", ($q, $http, $scope) => {
 	let data= new FormData;
     let defered = $q.defer();
@@ -33,6 +56,7 @@ angular.module("backend")
         defered.resolve(res);
         $scope.edicions = res.data;
     })
+
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})
 

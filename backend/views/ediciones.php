@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <h2 class="text-center mt-5">Projectes</h2>
+    <h2 class="text-center mt-5">Edicions</h2>
 
     <i class="fas fa-plus-square ms-4 mt-5 text-primary"></i>
     <label class="ms-1 fw-bold" data-bs-toggle="modal" data-bs-target="#afegir">AFEGIR</label>
@@ -20,15 +20,13 @@
             </div>
         </div>
     </div>
-    
+
     <div class="row">
-        <div class="card cardGestor m-5" style="width: 18rem;" ng-repeat="projecte in projectes">
+        <div class="card cardGestor m-5" style="width: 18rem;" ng-repeat="edicio in edicions">
             <div class="card-body">
-                <img ng-src="../img/{{projecte.url}}.png"/>
-                <h5 class="card-title">{{projecte.nom}}</h5>
-                <p class="card-text">{{projecte.descripcio}} </p>
-                <p class="card-text">{{projecte.dataInici}} - {{projecte.dataFi}}</p>
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#gestor">Modificar</button>
+                <h5 class="card-title">{{edicio.nom}}</h5>
+                <p class="card-text">{{edicio.dataInici}} - {{edicio.dataFi}}</p>
+                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#gestor">Modificar</a>
             </div>
         </div>
 

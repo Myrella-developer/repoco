@@ -109,6 +109,16 @@ header{
 
 .navbar{
     border-radius: 10px;
+<<<<<<< HEAD
+	padding-bottom: 0.7rem;
+	padding-top: 0.7rem;
+	padding-left: 1.2rem;
+	padding-right: 1.2rem;
+	/*margin-right: 0.7rem;*/
+
+}
+
+=======
 	padding: 0;
 	}
 .navbar-light .navbar-nav .nav-link {
@@ -122,4 +132,5 @@ header{
 .hover {
     cursor: pointer;
 }
+>>>>>>> 6bea25c112fd1535a1c891e4db013b3b6e8e6ffc
 

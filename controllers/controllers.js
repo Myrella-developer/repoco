@@ -11,7 +11,7 @@ angular.module("repoco")
 	   .then((res) => { 
 	       defered.resolve(res);
 	       $scope.cases=res.data;
-	       console.log($scope.cases);
+	       // console.log($scope.cases);
 	   })
 	   .catch((err) => { console.log(err.statusText) })
 	   .finally(() => {});
@@ -40,6 +40,8 @@ angular.module("repoco")
 		})
 		.then((res)=>{
 			defered.resolve(res);
+			$scope.datos=res.data;
+			$location.path("/gestor");
 			if (res.data == false) {
 				$scope.errorLogin = true;
 			} else{
@@ -57,9 +59,7 @@ angular.module("repoco")
 		data.append("acc","logout");
 
 		let defered =$q.defer();
-		$http.post("models/login.php",data,{
-
-			headers:{"Content-type" : undefined}, transformRequest: angular.identity})
+		$http.post("models/login.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
 
 		.then((res) =>{
 			defered.resolve(res);
@@ -71,7 +71,8 @@ angular.module("repoco")
 		.finally(()=>{});
 	}
 
+})     
+
+.controller("CasesController", ($q, $http, $scope) => {
+	console.log("LLego a casas");
 })
-     
-
-

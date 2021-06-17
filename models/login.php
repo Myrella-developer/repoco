@@ -10,6 +10,8 @@
 
 		$conexion=conectar();
 		$resultUser=mysqli_query($conexion, $sql);
+	$desconectar($conexion);
+
 
 	if ((mysqli_num_rows($resultUser)) !==0){
 		echo "existe el user";
@@ -21,12 +23,16 @@
             $_SESSION['login']['tipus'] = $row['tipus'];
             $_SESSION['login']['nom'] = $row['nom'];
             $_SESSION['login']['correu'] = $row['correu'];
-		}	
+		}
+		header('Location: #/gestor');	
+	}
+	else{
+		header('Location: #/gestorcases');	
 	}
 	if (isset($_POST['acc']) && $_POST['acc'] == "tancar") {
 		session_unset();
 		session_destroy();
-		header('Location: http://localhost/repoco/index.html#/');
+		//header('Location: http://localhost/repoco/index.html#/');
 	}
 }
 ?>

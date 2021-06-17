@@ -19,7 +19,7 @@ header{
 }
 
 #primer {
- background-image:url("../img/home-prueba.PNG"); 
+ /* background-image:url("../img/home-prueba.PNG");  */
 }
 #segonc {
     /* background-image:url("../img/rojo-prueba.PNG"); */
@@ -47,13 +47,59 @@ header{
 .brandIcons i{
 	margin: 0 4px;
 }
-.login{
-	background-color: #666;
-	color: white;
-	padding-bottom: 5px;
-	padding-top: 5px;
-	padding-right: 15px;
-	padding-left: 15px;
+.box {
+    max-width: 25rem;
+    padding: 2.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background:#fff ;
+    text-align: center;
+    transition: 0.25s;
+    margin-top: 6rem;
+	border-radius: 2rem;
+	background:linear-gradient(to left, rgba(240, 246, 247, 0.246), #eef1f5)
+}
+.box input[type="email"],
+.box input[type="password"] {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #3498db;
+    padding: 10px 10px;
+    width: 250px;
+    outline: none;
+    color: rgb(74, 79, 87);
+    border-radius: 24px;
+    transition: 0.25s
+}
+.box h1 {
+    color: #3498db;
+    text-transform: uppercase;
+    font-weight: 500
+}
+.box input[type="email"]:focus,
+.box input[type="password"]:focus {
+    width: 300px;
+    border-color: #699bf7
+}
+.box input[type="submit"]{
+    border: 0;
+    background: linear-gradient(to right, rgb(151, 220, 241), #699bf7);
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    padding: 14px 40px;
+    outline: none;
+    color: rgb(227, 232, 240);
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer
+}
+.box input[type="submit"]:hover {
+    background:linear-gradient(to left, rgb(151, 220, 241), #699bf7)
 }
 .hoverMenu:hover{
     background-color: black;
@@ -63,6 +109,16 @@ header{
 
 .navbar{
     border-radius: 10px;
+<<<<<<< HEAD
+	padding-bottom: 0.7rem;
+	padding-top: 0.7rem;
+	padding-left: 1.2rem;
+	padding-right: 1.2rem;
+	/*margin-right: 0.7rem;*/
+
+}
+
+=======
 	padding: 0;
 	}
 .navbar-light .navbar-nav .nav-link {
@@ -76,4 +132,5 @@ header{
 .hover {
     cursor: pointer;
 }
+>>>>>>> 6bea25c112fd1535a1c891e4db013b3b6e8e6ffc
 

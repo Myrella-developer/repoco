@@ -1,5 +1,22 @@
 angular.module("backend")
-.controller("IndexController", () => {
+.controller("IndexController", ($scope,$q,$http) => {
+       $scope.tancar=()=>{
+        let data = new FormData;
+        data.append("acc","tancar");
+
+        let defered =$q.defer();
+        $http.post("../models/login.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
+
+        .then((res) =>{
+            defered.resolve(res);
+            $scope.datos=res.data;
+            //$location.path("./index.php");
+            window.location.href="../index.html";
+            console.log($scope.datos);
+        })
+        .catch((err)=>{console.log(err.statusText)})
+        .finally(()=>{});
+    }
     
 })
 .controller("HomeController", () => {

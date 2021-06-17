@@ -48,7 +48,7 @@ angular.module("repoco")
             else{
             	console.log("else");
             	//$location.path("./backend/index.html");
-            	window.location.href="./backend/index.html";
+            	window.location.href="./backend/index.php";
             }
         })
 
@@ -57,22 +57,23 @@ angular.module("repoco")
         .finally(()=>{})
         }
     }
-    $scope.tancar=()=>{
-        let data = new FormData;
-        data.append("acc","logout");
+    // $scope.tancar=()=>{
+    //     let data = new FormData;
+    //     data.append("acc","tancar");
 
-        let defered =$q.defer();
-        $http.post("models/login.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
+    //     let defered =$q.defer();
+    //     $http.post("models/login.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
 
-        .then((res) =>{
-            defered.resolve(res);
-            $scope.datos=res.data;
-            $location.path("/");
-            console.log($scope.datos);
-        })
-        .catch((err)=>{console.log(err.statusText)})
-        .finally(()=>{});
-    }
+    //     .then((res) =>{
+    //         defered.resolve(res);
+    //         $scope.datos=res.data;
+    //         //$location.path("./index.html");
+    //         window.location.href="../index.html";
+    //         console.log($scope.datos);
+    //     })
+    //     .catch((err)=>{console.log(err.statusText)})
+    //     .finally(()=>{});
+    // }
 
 })   
 

@@ -79,11 +79,11 @@
                     <button class="btn btn-warning me-2">Tancar sesio</button>
                 
                     <a ng-if="tipo == 'a'" class="nav-link active text-white ms-5 hoverMenu" href="#">Gestionar home</a>
-                    <a class="nav-link active text-white ms-5 hoverMenu" href="#">Gestionar cases</a> 
-                    <a class="nav-link active text-white ms-5 hoverMenu" href="#">Gestionar directors</a>    
-                    <a class="nav-link active text-white ms-5 hoverMenu" href="#">Gestionar edicions</a>    
-                    <a class="nav-link active text-white ms-5 hoverMenu" href="#">Gestionar especialitats</a>    
-                    <a class="nav-link active text-white ms-5 hoverMenu" href="#">Gestionar projectes</a>    
+                    <a class="nav-link active text-white ms-5 hoverMenu" href="#/cases">Gestionar cases</a> 
+                    <a class="nav-link active text-white ms-5 hoverMenu" href="#/directors">Gestionar directors</a>    
+                    <a class="nav-link active text-white ms-5 hoverMenu" href="#/ediciones">Gestionar edicions</a>    
+                    <a class="nav-link active text-white ms-5 hoverMenu" href="#/especialitats">Gestionar especialitats</a>    
+                    <a class="nav-link active text-white ms-5 hoverMenu" ng-href="#/projectes">Gestionar projectes</a>    
                 </div>
             </div>
         </nav>

@@ -2,7 +2,7 @@
     require_once("../inc/functions.php");
 
     if(isset($_POST['acc']) && $_POST['acc'] == "projectes"){
-        $sqlProjectes = "SELECT projectes.idProjecte, projectes.nom, projectes.nombre, projectes.url, projectes.títol, projectes.titulo, projectes.descripcio, projectes.descripcion, projectes.idEdicio, edicio.dataInici, edicio.dataFi, multimedia.url, multimedia.descripcio
+        $sqlProjectes = "SELECT projectes.idProjecte, projectes.nom, projectes.nombre, projectes.url, projectes.títol, projectes.titulo, projectes.descripcio, projectes.descripcion, projectes.idEdicio, edicio.dataInici, edicio.dataFi, multimedia.url
         FROM projectes 
         INNER JOIN edicio ON projectes.idEdicio = edicio.idEdicio
         INNER JOIN multimedia ON multimedia.idProjecte = projectes.idProjecte";

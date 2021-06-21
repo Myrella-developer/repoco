@@ -8,14 +8,21 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="labelDigital">afegir</h5>
+                    <h5 class="modal-title" id="labelDigital">AFEGIR EDICIO</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    body
+                    <form>
+                        <select class="form-select mb-4" ng-model="nomEdicio">
+                            <option>--Selecciona edicio</option>
+                            <option ng-repeat="edicio in edicions" ng-value="edicio.nom">{{edicio.nom}}</option>
+                        </select>
+                        <input type="date" class="form-control" ng-model="dataInici"/><br/>
+                        <input type="date" class="form-control" ng-model="dataFi"/>
+                    </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Dessar canvis</button>
+                    <button type="button" class="btn btn-dark" ng-click="afegir(dataInici, dataFi, nomEdicio)" data-bs-dismiss="modal">Afegir edicio</button>
                 </div>
             </div>
         </div>
@@ -34,14 +41,21 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="labelDigital">Titulo</h5>
+                        <h5 class="modal-title" id="labelDigital">{{edicio.nom}}</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        body
+                        <form>
+                            <select class="form-select mb-4" ng-model="nomEdicio">
+                                <option>--Selecciona edicio</option>
+                                <option ng-repeat="edicio in edicions" ng-value="edicio.nom">{{edicio.nom}}</option>
+                            </select>
+                            <input type="date" class="form-control" ng-model="dataInici"/><br/>
+                            <input type="date" class="form-control" ng-model="dataFi"/>
+                        </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Dessar canvis</button>
+                        <button type="button" class="btn btn-dark" ng-click="modificar(nomEdicio, dataInici, dataFi)" data-bs-dismiss="modal">Dessar canvis</button>
                     </div>
                 </div>
             </div>

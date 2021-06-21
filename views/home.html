@@ -1,27 +1,16 @@
 <div class="container">
     <div class="row">
 
-        <div class="col" id="primer">
+        <div class="col primer cambia" >
                 <div class="textoc mb-5">
                     <p  class="text-center">T'OBRIM LA PORTA A <br> LES CASES D'OFICIS</p>
                 </div>  
                     <div class="row cols-3 mt-5 mb-5">
 
-                        <div class="col text-center pi mt-5" ng-repeat="casa in cases"  >
-                           <p class="hover"><a href="#/cases/{{casa.idcasa}}">{{casa.nom}}</a></p> 
-
+                        <div class="col text-center pi mt-5" ng-repeat="casa in cases" id="imgbanner" onmouseover="cambiaimg">
+                           <p class="mouse"><a href="#/cases/{{casa.idcasa}}" id="numweb">{{casa.nom}}</a></p> 
                         </div>
-                        <!-- <div class="col text-center pi mt-5">
-                           <p class="hover"><a ng-href="#/cases">{{cases[1].nom}}</a></p>   
-
-                        </div>
-                        <div class="col text-center pi mt-5">
-
-                           <!-- <p class="hover"><a ng-href="#/cases">{{cases[2].nom}}</a></p>  -->
-                           <!-- <p class="hover" ng-repeat="case in cases"><a ng-href="#/cases">{{case.nom}}</a></p> 
-                        <!-- </div> --> 
-                        
-
+    
                 </div> 
                 
                 <div class="row row-cols-10 mt-5">

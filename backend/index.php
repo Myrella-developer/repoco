@@ -74,6 +74,7 @@
         	</header>
     	</div>
 
+<!-- 
         <nav class="navbar navbar-expand-lg navbar-light bg-danger">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <a class="navbar-brand text-center ms-5 text-white">Gestionar dades</a>    
@@ -91,7 +92,8 @@
                     <a class="nav-link active text-white ms-5 hoverMenu" ng-href="#/projectes">Gestionar projectes</a>    
                 </div>
             </div>
-        </nav>
+        </nav> -->
+
 		<div data-ng-view=""></div>
 		
         <footer>

@@ -2,12 +2,8 @@ let app= angular.module('backend',['ngRoute']);
 app.config(['$routeProvider',function($routeProvider){
 	$routeProvider
 	.when('/',{
-		templateUrl:'views/home.html',
-		controller:'IndexController'
-	})
-	.when('/gestor',{
-		templateUrl:'views/gestor.php',
-		controller:'GestorController'
+		templateUrl:'views/gestorcases.php',
+		controller:'GestorCasesController'
 	})
 	.when('/gestorcases',{
 		templateUrl:'views/gestorcases.php',
@@ -21,7 +17,7 @@ app.config(['$routeProvider',function($routeProvider){
 		templateUrl:'views/projectes.php',
 		controller:'ProjectesController'
 	})	
-	.when('/gestesp',{
+	.when('/gestesp/:idcasa',{
         templateUrl:'views/gestesp.php',
         controller:'GestorEspController'
     })

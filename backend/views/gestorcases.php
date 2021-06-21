@@ -1,3 +1,3 @@
-<p>Hola</p>
+<p>Gestor cases</p>
 
 <!-- {{$datosCases}} -->

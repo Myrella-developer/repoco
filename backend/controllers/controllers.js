@@ -21,7 +21,6 @@ angular.module("backend")
 .controller("HomeController", () => {
 })
 
-
 .controller("RecuperarController", ($q, $scope, $http) => {
     $scope.email = "pancracio@gmail.com";
     $scope.nuevaContra = "nueva contra";
@@ -58,6 +57,24 @@ angular.module("backend")
 
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})
+
+    $scope.afegir = (dataInici, dataFi, nomEdicio) => {
+        dataInici = dataInici.getFullYear() + "-" + (dataInici.getMonth()+1) + "-" + dataInici.getDate()
+        dataFi = dataFi.getFullYear() + "-" + (dataFi.getMonth()+1) + "-" + dataFi.getDate()
+        alert("Edicio afegida")
+        console.log(nomEdicio)
+        console.log(dataInici)
+        console.log(dataFi)
+    }
+
+    $scope.modificar = (nomEdicio, dataInici, dataFi) => {
+        dataInici = dataInici.getFullYear() + "-" + (dataInici.getMonth()+1) + "-" + dataInici.getDate()
+        dataFi = dataFi.getFullYear() + "-" + (dataFi.getMonth()+1) + "-" + dataFi.getDate()
+        alert("Edicio modificada")
+        console.log(nomEdicio)
+        console.log(dataInici)
+        console.log(dataFi)
+    }
 })
 
 .controller("ProjectesController", ($q, $http, $scope) => {
@@ -72,17 +89,31 @@ angular.module("backend")
     })
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})
+
+    $scope.afegir = () => {
+
+    }
+
+    $scope.modificar = () => {
+        
+    }
 })
-.controller("GestorEspController", ($q, $http, $scope) => {
+.controller("GestorEspController", ($q, $http, $scope,$routeParams) => {
     let data= new FormData;
     let defered = $q.defer();
     data.append("acc","especialitats");
+    data.append("idcasa",$routeParams.idcasa);
     $http.post("models/gestDirEsp.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
     .then((res) => { 
         defered.resolve(res);
-        $scope.especialitats = res.data;
-        console.log($scope.especialitats);
-    })
+        $scope.especialitats = res.data.especialitats;
+        $scope.cases=res.data.cases;
+        console.log($scope.cases);
+    })   
     .catch((err) => { console.log(err.statusText) })
-    .finally(() => {})
+    .finally(() => { if($scope.especialitats==0) $scope.sinespecialitats=true;})
+    
+    
+    
+    
 })

@@ -2,10 +2,12 @@
     require_once("../inc/functions.php");
 
     if(isset($_POST['acc']) && $_POST['acc'] == "projectes"){
-        $sqlProjectes = "SELECT projectes.idProjecte, projectes.nom, projectes.nombre, projectes.url, projectes.títol, projectes.titulo, projectes.descripcio, projectes.descripcion, projectes.idEdicio, edicio.dataInici, edicio.dataFi, multimedia.url
-        FROM projectes 
-        INNER JOIN edicio ON projectes.idEdicio = edicio.idEdicio
-        INNER JOIN multimedia ON multimedia.idProjecte = projectes.idProjecte";
+        $sqlProjectes = "SELECT projectes.idProjecte, projectes.url, projectes.titol, projectes.titulo, projectes.descripcio, projectes.descripcion, projectes.idEdicio, edicio.dataInici, edicio.dataFi, multimedia.url
+        ,especialitats.nom, especialitats.nombre
+        FROM  edicio
+        INNER JOIN projectes ON projectes.idEdicio = edicio.idEdicio
+        INNER JOIN multimedia ON multimedia.idProjecte = projectes.idProjecte 
+        INNER JOIN especialitats ON especialitats.idEsp = edicio.idEsp";
 
         $conexion = conectar();
         $resultProjectes = mysqli_query($conexion, $sqlProjectes);

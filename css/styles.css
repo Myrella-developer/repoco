@@ -50,6 +50,14 @@ header{
 .brandIcons i{
 	margin: 0 4px;
 }
+.espai{
+	background-color: #666;
+	color: white;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	padding-right: 15px;
+	padding-left: 15px;
+}
 .box {
     max-width: 25rem;
     padding: 2.5rem;
@@ -112,7 +120,6 @@ header{
 
 .navbar{
     border-radius: 10px;
-
 	padding-bottom: 0.7rem;
 	padding-top: 0.7rem;
 	padding-left: 1.2rem;

@@ -135,13 +135,12 @@ header{
 .boxf{
 background-color: #b7cae2;
   width: 137px;
-  /*padding: 15px;
-  margin: 25px;*/
+  padding: 15px;
+  margin: 0px;
   border-left: 10px solid #12789a;
   height: 54px;
 
-}
-.taxt2{
-top: 5%!important;
+
 
 }
+ 

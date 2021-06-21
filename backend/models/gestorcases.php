@@ -11,7 +11,28 @@
     mysqli_set_charset($conexion, "utf8");
     mysqli_query($conexion, "SET lc_time_names='es_ES'");
     return $conexion;
+
+
 }
+    $sql="SELECT * FROM `cases`";
+
+    $conexion=conectar();
+
+    $resultCases=mysqli_query($conexion, $sql);
+
+    $datosCases='{"datosCases":';
+
+    $rows = array();
+
+    while ($row = mysqli_fetch_array($resultCases)) {
+        $rows[]=$row;
+    }
+
+    $datosCases.=json_encode($rows);
+
+    $datosCases.="}";
+
+    desconectar($conexion);
 
 function desconectar($conexion){
     mysqli_close($conexion);

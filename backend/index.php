@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-	<html data-ng-app="repoco" ng-controller="IndexController" >
+	<html data-ng-app="backend" ng-controller="IndexController" >
 	<head>
 		<meta charset="utf-8">
 		<title>Cases d'oficis</title>
@@ -13,7 +13,6 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
 		<script src="js/app.js"></script>
 		<script src="controllers/controllers.js"></script>
-		<script src="js/functions.js"></script>
 	</head>
 	<body >
 		<div class="container-fluid">
@@ -50,9 +49,15 @@
 						        <li class="nav-item">
 						          <a class="nav-link active fw-bold" aria-current="page" ng-href="#/home">Inici</a>
 						        </li>
-						        <li class="nav-item" ng-repeat="casa in cases">
-						          <a class="nav-link" href="#/cases/{{casa.idcasa}}">{{casa.nom}}</a>
+						        <li class="nav-item">
+						          <a class="nav-link"  ng-href="#/barrisdigitals">Barris Digitals</a>
 						        </li>
+						        <li class="nav-item">
+						          <a class="nav-link"ng-href="#/barrissostenibles">Barris sostenibles</a>
+						        </li>
+						        <li class="nav-item">
+						          <a class="nav-link" ng-href="#/espectacleenviu">Espectacle en viu</a>
+						        </li>  
 						        <li class="nav-item">
 						          <a class="nav-link" ng-href="#/contacte">Contacte</a>
 						        </li>     
@@ -64,55 +69,29 @@
         	</header>
     	</div>
 
+        <nav class="navbar navbar-expand-lg navbar-light bg-danger">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand text-center ms-5 text-white">Gestionar dades</a>    
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <button class="btn btn-warning me-2" ng-click="tancar()">Tancar sesio</button>
+                
+                    <a ng-if="tipo == 'a'" class="nav-link active text-white ms-5 hoverMenu" href="#">Gestionar home</a>
+                    <a class="nav-link active text-white ms-5 hoverMenu" href="#/cases">Gestionar cases</a> 
+                    <a class="nav-link active text-white ms-5 hoverMenu" href="#/directors">Gestionar directors</a>    
+                    <a class="nav-link active text-white ms-5 hoverMenu" href="#/ediciones">Gestionar edicions</a>    
+                    <a class="nav-link active text-white ms-5 hoverMenu" href="#/especialitats">Gestionar especialitats</a>    
+                    <a class="nav-link active text-white ms-5 hoverMenu" ng-href="#/projectes">Gestionar projectes</a>    
+                </div>
+            </div>
+        </nav>
+
 		<div data-ng-view=""></div>
+		
+        <footer>
 
-		<footer>
-			<nav class="navbar-expand-lg footer pt-4 pb-4 navbar-light bg-light" id="contacte">
-			<div class="text-center">
-			<h2>En què podem ajudar-te</h2>
-			</div>
-
-			<div class="container-fluid">
-				
-			<div class="col-1 boxf taxt-end">
-
-				
-				
-				<i class="fas fa-angle-right"></i></div>
-			<h5>Ens vols conéixer</h5>
-			</div>
-			</div>
-			
-				<div class="container-fluid">
-				<div class="row row-cols-10">
-							<!-- <div class="col"> -->
-								<div class="col-2 text-start"><img src="img/Logo Basa.jpg">
-								</div>
-
-								
-					
-							<div class="col-3  iconsFooter text-center">
-								<a href="https://www.facebook.com/barcelonactiva/" target="_blank"><i class="fab fa-facebook fa-lg"></i></a>
-								<a href="https://twitter.com/barcelonactiva" target="_blank"><i class="fab fa-twitter fa-lg"></i></a>
-								<a href="https://www.instagram.com/barcelonactiva/" target="_blank"><i class="fab fa-instagram fa-lg"></i></a>
-								<a href="https://www.youtube.com/user/videosbarcelonactiva" target="_blank"><i class="fab fa-youtube fa-lg"></i></a>
-								<a href="https://www.linkedin.com/company/barcelona-activa/" target="_blank"><i class="fab fa-linkedin-in fa-lg"></i></a>
-							</div>
-							<!-- <ul class="list-line"></ul> -->
-							<div class="col-5 text-end me-4">
-								<li class="list-inline-item"><a href="#">contacte</a></li> 
-								<li class="list-inline-item"><a href="#">A la ciutat</a></li>
-								<li class="list-inline-item"><a href="#">Avis legal i privacitat</a></li> 
-							</div>
-							
-							<hr class="col-xs-15">
-							<div class="col text-start"><img src="img/logo.svg"></div>
-							<div class="col text-end me-4">
-								<li class="list-inline-item"><a href="#">Queixes i suggeriments</a></li> 
-							</div>
-
-						</div>
-					 
 		</footer>
 
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>

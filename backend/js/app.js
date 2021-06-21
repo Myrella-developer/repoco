@@ -1,13 +1,17 @@
-let app= angular.module('repoco',['ngRoute']);
+let app= angular.module('backend',['ngRoute']);
 app.config(['$routeProvider',function($routeProvider){
 	$routeProvider
 	.when('/',{
 		templateUrl:'views/home.html',
 		controller:'IndexController'
 	})
-	.when('/login',{
-		templateUrl:'views/login.php',
-		controller:'LoginController'
+	.when('/gestor',{
+		templateUrl:'views/gestor.php',
+		controller:'GestorController'
+	})
+	.when('/gestorcases',{
+		templateUrl:'views/gestorcases.php',
+		controller:'GestorCasesController'
 	})
 	.when('/ediciones',{
 		templateUrl:'views/ediciones.php',
@@ -17,16 +21,11 @@ app.config(['$routeProvider',function($routeProvider){
 		templateUrl:'views/projectes.php',
 		controller:'ProjectesController'
 	})	
-	.when('/cases/:idCasa',{
-		templateUrl:'views/cases.html',
-		controller:'CasesController'
-	})
-	.when('/contacte',{
-		templateUrl:'views/contacte.html',
-		controller:'ContacteController'
-	})
+	.when('/gestesp/:idcasa',{
+        templateUrl:'views/gestesp.php',
+        controller:'GestorEspController'
+    })
 	.otherwise({
 		redirectTo: '/'
 	})
 }])
-

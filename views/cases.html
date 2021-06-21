@@ -1,1 +1,29 @@
-Pàgina de Todas las páginas
+<div id="slideCasa" class="carousel slide" data-bs-ride="carousel">
+	<div class="carousel-indicators">
+		<button type="button" data-bs-target="#slideCasa" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+		<button type="button" data-bs-target="#slideCasa" data-bs-slide-to="1" aria-label="Slide 2"></button>
+		<button type="button" data-bs-target="#slideCasa" data-bs-slide-to="2" aria-label="Slide 3"></button>
+	</div>
+	<div class="carousel-inner">
+	    <div class="carousel-item active">
+	      <img ng-src="img/{{url=NULL?'no-imageSlide.png' : url}}" class="d-block w-100" alt="Casa d'ofici">
+
+	    </div>
+	    <!-- falta sentencia para img de especialitats -->
+	    <div class="carousel-item">
+	      <img src="img/prueba2.png" class="d-block w-100" alt="Foto Especialitat">
+	    </div>
+	    <div class="carousel-item">
+	      <img src="img/prueba3.png" class="d-block w-100" alt="Foto Especialitat">
+	    </div>
+	</div>
+	<div class="position-absolute top-50 start-50 translate-middle">
+		<p>CASES D'OFICIS</p><hr>
+		<h2>{{nom | uppercase}}</h2>
+	</div>
+</div>
+<div class="textCentral">
+	<p class="fw-bold">QUÈ ÉS LA CASA D'OFICIS {{nom | uppercase}}?</p>
+	<p>{{descripcio}}</p>
+</div>
+

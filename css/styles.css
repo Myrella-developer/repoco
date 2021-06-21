@@ -50,9 +50,12 @@ header{
 .brandIcons i{
 	margin: 0 4px;
 }
+.filagris a{
+	color: white;
+}
 .espai{
 	background-color: #666;
-	color: white;
+	color: white!important;
 	padding-bottom: 5px;
 	padding-top: 5px;
 	padding-right: 15px;

@@ -50,6 +50,14 @@ header{
 .brandIcons i{
 	margin: 0 4px;
 }
+.espai{
+	background-color: #666;
+	color: white;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	padding-right: 15px;
+	padding-left: 15px;
+}
 .box {
     max-width: 25rem;
     padding: 2.5rem;
@@ -112,8 +120,6 @@ header{
 
 .navbar{
     border-radius: 10px;
-<<<<<<< HEAD
-
 	padding-bottom: 0.7rem;
 	padding-top: 0.7rem;
 	padding-left: 1.2rem;
@@ -122,10 +128,6 @@ header{
 
 }
 
-=======
->>>>>>> cea0fa5fa4d7a0441cbf44b294b46ff76c77cf5c
-	padding: 0;
-	}
 .navbar-light .navbar-nav .nav-link {
    color: black;
 }
@@ -137,13 +139,6 @@ header{
 .mouse {
     cursor: pointer;
 }
-<<<<<<< HEAD
-=======
-.textCentral{
-	margin-top: 50px;
-}
-
->>>>>>> cea0fa5fa4d7a0441cbf44b294b46ff76c77cf5c
 
 .boxf{
 background-color: #b7cae2;

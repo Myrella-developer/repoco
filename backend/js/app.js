@@ -21,11 +21,13 @@ app.config(['$routeProvider',function($routeProvider){
 		templateUrl:'views/projectes.php',
 		controller:'ProjectesController'
 	})	
-	.when('/gestesp/:idcasa',{
+	//.when('/gestesp/:idcasa',{
+	.when('/gestesp',{	
         templateUrl:'views/gestesp.php',
         controller:'GestorEspController'
     })
 	.otherwise({
 		redirectTo: '/'
+		
 	})
 }])

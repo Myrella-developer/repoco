@@ -151,4 +151,10 @@ background-color: #b7cae2;
 .textCentral{
 	margin-top: 50px;
 }
- 
+.filtros{
+	color: grey;
+	border-color: grey;
+	border-width: thin;
+	border-style: solid;
+	border-radius: 0;
+}

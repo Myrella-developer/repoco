@@ -11,7 +11,7 @@ angular.module("repoco")
 	   .then((res) => { 
 	       defered.resolve(res);
 	       $scope.cases=res.data;
-	       console.log($scope.cases);
+	       // console.log($scope.cases);
 	   })
 	   .catch((err) => { console.log(err.statusText) })
 	   .finally(() => {});
@@ -92,14 +92,17 @@ angular.module("repoco")
 	   })
 	   .then((res) => { 
 	       defered.resolve(res);
-	       $scope.casa=res.data;
-	       console.log($scope.casa);
+	       $scope.casa=res.data.casa;
+	       $scope.especialitats=res.data.especialitats;
+	       // console.log($scope.casa);
+	       // console.log($scope.especialitats);
 	       $scope.nom=$scope.casa[1];
 	       $scope.descripcio=$scope.casa[3];
 	       $scope.url=$scope.casa[5];
-	       
+      
 	   })
 	   .catch((err) => { console.log(err.statusText) })
 	   .finally(() => {});
-	
+
+
 })

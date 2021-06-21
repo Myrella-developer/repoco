@@ -13,8 +13,15 @@ function conectar(){
     return $conexion;
 }
 
+
 function desconectar($conexion){
+    
     mysqli_close($conexion);
+}
+
+function tancar(){
+    session_unset();
+    session_destroy();
 }
 
 function sendMail($mailTo, $asunto, $body){

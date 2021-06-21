@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['login'])) header('Location: ../');
+?>
 <!DOCTYPE html>
 	<html data-ng-app="backend" ng-controller="IndexController" >
 	<head>
@@ -14,7 +18,8 @@
 		<script src="js/app.js"></script>
 		<script src="controllers/controllers.js"></script>
 	</head>
-	<body >
+	<body>
+
 		<div class="container-fluid">
        		 <header>
         		<div class="row row-cols-3 brandLogo">
@@ -69,6 +74,7 @@
         	</header>
     	</div>
 
+<!-- 
         <nav class="navbar navbar-expand-lg navbar-light bg-danger">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <a class="navbar-brand text-center ms-5 text-white">Gestionar dades</a>    
@@ -86,7 +92,7 @@
                     <a class="nav-link active text-white ms-5 hoverMenu" ng-href="#/projectes">Gestionar projectes</a>    
                 </div>
             </div>
-        </nav>
+        </nav> -->
 
 		<div data-ng-view=""></div>
 		

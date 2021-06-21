@@ -17,16 +17,13 @@ a{
 header{
 	font-size: 1em;
 }
-/* #segonc {
-    background-image:url("../img/rojo-prueba.PNG");
-    } */
-/* .primer {
- background-image:url("../img/home-prueba.PNG") ; 
 
+#primer {
+ /* background-image:url("../img/home-prueba.PNG");  */
 }
-.cambia:hover{
-    background-image:url("../img/espectaculo.jpg") ;
-} */
+#segonc {
+    /* background-image:url("../img/rojo-prueba.PNG"); */
+    }
 .textoc{
     font-size: 4rem;
     margin-top: 6rem;
@@ -37,7 +34,7 @@ header{
 .filaGris{
 	background-color: #f2f2f2;
 }
-.brandLogo, .brandIcons, .menu, .textCentral{
+.brandLogo, .brandIcons, .menu{
 	margin-right: 248px;
 	margin-left: 248px;
 
@@ -112,7 +109,6 @@ header{
 
 .navbar{
     border-radius: 10px;
-<<<<<<< HEAD
 
 	padding-bottom: 0.7rem;
 	padding-top: 0.7rem;
@@ -122,8 +118,6 @@ header{
 
 }
 
-=======
->>>>>>> cea0fa5fa4d7a0441cbf44b294b46ff76c77cf5c
 	padding: 0;
 	}
 .navbar-light .navbar-nav .nav-link {
@@ -134,16 +128,9 @@ header{
 	letter-spacing: 0;
 	line-height: 24px;
 }
-.mouse {
+.hover {
     cursor: pointer;
 }
-<<<<<<< HEAD
-=======
-.textCentral{
-	margin-top: 50px;
-}
-
->>>>>>> cea0fa5fa4d7a0441cbf44b294b46ff76c77cf5c
 
 .boxf{
 background-color: #b7cae2;
@@ -157,3 +144,6 @@ background-color: #b7cae2;
 
 }
  
+ .iconsFooters {
+ 	
+ }

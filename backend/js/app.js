@@ -9,11 +9,11 @@ app.config(['$routeProvider',function($routeProvider){
 		templateUrl:'views/gestorcases.php',
 		controller:'GestorCasesController'
 	})
-	.when('/ediciones',{
+	.when('/ediciones/:idcasa',{
 		templateUrl:'views/ediciones.php',
 		controller:'EdicionesController'
 	})	
-	.when('/projectes',{
+	.when('/projectes/:idcasa',{
 		templateUrl:'views/projectes.php',
 		controller:'ProjectesController'
 	})	

@@ -40,16 +40,21 @@ angular.module("backend")
     .finally(() => {})
 })
 
-.controller("GestorCasesController", ($q, $scope, $http) => {
+.controller("GestorCasesController", ($q, $scope, $http, $location) => {
     $scope.tipo="a";
+    $scope.irProjectes = () => {
+        $location.path("/projectes/1")
+    }
 })
 
-.controller("EdicionesController", ($q, $http, $scope) => {
+.controller("EdicionesController", ($q, $http, $scope, $routeParams) => {
+    $scope.idcasa = $routeParams.idcasa;
 	let data= new FormData;
     let defered = $q.defer();
-    data.append("acc","edicions");
+    data.append("acc","r");
+    data.append("idcasa", $scope.idcasa);
 
-    $http.post("models/projYedi.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+    $http.post("models/edicions.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
     .then((res) => { 
         defered.resolve(res);
         $scope.edicions = res.data;
@@ -77,12 +82,14 @@ angular.module("backend")
     }
 })
 
-.controller("ProjectesController", ($q, $http, $scope) => {
+.controller("ProjectesController", ($q, $http, $scope, $routeParams) => {
+    $scope.idcasa = $routeParams.idcasa;
 	let data= new FormData;
     let defered = $q.defer();
-    data.append("acc","projectes");
+    data.append("acc","r");
+    data.append("idcasa", $scope.idcasa);
 
-    $http.post("models/projYedi.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+    $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
     .then((res) => { 
         defered.resolve(res);
         $scope.projectes = res.data;

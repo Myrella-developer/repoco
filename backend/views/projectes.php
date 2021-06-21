@@ -14,13 +14,13 @@
                 <div class="modal-body">
                     <form>
                         <select class="form-select mb-4">
-                            <option>--Selecciona edicio</option>
-                            <option ng-repeat="edicio in projectes">{{edicio.nom}}</option>
+                            <option>--Selecciona especialitat</option>
+                            <option ng-repeat="esp in especialitats">{{esp.nom}}</option>
                         </select>
-                        <input type="text" class="form-control" placeholder="titol..."/><br/>
-                        <input type="text" class="form-control" placeholder="titulo..."/><br/>
-                        <input type="text" class="form-control" placeholder="descripcio..."/><br/>
-                        <input type="text" class="form-control" placeholder="descripción..."/><br/>
+                        <input ng-model="nouTitol" type="text" class="form-control" placeholder="titol..."/><br/>
+                        <input ng-model="nouTitulo" type="text" class="form-control" placeholder="titulo..."/><br/>
+                        <input ng-model="nouDescripcio" type="text" class="form-control" placeholder="descripcio..."/><br/>
+                        <input ng-model="nouDescripcion" type="text" class="form-control" placeholder="descripción..."/><br/>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -35,24 +35,32 @@
             <div class="card-body">
                 <img ng-src="../img/{{projecte.url}}" width="200"/>
                 <h5 class="card-title">{{projecte.titol}}</h5>
-                <p class="card-text">{{projecte.descripcio}} </p>
-                <p class="card-text">{{projecte.dataInici}} - {{projecte.dataFi}}</p>
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#gestor">Modificar</button>
+                <p class="card-text">{{projecte.descripcio}}</p>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#a{{projecte.idProjecte}}">Modificar</button>
             </div>
-        </div>
 
-        <div class="modal fade" id="gestor" tabindex="-1" aria-labelledby="labelDigital" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="labelDigital">Titulo</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        body
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-dark" ng-click="modificar()" data-bs-dismiss="modal">Dessar canvis</button>
+            <div class="modal fade" id="a{{projecte.idProjecte}}" tabindex="-1" aria-labelledby="labelDigital" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="labelDigital">Modifica projecte</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <select class="form-control">
+                                    <option>--Selecciona especialitat</option>
+                                    <option ng-repeat="esp in especialitats">{{esp.nom}}</option>
+                                </select><br/>
+                                <input class="form-control" type="text" ng-model="projecte.titol"/><br/>
+                                <input class="form-control" type="text" ng-model="projecte.titulo"/><br/>
+                                <textarea class="form-control" ng-model="projecte.descripcio" rows="6" cols="40"></textarea>
+                                <textarea class="form-control" ng-model="projecte.descripcion" rows="6" cols="40"></textarea>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal" ng-click="editar(projecte.titol, projecte.titulo, projecte.descripcio, projecte.descripcion, projecte.idProjecte)">Dessar canvis</button>
+                        </div>
                     </div>
                 </div>
             </div>

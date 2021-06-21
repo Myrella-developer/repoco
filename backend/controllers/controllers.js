@@ -99,16 +99,22 @@ angular.module("backend")
         
     }
 })
-.controller("GestorEspController", ($q, $http, $scope) => {
+.controller("GestorEspController", ($q, $http, $scope,$routeParams) => {
     let data= new FormData;
     let defered = $q.defer();
     data.append("acc","especialitats");
+    data.append("idcasa",$routeParams.idcasa);
     $http.post("models/gestDirEsp.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
     .then((res) => { 
         defered.resolve(res);
-        $scope.especialitats = res.data;
-        console.log($scope.especialitats);
-    })
+        $scope.especialitats = res.data.especialitats;
+        $scope.cases=res.data.cases;
+        console.log($scope.cases);
+    })   
     .catch((err) => { console.log(err.statusText) })
-    .finally(() => {})
+    .finally(() => { if($scope.especialitats==0) $scope.sinespecialitats=true;})
+    
+    
+    
+    
 })

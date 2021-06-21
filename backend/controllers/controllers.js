@@ -22,7 +22,6 @@ angular.module("backend")
 .controller("HomeController", () => {
 })
 
-
 .controller("RecuperarController", ($q, $scope, $http) => {
     $scope.email = "pancracio@gmail.com";
     $scope.nuevaContra = "nueva contra";

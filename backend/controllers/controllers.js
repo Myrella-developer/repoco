@@ -10,13 +10,12 @@ angular.module("backend")
         .then((res) =>{
             defered.resolve(res);
             $scope.datos=res.data;
-            //$location.path("./index.php");
-            window.location.href="../index.html";
-            console.log($scope.datos);
+            window.location.href="../index.html";           
         })
         .catch((err)=>{console.log(err.statusText)})
         .finally(()=>{});
     }
+
     
 })
 .controller("HomeController", () => {

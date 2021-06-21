@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['login'])) header('Location: ../');
+?>
 <!DOCTYPE html>
 	<html data-ng-app="backend" ng-controller="IndexController" >
 	<head>
@@ -14,7 +18,8 @@
 		<script src="js/app.js"></script>
 		<script src="controllers/controllers.js"></script>
 	</head>
-	<body >
+	<body>
+
 		<div class="container-fluid">
        		 <header>
         		<div class="row row-cols-3 brandLogo">
@@ -87,7 +92,6 @@
                 </div>
             </div>
         </nav>
-
 		<div data-ng-view=""></div>
 		
         <footer>

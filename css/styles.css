@@ -67,7 +67,7 @@ header{
     background:#fff ;
     text-align: center;
     transition: 0.25s;
-    margin-top: 6rem;
+    margin-top: 14rem;
 	border-radius: 2rem;
 	background:linear-gradient(to left, rgba(240, 246, 247, 0.246), #eef1f5)
 }
@@ -148,4 +148,13 @@ background-color: #b7cae2;
   border-left: 10px solid #12789a;
   height: 54px;
 }
- 
+.textCentral{
+	margin-top: 50px;
+}
+.filtros{
+	color: grey;
+	border-color: grey;
+	border-width: thin;
+	border-style: solid;
+	border-radius: 0;
+}

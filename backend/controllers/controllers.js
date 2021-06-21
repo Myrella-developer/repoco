@@ -105,17 +105,32 @@ angular.module("backend")
         
     }
 })
-.controller("GestorEspController", ($q, $http, $scope, $routeParams) => {
-    $scope.idcasa=$routeParams.idcasa;
+.controller("EspecialitatController", ($q, $http, $scope, $routeParams) => {
+    $scope.idcasa = $routeParams.idcasa;
     let data= new FormData;
     let defered = $q.defer();
     data.append("acc","especialitats");
     data.append("idcasa",$scope.idcasa);
-    $http.post("models/gestDirEsp.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+    $http.post("models/especialitat.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
     .then((res) => { 
         defered.resolve(res);
         $scope.especialitats = res.data;
         console.log($scope.especialitats);
+    })
+    .catch((err) => { console.log(err.statusText) })
+    .finally(() => {})
+})
+.controller("DirectorsController", ($q, $http, $scope, $routeParams) => {
+    $scope.idcasa = $routeParams.idcasa;
+    let data= new FormData;
+    let defered = $q.defer();
+    data.append("acc","directors");
+    data.append("idcasa",$scope.idcasa);
+    $http.post("models/directors.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+    .then((res) => { 
+        defered.resolve(res);
+        $scope.directors = res.data;
+        console.log($scope.directors);
     })
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})

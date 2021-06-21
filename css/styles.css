@@ -17,16 +17,16 @@ a{
 header{
 	font-size: 1em;
 }
-/* #segonc {
+ /* #segonc {
     background-image:url("../img/rojo-prueba.PNG");
-    } */
-/* .primer {
+    }  */
+ .primer {
  background-image:url("../img/home-prueba.PNG") ; 
 
 }
-.cambia:hover{
+/* .cambia:hover{
     background-image:url("../img/espectaculo.jpg") ;
-} */
+}  */
 .textoc{
     font-size: 4rem;
     margin-top: 6rem;

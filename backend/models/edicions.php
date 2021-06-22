@@ -17,4 +17,18 @@
         }
         echo json_encode($rows);
     }
+
+    if(isset($_POST['acc']) && $_POST['acc'] == "u"){
+		$sql = "UPDATE";
+		$conexion = conectar();
+		$result = mysqli_query($conexion, $sql);
+		desconectar($conexion);
+	}
+
+	if(isset($_POST['acc']) && $_POST['acc'] == "c"){
+		$sql = "INSERT";
+		$conexion = conectar();
+		$result = mysqli_query($conexion, $sql);
+		desconectar($conexion);
+	}
 ?>

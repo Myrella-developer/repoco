@@ -17,18 +17,12 @@ a{
 header{
 	font-size: 1em;
 }
- /* #segonc {
-    background-image:url("../img/rojo-prueba.PNG");
-    }  */
- .primer {
- background-image:url("../img/digitals.png") ; 
 
-#primer {
- /* background-image:url("../img/home-prueba.PNG");  */
-}
-#segonc {
-    /* background-image:url("../img/rojo-prueba.PNG"); */
-    }
+
+ /* .primer { */
+ /* background-image:url("../img/digitals.png") ;  */
+/* } */
+
 
 /* .cambia:hover{
     background-image:url("../img/espectaculo.jpg") ;
@@ -138,9 +132,6 @@ header{
 
 }
 
-	padding: 0;
-	}
-
 .navbar-light .navbar-nav .nav-link {
    color: black;
 }
@@ -236,8 +227,6 @@ background-color:#b5c8e0;
 	padding-right: 5em;
 
 }
-<<<<<<< HEAD
-=======
 .idioma{
     border: 0;
     font-size: 12px;
@@ -248,4 +237,3 @@ background-color:#b5c8e0;
         min-width: 500px;
     } 
 }
->>>>>>> fe179aaa3fbeff5d3fb0223431197a7bacfca79b

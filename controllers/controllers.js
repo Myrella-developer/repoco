@@ -38,6 +38,13 @@ angular.module("repoco")
 		// <img ng-src="../img/{{$scope.cases[posicion].url}}" alt="Description" />
 
    		};
+   		// <div class="col imagenFondo position-relative"><img id="fotoFondo" ng-src="{{miFoto}}"></div>
+        
+     //    <div class="row position-absolute top-50 start-50 translate-middle">
+     //        <div class="col-4 mt-5" ng-repeat="casa in cases">
+     //            <a href="#/cases/{{casa.idcasa}}"  ng-mouseover="cambioImagen({{casa.idcasa}})">{{casa.nom}}</a>
+     //        </div>
+     //    </div>
 	
 })  
 .controller("LoginController", function($scope, $http, $q, $location, $rootScope){

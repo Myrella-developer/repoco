@@ -17,15 +17,19 @@ angular.module("repoco")
 	   .finally(() => {});
 
 	   $scope.changeimg=(posicion) =>{
-		console.log($scope.cases[posicion].url);
-		$scope.bgUrl = '../img/{{$scope.cases[posicion].url}}';
+		$scope.rutaimg=$scope.cases[posicion].url;
+		// $scope.myDynamicClass = '.primer';
+		// var myEl = angular.element( document.querySelector( '#myDynamicClass' ) );
+		// 	myEl.addClass('primer');
 
+			// $scope.myDynamicClass ="primer";
+		// backgroundUrl= "../img/{{$scope.cases[posicion].url}}";
+		
 		// if ($scope.cases[posicion].url==$scope.cases[posicion].url) 
 		// console.log("../img/{{$scope.cases[posicion].url}}");
 
 		// <img ng-src="../img/{{$scope.cases[posicion].url}}" alt="Description" />
-
-   		};
+		};
 	
 })  
 .controller("LoginController", function($scope, $http, $q, $location, $rootScope){

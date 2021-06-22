@@ -19,27 +19,27 @@ angular.module("repoco")
 	
 })  
 .controller("LoginController", function($scope, $http, $q, $location, $rootScope){
+	
     $scope.errorLogin=false;
     $scope.entrar = function(){
         if ($scope.email=="" || $scope.pass=="") alert ("verifica datos") 
             else{
         let data = new FormData()
         data.append("acc","entrar");
-        data.append("correu", $scope.email)
-        data.append("pass", $scope.pass)
+        data.append("correu", $scope.email);
+        data.append("pass", $scope.pass);
         let defered=$q.defer();
         $http.post("models/login.php", data, {headers:{"Content-type" : undefined}, transformRequest: angular.identity})
+
         .then((res)=>{
             defered.resolve(res);
             $scope.datos=res.data;
             console.log(res.data);
-
-            if ($scope.datos == "ko") {
-
+            if ($scope.datos == false) {
             	$scope.errorLogin=true;
             }
             else{
-            	 window.location.href="./backend/index.php";
+            	 window.location.href="./backend/";
             }
         })
         .catch((err)=>{console.log(err.statusText)})
@@ -64,8 +64,8 @@ angular.module("repoco")
 	       defered.resolve(res);
 	       $scope.casa=res.data.casa;
 	       $scope.especialitats=res.data.especialitats;
-	       // console.log($scope.casa);
-	       // console.log($scope.especialitats);
+	       console.log($scope.casa);
+	       console.log($scope.especialitats);
 	       $scope.nom=$scope.casa[1];
 	       $scope.descripcio=$scope.casa[3];
 	       $scope.url=$scope.casa[5];

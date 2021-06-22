@@ -1,5 +1,5 @@
 angular.module("backend")
-.controller("IndexController", ($scope,$q,$http) => {
+.controller("IndexController", ($scope,$q,$http,$routeParams) => {  
        $scope.tancar=()=>{
         let data = new FormData;
         data.append("acc","tancar");
@@ -10,15 +10,41 @@ angular.module("backend")
         .then((res) =>{
             defered.resolve(res);
             $scope.datos=res.data;
-            window.location.href="../index.html";           
+            window.location.href="../index.html";        
         })
         .catch((err)=>{console.log(err.statusText)})
         .finally(()=>{});
-    }
-
-    
+    }    
 })
-.controller("HomeController", () => {
+.controller("HomeController", ($scope,$q,$http) => {
+        let data = new FormData;
+        data.append("acc","r");
+
+        let defered =$q.defer();
+        $http.post("models/cases.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
+
+        .then((res) =>{
+            defered.resolve(res);
+            $scope.cases=res.data;
+            console.log($scope.cases);
+        })
+        .catch((err)=>{console.log(err.statusText)})
+        .finally(()=>{});
+        
+        $scope.expandir=()=>{
+            let data =new FormData;
+            data.append("acc","tancar");
+
+            let defered = $q.defer();
+            $http.post("../models/ediciones.php", data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
+
+            .then ((res) =>{
+                defered.resolve(res);
+            })
+            .catch((err) =>{ console.log(err.statusText)})
+
+            .finally(()=>{});
+        }
 })
 
 .controller("RecuperarController", ($q, $scope, $http) => {
@@ -40,8 +66,18 @@ angular.module("backend")
     .finally(() => {})
 })
 
-.controller("GestorCasesController", ($q, $scope, $http) => {
-    $scope.tipo="a";
+.controller("GestorCasesController", ($q, $scope, $http, $location) => {
+    let data = new FormData;
+    let defered = $q.defer();
+    $scope.param1= $routeParams.param1;
+
+    $http.post("models/gestorcases.php", data, { headers:{ "Content-type" : undefined}, transformRequest : angular.identity})
+    .then((res) => { 
+        defered.resolve(res);
+        console.log(res.data);
+    })
+    .catch((err) => { console.log(err.statusText) })
+    .finally(() => {})
 })
 
 .controller("EdicionesController", ($q, $http, $scope) => {

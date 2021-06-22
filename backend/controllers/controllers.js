@@ -52,38 +52,59 @@ angular.module("backend")
 	let data= new FormData;
     let defered = $q.defer();
     data.append("acc","r");
-    data.append("idcasa", $scope.idcasa);
+    data.append("idcasa", idcasa);
 
     $http.post("models/edicions.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
     .then((res) => { 
         defered.resolve(res);
-        $scope.edicions = res.data;
+        $scope.edicions = res.data.edicions;
+        $scope.especialitats = res.data.especialitats;
     })
-
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})
 
-    $scope.afegir = (dataInici, dataFi, nomEdicio) => {
+    $scope.afegir = (selEspAdd, dataInici, dataFi) => {
         dataInici = dataInici.getFullYear() + "-" + (dataInici.getMonth()+1) + "-" + dataInici.getDate()
         dataFi = dataFi.getFullYear() + "-" + (dataFi.getMonth()+1) + "-" + dataFi.getDate()
         alert("Edicio afegida")
-        console.log(nomEdicio)
-        console.log(dataInici)
-        console.log(dataFi)
+        data.append("acc","c");
+        data.append("selEspAdd", selEspAdd);
+        data.append("dataInici", dataInici);
+        data.append("dataFi", dataFi);
+    
+        $http.post("models/edicions.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+        .then((res) => { 
+            defered.resolve(res);
+            console.log(res.data)
+        })
+        .catch((err) => { console.log(err.statusText) })
+        .finally(() => {})
     }
+    $scope.selEspAdd = "-1";
 
-    $scope.modificar = (nomEdicio, dataInici, dataFi) => {
+    $scope.modificar = (selEsp, dataInici, dataFi, idEdicio) => {
         dataInici = dataInici.getFullYear() + "-" + (dataInici.getMonth()+1) + "-" + dataInici.getDate()
         dataFi = dataFi.getFullYear() + "-" + (dataFi.getMonth()+1) + "-" + dataFi.getDate()
         alert("Edicio modificada")
-        console.log(nomEdicio)
-        console.log(dataInici)
-        console.log(dataFi)
+        data.append("acc","u");
+        data.append("selEsp", selEsp);
+        data.append("dataInici", dataInici);
+        data.append("dataFi", dataFi);
+        data.append("idEdicio", idEdicio);
+    
+        $http.post("models/edicions.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+        .then((res) => { 
+            defered.resolve(res);
+            console.log(res.data)
+        })
+        .catch((err) => { console.log(err.statusText) })
+        .finally(() => {})
     }
-
+    
     $scope.irProjectes = () => {
         $location.path("/projectes/"+idcasa)
     }
+
 })
 
 .controller("ProjectesController", ($q, $http, $scope, $routeParams) => {
@@ -127,6 +148,7 @@ angular.module("backend")
         data.append("titulo", $scope.nouTitulo);
         data.append("descripcio", $scope.nouDescripcio);
         data.append("descripcion", $scope.nouDescripcion);
+        data.append("idEdicio", $scope.idEdicio);
     
         $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
         .then((res) => { 

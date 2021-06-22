@@ -1,19 +1,21 @@
 <div class="container">
     <div class="row">
 
-        <div class="col primer cambia" >
+        <div class="col"  ng-style="{ 'background-image': 'url({{bgUrl}})' }" >
+              
                 <div class="textoc mb-5" id="prueba">
                     <p  class="text-center">T'OBRIM LA PORTA A <br> LES CASES D'OFICIS</p>
                 </div>  
                     <div class="row cols-3 mt-5 mb-5">
 
                         <div class="col text-center pi imgbanner mt-5" ng-repeat="casa in cases"  >
-                           <p class="mouse"><a href="#/cases/{{casa.idcasa}}" id="numweb">{{casa.nom}}</a></p>
-                           <img src="" alt=""> 
+                           
+                           <p class="mouse"  ><a href="#/cases/{{casa.idcasa}}" id="numweb" ng-mouseover="changeimg($index)">{{casa.nom}}</a></p>
+                          
                         </div>
                     
                     </div> 
-                <p id="as">sada</p>
+               
                 <div class="row row-cols-10 mt-5">
                         <div class="col-10 row-cols-10">
                             <p class="pi">QUÉ ET TROBARÁS EN AQUESTA WEB</p>

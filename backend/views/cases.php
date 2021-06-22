@@ -4,7 +4,7 @@
     <div class="card-body">
       <h5 class="card-title">{{casa.nom}}</h5>
       <p class="card-text">{{casa.descripcio}}</p>
-      <a class="btn btn-primary" ng-value="{{casa.idDir}}">Expandir</a>
+      <a class="btn btn-primary" ng-value="{{casa.idDir}}" ng-click="expandir()">Expandir</a>
     </div>
   </div>
 </div>

@@ -16,7 +16,8 @@ angular.module("backend")
         .finally(()=>{});
     }    
 })
-.controller("HomeController", ($scope,$q,$http) => {
+.controller("HomeController", ($scope,$q,$http,$location) => {
+
         let data = new FormData;
         data.append("acc","r");
 
@@ -30,20 +31,9 @@ angular.module("backend")
         })
         .catch((err)=>{console.log(err.statusText)})
         .finally(()=>{});
-        
+
         $scope.expandir=()=>{
-            let data =new FormData;
-            data.append("acc","tancar");
-
-            let defered = $q.defer();
-            $http.post("../models/ediciones.php", data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
-
-            .then ((res) =>{
-                defered.resolve(res);
-            })
-            .catch((err) =>{ console.log(err.statusText)})
-
-            .finally(()=>{});
+            $location.path('edicions/{{$scope.cases[0].idcasa}}')
         }
 })
 

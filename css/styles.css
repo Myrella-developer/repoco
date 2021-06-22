@@ -177,6 +177,8 @@ background-color: #b7cae2;
 }
 .idioma{
     border: 0;
+    font-size: 12px;
+    color: grey;
 }
 @media (min-width: 992px){
    .navbar-expand-lg {

@@ -5,19 +5,24 @@ app.config(['$routeProvider',function($routeProvider){
 		templateUrl:'views/cases.php',
 		controller:'HomeController'
 	})
-	.when('/ediciones',{
+	.when('/ediciones/:idcasa',{
 		templateUrl:'views/ediciones.php',
 		controller:'EdicionesController'
 	})	
-	.when('/projectes',{
+	.when('/projectes/:idcasa',{
 		templateUrl:'views/projectes.php',
 		controller:'ProjectesController'
 	})	
-	.when('/gestesp/:idcasa',{
-        templateUrl:'views/gestesp.php',
-        controller:'GestorEspController'
+	.when('/especialitats/:idcasa',{	
+        templateUrl:'views/especialitat.php',
+        controller:'EspecialitatController'
     })
+	.when('/directors/:idcasa',{
+		templateUrl:'views/directors.php',
+		controller:'DirectorsController'
+	})
 	.otherwise({
 		redirectTo: '/'
+
 	})
 }])

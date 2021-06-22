@@ -17,16 +17,16 @@ a{
 header{
 	font-size: 1em;
 }
-/* #segonc {
+ /* #segonc {
     background-image:url("../img/rojo-prueba.PNG");
-    } */
-/* .primer {
- background-image:url("../img/home-prueba.PNG") ; 
+    }  */
+ .primer {
+ background-image:url("../img/digitals.png") ; 
 
 }
-.cambia:hover{
+/* .cambia:hover{
     background-image:url("../img/espectaculo.jpg") ;
-} */
+}  */
 .textoc{
     font-size: 4rem;
     margin-top: 6rem;
@@ -50,9 +50,12 @@ header{
 .brandIcons i{
 	margin: 0 4px;
 }
+.filagris a{
+	color: white;
+}
 .espai{
 	background-color: #666;
-	color: white;
+	color: white!important;
 	padding-bottom: 5px;
 	padding-top: 5px;
 	padding-right: 15px;
@@ -159,4 +162,29 @@ background-color: #b7cae2;
 }
 .card{
     margin-top: 20px;
+}
+
+.filtrar{
+	color: black;
+	border-color: black;
+	border-width: thin;
+	border-style: solid;
+	border-radius: 0;
+	font-size: medium;
+	font-weight: normal;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	padding-left: 5em;
+	padding-right: 5em;
+
+}
+.idioma{
+    border: 0;
+    font-size: 12px;
+    color: #696973;
+}
+@media (min-width: 992px){
+   .navbar-expand-lg {
+        min-width: 500px;
+    } 
 }

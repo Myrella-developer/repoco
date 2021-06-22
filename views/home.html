@@ -1,18 +1,23 @@
 <div class="container">
     <div class="row">
-
-        <div class="col primer cambia" >
-                <div class="textoc mb-5">
+       
+        <div class="col"  >
+           
+            <img ng-src="img/{{rutaimg}}" alt="" class="img-fluid " ng-model="rutaimg">
+                <div class="textoc mb-5" id="prueba">
                     <p  class="text-center">T'OBRIM LA PORTA A <br> LES CASES D'OFICIS</p>
                 </div>  
-                    <div class="row cols-3 mt-5 mb-5">
+                   
+                <div class="row cols-3 mt-5 mb-5">
 
-                        <div class="col text-center pi mt-5" ng-repeat="casa in cases" id="imgbanner" onmouseover="cambiaimg">
-                           <p class="mouse"><a href="#/cases/{{casa.idcasa}}" id="numweb">{{casa.nom}}</a></p> 
+                        <div class="col text-center pi imgbanner mt-5" ng-repeat="casa in cases"  >
+                           
+                           <p class="mouse"  ><a href="#/cases/{{casa.idcasa}}" id="numweb" ng-mouseover="changeimg($index)">{{casa.nom}}</a></p>
+                          
                         </div>
-    
+                    
                 </div> 
-                
+               
                 <div class="row row-cols-10 mt-5">
                         <div class="col-10 row-cols-10">
                             <p class="pi">QUÉ ET TROBARÁS EN AQUESTA WEB</p>
@@ -27,9 +32,8 @@
                         <div class="col-8 mt-2 mb-5">
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit odit cum repellendus esse. Voluptates corrupti quia error at expedita accusamus nesciunt explicabo molestiae, cumque dolor veniam cupiditate quae. Non, aspernatur.</p>
                         </div>
-
-
                 </div>
+                   
         </div>
         <div class="row segonc mt-5">
 

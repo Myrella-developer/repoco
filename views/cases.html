@@ -18,24 +18,24 @@
 	    </div>
 	</div>
 	<div class="position-absolute top-50 start-50 translate-middle">
-		<p>CASES D'OFICIS</p><hr>
-		<h2>{{nom | uppercase}}</h2>
+		<p>{{idioma=="cat"?titol:titulo}}</p><hr>
+		<h2>{{idioma=="cat"?nom:nombre | uppercase}}</h2>
 	</div>
 </div>
 <div class="textCentral">
-	<p class="fw-bold">QUÈ ÉS LA CASA D'OFICIS {{nom | uppercase}}?</p>
-	<p>{{descripcio}}</p>
+	<p class="fw-bold">{{idioma=="cat"?titol2:titulo2}} {{idioma=="cat"?nom:nombre | uppercase}}?</p>
+	<p>{{idioma=="cat"?descripcio:descripcion}}</p>
 </div>
 <div class="textCentral">
-	<span>Filtrar per:</span>
+	<span>{{idioma=="cat"?filcat:filcas}}</span>
 	<div class="row">
 		<div class="col-lg-4">
-			<div class="badge filtros text-wrap m-1" style="width: 6rem;">Any en curs</div>
-			<div class="badge filtros text-wrap m-1" style="width: 6rem;">Tots els anys</div>
+			<div class="badge filtros text-wrap m-1" style="width: 6rem;">{{idioma=="cat"?curs:curso}}</div>
+			<div class="badge filtros text-wrap m-1" style="width: 6rem;">{{idioma=="cat"?tot:todo}}</div>
 		</div>
 		<div class="col-lg-8 border-start ps-5">
-			<div class="badge filtros text-wrap m-1">Totes</div>
-			<div class="badge filtros text-wrap m-1" ng-repeat="especialitat in especialitats">{{especialitat.nom}}</div>
+			<div class="badge filtros text-wrap m-1">{{idioma=="cat"?tot2:todo2}}</div>
+			<div class="badge filtros text-wrap m-1" ng-repeat="especialitat in especialitats">{{idioma=="cat"?especialitat.nom:especialitat.nombre}}</div>
 		</div>
 		<div class="col-4 offset-4">
 			<div class="badge filtrar mt-5">Filtrar</div>
@@ -43,6 +43,6 @@
 	</div>
 </div>
 <div class="textCentral">
-	<h6 class="fw-bold">ANYS</h6>
+	<h6 class="fw-bold">{{idioma=="cat"?anys:acas}}</h6>
 	<div class="row row-cols-3"></div>
 </div>

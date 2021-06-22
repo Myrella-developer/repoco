@@ -150,4 +150,7 @@
             </div>    
         </div>
     </div>
+
+    <button class="btn btn-warning w-25 m-5" ng-click="irEdiciones()">Gestionar edicions</button>
+
 </div>

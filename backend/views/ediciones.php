@@ -61,4 +61,7 @@
             </div>
         </div>
     </div>
+
+    <button class="btn btn-warning" ng-click="irProjectes()">Gestionar projectes</button>
+
 </div>

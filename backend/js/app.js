@@ -18,7 +18,7 @@ app.config(['$routeProvider',function($routeProvider){
 		controller:'ProjectesController'
 	})	
 	//.when('/especialitat/:idcasa',{
-	.when('/especialitat',{	
+	.when('/especialitats/:idcasa',{	
         templateUrl:'views/especialitat.php',
         controller:'EspecialitatController'
     })

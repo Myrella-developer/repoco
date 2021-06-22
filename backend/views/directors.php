@@ -62,7 +62,7 @@ views gestor Directors
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" ng-click="afegir()" data-bs-dismiss="modal">Afegir Director</button>
+                    <button type="button" class="btn btn-dark" ng-click="alter(nom, cog1, cog2, correu)" data-bs-dismiss="modal">Afegir Director</button>
                 </div>
             </div>
         </div>
@@ -133,7 +133,7 @@ views gestor Directors
                             <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Dessar canvis</button>
+                            <button type="button" class="btn btn-dark" ng-click="inserir(nom, cog1, cog2, correu)" data-bs-dismiss="modal">Dessar canvis</button>
                         </div>
                     </div>
                  </div>

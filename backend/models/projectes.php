@@ -37,7 +37,9 @@
 	}
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "c"){
-		$sql = "INSERT INTO projectes";
+		$sql = "INSERT INTO projectes (titol, titulo, descripcio, descripcion, idEdicio) 
+		VALUES('{$_POST['titol']}', '{$_POST['titulo']}', '{$_POST['descripcio']}', 
+		'{$_POST['descripcion']}', '{$_POST['idEdicio']}')";
 		$conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);

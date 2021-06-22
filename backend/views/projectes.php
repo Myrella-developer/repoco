@@ -13,9 +13,9 @@
                 </div>
                 <div class="modal-body">
                     <form>
-                        <select class="form-select mb-4">
+                        <select class="form-select mb-4" ng-model="idEdicio">
                             <option>--Selecciona especialitat</option>
-                            <option ng-repeat="esp in especialitats">{{esp.nom}}</option>
+                            <option ng-repeat="esp in especialitats" ng-value="esp.idEdicio">{{esp.nom}}</option>
                         </select>
                         <input ng-model="nouTitol" type="text" class="form-control" placeholder="titol..."/><br/>
                         <input ng-model="nouTitulo" type="text" class="form-control" placeholder="titulo..."/><br/>

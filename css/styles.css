@@ -175,3 +175,11 @@ background-color: #b7cae2;
 	padding-right: 5em;
 
 }
+.idioma{
+    border: 0;
+}
+@media (min-width: 992px){
+   .navbar-expand-lg {
+        min-width: 500px;
+    } 
+}

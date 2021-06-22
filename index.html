@@ -23,7 +23,11 @@
 	        			<a href="https://www.barcelona.cat/ca/" target="_blank" class="fw-bold">www.barcelona.cat</a>
 	        		</div>
 	        		<div class="col text-center p-0 align-self-center">
-	        			<span><img src="img/world.png" style="width: 25px"></span><span ng-model="idioma">Català</span>
+	        			<span><img src="img/world.png" style="width: 25px"></span>
+	        			<select class="idioma" ng-model="idioma" ng-change="cambiaIdioma()">
+	        				<option value="cat">Català</option>
+	        				<option value="cas">Castellano</option>
+	        			</select>
 	        		</div>
 	        		<div class="col text-end p-0"><a href="https://ajuntament.barcelona.cat/ca/" target="_blank"><img src="img/logo.svg"></a></div>
         		</div>
@@ -35,7 +39,7 @@
         				<a href="https://www.facebook.com/barcelonactiva/" target="_blank"><i class="bi bi-facebook"></i></a>
 						<a href="https://www.youtube.com/user/videosbarcelonactiva" target="_blank"><i class="bi bi-youtube"></i></a>
 						<a href="https://www.slideshare.net/barcelonactiva" target="_blank"><i class="fab fa-slideshare"></i></a>
-						<a ng-href="#/login" target="_blank"><span class="espai">Espai personal</span></a>
+						<a ng-href="#/login" target="_blank"><span class="espai">{{idioma=="cat"?espai:espacio}}</span></a>
         			</div>
         		</div>
         		<div class="row menu">
@@ -48,13 +52,13 @@
 						    <div class="collapse navbar-collapse"  id="menuPrincipal">
 						      <ul class="navbar-nav mb-2 mb-lg-0">
 						        <li class="nav-item">
-						          <a class="nav-link active fw-bold" aria-current="page" ng-href="#/home">Inici</a>
+						          <a class="nav-link active fw-bold" aria-current="page" ng-href="#/home">{{idioma=="cat"?inici:inicio}}</a>
 						        </li>
 						        <li class="nav-item" ng-repeat="casa in cases">
-						          <a class="nav-link" href="#/cases/{{casa.idcasa}}">{{casa.nom}}</a>
+						          <a class="nav-link" href="#/cases/{{casa.idcasa}}">{{idioma=="cat"?casa.nom:casa.nombre}}</a>
 						        </li>
 						        <li class="nav-item">
-						          <a class="nav-link" ng-href="#/contacte">Contacte</a>
+						          <a class="nav-link" ng-href="#/contacte">{{idioma=="cat"?contacte:contacto}}</a>
 						        </li>     
 						      </ul>				
 						    </div>

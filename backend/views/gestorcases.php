@@ -1,3 +1,3 @@
 <p>Gestor cases</p>
-<button ng-click="irProjectes()">Gestionar projectes</button>
 <!-- {{$datosCases}} -->
+<button ng-click="irEsp()" class="btn btn-warning">Gestionar especialitats</button>

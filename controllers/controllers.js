@@ -28,6 +28,16 @@ angular.module("repoco")
 	   $scope.contacte="Contacte";
 	   $scope.contacto="Contacto";
 
+	   $scope.changeimg=(posicion) =>{
+		console.log($scope.cases[posicion].url);
+		$scope.bgUrl = '../img/{{$scope.cases[posicion].url}}';
+
+		// if ($scope.cases[posicion].url==$scope.cases[posicion].url) 
+		// console.log("../img/{{$scope.cases[posicion].url}}");
+
+		// <img ng-src="../img/{{$scope.cases[posicion].url}}" alt="Description" />
+
+   		};
 	
 })  
 .controller("LoginController", function($scope, $http, $q, $location, $rootScope){

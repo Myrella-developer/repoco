@@ -17,16 +17,14 @@ app.config(['$routeProvider',function($routeProvider){
 		templateUrl:'views/projectes.php',
 		controller:'ProjectesController'
 	})	
-	//.when('/especialitat/:idcasa',{
-	.when('/especialitat',{	
+	.when('/especialitats/:idcasa',{	
         templateUrl:'views/especialitat.php',
         controller:'EspecialitatController'
     })
-	//.when('/directors/:idcasa',{
-		.when('/directors',{	
-			templateUrl:'views/directors.php',
-			controller:'DirectorsController'
-		})
+	.when('/directors/:idcasa',{
+		templateUrl:'views/directors.php',
+		controller:'DirectorsController'
+	})
 	.otherwise({
 		redirectTo: '/'
 

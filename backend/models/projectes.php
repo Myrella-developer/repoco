@@ -6,7 +6,7 @@
 
 		$sqlProj="SELECT p.titol, p.titulo, p.descripcio, p.descripcion, p.idProjecte
 		FROM projectes p
-		INNER JOIN cases ON cases.idcasa = '{$_POST['idcasa']}'";
+		INNER JOIN cases ON cases.idcasa = {$_POST['idcasa']}";
 
 		$conexion = conectar();
 		$resultEsp = mysqli_query($conexion, $sqlEsp);

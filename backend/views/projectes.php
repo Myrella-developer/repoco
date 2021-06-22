@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <h2 class="text-center mt-5">Projectes</h2>
+    <h2 class="text-center mt-5">Gestionar projectes</h2>
 
     <i class="fas fa-plus-square ms-4 mt-5 text-primary"></i>
     <label class="ms-1 fw-bold" data-bs-toggle="modal" data-bs-target="#afegir">AFEGIR</label>

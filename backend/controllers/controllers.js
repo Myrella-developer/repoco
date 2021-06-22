@@ -21,7 +21,7 @@ angular.module("backend")
 .controller("HomeController", () => {
 })
 
-.controller("RecuperarController", ($q, $scope, $http) => {
+.controller("RecuperarController", ($q, $scope, $http, $location) => {
     $scope.email = "pancracio@gmail.com";
     $scope.nuevaContra = "nueva contra";
 
@@ -42,13 +42,13 @@ angular.module("backend")
 
 .controller("GestorCasesController", ($q, $scope, $http, $location) => {
     $scope.tipo="a";
-    $scope.irProjectes = () => {
-        $location.path("/projectes/1")
+    $scope.irEsp = () => {
+        $location.path("/especialitats/1")
     }
 })
 
-.controller("EdicionesController", ($q, $http, $scope, $routeParams) => {
-    $scope.idcasa = $routeParams.idcasa;
+.controller("EdicionesController", ($q, $http, $scope, $routeParams, $location) => {
+    let idcasa = $routeParams.idcasa;
 	let data= new FormData;
     let defered = $q.defer();
     data.append("acc","r");
@@ -80,14 +80,18 @@ angular.module("backend")
         console.log(dataInici)
         console.log(dataFi)
     }
+
+    $scope.irProjectes = () => {
+        $location.path("/projectes/"+idcasa)
+    }
 })
 
 .controller("ProjectesController", ($q, $http, $scope, $routeParams) => {
-    $scope.idcasa = $routeParams.idcasa;
+    let idcasa = $routeParams.idcasa;
 	let data= new FormData;
     let defered = $q.defer();
     data.append("acc","r");
-    data.append("idcasa", $scope.idcasa);
+    data.append("idcasa", idcasa);
 
     $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
     .then((res) => { 
@@ -133,7 +137,7 @@ angular.module("backend")
         .finally(() => {})
     }
 })
-.controller("EspecialitatController", ($q, $http, $scope, $routeParams) => {
+.controller("EspecialitatController", ($q, $http, $scope, $routeParams, $location) => {
     $scope.idcasa = $routeParams.idcasa;
     let data= new FormData;
     let defered = $q.defer();
@@ -147,6 +151,10 @@ angular.module("backend")
     })
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})
+
+    $scope.irEdiciones = () => {
+        $location.path("/ediciones/"+idcasa)
+    }
 })
 .controller("DirectorsController", ($q, $http, $scope, $routeParams) => {
     $scope.idcasa = $routeParams.idcasa;

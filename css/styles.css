@@ -21,7 +21,7 @@ header{
     background-image:url("../img/rojo-prueba.PNG");
     }  */
  .primer {
- background-image:url("../img/home-prueba.PNG") ; 
+ background-image:url("../img/digitals.png") ; 
 
 #primer {
  /* background-image:url("../img/home-prueba.PNG");  */
@@ -236,3 +236,16 @@ background-color:#b5c8e0;
 	padding-right: 5em;
 
 }
+<<<<<<< HEAD
+=======
+.idioma{
+    border: 0;
+    font-size: 12px;
+    color: #696973;
+}
+@media (min-width: 992px){
+   .navbar-expand-lg {
+        min-width: 500px;
+    } 
+}
+>>>>>>> fe179aaa3fbeff5d3fb0223431197a7bacfca79b

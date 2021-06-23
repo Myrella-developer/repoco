@@ -187,7 +187,7 @@ angular.module("backend")
     }
 })
 .controller("EspecialitatController", ($q, $http, $scope, $routeParams, $location) => {
-    $scope.idcasa = $routeParams.idcasa;
+    let idcasa = $routeParams.idcasa;
     let data= new FormData;
     let defered = $q.defer();
     data.append("acc","especialitats");

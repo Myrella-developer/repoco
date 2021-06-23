@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if(!isset($_SESSION['login'])) header('Location: ../');
+    if(!isset($_SESSION['login'])) header('Location: ../#');
 ?>
 <!DOCTYPE html>
 	<html data-ng-app="backend" ng-controller="IndexController" >
@@ -27,7 +27,7 @@
 	        			<a href="https://www.barcelona.cat/ca/" target="_blank" class="fw-bold">www.barcelona.cat</a>
 	        		</div>
 	        		<div class="col text-center p-0">
-	        			<span><img src="img/world.png" style="width: 25px"></span><span ng-model="idioma">Català</span>
+	        			<!-- <span><img src="img/world.png" style="width: 25px"></span><span ng-model="idioma">Català</span> -->
 	        		</div>
 	        		<div class="col text-end p-0"><img src="img/logo.svg"></div>
         		</div>
@@ -44,25 +44,9 @@
         	</header>
     	</div>
 
-<!-- 
-        <nav class="navbar navbar-expand-lg navbar-light bg-danger">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <a class="navbar-brand text-center ms-5 text-white">Gestionar dades</a>    
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <div class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <button class="btn btn-warning me-2" ng-click="tancar()">Tancar sesio</button>
-                
-                    <a ng-if="tipo == 'a'" class="nav-link active text-white ms-5 hoverMenu" href="#">Gestionar home</a>
-                    <a class="nav-link active text-white ms-5 hoverMenu" href="#/cases">Gestionar cases</a> 
-                    <a class="nav-link active text-white ms-5 hoverMenu" href="#/directors">Gestionar directors</a>    
-                    <a class="nav-link active text-white ms-5 hoverMenu" href="#/ediciones">Gestionar edicions</a>    
-                    <a class="nav-link active text-white ms-5 hoverMenu" href="#/especialitats">Gestionar especialitats</a>    
-                    <a class="nav-link active text-white ms-5 hoverMenu" ng-href="#/projectes">Gestionar projectes</a>    
-                </div>
-            </div>
-        </nav> -->
+    	
+
+    	<button ng-click="tancar()">Tancar</button>
 
 		<div data-ng-view=""></div>
 		

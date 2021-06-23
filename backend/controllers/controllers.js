@@ -206,27 +206,30 @@ angular.module("backend")
     }
 })
 .controller("DirectorsController", ($q, $http, $scope, $routeParams) => {
-    $scope.idcasa = $routeParams.idcasa;
-    let data= new FormData;
+    let idcasa = $routeParams.idcasa;
+	let data= new FormData;
     let defered = $q.defer();
-    data.append("acc","directors");
-    data.append("idcasa",$scope.idcasa);
+    data.append("acc","r");
+    data.append("idcasa", idcasa);
+
     $http.post("models/directors.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
     .then((res) => { 
         defered.resolve(res);
         $scope.directors = res.data;
-        console.log($scope.directors);
     })
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})
-    $scope.alter = (nom, cog1, cog2, correu) => {
+
+    $scope.alter = (nom, cog1, cog2, correu,idDir) => {
         data.append("acc","u");
         data.append("nom", nom);
         data.append("cog1", cog1);
         data.append("cog2", cog2);
         data.append("correu", correu);
+        data.append("idDir", idDir);
+        console.log (nom);
     
-        $http.post("models/director.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+        $http.post("models/directors.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
         .then((res) => { 
             defered.resolve(res);
             console.log(res.data)
@@ -235,14 +238,17 @@ angular.module("backend")
         .finally(() => {})
     }
 
-    $scope.inserir = () => {
+    $scope.inserir= () => {
+        console.log($scope.nouNom)
+        console.log($scope.nouCog1)
         data.append("acc","c");
         data.append("nom", $scope.nouNom);
         data.append("cog1", $scope.nouCog1);
         data.append("cog2", $scope.nouCog2);
         data.append("correu", $scope.nouCorreu);
+        data.append("pass", $scope.nouPass);
     
-        $http.post("models/director.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+        $http.post("models/directors.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
         .then((res) => { 
             defered.resolve(res);
             console.log(res.data)

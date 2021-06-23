@@ -68,7 +68,6 @@ angular.module("repoco")
         data.append("pass", $scope.pass);
         let defered=$q.defer();
         $http.post("models/login.php", data, {headers:{"Content-type" : undefined}, transformRequest: angular.identity})
-
         .then((res)=>{
             defered.resolve(res);
             $scope.datos=res.data;

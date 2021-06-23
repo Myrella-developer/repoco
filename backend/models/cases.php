@@ -5,7 +5,7 @@
    
 
     if (isset($_POST['acc']) && $_POST['acc'] == "r") {
-        $sql="SELECT `idcasa`, `nom`, `nombre`, `descripcio`, `descripcion`, `idDir` FROM `cases` WHERE `idDir` = '{$_SESSION['login']['idDir']}'";
+        $sql="SELECT `idcasa`, `nom`, `nombre`, `descripcio`, `descripcion`, `url`, `idDir` FROM `cases` WHERE `idDir` = '{$_SESSION['login']['idDir']}'";
         $conexion = conectar();
         $resultCases = mysqli_query($conexion, $sql);
         desconectar($conexion);

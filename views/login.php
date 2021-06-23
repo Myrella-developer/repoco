@@ -10,7 +10,6 @@
                     <input type="email" ng-model="email" name="" placeholder="Nom d'usuari">
 					<input type="password" ng-model="pass" name="" placeholder="contrasenya"> 
 					<input type="submit" name="" value="Anar" ng-click="entrar()">
-					<span ng-click="tancar()">Tancar sessió</span>
                 </form>
             </div>
         </div>

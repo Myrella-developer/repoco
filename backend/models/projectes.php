@@ -46,11 +46,25 @@
 	}
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "d"){
+		$sqlUnlink = "SELECT url FROM multimedia WHERE idProjecte = {$row['idProjecte']};";
+
+		$conexion = conectar();
+		$resultUnlink = mysqli_query($conexion, $sqlUnlink);
+		desconectar($conexion);
+
+		$rows = array();
+		while($row = mysqli_fetch_array($resultUnlink)){
+			$rows[] = $row;
+
+			unlink('../img/'.$row['url']);
+		}
+
 		$sql = "DELETE FROM `multimedia` WHERE idProjecte = '{$_POST['idProjecte']}'";
 		$sql2 = "DELETE FROM `projectes` WHERE idProjecte = '{$_POST['idProjecte']}'";
 		$conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
-		$result = mysqli_query($conexion, $sql2);
+		$result2 = mysqli_query($conexion, $sql2);
 		desconectar($conexion);
 	}
+
 ?>

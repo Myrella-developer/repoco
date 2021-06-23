@@ -4,8 +4,7 @@
 	session_start();
 	if (isset($_POST['acc']) && $_POST['acc'] == "entrar") {
 		$sql="SELECT `idDir`, `nom`, `cog1`, `cog2`, `correu`, `contrasenya`, `tipus` FROM `directors` WHERE `correu`='".$_POST['correu']."' AND `contrasenya`='".sha1(md5($_POST['pass']))."' AND `actiu`='s'";
-		echo $sql;
-   
+	echo $sql;
 
 	$conexion=conectar();
 	$resultUser=mysqli_query($conexion, $sql);
@@ -17,11 +16,10 @@
             $_SESSION['login']['tipus'] = $row['tipus'];
             $_SESSION['login']['nom'] = $row['nom'];
             $_SESSION['login']['correu'] = $row['correu'];
-		}
-		echo "ok";		
+		}		
 	}
 	else{
-		echo "ko";
+		echo false;
 	}
 }
 if (isset($_POST['acc']) && $_POST['acc'] == "tancar") {

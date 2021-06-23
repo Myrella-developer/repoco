@@ -1,8 +1,8 @@
 
 <div class="container">
-    <div class="row">
+    <div class="row d-flex justify-content-center">
         <div class="col-6">
-            <div class="card">
+            <div class="">
                 <form onsubmit="event.preventDefault()" class="box">
                     <h3 class="bg-danger rounded-pill p-1" ng-show="errorLogin">Introdueix les teves dades correctament!</h3>
                     <h1>Inici de sessió</h1>

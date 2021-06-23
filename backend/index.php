@@ -39,36 +39,6 @@
         				<a href="https://www.facebook.com/barcelonactiva/" target="_blank"><i class="bi bi-facebook"></i></a>
 						<a href="https://www.youtube.com/user/videosbarcelonactiva" target="_blank"><i class="bi bi-youtube"></i></a>
 						<a href="https://www.slideshare.net/barcelonactiva" target="_blank"><i class="fab fa-slideshare"></i></a>
-						<span class="login"><a ng-href="#/login" target="_blank">Espai personal</a></span>
-        			</div>
-        		</div>
-        		<div class="row menu">
-        			<div class="col p-0"><img src="img/Logo Basa.jpg"></div>
-        			<div class="col p-0">
-        				<nav class="navbar navbar-expand-lg navbar-light">
-						    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Toggle navigation">
-						      <span class="navbar-toggler-icon"></span>
-						    </button>
-						    <div class="collapse navbar-collapse"  id="menuPrincipal">
-						      <ul class="navbar-nav mb-2 mb-lg-0">
-						        <li class="nav-item">
-						          <a class="nav-link active fw-bold" aria-current="page" ng-href="#/home">Inici</a>
-						        </li>
-						        <li class="nav-item">
-						          <a class="nav-link"  ng-href="#/barrisdigitals">Barris Digitals</a>
-						        </li>
-						        <li class="nav-item">
-						          <a class="nav-link"ng-href="#/barrissostenibles">Barris sostenibles</a>
-						        </li>
-						        <li class="nav-item">
-						          <a class="nav-link" ng-href="#/espectacleenviu">Espectacle en viu</a>
-						        </li>  
-						        <li class="nav-item">
-						          <a class="nav-link" ng-href="#/contacte">Contacte</a>
-						        </li>     
-						      </ul>				
-						    </div>
-						</nav>
         			</div>
         		</div>
         	</header>

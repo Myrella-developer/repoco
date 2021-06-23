@@ -1,4 +1,3 @@
-
 <div class="ms-4 mt-4 container-fluid d-block" ng-repeat="casa in cases">
   <div class="card" id="card-cases" ng-model="cases" style="width: 18rem;">
     <div class="card-body">
@@ -9,6 +8,3 @@
     </div>
   </div>
 </div>
-
-
-

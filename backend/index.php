@@ -27,7 +27,7 @@
 	        			<a href="https://www.barcelona.cat/ca/" target="_blank" class="fw-bold">www.barcelona.cat</a>
 	        		</div>
 	        		<div class="col text-center p-0">
-	        			<span><img src="img/world.png" style="width: 25px"></span><span ng-model="idioma">Català</span>
+	        			<!-- <span><img src="img/world.png" style="width: 25px"></span><span ng-model="idioma">Català</span> -->
 	        		</div>
 	        		<div class="col text-end p-0"><img src="img/logo.svg"></div>
         		</div>

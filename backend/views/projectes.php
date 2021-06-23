@@ -1,5 +1,13 @@
 <div class="container-fluid">
-    <h2 class="text-center mt-5">Gestionar projectes</h2>
+    <?php 
+        session_start();
+        if(!isset($_SESSION['login']['idDir'])){
+            echo "Debes iniciar sesión";
+        }
+    
+        if(isset($_SESSION['login']['idDir'])) :
+    ?>
+    <h2 class="text-center mt-5">Els projectes de la teva casa</h2>
 
     <i class="fas fa-plus-square ms-4 mt-5 text-primary"></i>
     <label class="ms-1 fw-bold" data-bs-toggle="modal" data-bs-target="#afegir">AFEGIR</label>
@@ -67,4 +75,14 @@
             </div>
         </div>
     </div>
+
+    <?php 
+        endif; 
+    
+        if(isset($_SESSION['login']['idDir']) && $_SESSION['login']['tipus'] == "a") :
+    ?>
+
+    <h2>Tots els projectes</h2>
+
+    <?php endif; ?>
 </div>

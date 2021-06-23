@@ -15,7 +15,21 @@
         }
         echo json_encode($rows);
     }
+    if(isset($_POST['acc']) && $_POST['acc'] == "u"){
+		$sql = "UPDATE especialitats SET nom = '{$_POST['nom']}', nombre = '{$_POST['nombre']}', descripcio = '{$_POST['descripcio']}', descripcion = '{$_POST['descripcion']}',
+		WHERE idEsp = '{$_POST['idEsp']}'";
+		$conexion = conectar();
+		$result = mysqli_query($conexion, $sql);
+		desconectar($conexion);
+	}
 
+	if(isset($_POST['acc']) && $_POST['acc'] == "c"){
+		$sql = "INSERT INTO especialitats (`nom`,`nombre`,`descripcio`,`descripcion`) VALUES ('{$_POST['nom']}','{$_POST['nombre']}','{$_POST['descripcio']}','{$_POST['descripcion']}')";
+		echo $sql;
+        $conexion = conectar();
+		$result = mysqli_query($conexion, $sql);
+		desconectar($conexion);
+	}
 ?>
 
 

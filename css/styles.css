@@ -65,13 +65,11 @@ header{
 .box {
     max-width: 25rem;
     padding: 2.5rem;
-    position: absolute;
-    top: 50%;
-    left: 50%;
     background:#fff ;
     text-align: center;
     transition: 0.25s;
-    margin-top: 14rem;
+    margin-top: 8rem;
+    margin-bottom: 8rem;
 	border-radius: 2rem;
 	background:linear-gradient(to left, rgba(240, 246, 247, 0.246), #eef1f5)
 }

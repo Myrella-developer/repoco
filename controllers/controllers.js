@@ -101,6 +101,7 @@ angular.module("repoco")
 	       defered.resolve(res);
 	       $scope.casa=res.data.casa;
 	       $scope.especialitats=res.data.especialitats;
+	       $scope.edicio=res.data.edicio;
 	       
 	       $scope.nom=$scope.casa[1];
 	       $scope.nombre=$scope.casa[2];
@@ -115,6 +116,22 @@ angular.module("repoco")
 	       console.log($scope.casa);
 	       console.log($scope.especialitats);
 	       
+	       
+      
+	   })
+	   .catch((err) => { console.log(err.statusText) })
+	   .finally(() => {});
+
+	   data = new FormData();
+	   data.append("acc", "r");
+
+	   $http.post("models/edicio.php", data, {
+	      headers:{ "Content-type" : undefined }, transformRequest : angular.identity 
+	   })
+	   .then((res) => { 
+	       defered.resolve(res);
+	      
+
       
 	   })
 	   .catch((err) => { console.log(err.statusText) })
@@ -129,45 +146,6 @@ angular.module("repoco")
 	   $scope.anys="Anys";
 	   $scope.acas="Años";
 
-	   $scope.buscaEdicio=function(id){
-
-	   	$scope.inici="";
-	   	$scope.fi="";
-
-	   	let data = new FormData();
-	   data.append("acc", "r");
-	   data.append("idEsp",id);
-	  
-	   let defered = $q.defer();
-
-	   $http.post("models/edicio.php", data, {
-	      headers:{ "Content-type" : undefined }, transformRequest : angular.identity 
-	   })
-	   .then((res) => { 
-	       defered.resolve(res);
-	       $scope.edicio=res.data;
-	       console.log($scope.edicio);
-	     
-	  //      if ($scope.edicio!=1) {
-	  //      	for (let i in $scope.edicio) {
-			// 		$scope.inici+=$scope.edicio[i][2];
-			// 		$scope.fi+=$scope.edicio[i][3];
-			// 		}
-		      
-			// }
-			// else{
-			// 	 $scope.inici+=$scope.edicio[2];
-		 //      	 $scope.fi+=$scope.edicio[3];
-				
-			// }
-	       
-	  //     console.log($scope.inici, $scope.fi);
-      
-	   })
-	   .catch((err) => { console.log(err.statusText) })
-	   .finally(() => {});
-
-
-	   }
+	   
 
 })

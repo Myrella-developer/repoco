@@ -273,3 +273,8 @@ background-color: #f5d987;
     position: relative;
     width: 100%;
   }
+img.miniatura{
+  opacity: 0.5;
+  width: 15rem;
+  position: relative;
+}

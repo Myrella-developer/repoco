@@ -192,4 +192,35 @@ angular.module("backend")
     })
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})
+    $scope.alter = (nom, cog1, cog2, correu) => {
+        data.append("acc","u");
+        data.append("nom", nom);
+        data.append("cog1", cog1);
+        data.append("cog2", cog2);
+        data.append("correu", correu);
+    
+        $http.post("models/director.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+        .then((res) => { 
+            defered.resolve(res);
+            console.log(res.data)
+        })
+        .catch((err) => { console.log(err.statusText) })
+        .finally(() => {})
+    }
+
+    $scope.inserir = () => {
+        data.append("acc","c");
+        data.append("nom", $scope.nouNom);
+        data.append("cog1", $scope.nouCog1);
+        data.append("cog2", $scope.nouCog2);
+        data.append("correu", $scope.nouCorreu);
+    
+        $http.post("models/director.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+        .then((res) => { 
+            defered.resolve(res);
+            console.log(res.data)
+        })
+        .catch((err) => { console.log(err.statusText) })
+        .finally(() => {})
+    }
 })

@@ -39,9 +39,43 @@
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "c"){
 		$sql = "INSERT INTO edicio(idEdicio, idEsp, dataInici, dataFi, url) 
-		VALUES(NULL, '{$_POST['selEspAdd']}', '{$_POST['dataInici']}', '{$_POST['dataFi']}', NULL)";
+		VALUES(NULL, '{$_POST['selEspAdd']}', '{$_POST['dataInici']}', '{$_POST['dataFi']}', '')";
 		$conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
+		desconectar($conexion);
+		echo $sql;
+	}
+
+	if(isset($_POST['acc']) && $_POST['acc'] == "d"){
+		$sql1 = "SELECT idProjecte FROM projectes WHERE idEdicio = '{$_POST['idEdicio']}';";
+		$conexion = conectar();
+		$result1 = mysqli_query($conexion, $sql1);
+		desconectar($conexion);
+
+		$rows = array();
+		while($row = mysqli_fetch_array($result1)){
+			$rows[] = $row;
+			$sql2 = "DELETE FROM multimedia WHERE idProjecte = {$row['idProjecte']};";
+
+			$sqlUnlink = "SELECT url FROM multimedia WHERE idProjecte = {$row['idProjecte']};";
+			
+			$conexion = conectar();
+			$result2 = mysqli_query($conexion, $sql2);
+			$resultUnlink = mysqli_query($conexion, $sqlUnlink);
+			desconectar($conexion);
+
+			$rows2 = array();
+			while($row2 = mysqli_fetch_array($resultUnlink)){
+				$rows[] = $row2;
+				unlink('../img/'.$row2['url']);
+			}
+		}
+		$sql3 = "DELETE FROM `projectes` WHERE idEdicio = '{$_POST['idEdicio']}';";
+		$sql4 = "DELETE FROM `edicio` WHERE idEdicio = '{$_POST['idEdicio']}';";
+		
+		$conexion = conectar();
+		$result3 = mysqli_query($conexion, $sql3);
+		$result4 = mysqli_query($conexion, $sql4);
 		desconectar($conexion);
 	}
 ?>

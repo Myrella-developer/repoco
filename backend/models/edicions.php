@@ -55,19 +55,20 @@
 		$rows = array();
 		while($row = mysqli_fetch_array($result1)){
 			$rows[] = $row;
-			$sql2 = "DELETE FROM multimedia WHERE idProjecte = {$row['idProjecte']};";
-
 			$sqlUnlink = "SELECT url FROM multimedia WHERE idProjecte = {$row['idProjecte']};";
 			
 			$conexion = conectar();
-			$result2 = mysqli_query($conexion, $sql2);
 			$resultUnlink = mysqli_query($conexion, $sqlUnlink);
 			desconectar($conexion);
 
 			$rows2 = array();
 			while($row2 = mysqli_fetch_array($resultUnlink)){
-				$rows[] = $row2;
+				$rows2[] = $row2;
 				unlink('../img/'.$row2['url']);
+				$sql2 = "DELETE FROM multimedia WHERE idProjecte = {$row['idProjecte']};";
+				$conexion = conectar();
+				$result2 = mysqli_query($conexion, $sql2);
+				desconectar($conexion);
 			}
 		}
 		$sql3 = "DELETE FROM `projectes` WHERE idEdicio = '{$_POST['idEdicio']}';";

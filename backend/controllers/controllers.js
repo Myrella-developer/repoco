@@ -132,6 +132,18 @@ angular.module("backend")
         $location.path("/projectes/"+idcasa)
     }
 
+    $scope.eliminar = (idEdicio) => {
+        data.append("acc", "d");
+        data.append("idEdicio", idEdicio);
+
+        $http.post("models/edicions.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+        .then((res) => { 
+            defered.resolve(res);
+            console.log(res.data)
+        })
+        .catch((err) => { console.log(err.statusText) })
+        .finally(() => {})
+    }
 })
 
 .controller("ProjectesController", ($q, $http, $scope, $routeParams) => {
@@ -153,9 +165,9 @@ angular.module("backend")
     $scope.editar = (titol, titulo, descripcio, descripcion, idProjecte) => {
         data.append("acc","u");
         data.append("titol", titol);
-        data.append("titol", titulo);
-        data.append("titol", descripcio);
-        data.append("titol", descripcion);
+        data.append("titulo", titulo);
+        data.append("descripcio", descripcio);
+        data.append("descripcion", descripcion);
         data.append("idProjecte", idProjecte);
     
         $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
@@ -168,8 +180,6 @@ angular.module("backend")
     }
 
     $scope.afegir = () => {
-        console.log($scope.nouTitol)
-        console.log($scope.nouDescripcio)
         data.append("acc","c");
         data.append("titol", $scope.nouTitol);
         data.append("titulo", $scope.nouTitulo);
@@ -177,6 +187,19 @@ angular.module("backend")
         data.append("descripcion", $scope.nouDescripcion);
         data.append("idEdicio", $scope.idEdicio);
     
+        $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+        .then((res) => { 
+            defered.resolve(res);
+            console.log(res.data)
+        })
+        .catch((err) => { console.log(err.statusText) })
+        .finally(() => {})
+    }
+
+    $scope.eliminar = (idProjecte) => {
+        data.append("acc", "d");
+        data.append("idProjecte", idProjecte);
+
         $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
         .then((res) => { 
             defered.resolve(res);

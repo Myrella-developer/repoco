@@ -6,15 +6,15 @@
 	</div>
 	<div class="carousel-inner">
 	    <div class="carousel-item active">
-	      <img ng-src="img/{{url=NULL?'no-imageSlide.png' : url}}" class="d-block w-100" alt="Casa d'ofici">
+	      <img ng-src="multimedia/img/provisionales/{{url=NULL?'no-imageSlide.png' : url}}" class="d-block w-100" alt="Casa d'ofici">
 
 	    </div>
 	    <!-- falta sentencia para img de especialitats -->
 	    <div class="carousel-item">
-	      <img src="img/prueba2.png" class="d-block w-100" alt="Foto Especialitat">
+	      <img src="multimedia/img/provisionales/prueba2.png" class="d-block w-100" alt="Foto Especialitat">
 	    </div>
 	    <div class="carousel-item">
-	      <img src="img/prueba3.png" class="d-block w-100" alt="Foto Especialitat">
+	      <img src="multimedia/img/provisionales/prueba3.png" class="d-block w-100" alt="Foto Especialitat">
 	    </div>
 	</div>
 	<div class="position-absolute top-50 start-50 translate-middle">
@@ -25,22 +25,6 @@
 <div class="textCentral">
 	<p class="fw-bold">{{idioma=="cat"?titol2:titulo2}} {{idioma=="cat"?nom:nombre | uppercase}}?</p>
 	<p>La <span class="fw-bold">{{idioma=="cat"?titol3:titulo3}} {{idioma=="cat"?nom:nombre}}</span> {{idioma=="cat"?descripcio1:descripcion1}}<br><br>{{idioma=="cat"?descripcio2:descripcion2}}</p>
-</div>
-<div class="textCentral">
-	<span>{{idioma=="cat"?filcat:filcas}}</span>
-	<div class="row">
-		<div class="col-lg-4">
-			<div class="badge filtros text-wrap m-1" style="width: 6rem;">{{idioma=="cat"?curs:curso}}</div>
-			<div class="badge filtros text-wrap m-1" style="width: 6rem;">{{idioma=="cat"?tot:todo}}</div>
-		</div>
-		<div class="col-lg-8 border-start ps-5">
-			<div class="badge filtros text-wrap m-1">{{idioma=="cat"?tot2:todo2}}</div>
-			<div class="badge filtros text-wrap m-1" ng-repeat="especialitat in especialitats">{{idioma=="cat"?especialitat.nom:especialitat.nombre}}</div>
-		</div>
-		<div class="col-4 offset-4">
-			<div class="badge filtrar mt-5">Filtrar</div>
-		</div>
-	</div>
 </div>
 <div class="textCentral">
 	<h6 class="fw-bold">{{idioma=="cat"?anys:acas}}</h6>

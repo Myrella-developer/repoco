@@ -126,15 +126,48 @@ angular.module("repoco")
 	   $scope.titulo2="¿QUÉ ES LA CASA DE OFICIOS";
 	   $scope.titol3="Casa d'Oficis";
 	   $scope.titulo3="Casa de Oficios";
-	   $scope.filcat="Filtrar per:";
-	   $scope.filcas="Filtrar por:";
-	   $scope.curs="Any en curs";
-	   $scope.curso="Año en curso";
-	   $scope.tot="Tots els anys";
-	   $scope.todo="Todos los años";
-	   $scope.tot2="Totes";
-	   $scope.todo2="Todos";
 	   $scope.anys="Anys";
 	   $scope.acas="Años";
+
+	   $scope.buscaEdicio=function(id){
+
+	   	$scope.inici="";
+	   	$scope.fi="";
+
+	   	let data = new FormData();
+	   data.append("acc", "r");
+	   data.append("idEsp",id);
+	  
+	   let defered = $q.defer();
+
+	   $http.post("models/edicio.php", data, {
+	      headers:{ "Content-type" : undefined }, transformRequest : angular.identity 
+	   })
+	   .then((res) => { 
+	       defered.resolve(res);
+	       $scope.edicio=res.data;
+	       console.log($scope.edicio);
+	     
+	  //      if ($scope.edicio!=1) {
+	  //      	for (let i in $scope.edicio) {
+			// 		$scope.inici+=$scope.edicio[i][2];
+			// 		$scope.fi+=$scope.edicio[i][3];
+			// 		}
+		      
+			// }
+			// else{
+			// 	 $scope.inici+=$scope.edicio[2];
+		 //      	 $scope.fi+=$scope.edicio[3];
+				
+			// }
+	       
+	  //     console.log($scope.inici, $scope.fi);
+      
+	   })
+	   .catch((err) => { console.log(err.statusText) })
+	   .finally(() => {});
+
+
+	   }
 
 })

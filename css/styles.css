@@ -139,7 +139,6 @@ header{
 }
 
 .boxf{
-<<<<<<< HEAD
 background-color: #b5c8e0;
   width: 174px;
   /* padding: 15px; */
@@ -147,29 +146,19 @@ background-color: #b5c8e0;
   border-left: 10px solid #12789a;
   height: 60px;
   float: left;
+}
   
   /* margin-left: 402px; */
-=======
-    background-color: #b5c8e0;
-    width: 174px;
-    /* padding: 15px; */
-    margin:0px;
-    border-left: 10px solid #12789a;
-    height: 54px;
-    float: left;
-    margin-left: 402px;
-}
->>>>>>> 3b05e9cdbc1f1dad76444875a36814e1d5297678
 
-.boxf1{
+/* .boxf1 {
     background-color: #f9d1a4;
     width: 174px;
-    /* padding: 15px; */
+
     border-left: 10px solid #ff9716;
     height: 54px;
     float: left;
     margin-left: 40px;
-}
+} */
 .boxf2{
     background-color: #f5d987;
     width: 174px;
@@ -210,7 +199,6 @@ background-color: #f5d987;
   margin-left: 40px;
 }
 .boxf3{
-<<<<<<< HEAD
 background-color:#b5c8e0;
  width: 200px;
   /* padding: 15px; */
@@ -232,26 +220,6 @@ background-color:#b5c8e0;
   float: left;
   margin-left: 40px;
 
-=======
-    background-color:#b5c8e0;
-    width: 174px;
-  /* padding: 15px; */
-    margin: 0px;
-    border-left: 10px solid#12789a;
-    height: 54px;
-    float: left;
-    margin-left: 40px;
-}
-.boxf4{
-	background-color: #f58f87;
-    width: 174px;
-    /* padding: 15px; */
-    margin: 0px;
-    border-left: 10px solid red;
-    height: 54px;
-    float: left;
-    margin-left: 40px;
->>>>>>> 3b05e9cdbc1f1dad76444875a36814e1d5297678
 }
 .textCentral{
 	margin-top: 50px;

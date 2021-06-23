@@ -200,7 +200,43 @@ angular.module("backend")
     })
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})
+    $scope.altera = (selCasa,nom, Nombre, Descripicio,Descripicion, idEsp,idCasa) => {
+        data.append("acc","u");
+        data.append("selCasa", selCasa);
+        data.append("nom", nom);
+        data.append("Nombre", Nombre);
+        data.append("Descripicio", Descripicio);
+        data.append("Descripicion", Descripicion);
+        data.append("idEsp", idEsp);
+        data.append("idCasa", idCasa);
+        console.log (nom);
+    
+        $http.post("models/especialitat.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+        .then((res) => { 
+            defered.resolve(res);
+            console.log(res.data)
+        })
+        .catch((err) => { console.log(err.statusText) })
+        .finally(() => {})
+    }
 
+    $scope.insert= () => {
+        console.log($scope.newNom)
+        data.append("acc","c");
+        data.append("nom", $scope.newNom);
+        data.append("Nombre", $scope.newNombre);
+        data.append("Descripicio", $scope.newDescripicio);
+        data.append("Descripicion", $scope.newDescripicion);
+        data.append("idEsp", $scope.idEsp);
+    
+        $http.post("models/especialitat.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+        .then((res) => { 
+            defered.resolve(res);
+            console.log(res.data)
+        })
+        .catch((err) => { console.log(err.statusText) })
+        .finally(() => {})
+    }
     $scope.irEdiciones = () => {
         $location.path("/ediciones/"+idcasa)
     }

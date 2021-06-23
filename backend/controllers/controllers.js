@@ -1,5 +1,5 @@
 angular.module("backend")
-.controller("IndexController", ($scope,$q,$http) => {
+.controller("IndexController", ($scope,$q,$http,$routeParams) => {  
        $scope.tancar=()=>{
         let data = new FormData;
         data.append("acc","tancar");
@@ -10,15 +10,31 @@ angular.module("backend")
         .then((res) =>{
             defered.resolve(res);
             $scope.datos=res.data;
-            window.location.href="../index.html";           
+            window.location.href="../index.html";        
         })
         .catch((err)=>{console.log(err.statusText)})
         .finally(()=>{});
-    }
-
-    
+    }    
 })
-.controller("HomeController", () => {
+.controller("HomeController", ($scope,$q,$http,$location) => {
+
+        let data = new FormData;
+        data.append("acc","r");
+
+        let defered =$q.defer();
+        $http.post("models/cases.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
+
+        .then((res) =>{
+            defered.resolve(res);
+            $scope.cases=res.data;
+            console.log($scope.cases);
+        })
+        .catch((err)=>{console.log(err.statusText)})
+        .finally(()=>{});
+
+        $scope.expandir=()=>{
+            $location.path('edicions/{{$scope.cases[0].idcasa}}')
+        }
 })
 
 .controller("RecuperarController", ($q, $scope, $http, $location) => {
@@ -41,6 +57,17 @@ angular.module("backend")
 })
 
 .controller("GestorCasesController", ($q, $scope, $http, $location) => {
+    let data = new FormData;
+    let defered = $q.defer();
+    $scope.param1= $routeParams.param1;
+
+    $http.post("models/gestorcases.php", data, { headers:{ "Content-type" : undefined}, transformRequest : angular.identity})
+    .then((res) => { 
+        defered.resolve(res);
+        console.log(res.data);
+    })
+    .catch((err) => { console.log(err.statusText) })
+    .finally(() => {})
     $scope.tipo="a";
     $scope.irEsp = () => {
         $location.path("/especialitats/1")
@@ -160,7 +187,7 @@ angular.module("backend")
     }
 })
 .controller("EspecialitatController", ($q, $http, $scope, $routeParams, $location) => {
-    $scope.idcasa = $routeParams.idcasa;
+    let idcasa = $routeParams.idcasa;
     let data= new FormData;
     let defered = $q.defer();
     data.append("acc","especialitats");
@@ -192,13 +219,12 @@ angular.module("backend")
     })
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})
-    $scope.alter = (nom, cog1, cog2, correu, idDir) => {
+    $scope.alter = (nom, cog1, cog2, correu) => {
         data.append("acc","u");
         data.append("nom", nom);
         data.append("cog1", cog1);
         data.append("cog2", cog2);
         data.append("correu", correu);
-        data.append("idDir", idDir);
     
         $http.post("models/director.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
         .then((res) => { 
@@ -210,10 +236,6 @@ angular.module("backend")
     }
 
     $scope.inserir = () => {
-        console.log($scope.nouNom)
-        console.log($scope.nouCog1)
-        console.log($scope.nouCog2)
-        console.log($scope.nouCorreu)
         data.append("acc","c");
         data.append("nom", $scope.nouNom);
         data.append("cog1", $scope.nouCog1);

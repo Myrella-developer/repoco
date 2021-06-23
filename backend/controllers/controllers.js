@@ -69,9 +69,7 @@ angular.module("backend")
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})
     $scope.tipo="a";
-    $scope.irEsp = () => {
-        $location.path("/especialitats/1")
-    }
+   
 })
 
 .controller("EdicionesController", ($q, $http, $scope, $routeParams, $location) => {

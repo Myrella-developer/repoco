@@ -32,7 +32,7 @@
                 <p class="card-text">{{especialitat.nombre}} </p>
                 <p class="card-text">{{especialitat.descripcio}} </p>
                 <p class="card-text">{{especialitat.descripcion}} </p>
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#a{{especialitat.idEsp}}">Modificar</button>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#a{{especialitat.idcasa}}">Modificar</button>
             </div>
 
             <div class="modal fade" id="a{{director.idDir}}" tabindex="-1" aria-labelledby="labelDigital" aria-hidden="true">

@@ -37,6 +37,7 @@
                 <h5 class="card-title">{{projecte.titol}}</h5>
                 <p class="card-text">{{projecte.descripcio}}</p>
                 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#a{{projecte.idProjecte}}">Modificar</button>
+                <button class="btn btn-danger" ng-click="eliminar(projecte.idProjecte)">Eliminar</button>
             </div>
 
             <div class="modal fade" id="a{{projecte.idProjecte}}" tabindex="-1" aria-labelledby="labelDigital" aria-hidden="true">

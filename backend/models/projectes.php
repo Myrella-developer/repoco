@@ -44,4 +44,13 @@
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);
 	}
+
+	if(isset($_POST['acc']) && $_POST['acc'] == "d"){
+		$sql = "DELETE FROM `multimedia` WHERE idProjecte = '{$_POST['idProjecte']}'";
+		$sql2 = "DELETE FROM `projectes` WHERE idProjecte = '{$_POST['idProjecte']}'";
+		$conexion = conectar();
+		$result = mysqli_query($conexion, $sql);
+		$result = mysqli_query($conexion, $sql2);
+		desconectar($conexion);
+	}
 ?>

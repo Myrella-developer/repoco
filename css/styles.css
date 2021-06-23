@@ -18,28 +18,6 @@ header{
 	font-size: 1em;
 }
 
- /* #segonc {
-    background-image:url("../img/rojo-prueba.PNG");
-    }  */
-.primer {
-    background-image:url("../img/digitals.png") ; 
-}
-#primer {
- /* background-image:url("../img/home-prueba.PNG");  */
-}
-#segonc {
-    /* background-image:url("../img/rojo-prueba.PNG"); */
-    }
-
- /* .primer { */
- /* background-image:url("../img/digitals.png") ;  */
-/* } */
-
-
-/* .cambia:hover{
-    background-image:url("../img/espectaculo.jpg") ;
-}  */
-
 .textoc{
     font-size: 4rem;
     margin-top: 6rem;

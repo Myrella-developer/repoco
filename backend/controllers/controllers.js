@@ -132,6 +132,18 @@ angular.module("backend")
         $location.path("/projectes/"+idcasa)
     }
 
+    $scope.eliminar = (idEdicio) => {
+        data.append("acc", "d");
+        data.append("idEdicio", idEdicio);
+
+        $http.post("models/edicions.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+        .then((res) => { 
+            defered.resolve(res);
+            console.log(res.data)
+        })
+        .catch((err) => { console.log(err.statusText) })
+        .finally(() => {})
+    }
 })
 
 .controller("ProjectesController", ($q, $http, $scope, $routeParams) => {
@@ -153,9 +165,9 @@ angular.module("backend")
     $scope.editar = (titol, titulo, descripcio, descripcion, idProjecte) => {
         data.append("acc","u");
         data.append("titol", titol);
-        data.append("titol", titulo);
-        data.append("titol", descripcio);
-        data.append("titol", descripcion);
+        data.append("titulo", titulo);
+        data.append("descripcio", descripcio);
+        data.append("descripcion", descripcion);
         data.append("idProjecte", idProjecte);
     
         $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
@@ -168,8 +180,6 @@ angular.module("backend")
     }
 
     $scope.afegir = () => {
-        console.log($scope.nouTitol)
-        console.log($scope.nouDescripcio)
         data.append("acc","c");
         data.append("titol", $scope.nouTitol);
         data.append("titulo", $scope.nouTitulo);
@@ -177,6 +187,19 @@ angular.module("backend")
         data.append("descripcion", $scope.nouDescripcion);
         data.append("idEdicio", $scope.idEdicio);
     
+        $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+        .then((res) => { 
+            defered.resolve(res);
+            console.log(res.data)
+        })
+        .catch((err) => { console.log(err.statusText) })
+        .finally(() => {})
+    }
+
+    $scope.eliminar = (idProjecte) => {
+        data.append("acc", "d");
+        data.append("idProjecte", idProjecte);
+
         $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
         .then((res) => { 
             defered.resolve(res);
@@ -206,27 +229,30 @@ angular.module("backend")
     }
 })
 .controller("DirectorsController", ($q, $http, $scope, $routeParams) => {
-    $scope.idcasa = $routeParams.idcasa;
-    let data= new FormData;
+    let idcasa = $routeParams.idcasa;
+	let data= new FormData;
     let defered = $q.defer();
-    data.append("acc","directors");
-    data.append("idcasa",$scope.idcasa);
+    data.append("acc","r");
+    data.append("idcasa", idcasa);
+
     $http.post("models/directors.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
     .then((res) => { 
         defered.resolve(res);
         $scope.directors = res.data;
-        console.log($scope.directors);
     })
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})
-    $scope.alter = (nom, cog1, cog2, correu) => {
+
+    $scope.alter = (nom, cog1, cog2, correu,idDir) => {
         data.append("acc","u");
         data.append("nom", nom);
         data.append("cog1", cog1);
         data.append("cog2", cog2);
         data.append("correu", correu);
+        data.append("idDir", idDir);
+        console.log (nom);
     
-        $http.post("models/director.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+        $http.post("models/directors.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
         .then((res) => { 
             defered.resolve(res);
             console.log(res.data)
@@ -235,14 +261,17 @@ angular.module("backend")
         .finally(() => {})
     }
 
-    $scope.inserir = () => {
+    $scope.inserir= () => {
+        console.log($scope.nouNom)
+        console.log($scope.nouCog1)
         data.append("acc","c");
         data.append("nom", $scope.nouNom);
         data.append("cog1", $scope.nouCog1);
         data.append("cog2", $scope.nouCog2);
         data.append("correu", $scope.nouCorreu);
+        data.append("pass", $scope.nouPass);
     
-        $http.post("models/director.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+        $http.post("models/directors.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
         .then((res) => { 
             defered.resolve(res);
             console.log(res.data)

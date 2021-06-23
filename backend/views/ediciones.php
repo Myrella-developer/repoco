@@ -35,6 +35,7 @@
                 <h5 class="card-title">{{edicio.dataInici}} - {{edicio.dataFi}}</h5>
                 <p class="card-text">{{edicio.nom}}</p>
                 <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#a{{edicio.idEdicio}}">Modificar</a>
+                <button class="btn btn-danger" ng-click="eliminar(edicio.idEdicio)">Eliminar</button>
             </div>
 
             <div class="modal fade" id="a{{edicio.idEdicio}}" tabindex="-1" aria-labelledby="labelDigital" aria-hidden="true">

@@ -238,3 +238,17 @@ background-color:#b5c8e0;
         min-width: 500px;
     } 
 }
+
+.mov {
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+  .divmov {
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }

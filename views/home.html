@@ -2,9 +2,8 @@
     
     <div class="row divmov">
         <img ng-src="multimedia/img/provisionales/{{rutaimg==NULL ? 'prueba3.png' : rutaimg}}" alt="" class="mov" ng-model="rutaimg">
+        
         <div class="col"  >
-           
-           
                 <div class="textoc mb-5" id="prueba">
                     <p  class="text-center">T'OBRIM LA PORTA A <br> LES CASES D'OFICIS</p>
                 </div>  
@@ -15,8 +14,7 @@
                            
                            <p class="hover"  ><a href="#/cases/{{casa.idcasa}}" id="numweb" ng-mouseover="changeimg($index)">{{casa.nom}}</a></p>
                           
-                        </div>
-                    
+                        </div>    
                 </div> 
                
                 <div class="row row-cols-10 mt-5 offset-1 ">
@@ -49,6 +47,7 @@
                     <button type="button" data-bs-target="#slidehome" data-bs-slide-to="1" aria-label="Slide 2"></button>
                     <button type="button" data-bs-target="#slidehome" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
+            
                 <div class="carousel-inner hover">
                     <div class="carousel-item active">
                       <img ng-src="multimedia/img/provisionales/{{url==NULL?'no-imageSlide.png' : url}}" class="d-block w-100 " alt="Casa d'ofici" data-bs-toggle="modal" data-bs-target="#modal0" >
@@ -87,7 +86,7 @@
                             </div>
                           </div>
                         </div>
-                      </div>
+                      
                     <div class="carousel-item">
                       <img src="multimedia/img/provisionales/digitals.png" class="d-block w-100" alt="Foto Especialitat" data-bs-toggle="modal" data-bs-target="#modal2">
                     </div>
@@ -106,7 +105,7 @@
                           </div>
                         </div>
                       </div>
-                    </div>
+                    
                     <div class="carousel-item">
                       <img src="multimedia/img/provisionales/espectacles.png" class="d-block w-100" alt="Foto Especialitat" data-bs-toggle="modal" data-bs-target="#modal3">
                     </div>
@@ -125,26 +124,26 @@
                           </div>
                         </div>
                       </div>
-                    </div>
+                </div>
+             </div>
               
-    
-        </div>
-        
-      
-       
-</div>
-        <div class="row row-cols-2 segonc mt-5">
+        </div>    
+    </div>
+          
 
-                <div class="col-6 mt-5  offset-1">
+
+    <div class="row row-cols-2 segonc mt-5">
+
+        <div class="col-6 mt-5  offset-1">
                         <p class="pi">Informació d'acces a les <br> Cases d'oficis</p>
                         <button type="button" class="btn btn-danger boxofc mb-5 mt-4" >Info Cases D'oficis</button>
-                </div>
-                <div class="col-4">
+        </div>
+        <div class="col-4">
                     <img src="multimedia/img/hoja.png" alt="" class="img-fluid">
-                </div>
+        </div>
                 
                
-        </div>
+    </div>
 
 </div>
 

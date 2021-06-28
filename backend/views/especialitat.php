@@ -1,9 +1,10 @@
 
 <div class="container-fluid"> 
-    <h2 class="text-center mt-5">Llistat Especialitat</h2>
-    <i class="fas fa-plus-square ms-4 mt-5 text-primary"></i>
+    <h2 class="text-center mt-5">Llistat Especialitat</h2> 
+    <!-- TODO -->
+    <!-- <i class="fas fa-plus-square ms-4 mt-5 text-primary"></i>
     <label class="ms-1 fw-bold" data-bs-toggle="modal" data-bs-target="#afegir">AFEGIR</label>
-    <div class="modal fade" id="afegir" tabindex="-1" aria-labelledby="labelDigital" aria-hidden="true">
+     <div class="modal fade" id="afegir" tabindex="-1" aria-labelledby="labelDigital" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -12,10 +13,10 @@
                 </div>
                 <div class="modal-body">
                     <form >
-                        <input ng-model="newNombre" type="text" class="form-control" placeholder="Nombre"/><br/>
-                        <input ng-model="newNom" type="text" class="form-control" placeholder="Nom"/><br/>
-                        <input ng-model="newDescripcio" type="text" class="form-control" placeholder="Descripcio"/><br/>
-                        <input ng-model="newDescripcion" type="text" class="form-control" placeholder="Descripcion"/><br/>
+                        <input ng-model="nombre" type="text" class="form-control" placeholder="Nombre"/><br/>
+                        <input ng-model="nom" type="text" class="form-control" placeholder="Nom"/><br/>
+                        <input ng-model="descripcio" type="text" class="form-control" placeholder="Descripcio"/><br/>
+                        <input ng-model="descripcion" type="text" class="form-control" placeholder="Descripcion"/><br/>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -23,19 +24,19 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     
     <div class="row">
-        <div class="card cardGestor m-5" style="width: 18rem;" ng-repeat="especialitat in especialitats">
+        <div class="card cardGestor m-5" style="width: 18rem;" ng-repeat="especialitat in especialitats.especialitats">
             <div class="card-body">
                 <p class="card-title">{{especialitat.nom}}</p>
                 <p class="card-text">{{especialitat.nombre}} </p>
                 <p class="card-text">{{especialitat.descripcio}} </p>
                 <p class="card-text">{{especialitat.descripcion}} </p>
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#a{{especialitat.idcasa}}">Modificar</button>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#a{{especialitats.idesp}}">Modificar</button>
             </div>
 
-            <div class="modal fade" id="a{{director.idDir}}" tabindex="-1" aria-labelledby="labelDigital" aria-hidden="true">
+            <div class="modal fade" id="a{{especialitats.idesp}}" tabindex="-1" aria-labelledby="labelDigital" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -44,6 +45,9 @@
                         </div>
                         <div class="modal-body">
                             <form>
+                                <select class="form-select mb-4" ng-model="selCasa">
+                                    <option ng-repeat="case in cases" ng-value="case.idcasa" ng-selected="case.nom">{{case.nom}}</option>
+                                </select>
                                 <input class="form-control" type="text" ng-model="especialitat.nom"/><br/>
                                 <input class="form-control" type="text" ng-model="especialitat.nombre"/><br/>
                                 <input class="form-control" type="text" ng-model="especialitat.descripcio"/><br/>
@@ -51,7 +55,7 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal" ng-click="altera(selCasa, especialitat.nom, especialitat.nombre, especialitat.descripcio, especialitat.descripcion,especialitat.idEsp)">Dessar canvis</button>
+                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal" ng-click="altera($index)">Dessar canvis</button>
                         </div>
                     </div>
                 </div>

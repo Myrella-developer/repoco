@@ -2,8 +2,8 @@
 
 function conectar(){
 
-    //$conexion = @mysqli_connect("bbdd.cobd.es", "ddb171025", "Repo@2021", "ddb171025");
-    $conexion = @mysqli_connect("localhost", "root", "", "ddb171025");
+    $conexion = @mysqli_connect("bbdd.cobd.es", "ddb171025", "Repo@2021", "ddb171025");
+    //$conexion = @mysqli_connect("localhost", "root", "", "ddb171025");
 
     if(!$conexion){
         die("No se ha podido conectar" . mysqli_connect_error());
@@ -53,5 +53,19 @@ function sendMail($mailTo, $asunto, $body){
     if(!$exito) return $mail->ErrorInfo;
     else echo "Mail enviado";
 }
+
+function replaceFromHtml($jsonArray)
+	{
+		$normalChars = str_replace(array("'",'"',"\\n"), array("\'",'\"',"\r\n"),$jsonArray);
+		return $normalChars;
+	}
+	function replaceFromBBDD($jsonArray)
+	{
+		$normalChars = htmlspecialchars($jsonArray);
+		$normalChars = str_replace(array('&quot;', '&amp;', '&lt;', '&gt;'), array('"', "&", "<", ">"), $normalChars);
+		$normalChars = str_replace(array('"'), array('\"'), $normalChars);
+		$normalChars = str_replace(array("\r\n", "\r", "\n"),"\\n" ,$normalChars);
+		return $normalChars;
+	}
 
 ?>

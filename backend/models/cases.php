@@ -1,9 +1,7 @@
 <?php
+
 	include("../inc/functions.php");
-
     session_start();
-   
-
     if (isset($_POST['acc']) && $_POST['acc'] == "r") {
         $sql="SELECT `idcasa`, `nom`, `nombre`, `descripcio`, `descripcion`, `url`, `idDir` FROM `cases` WHERE `idDir` = '{$_SESSION['login']['idDir']}'";
         $conexion = conectar();
@@ -15,5 +13,16 @@
                 $rows[] = $row;
             }
     echo json_encode($rows);
+    }
+
+    if (isset($_POST['acc']) && $_POST['acc']=="u") {
+        $sql="UPDATE `cases` SET `nom`='{$_POST['nom']}',`nombre`='{$_POST['nombre']}',`descripcio`='{$_POST['descripcio']}',`descripcion`='{$_POST['descripcion']}',`url`='{$_POST['url']}', WHERE `idcasa` ='{$_POST['idcasa']}'";
+        $conexion= conectar();
+        $updateCases = mysqli_query($conexion,$sql);
+        desconectar($conexion);    
+        echo $sql;
+    
+    }
+    if (isset($_POST['acc']) && $_POST['acc']=="c") {
     }
 ?>

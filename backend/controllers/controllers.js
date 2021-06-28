@@ -96,7 +96,7 @@ angular.module("backend")
     .finally(() => {})
 })
 
-.controller("EdicionesController", ($q, $http, $scope, $routeParams, $location) => {
+.controller("EdicionsController", ($q, $http, $scope, $routeParams, $location) => {
     let idcasa = $routeParams.idcasa;
 	let data= new FormData;
     let defered = $q.defer();

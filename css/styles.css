@@ -79,7 +79,7 @@ header{
     padding: 2.5rem;
     position: relative;
     top: 50%;
-    left: 50%;
+    left: 20%;
     background:#fff ;
     text-align: center;
     transition: 0.25s;
@@ -106,7 +106,7 @@ header{
 .box h1 {
     color: #3498db;
     text-transform: uppercase;
-    font-weight: 500
+    font-weight: 500;
 }
 .box input[type="email"]:focus,
 .box input[type="password"]:focus {
@@ -124,7 +124,7 @@ header{
     color: rgb(227, 232, 240);
     border-radius: 24px;
     transition: 0.25s;
-    cursor: pointer
+    cursor: pointer;
 }
 .box input[type="submit"]:hover {
     background:linear-gradient(to left, rgb(151, 220, 241), #699bf7)
@@ -183,11 +183,9 @@ header{
     margin: 0px;
     border-left: 10px solid #ffc107;
     height: 54px;
-    float: left;
     margin-left: 40px;
     background-color: #b5c8e0;
     width: 174px;
-    /* padding: 15px; */
     margin:0px;
     border-left: 10px solid #12789a;
     height: 70px;
@@ -195,25 +193,21 @@ header{
 }
 
 .boxf1{
-background-color: #f9d1a4;
-  width: 174px;
-  /* padding: 15px; */
-  
-  border-left: 10px solid #ff9716;
-  height: 70px;
-  float: left;
-  margin-left: 40px;
+    background-color: #f9d1a4;
+    width: 174px;
+    border-left: 10px solid #ff9716;
+    height: 70px;
+    float: left;
+    margin-left: 40px;
 }
 .boxf2{
-
-background-color: #f5d987;
- width: 174px;
-  /* padding: 15px; */
-  margin: 0px;
-  border-left: 10px solid #ffc107;
-  height: 70px;
-  float: left;
-  margin-left: 40px;
+    background-color: #f5d987;
+    width: 174px;
+    margin: 0px;
+    border-left: 10px solid #ffc107;
+    height: 70px;
+    float: left;
+    margin-left: 40px;
 }
 .boxf3{
     background-color:#b5c8e0;
@@ -268,7 +262,6 @@ background-color: #f5d987;
 	padding-left: 5em;
 	padding-right: 5em;
 }
-
 .idioma{
     border: 0;
     font-size: 12px;
@@ -277,6 +270,6 @@ background-color: #f5d987;
 @media (min-width: 992px){
    .navbar-expand-lg {
         min-width: 500px;
-    } 
-
+    }
 }
+

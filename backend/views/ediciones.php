@@ -17,7 +17,6 @@
                             <option value="-1">--Selecciona especialitat</option>
                             <option ng-repeat="esp in especialitats" ng-value="esp.idEsp">{{esp.nom}}</option>
                         </select>
-                        
                         <input type="date" class="form-control" ng-model="dataInici"/><br/>
                         <input type="date" class="form-control" ng-model="dataFi"/>
                     </form>

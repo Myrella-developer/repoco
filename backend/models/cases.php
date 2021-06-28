@@ -16,4 +16,15 @@
             }
     echo json_encode($rows);
     }
+
+    if (isset($_POST['acc']) && $_POST['acc'] == "u") {
+        $sql2=
+        "UPDATE `cases` 
+        SET `nom`='{$_POST['nom']}',`nombre`='{$_POST['nombre']}',`descripcio`='{$_POST['descripcio']}',`descripcion`='{$_POST['descripcion']}',`url`='{$_POST['url']}', WHERE `idDir` ='{$_SESSION['login']['idDir']}'";
+        $conexion= conectar();
+        $updateCases = mysqli_query($conexion,$sql2);
+        desconectar($conexion);    
+
+    echo $sql2;
+    }
 ?>

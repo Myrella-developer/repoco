@@ -17,10 +17,8 @@ angular.module("backend")
     }    
 })
 .controller("HomeController", ($scope,$q,$http,$location) => {
-
         let data = new FormData;
         data.append("acc","r");
-
         let defered =$q.defer();
         $http.post("models/cases.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
 
@@ -33,14 +31,34 @@ angular.module("backend")
         .finally(()=>{});
 
         $scope.expandir=()=>{
-            $location.path('edicions/{{$scope.cases[0].idcasa}}')
+            $location.path('/ediciones/'+$scope.cases[0].idcasa);  
         }
+        $scope.editar=(nom,nombre,descripcio,descripcion,url)=>{
+            data.append("acc","u");
+            data.append("nom",nom);
+            data.append("nombre",nombre);
+            data.append("descripcio",descripcio);
+            data.append("descripcion",descripcion);
+            data.append("url",url);
+
+            let defered = $q.defer();
+            $http.post("models/cases.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
+
+            .then((res) =>{
+                defered.resolve(res);
+                console.log(res.data);
+            })
+
+            .catch((err) =>{console.log(err.statusText)})
+            .finally(()=>{});
+            // console.log($scope.cases[0]);
+        }
+     
 })
 
 .controller("RecuperarController", ($q, $scope, $http, $location) => {
     $scope.email = "pancracio@gmail.com";
     $scope.nuevaContra = "nueva contra";
-
     let data= new FormData;
     let defered = $q.defer();
     data.append("acc","recuperar");
@@ -56,23 +74,25 @@ angular.module("backend")
     .finally(() => {})
 })
 
-.controller("GestorCasesController", ($q, $scope, $http, $location) => {
-    let data = new FormData;
-    let defered = $q.defer();
-    $scope.param1= $routeParams.param1;
 
-    $http.post("models/gestorcases.php", data, { headers:{ "Content-type" : undefined}, transformRequest : angular.identity})
-    .then((res) => { 
-        defered.resolve(res);
-        console.log(res.data);
-    })
-    .catch((err) => { console.log(err.statusText) })
-    .finally(() => {})
-    $scope.tipo="a";
-    $scope.irEsp = () => {
-        $location.path("/especialitats/1")
-    }
-})
+// TODO
+// .controller("GestorCasesController", ($q, $scope, $http, $location) => {
+//     let data = new FormData;
+//     let defered = $q.defer();
+//     $scope.param1= $routeParams.param1;
+
+//     $http.post("models/gestorcases.php", data, { headers:{ "Content-type" : undefined}, transformRequest : angular.identity})
+//     .then((res) => { 
+//         defered.resolve(res);
+//         console.log(res.data);
+//     })
+//     .catch((err) => { console.log(err.statusText) })
+//     .finally(() => {})
+//     $scope.tipo="a";
+//     $scope.irEsp = () => {
+//         $location.path("/especialitats/1")
+//     }
+// })
 
 .controller("EdicionesController", ($q, $http, $scope, $routeParams, $location) => {
     let idcasa = $routeParams.idcasa;

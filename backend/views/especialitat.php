@@ -1,6 +1,6 @@
 
 <div class="container-fluid"> 
-    <h2 class="text-center mt-5">Llistat Especialitat</h2>
+    <h2 class="text-center mt-5">Llistat Especialitat</h2> 
     <i class="fas fa-plus-square ms-4 mt-5 text-primary"></i>
     <label class="ms-1 fw-bold" data-bs-toggle="modal" data-bs-target="#afegir">AFEGIR</label>
     <div class="modal fade" id="afegir" tabindex="-1" aria-labelledby="labelDigital" aria-hidden="true">
@@ -26,13 +26,13 @@
     </div>
     
     <div class="row">
-        <div class="card cardGestor m-5" style="width: 18rem;" ng-repeat="especialitat in especialitats">
+        <div class="card cardGestor m-5" style="width: 18rem;" ng-repeat="especialitat in especialitats.especialitats">
             <div class="card-body">
                 <p class="card-title">{{especialitat.nom}}</p>
                 <p class="card-text">{{especialitat.nombre}} </p>
                 <p class="card-text">{{especialitat.descripcio}} </p>
                 <p class="card-text">{{especialitat.descripcion}} </p>
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#a{{especialitat.idcasa}}">Modificar</button>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#a{{especialitats.idcasa}}">Modificar</button>
             </div>
 
             <div class="modal fade" id="a{{director.idDir}}" tabindex="-1" aria-labelledby="labelDigital" aria-hidden="true">
@@ -45,7 +45,7 @@
                         <div class="modal-body">
                             <form>
                                 <select class="form-select mb-4" ng-model="selCasa">
-                                    <option ng-repeat="case in cases" ng-value="cases.idcasa" ng-selected="cases.nom">{{cases.nom}}</option>
+                                    <option ng-repeat="case in cases" ng-value="case.idcasa" ng-selected="case.nom">{{case.nom}}</option>
                                 </select>
                                 <input class="form-control" type="text" ng-model="especialitat.nom"/><br/>
                                 <input class="form-control" type="text" ng-model="especialitat.nombre"/><br/>

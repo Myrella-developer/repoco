@@ -25,6 +25,10 @@ header{
 .pi{
     font-size: 2rem;
 }
+.segonc{
+    background-color: rgb(110, 32, 47);
+    color: rgb(255, 255, 255);
+}
 .filaGris{
 	background-color: #f2f2f2;
 }
@@ -53,10 +57,15 @@ header{
 	padding-left: 15px;
 }
 .iconsFooter{
-    color: Mediumslateblue;
+    color: #8bacbd
 }
 .iconsfooter1{
 	margin-right: 10.5rem!important
+ 
+
+}
+.inconsf2{
+   color: #8bacbd;
 }
 .box {
     max-width: 25rem;
@@ -141,18 +150,19 @@ header{
 }
 
 .boxf{
-background-color: #b5c8e0;
-  width: 174px;
+background-color:#8bacbd;
+  width: 200px;
   /* padding: 15px; */
   margin:0px;
   border-left: 10px solid #12789a;
   height: 60px;
   float: left;
+  font-size: 2rem;
 }
 
 .boxf2{
     background-color: #f5d987;
-    width: 174px;
+    width: 200px;
     /* padding: 15px; */
     margin: 0px;
     border-left: 10px solid #ffc107;
@@ -166,6 +176,7 @@ background-color: #b5c8e0;
     border-left: 10px solid #12789a;
     height: 70px;
     float: left;
+    font-size: 2rem;
 }
 
 .boxf1{
@@ -177,6 +188,7 @@ background-color: #f9d1a4;
   height: 60px;
   float: left;
   margin-left: 40px;
+  font-size: 2rem;
 }
 .boxf2{
 
@@ -188,16 +200,17 @@ background-color: #f5d987;
   height: 60px;
   float: left;
   margin-left: 40px;
+  font-size: 2rem;
 }
 .boxf3{
-background-color:#b5c8e0;
+background-color:#8bacbd;
  width: 200px;
   /* padding: 15px; */
   margin: 0px;
   border-left: 10px solid#12789a;
   height: 60px;
   float: left;
-
+  font-size: 2rem;
   margin-left: 40px;
 
 }
@@ -210,7 +223,7 @@ background-color:#b5c8e0;
   height: 60px;
   float: left;
   margin-left: 40px;
-
+  font-size: 2rem;
 }
 
 .textCentral{
@@ -273,3 +286,8 @@ background-color:#b5c8e0;
     position: relative;
     width: 100%;
   }
+img.miniatura{
+  opacity: 0.5;
+  width: 15rem;
+  position: relative;
+}

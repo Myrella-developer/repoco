@@ -44,6 +44,9 @@
                         </div>
                         <div class="modal-body">
                             <form>
+                                <select class="form-select mb-4" ng-model="selCasa">
+                                    <option ng-repeat="case in cases" ng-value="cases.idcasa" ng-selected="cases.nom">{{cases.nom}}</option>
+                                </select>
                                 <input class="form-control" type="text" ng-model="especialitat.nom"/><br/>
                                 <input class="form-control" type="text" ng-model="especialitat.nombre"/><br/>
                                 <input class="form-control" type="text" ng-model="especialitat.descripcio"/><br/>

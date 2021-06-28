@@ -219,6 +219,7 @@ angular.module("backend")
     .then((res) => { 
         defered.resolve(res);
         $scope.especialitats = res.data;
+        $scope.cases = res.data.cases;
         console.log($scope.especialitats);
     })
     .catch((err) => { console.log(err.statusText) })

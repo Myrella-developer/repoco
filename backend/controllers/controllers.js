@@ -216,6 +216,10 @@ angular.module("backend")
     let idcasa = $routeParams.idcasa;
     let data= new FormData;
     let defered = $q.defer();
+    $scope.nom="";
+    $scope.nombre="";
+    $scope.descripcio="";
+    $scope.descripcion="";
     data.append("acc","especialitats");
     data.append("idcasa",$scope.idcasa);
     $http.post("models/especialitat.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
@@ -227,13 +231,14 @@ angular.module("backend")
     })
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})
-    $scope.altera = (selCasa,nom, Nombre, Descripicio,Descripicion, idEsp,idCasa) => {
+
+    $scope.altera = (posicion) => {
         data.append("acc","u");
         data.append("selCasa", selCasa);
         data.append("nom", nom);
-        data.append("Nombre", Nombre);
-        data.append("Descripicio", Descripicio);
-        data.append("Descripicion", Descripicion);
+        data.append("nombre", nombre);
+        data.append("descripicio", descripicio);
+        data.append("descripicion", descripicion);
         data.append("idEsp", idEsp);
         data.append("idCasa", idCasa);
         console.log (nom);
@@ -250,10 +255,10 @@ angular.module("backend")
     $scope.insert= () => {
         console.log($scope.newNom)
         data.append("acc","c");
-        data.append("nom", $scope.newNom);
-        data.append("Nombre", $scope.newNombre);
-        data.append("Descripicio", $scope.newDescripicio);
-        data.append("Descripicion", $scope.newDescripicion);
+        data.append("nom", $scope.especialitat.nom);
+        data.append("nombre", $scope.especialitat.nombre);
+        data.append("descripicio", $scope.descripicio);
+        data.append("descripicion", $scope.descripicion);
         data.append("idEsp", $scope.idEsp);
     
         $http.post("models/especialitat.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})

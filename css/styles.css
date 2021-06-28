@@ -157,6 +157,7 @@ background-color:#8bacbd;
   border-left: 10px solid #12789a;
   height: 60px;
   float: left;
+  font-size: 2rem;
 }
 
 .boxf2{
@@ -175,6 +176,7 @@ background-color:#8bacbd;
     border-left: 10px solid #12789a;
     height: 70px;
     float: left;
+    font-size: 2rem;
 }
 
 .boxf1{
@@ -186,6 +188,7 @@ background-color: #f9d1a4;
   height: 60px;
   float: left;
   margin-left: 40px;
+  font-size: 2rem;
 }
 .boxf2{
 
@@ -197,6 +200,7 @@ background-color: #f5d987;
   height: 60px;
   float: left;
   margin-left: 40px;
+  font-size: 2rem;
 }
 .boxf3{
 background-color:#8bacbd;
@@ -206,7 +210,7 @@ background-color:#8bacbd;
   border-left: 10px solid#12789a;
   height: 60px;
   float: left;
-
+  font-size: 2rem;
   margin-left: 40px;
 
 }
@@ -219,7 +223,7 @@ background-color:#8bacbd;
   height: 60px;
   float: left;
   margin-left: 40px;
-
+  font-size: 2rem;
 }
 
 .textCentral{

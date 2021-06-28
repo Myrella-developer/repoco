@@ -13,6 +13,10 @@ app.config(['$routeProvider',function($routeProvider){
 		templateUrl:'views/projectes.php',
 		controller:'ProjectesController'
 	})	
+	.when('/multimedia/:idcasa',{
+		templateUrl:'views/multimedia.php',
+		controller:'MultimediaController'
+	})	
 	.when('/especialitats/:idcasa',{	
         templateUrl:'views/especialitat.php',
         controller:'EspecialitatController'

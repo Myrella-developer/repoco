@@ -100,13 +100,37 @@ angular.module("repoco")
 	       defered.resolve(res);
 	       $scope.casa=res.data.casa;
 	       $scope.especialitats=res.data.especialitats;
-	       console.log($scope.casa);
-	       console.log($scope.especialitats);
+	       $scope.edicio=res.data.edicio;
+	       
 	       $scope.nom=$scope.casa[1];
 	       $scope.nombre=$scope.casa[2];
-	       $scope.descripcio=$scope.casa[3];
-	       $scope.descripcion=$scope.casa[4];
+	       $scope.dcat=$scope.casa[3].split("/");
+	       $scope.dcas=$scope.casa[4].split("/");
+	       $scope.descripcio1=$scope.dcat[0];
+	       $scope.descripcio2=$scope.dcat[1];
+	       $scope.descripcion1=$scope.dcas[0];
+	       $scope.descripcion2=$scope.dcas[1];
 	       $scope.url=$scope.casa[5];
+
+	       console.log($scope.casa);
+	       console.log($scope.especialitats);
+	       
+	       
+      
+	   })
+	   .catch((err) => { console.log(err.statusText) })
+	   .finally(() => {});
+
+	   data = new FormData();
+	   data.append("acc", "r");
+
+	   $http.post("models/edicio.php", data, {
+	      headers:{ "Content-type" : undefined }, transformRequest : angular.identity 
+	   })
+	   .then((res) => { 
+	       defered.resolve(res);
+	      
+
       
 	   })
 	   .catch((err) => { console.log(err.statusText) })
@@ -116,15 +140,11 @@ angular.module("repoco")
 	   $scope.titulo="CASAS DE OFICIOS";
 	   $scope.titol2="QUÈ ÉS LA CASA D'OFICIS";
 	   $scope.titulo2="¿QUÉ ES LA CASA DE OFICIOS";
-	   $scope.filcat="Filtrar per:";
-	   $scope.filcas="Filtrar por:";
-	   $scope.curs="Any en curs";
-	   $scope.curso="Año en curso";
-	   $scope.tot="Tots els anys";
-	   $scope.todo="Todos los años";
-	   $scope.tot2="Totes";
-	   $scope.todo2="Todos";
+	   $scope.titol3="Casa d'Oficis";
+	   $scope.titulo3="Casa de Oficios";
 	   $scope.anys="Anys";
 	   $scope.acas="Años";
+
+	   
 
 })

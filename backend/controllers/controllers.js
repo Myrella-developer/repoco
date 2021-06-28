@@ -75,6 +75,7 @@ angular.module("backend")
 })
 
 
+<<<<<<< HEAD
 // TODO
 // .controller("GestorCasesController", ($q, $scope, $http, $location) => {
 //     let data = new FormData;
@@ -93,6 +94,18 @@ angular.module("backend")
 //         $location.path("/especialitats/1")
 //     }
 // })
+=======
+    $http.post("models/gestorcases.php", data, { headers:{ "Content-type" : undefined}, transformRequest : angular.identity})
+    .then((res) => { 
+        defered.resolve(res);
+        console.log(res.data);
+    })
+    .catch((err) => { console.log(err.statusText) })
+    .finally(() => {})
+    $scope.tipo="a";
+   
+})
+>>>>>>> 913eabe5669b3909ce7a3529e055e590e12319dd
 
 .controller("EdicionesController", ($q, $http, $scope, $routeParams, $location) => {
     let idcasa = $routeParams.idcasa;
@@ -152,9 +165,21 @@ angular.module("backend")
         $location.path("/projectes/"+idcasa)
     }
 
+    $scope.eliminar = (idEdicio) => {
+        data.append("acc", "d");
+        data.append("idEdicio", idEdicio);
+
+        $http.post("models/edicions.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+        .then((res) => { 
+            defered.resolve(res);
+            console.log(res.data)
+        })
+        .catch((err) => { console.log(err.statusText) })
+        .finally(() => {})
+    }
 })
 
-.controller("ProjectesController", ($q, $http, $scope, $routeParams) => {
+.controller("ProjectesController", ($q, $http, $scope, $routeParams, $location) => {
     let idcasa = $routeParams.idcasa;
 	let data= new FormData;
     let defered = $q.defer();
@@ -173,9 +198,9 @@ angular.module("backend")
     $scope.editar = (titol, titulo, descripcio, descripcion, idProjecte) => {
         data.append("acc","u");
         data.append("titol", titol);
-        data.append("titol", titulo);
-        data.append("titol", descripcio);
-        data.append("titol", descripcion);
+        data.append("titulo", titulo);
+        data.append("descripcio", descripcio);
+        data.append("descripcion", descripcion);
         data.append("idProjecte", idProjecte);
     
         $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
@@ -188,8 +213,6 @@ angular.module("backend")
     }
 
     $scope.afegir = () => {
-        console.log($scope.nouTitol)
-        console.log($scope.nouDescripcio)
         data.append("acc","c");
         data.append("titol", $scope.nouTitol);
         data.append("titulo", $scope.nouTitulo);
@@ -205,7 +228,25 @@ angular.module("backend")
         .catch((err) => { console.log(err.statusText) })
         .finally(() => {})
     }
+
+    $scope.eliminar = (idProjecte) => {
+        data.append("acc", "d");
+        data.append("idProjecte", idProjecte);
+
+        $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+        .then((res) => { 
+            defered.resolve(res);
+            console.log(res.data)
+        })
+        .catch((err) => { console.log(err.statusText) })
+        .finally(() => {})
+    }
+
+    $scope.irMultimedia = () => {
+        $location.path("/multimedia/"+idcasa)
+    }
 })
+
 .controller("EspecialitatController", ($q, $http, $scope, $routeParams, $location) => {
     let idcasa = $routeParams.idcasa;
     let data= new FormData;
@@ -216,37 +257,77 @@ angular.module("backend")
     .then((res) => { 
         defered.resolve(res);
         $scope.especialitats = res.data;
+        $scope.cases = res.data.cases;
         console.log($scope.especialitats);
     })
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})
+    $scope.altera = (selCasa,nom, Nombre, Descripicio,Descripicion, idEsp,idCasa) => {
+        data.append("acc","u");
+        data.append("selCasa", selCasa);
+        data.append("nom", nom);
+        data.append("Nombre", Nombre);
+        data.append("Descripicio", Descripicio);
+        data.append("Descripicion", Descripicion);
+        data.append("idEsp", idEsp);
+        data.append("idCasa", idCasa);
+        console.log (nom);
+    
+        $http.post("models/especialitat.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+        .then((res) => { 
+            defered.resolve(res);
+            console.log(res.data)
+        })
+        .catch((err) => { console.log(err.statusText) })
+        .finally(() => {})
+    }
 
+    $scope.insert= () => {
+        console.log($scope.newNom)
+        data.append("acc","c");
+        data.append("nom", $scope.newNom);
+        data.append("Nombre", $scope.newNombre);
+        data.append("Descripicio", $scope.newDescripicio);
+        data.append("Descripicion", $scope.newDescripicion);
+        data.append("idEsp", $scope.idEsp);
+    
+        $http.post("models/especialitat.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+        .then((res) => { 
+            defered.resolve(res);
+            console.log(res.data)
+        })
+        .catch((err) => { console.log(err.statusText) })
+        .finally(() => {})
+    }
     $scope.irEdiciones = () => {
         $location.path("/ediciones/"+idcasa)
     }
 })
 .controller("DirectorsController", ($q, $http, $scope, $routeParams) => {
-    $scope.idcasa = $routeParams.idcasa;
-    let data= new FormData;
+    let idcasa = $routeParams.idcasa;
+	let data= new FormData;
     let defered = $q.defer();
-    data.append("acc","directors");
-    data.append("idcasa",$scope.idcasa);
+    data.append("acc","r");
+    data.append("idcasa", idcasa);
+
     $http.post("models/directors.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
     .then((res) => { 
         defered.resolve(res);
         $scope.directors = res.data;
-        console.log($scope.directors);
     })
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})
-    $scope.alter = (nom, cog1, cog2, correu) => {
+
+    $scope.alter = (nom, cog1, cog2, correu,idDir) => {
         data.append("acc","u");
         data.append("nom", nom);
         data.append("cog1", cog1);
         data.append("cog2", cog2);
         data.append("correu", correu);
+        data.append("idDir", idDir);
+        console.log (nom);
     
-        $http.post("models/director.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+        $http.post("models/directors.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
         .then((res) => { 
             defered.resolve(res);
             console.log(res.data)
@@ -255,14 +336,17 @@ angular.module("backend")
         .finally(() => {})
     }
 
-    $scope.inserir = () => {
+    $scope.inserir= () => {
+        console.log($scope.nouNom)
+        console.log($scope.nouCog1)
         data.append("acc","c");
         data.append("nom", $scope.nouNom);
         data.append("cog1", $scope.nouCog1);
         data.append("cog2", $scope.nouCog2);
         data.append("correu", $scope.nouCorreu);
+        data.append("pass", $scope.nouPass);
     
-        $http.post("models/director.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+        $http.post("models/directors.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
         .then((res) => { 
             defered.resolve(res);
             console.log(res.data)
@@ -270,4 +354,20 @@ angular.module("backend")
         .catch((err) => { console.log(err.statusText) })
         .finally(() => {})
     }
+})
+
+.controller("MultimediaController", ($q, $http, $scope, $routeParams) => {
+    let idcasa = $routeParams.idcasa;
+	let data= new FormData;
+    let defered = $q.defer();
+    data.append("acc","r");
+    data.append("idcasa", idcasa);
+
+    $http.post("models/multimedia.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+    .then((res) => { 
+        defered.resolve(res);
+        $scope.multimedia = res.data;
+    })
+    .catch((err) => { console.log(err.statusText) })
+    .finally(() => {})
 })

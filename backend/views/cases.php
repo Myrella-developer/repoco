@@ -52,3 +52,5 @@
   </div>
   </div>
 </div>
+
+<button ng-click="irEsp()" class="btn btn-warning">Gestionar especialitats</button>

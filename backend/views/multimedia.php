@@ -7,7 +7,7 @@
     
         if(isset($_SESSION['login']['idDir'])) :
     ?>
-    <h2 class="text-center mt-5">Els projectes de la teva casa</h2>
+    <h2 class="text-center mt-5">Multimedia dels projectes de la teva casa</h2>
 
     <i class="fas fa-plus-square ms-4 mt-5 text-primary"></i>
     <label class="ms-1 fw-bold" data-bs-toggle="modal" data-bs-target="#afegir">AFEGIR</label>
@@ -39,11 +39,12 @@
     </div>
     
     <div class="row">
-        <div class="card cardGestor m-5" style="width: 18rem;" ng-repeat="projecte in projectes">
+        <div class="card cardGestor m-5" style="width: 18rem;" ng-repeat="m in multimedia">
             <div class="card-body">
                 <img ng-src="../img/{{projecte.url}}" width="200"/>
-                <h5 class="card-title">{{projecte.titol}}</h5>
-                <p class="card-text">{{projecte.descripcio}}</p>
+                <h5 class="card-title">{{m.url}}</h5>
+                <p class="card-text">{{m.titol}}</p>
+                <p class="card-text">{{m.descripcio}}</p>
                 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#a{{projecte.idProjecte}}">Modificar</button>
                 <button class="btn btn-danger" ng-click="eliminar(projecte.idProjecte)">Eliminar</button>
             </div>
@@ -59,12 +60,14 @@
                             <form>
                                 <select class="form-control">
                                     <option>--Selecciona especialitat</option>
-                                    <option ng-repeat="esp in especialitats">{{esp.nom}}</option>
+                                    <option></option>
                                 </select><br/>
+                                <!--
                                 <input class="form-control" type="text" ng-model="projecte.titol"/><br/>
                                 <input class="form-control" type="text" ng-model="projecte.titulo"/><br/>
                                 <textarea class="form-control" ng-model="projecte.descripcio" rows="6" cols="40"></textarea>
                                 <textarea class="form-control" ng-model="projecte.descripcion" rows="6" cols="40"></textarea>
+                                -->
                             </form>
                         </div>
                         <div class="modal-footer">
@@ -76,15 +79,13 @@
         </div>
     </div>
 
-    <button class="btn btn-warning mb-5" ng-click="irMultimedia()">Gestionar multimedia</button>
-    
     <?php 
         endif; 
     
         if(isset($_SESSION['login']['idDir']) && $_SESSION['login']['tipus'] == "a") :
     ?>
 
-    <h2>Tots els projectes</h2>
+    <h2>Tots els archius</h2>
 
     <?php endif; ?>
 </div>

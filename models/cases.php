@@ -23,11 +23,12 @@ if(isset($_POST['acc']) && $_POST['acc']=='r'){
 			$rows[]=$row;
 		}
 
-		$datosExportar.=json_encode($rows);
-		$datosExportar.='}';
+	$datosExportar.=json_encode($rows);
 
-		echo $datosExportar;
+	$datosExportar.='}';
 
+	echo $datosExportar;
 
+// SELECT `especialitats`.*, `edicio`.* FROM `especialitats` LEFT JOIN `edicio` ON `edicio`.`idEsp` = `especialitats`.`idEsp`
 }
 ?>

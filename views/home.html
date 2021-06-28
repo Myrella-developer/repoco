@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container-fluid">
     
-    <div class="row">
-        <img ng-src="img/{{rutaimg=NULL? 'no-imageSlide.png' : rutaimg}}" alt="" class="img-fluid " ng-model="rutaimg">
+    <div class="row divmov">
+        <img ng-src="multimedia/img/provisionales/{{rutaimg==NULL ? 'prueba3.png' : rutaimg}}" alt="" class="mov" ng-model="rutaimg">
         <div class="col"  >
            
            
@@ -19,7 +19,7 @@
                     
                 </div> 
                
-                <div class="row row-cols-10 mt-5">
+                <div class="row row-cols-10 mt-5 offset-1 ">
                         <div class="col-10 row-cols-10">
                             <p class="pi">QUÉ ET TROBARÁS EN AQUESTA WEB</p>
                         </div>
@@ -36,15 +36,31 @@
                 </div>
                    
         </div>
-        <div class="row segonc mt-5">
+    </div>
+    <div class="row  segonc mt-5 text-center">
 
-                <div class="col-12 mt-5 mb-5">
+        
+        <div class="col-10">
+           <h2>Tu video aquí xd</h2>
+            <iframe width="1300" height="700" src="https://www.youtube.com/embed/yVIRcnlRKF8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        
+      
+       
+</div>
+        <div class="row  segonc mt-5">
+
+                <div class="col-6 mt-5  offset-1">
                         <p class="pi">Informació d'acces a les <br> Cases d'oficis</p>
                 </div>
-                <div class="col">
-                    <button type="button" class="btn btn-danger">Info Cases D'oficis</button>
+                <div class="col-4">
+                    <img src="multimedia/img/provisionales/espectacles.png" alt="" class="img-fluid">
                 </div>
+                <div class="col-10 offset-1 mb-5">
+                    <button type="button" class="btn btn-danger mb-5" >Info Cases D'oficis</button>
+                </div>
+               
         </div>
 
-    </div>
 </div>
+

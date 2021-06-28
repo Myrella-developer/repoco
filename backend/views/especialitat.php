@@ -32,8 +32,9 @@
                 <p class="card-title">{{especialitat.nom}}</p>
                 <p class="card-text">{{especialitat.nombre}} </p>
                 <p class="card-text">{{especialitat.descripcio}} </p>
-                <p class="card-text">{{especialitat.descripcion}} </p>
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#a{{especialitats.idesp}}">Modificar</button>
+                <p class="card-text">{{especialitat.descripcion}} </p><br>
+                <a class="btn btn-primary" ng-click="editar($index)">Modificar</a><br><br>
+                <a class="btn btn-primary" ng-click="editar('-1')">añadir Especialitat</a>
             </div>
 
             <div class="modal fade" id="a{{especialitats.idesp}}" tabindex="-1" aria-labelledby="labelDigital" aria-hidden="true">
@@ -48,14 +49,14 @@
                                 <select class="form-select mb-4" ng-model="selCasa">
                                     <option ng-repeat="case in cases" ng-value="case.idcasa" ng-selected="case.nom">{{case.nom}}</option>
                                 </select>
-                                <input class="form-control" type="text" ng-model="especialitat.nom"/><br/>
-                                <input class="form-control" type="text" ng-model="especialitat.nombre"/><br/>
-                                <input class="form-control" type="text" ng-model="especialitat.descripcio"/><br/>
-                                <input class="form-control" type="text" ng-model="especialitat.descripcion"/><br/>
+                                <input class="form-control" type="text" ng-model="nom"/><br/>
+                                <input class="form-control" type="text" ng-model="nombre"/><br/>
+                                <input class="form-control" type="text" ng-model="descripcio"/><br/>
+                                <input class="form-control" type="text" ng-model="descripcion"/><br/>
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal" ng-click="altera($index)">Dessar canvis</button>
+                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal" ng-click="guardar()">Dessar canvis</button>
                         </div>
                     </div>
                 </div>

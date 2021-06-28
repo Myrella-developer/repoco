@@ -16,15 +16,13 @@
     }
 
     if (isset($_POST['acc']) && $_POST['acc']=="u") {
-        echo "llega model cases UPDATE";
-        $sql2="UPDATE `cases` SET `nom`='{$_POST['nom']}',`nombre`='{$_POST['nombre']}',`descripcio`='{$_POST['descripcio']}',`descripcion`='{$_POST['descripcion']}',`url`='{$_POST['url']}', WHERE `idcasa` ='{$_POST['idcasa']}'";
+        $sql="UPDATE `cases` SET `nom`='{$_POST['nom']}',`nombre`='{$_POST['nombre']}',`descripcio`='{$_POST['descripcio']}',`descripcion`='{$_POST['descripcion']}',`url`='{$_POST['url']}', WHERE `idcasa` ='{$_POST['idcasa']}'";
         $conexion= conectar();
-        $updateCases = mysqli_query($conexion,$sql2);
+        $updateCases = mysqli_query($conexion,$sql);
         desconectar($conexion);    
-        echo $sql2;
+        echo $sql;
     
     }
     if (isset($_POST['acc']) && $_POST['acc']=="c") {
-        echo "llega model CREATE";
     }
 ?>

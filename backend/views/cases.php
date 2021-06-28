@@ -8,7 +8,6 @@
         <p class="card-text">{{casa.descripcio}}</p>
         <!-- <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalCases">Modificar</a> -->
         <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalCases" ng-click="editar($index)">Modificar</a>
-        <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalCases" ng-click="editar('-1')">añadir Casa</a>
         <!-- <a class="btn btn-warning" ng-click="expandir()">Veure edicions</a> -->
         <a href="#/especialitats/{{casa.idcasa}}" class="btn btn-warning">Gestionar especialitats</a>
       </div>

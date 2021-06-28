@@ -29,6 +29,12 @@ header{
     background-color: rgb(110, 32, 47);
     color: rgb(255, 255, 255);
 }
+
+.vidc{
+    background-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    
+}
 .filaGris{
 	background-color: #f2f2f2;
 }
@@ -148,7 +154,10 @@ header{
 .hover {
     cursor: pointer;
 }
-
+.boxofc{
+    background-color: rgb(110, 32, 47);
+    border-color: #fff;
+}
 .boxf{
 background-color:#8bacbd;
   width: 200px;
@@ -262,3 +271,21 @@ background-color:#8bacbd;
     }
 }
 
+.mov {
+    pointer-events: none;
+    position: absolute;
+    /* width: 100%; */
+    height: 100%;
+    z-index: -1;
+}
+.divmov {
+    display: inline-block;
+    overflow: hidden;
+    /* position: relative; */
+    /* width: 100%; */
+  }
+img.miniatura{
+  opacity: 0.5;
+  width: 15rem;
+  position: relative;
+}

@@ -38,7 +38,6 @@ angular.module("backend")
         $scope.editar=(posicion)=>{
            
             if(posicion!="-1"){
-                console.log("Modifico");
                 $scope.nom=$scope.cases[posicion].nom;
                 $scope.nombre=$scope.cases[posicion].nombre;
                 $scope.descripcio=$scope.cases[posicion].descripcio;
@@ -47,14 +46,13 @@ angular.module("backend")
                 $scope.url=$scope.cases[posicion].url;
             }
             else{
-                console.log("añado");
                 $scope.idCasa="";
                 $scope.nom="";
                 $scope.nombre="";
                 $scope.descripcio="";
                 $scope.descripcion="";
             }
-            //document.querySelector("#carlosModal").style = "display:block|important";
+            document.querySelector("#ModalCases").style = "display:block|important";
             
         }
         $scope.guardar=()=>{
@@ -77,8 +75,6 @@ angular.module("backend")
             })
             .catch((err)=>{console.log(err.statusText)})
             .finally(()=>{});
-
-
         }
 })
 
@@ -100,7 +96,7 @@ angular.module("backend")
     .finally(() => {})
 })
 
-.controller("EdicionesController", ($q, $http, $scope, $routeParams, $location) => {
+.controller("EdicionsController", ($q, $http, $scope, $routeParams, $location) => {
     let idcasa = $routeParams.idcasa;
 	let data= new FormData;
     let defered = $q.defer();

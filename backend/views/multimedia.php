@@ -9,34 +9,8 @@
     ?>
     <h2 class="text-center mt-5">Multimedia dels projectes de la teva casa</h2>
 
-    <i class="fas fa-plus-square ms-4 mt-5 text-primary"></i>
-    <label class="ms-1 fw-bold" data-bs-toggle="modal" data-bs-target="#afegir">AFEGIR</label>
-
-    <div class="modal fade" id="afegir" tabindex="-1" aria-labelledby="labelDigital" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="labelDigital">AFEGIR PROJECTE</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <select class="form-select mb-4" ng-model="idProjecte">
-                            <option value="-1">--Selecciona projecte</option>
-                            <option ng-repeat="p in projectes" ng-value="p.idProjecte">{{p.titol}}</option>
-                        </select>
-
-                        <input ng-model="novaDescripcio" type="text" class="form-control" placeholder="descripcio..."/><br/>
-                        <input ng-model="novaDescripcion" type="text" class="form-control" placeholder="descripción..."/><br/>
-                        <input type="file" onchange="angular.element(this).scope().getFileDetails(this)">
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" ng-click="afegir()" data-bs-dismiss="modal">Afegir projecte</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <i class="fas fa-plus-square ms-4 mt-5 text-primary" ng-click="editar('-1')"></i>
+    <label class="ms-1 fw-bold">AFEGIR</label>
     
     <div class="row">
         <div class="card cardGestor m-5" style="width: 18rem;" ng-repeat="m in multimedia">
@@ -50,35 +24,43 @@
                 <b ng-if="m.tipo == 'v'">Video</b>
                 <b ng-if="m.tipo == 's'">So</b>
                 <br/>
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#a{{projecte.idProjecte}}">Modificar</button>
+                <button class="btn btn-primary" ng-click="editar($index)">Modificar</button>
                 <button class="btn btn-danger" ng-click="eliminar(projecte.idProjecte)">Eliminar</button>
             </div>
-
-            <div class="modal fade" id="a{{projecte.idProjecte}}" tabindex="-1" aria-labelledby="labelDigital" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="labelDigital">Modifica projecte</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="modalMultimedia">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Multimedia</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form ng-model="multimedia">
+                        <div class="mb-2">
+                            <select ng-model="sel">
+                                <option value="-1" ng-model="sel">--Selecciona un projecte</option>
+                                <option ng-repeat="p in projectes" ng-value="p.titol">{{p.titol}}</option>
+                            </select>
                         </div>
-                        <div class="modal-body">
-                            <form>
-                                <select class="form-control">
-                                    <option>--Selecciona especialitat</option>
-                                    <option></option>
-                                </select><br/>
-                                <!--
-                                <input class="form-control" type="text" ng-model="projecte.titol"/><br/>
-                                <input class="form-control" type="text" ng-model="projecte.titulo"/><br/>
-                                <textarea class="form-control" ng-model="projecte.descripcio" rows="6" cols="40"></textarea>
-                                <textarea class="form-control" ng-model="projecte.descripcion" rows="6" cols="40"></textarea>
-                                -->
-                            </form>
+                        <div class="mb-2">
+                            <label for="message-text" class="col-form-label">Descripció de multimedia</label>
+                            <textarea class="form-control" id="message-text" ng-model="descripcio">{{descripcio}}</textarea>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal" ng-click="editar(projecte.titol, projecte.titulo, projecte.descripcio, projecte.descripcion, projecte.idProjecte)">Dessar canvis</button>
+                        <div class="mb-2">
+                            <label for="message-text" class="col-form-label">Descripción de multimedia</label>
+                            <textarea class="form-control" id="message-text" ng-model="descripcion">{{descripcion}}</textarea>
                         </div>
-                    </div>
+                        <div class="mb-2">
+                            <input type="file" onchange="angular.element(this).scope().getFileDetails(this)">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tancar</button>
+                    <button type="button" class="btn btn-primary" ng-click="guardar()">Guardar canvis</button>
                 </div>
             </div>
         </div>

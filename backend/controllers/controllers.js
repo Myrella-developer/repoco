@@ -23,63 +23,61 @@ angular.module("backend")
     $scope.descripcio="";
     $scope.descripcion="";
     $scope.url="digitals.png"
-        let data = new FormData;
-        data.append("acc","r");
-        let defered =$q.defer();
-        $http.post("models/cases.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
+    let data = new FormData;
+    data.append("acc","r");
+    let defered =$q.defer();
+    $http.post("models/cases.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
 
+    .then((res) =>{
+        defered.resolve(res);
+        $scope.cases=res.data;
+        console.log($scope.cases);
+    })
+    .catch((err)=>{console.log(err.statusText)})
+    .finally(()=>{});
+    $scope.editar=(posicion)=>{
+        
+        if(posicion!="-1"){
+            console.log("Modifico");
+            $scope.nom=$scope.cases[posicion].nom;
+            $scope.nombre=$scope.cases[posicion].nombre;
+            $scope.descripcio=$scope.cases[posicion].descripcio;
+            $scope.descripcion=$scope.cases[posicion].descripcion;
+            $scope.idcasa=$scope.cases[posicion].idcasa;
+            $scope.url=$scope.cases[posicion].url;
+        }
+        else{
+            console.log("añado");
+            $scope.idCasa="";
+            $scope.nom="";
+            $scope.nombre="";
+            $scope.descripcio="";
+            $scope.descripcion="";
+        }
+        //document.querySelector("#carlosModal").style = "display:block|important";
+        
+    }
+    $scope.guardar=()=>{
+        console.log("A modificar:--"+$scope.idcasa+"--");
+        let data = new FormData;
+        if($scope.idcasa=="") data.append("acc","c");
+        else data.append("acc","u");
+        data.append("idcasa",$scope.idcasa);
+        data.append("nom",$scope.nom);
+        data.append("nombre",$scope.nombre);
+        data.append("descripcio",$scope.descripcio);
+        data.append("descripcion",$scope.descripcion);
+        data.append("url",$scope.url);
+
+        let defered = $q.defer();
+        $http.post("models/cases.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
         .then((res) =>{
             defered.resolve(res);
-            $scope.cases=res.data;
-            console.log($scope.cases);
+            console.log(res.data);
         })
         .catch((err)=>{console.log(err.statusText)})
         .finally(()=>{});
-        $scope.editar=(posicion)=>{
-           
-            if(posicion!="-1"){
-                console.log("Modifico");
-                $scope.nom=$scope.cases[posicion].nom;
-                $scope.nombre=$scope.cases[posicion].nombre;
-                $scope.descripcio=$scope.cases[posicion].descripcio;
-                $scope.descripcion=$scope.cases[posicion].descripcion;
-                $scope.idcasa=$scope.cases[posicion].idcasa;
-                $scope.url=$scope.cases[posicion].url;
-            }
-            else{
-                console.log("añado");
-                $scope.idCasa="";
-                $scope.nom="";
-                $scope.nombre="";
-                $scope.descripcio="";
-                $scope.descripcion="";
-            }
-            //document.querySelector("#carlosModal").style = "display:block|important";
-            
-        }
-        $scope.guardar=()=>{
-            console.log("A modificar:--"+$scope.idcasa+"--");
-            let data = new FormData;
-            if($scope.idcasa=="") data.append("acc","c");
-            else data.append("acc","u");
-            data.append("idcasa",$scope.idcasa);
-            data.append("nom",$scope.nom);
-            data.append("nombre",$scope.nombre);
-            data.append("descripcio",$scope.descripcio);
-            data.append("descripcion",$scope.descripcion);
-            data.append("url",$scope.url);
-
-            let defered = $q.defer();
-            $http.post("models/cases.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
-            .then((res) =>{
-                defered.resolve(res);
-                console.log(res.data);
-            })
-            .catch((err)=>{console.log(err.statusText)})
-            .finally(()=>{});
-
-
-        }
+    }
 })
 
 .controller("RecuperarController", ($q, $scope, $http, $location) => {
@@ -355,7 +353,10 @@ angular.module("backend")
 })
 
 .controller("MultimediaController", ($q, $http, $scope, $routeParams, $rootScope) => {
-    $scope.idProjecte = "-1";
+    $scope.idMultimedia = "";
+    $scope.descripcio="";
+    $scope.descripcion="";
+    $scope.url=""
 
     let idcasa = $routeParams.idcasa;
 	let data= new FormData;
@@ -371,24 +372,45 @@ angular.module("backend")
     })
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})
+    
+    $scope.editar=(posicion)=>{
+        if(posicion !== "-1"){
+            $scope.descripcio=$scope.multimedia[posicion].descripcio;
+            $scope.descripcion=$scope.multimedia[posicion].descripcion;
+            $scope.idMultimedia=$scope.multimedia[posicion].idMult;
+            $scope.url=$scope.multimedia[posicion].url;
+            $scope.sel=$scope.projectes[posicion].titol;
+            console.log($scope.sel)
+        }
+        else{
+            $scope.idMultimedia="";
+            $scope.descripcio="";
+            $scope.descripcion="";
+            $scope.sel="-1";
+        }
+        $("#modalMultimedia").modal('show')
+    }
 
     $scope.getFileDetails = (e) => {
         $rootScope.nuevaFoto = e.files[0].name;
     }
 
-    $scope.afegir = () => {   
-        data.append("acc","c");
+    $scope.guardar=()=>{
+        if($scope.idMultimedia=="") data.append("acc","c");
+        else data.append("acc","u");
+
         data.append("idProjecte", $scope.idProjecte);
-        data.append("novaDescripcio", $scope.novaDescripcio);
-        data.append("novaDescripcion", $scope.novaDescripcion);
+        data.append("novaDescripcio", $scope.descripcio);
+        data.append("novaDescripcion", $scope.descripcion);
         data.append("nuevaFoto", $rootScope.nuevaFoto);
-    
-        $http.post("models/multimedia.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
-        .then((res) => { 
+
+        let defered = $q.defer();
+        $http.post("models/multimedia.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
+        .then((res) =>{
             defered.resolve(res);
-            console.log(res.data)
+            console.log(res.data);
         })
-        .catch((err) => { console.log(err.statusText) })
-        .finally(() => {})
+        .catch((err)=>{console.log(err.statusText)})
+        .finally(()=>{});
     }
 })

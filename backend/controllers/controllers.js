@@ -17,6 +17,12 @@ angular.module("backend")
     }    
 })
 .controller("HomeController", ($scope,$q,$http,$location) => {
+    $scope.idCasa="";
+    $scope.nom="";
+    $scope.nombre="";
+    $scope.descripcio="";
+    $scope.descripcion="";
+    $scope.url="digitals.png"
         let data = new FormData;
         data.append("acc","r");
         let defered =$q.defer();
@@ -29,31 +35,51 @@ angular.module("backend")
         })
         .catch((err)=>{console.log(err.statusText)})
         .finally(()=>{});
-
-        $scope.expandir=()=>{
-            $location.path('/ediciones/'+$scope.cases[0].idcasa);  
+        $scope.editar=(posicion)=>{
+           
+            if(posicion!="-1"){
+                console.log("Modifico");
+                $scope.nom=$scope.cases[posicion].nom;
+                $scope.nombre=$scope.cases[posicion].nombre;
+                $scope.descripcio=$scope.cases[posicion].descripcio;
+                $scope.descripcion=$scope.cases[posicion].descripcion;
+                $scope.idcasa=$scope.cases[posicion].idcasa;
+                $scope.url=$scope.cases[posicion].url;
+            }
+            else{
+                console.log("añado");
+                $scope.idCasa="";
+                $scope.nom="";
+                $scope.nombre="";
+                $scope.descripcio="";
+                $scope.descripcion="";
+            }
+            //document.querySelector("#carlosModal").style = "display:block|important";
+            
         }
-        $scope.editar=(nom,nombre,descripcio,descripcion,url)=>{
-            data.append("acc","u");
-            data.append("nom",nom);
-            data.append("nombre",nombre);
-            data.append("descripcio",descripcio);
-            data.append("descripcion",descripcion);
-            data.append("url",url);
+        $scope.guardar=()=>{
+            console.log("A modificar:--"+$scope.idcasa+"--");
+            let data = new FormData;
+            if($scope.idcasa=="") data.append("acc","c");
+            else data.append("acc","u");
+            data.append("idcasa",$scope.idcasa);
+            data.append("nom",$scope.nom);
+            data.append("nombre",$scope.nombre);
+            data.append("descripcio",$scope.descripcio);
+            data.append("descripcion",$scope.descripcion);
+            data.append("url",$scope.url);
 
             let defered = $q.defer();
             $http.post("models/cases.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
-
             .then((res) =>{
                 defered.resolve(res);
                 console.log(res.data);
             })
-
-            .catch((err) =>{console.log(err.statusText)})
+            .catch((err)=>{console.log(err.statusText)})
             .finally(()=>{});
-            // console.log($scope.cases[0]);
+
+
         }
-     
 })
 
 .controller("RecuperarController", ($q, $scope, $http, $location) => {
@@ -73,39 +99,6 @@ angular.module("backend")
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})
 })
-
-
-<<<<<<< HEAD
-// TODO
-// .controller("GestorCasesController", ($q, $scope, $http, $location) => {
-//     let data = new FormData;
-//     let defered = $q.defer();
-//     $scope.param1= $routeParams.param1;
-
-//     $http.post("models/gestorcases.php", data, { headers:{ "Content-type" : undefined}, transformRequest : angular.identity})
-//     .then((res) => { 
-//         defered.resolve(res);
-//         console.log(res.data);
-//     })
-//     .catch((err) => { console.log(err.statusText) })
-//     .finally(() => {})
-//     $scope.tipo="a";
-//     $scope.irEsp = () => {
-//         $location.path("/especialitats/1")
-//     }
-// })
-=======
-    $http.post("models/gestorcases.php", data, { headers:{ "Content-type" : undefined}, transformRequest : angular.identity})
-    .then((res) => { 
-        defered.resolve(res);
-        console.log(res.data);
-    })
-    .catch((err) => { console.log(err.statusText) })
-    .finally(() => {})
-    $scope.tipo="a";
-   
-})
->>>>>>> 913eabe5669b3909ce7a3529e055e590e12319dd
 
 .controller("EdicionesController", ($q, $http, $scope, $routeParams, $location) => {
     let idcasa = $routeParams.idcasa;

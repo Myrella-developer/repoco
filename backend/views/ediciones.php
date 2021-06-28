@@ -75,7 +75,7 @@
         </div>
     </div>
 
-    <button class="btn btn-warning" ng-click="irProjectes()">Gestionar projectes</button>
+    <button class="btn btn-warning mb-5" ng-click="irProjectes()">Gestionar projectes</button>
     
     <?php 
         endif; 

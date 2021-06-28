@@ -144,7 +144,7 @@ angular.module("backend")
     }
 })
 
-.controller("ProjectesController", ($q, $http, $scope, $routeParams) => {
+.controller("ProjectesController", ($q, $http, $scope, $routeParams, $location) => {
     let idcasa = $routeParams.idcasa;
 	let data= new FormData;
     let defered = $q.defer();
@@ -206,7 +206,12 @@ angular.module("backend")
         .catch((err) => { console.log(err.statusText) })
         .finally(() => {})
     }
+
+    $scope.irMultimedia = () => {
+        $location.path("/multimedia/"+idcasa)
+    }
 })
+
 .controller("EspecialitatController", ($q, $http, $scope, $routeParams, $location) => {
     let idcasa = $routeParams.idcasa;
     let data= new FormData;
@@ -313,4 +318,20 @@ angular.module("backend")
         .catch((err) => { console.log(err.statusText) })
         .finally(() => {})
     }
+})
+
+.controller("MultimediaController", ($q, $http, $scope, $routeParams) => {
+    let idcasa = $routeParams.idcasa;
+	let data= new FormData;
+    let defered = $q.defer();
+    data.append("acc","r");
+    data.append("idcasa", idcasa);
+
+    $http.post("models/multimedia.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+    .then((res) => { 
+        defered.resolve(res);
+        $scope.multimedia = res.data;
+    })
+    .catch((err) => { console.log(err.statusText) })
+    .finally(() => {})
 })

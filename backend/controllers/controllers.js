@@ -320,7 +320,9 @@ angular.module("backend")
     }
 })
 
-.controller("MultimediaController", ($q, $http, $scope, $routeParams) => {
+.controller("MultimediaController", ($q, $http, $scope, $routeParams, $rootScope) => {
+    $scope.idProjecte = "-1";
+
     let idcasa = $routeParams.idcasa;
 	let data= new FormData;
     let defered = $q.defer();
@@ -330,8 +332,29 @@ angular.module("backend")
     $http.post("models/multimedia.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
     .then((res) => { 
         defered.resolve(res);
-        $scope.multimedia = res.data;
+        $scope.multimedia = res.data.multimedia;
+        $scope.projectes = res.data.projectes;
     })
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})
+
+    $scope.getFileDetails = (e) => {
+        $rootScope.nuevaFoto = e.files[0].name;
+    }
+
+    $scope.afegir = () => {   
+        data.append("acc","c");
+        data.append("idProjecte", $scope.idProjecte);
+        data.append("novaDescripcio", $scope.novaDescripcio);
+        data.append("novaDescripcion", $scope.novaDescripcion);
+        data.append("nuevaFoto", $rootScope.nuevaFoto);
+    
+        $http.post("models/multimedia.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+        .then((res) => { 
+            defered.resolve(res);
+            console.log(res.data)
+        })
+        .catch((err) => { console.log(err.statusText) })
+        .finally(() => {})
+    }
 })

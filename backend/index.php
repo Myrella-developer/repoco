@@ -46,7 +46,7 @@
 
     	
 
-    	<button ng-click="tancar()">Tancar</button>
+    	<button class="btn btn-danger" ng-click="tancar()">Tancar sessió</button>
 
 		<div data-ng-view=""></div>
 		

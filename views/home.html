@@ -41,8 +41,8 @@
 
         
         <div class="col-10 offset-1">
-           <!-- <h2>Tu video aquí xd</h2>
-            <iframe width="1880" height="572" src="https://www.youtube.com/embed/yVIRcnlRKF8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+           <h2>Tu video aquí xd</h2>
+             
             <div id="slidehome" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#slidehome" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -51,21 +51,82 @@
                 </div>
                 <div class="carousel-inner hover">
                     <div class="carousel-item active">
-                      <img ng-src="multimedia/img/provisionales/{{url==NULL?'no-imageSlide.png' : url}}" class="d-block w-100 " alt="Casa d'ofici">
-            
+                      <img ng-src="multimedia/img/provisionales/{{url==NULL?'no-imageSlide.png' : url}}" class="d-block w-100 " alt="Casa d'ofici" data-bs-toggle="modal" data-bs-target="#modal0" >
+                          
+                      
+                      <div class="modal fade" id="modal0" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-fullscreen">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Video a reproducir</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <iframe width="1880" height="920" src="https://www.youtube.com/embed/yVIRcnlRKF8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                          
+                          </div>
+                        </div>
+                      </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="multimedia/img/provisionales/sostenibles.png" class="d-block w-100" alt="Foto Especialitat">
+                        <img src="multimedia/img/provisionales/sostenibles.png" class="d-block w-100" alt="Foto Especialitat" data-bs-toggle="modal" data-bs-target="#modal1">
+
+                        <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-fullscreen">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Video a reproducir</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                  <iframe width="1880" height="920" src="https://www.youtube.com/embed/yVIRcnlRKF8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                              
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     <div class="carousel-item">
-                      <img src="multimedia/img/provisionales/digitals.png" class="d-block w-100" alt="Foto Especialitat">
+                      <img src="multimedia/img/provisionales/digitals.png" class="d-block w-100" alt="Foto Especialitat" data-bs-toggle="modal" data-bs-target="#modal2">
+                    </div>
+
+                    <div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-fullscreen">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Video a reproducir</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <iframe width="1880" height="920" src="https://www.youtube.com/embed/yVIRcnlRKF8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                          
+                          </div>
+                        </div>
+                      </div>
                     </div>
                     <div class="carousel-item">
-                      <img src="multimedia/img/provisionales/espectacles.png" class="d-block w-100" alt="Foto Especialitat">
+                      <img src="multimedia/img/provisionales/espectacles.png" class="d-block w-100" alt="Foto Especialitat" data-bs-toggle="modal" data-bs-target="#modal3">
                     </div>
-                </div>
-                </div>
-                
+
+                    <div class="modal fade" id="modal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-fullscreen">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Video a reproducir</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <iframe width="1880" height="920" src="https://www.youtube.com/embed/yVIRcnlRKF8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                          
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+              
     
         </div>
         

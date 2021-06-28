@@ -178,7 +178,6 @@ background-color:#8bacbd;
 }
 
 .boxf1{
-<<<<<<< HEAD
     background-color: #f9d1a4;
     width: 174px;
     border-left: 10px solid #ff9716;
@@ -194,29 +193,6 @@ background-color:#8bacbd;
     height: 70px;
     float: left;
     margin-left: 40px;
-=======
-background-color: #f9d1a4;
-  width: 200px;
-  /* padding: 15px; */
-  
-  border-left: 10px solid #ff9716;
-  height: 60px;
-  float: left;
-  margin-left: 40px;
-  font-size: 2rem;
-}
-.boxf2{
-
-background-color: #f5d987;
- width: 200px;
-  /* padding: 15px; */
-  margin: 0px;
-  border-left: 10px solid #ffc107;
-  height: 60px;
-  float: left;
-  margin-left: 40px;
-  font-size: 2rem;
->>>>>>> 913eabe5669b3909ce7a3529e055e590e12319dd
 }
 .boxf3{
 background-color:#8bacbd;
@@ -283,32 +259,6 @@ background-color:#8bacbd;
 @media (min-width: 992px){
    .navbar-expand-lg {
         min-width: 500px;
-<<<<<<< HEAD
     }
 }
 
-=======
-    } 
-}
-
-.mov {
-    pointer-events: none;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    border: none;
-  }
-  .divmov {
-    border: none;
-    display: inline-block;
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-  }
-img.miniatura{
-  opacity: 0.5;
-  width: 15rem;
-  position: relative;
-}
->>>>>>> 913eabe5669b3909ce7a3529e055e590e12319dd

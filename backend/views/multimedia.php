@@ -21,14 +21,14 @@
                 </div>
                 <div class="modal-body">
                     <form>
-                        <select class="form-select mb-4" ng-model="idEdicio">
-                            <option>--Selecciona especialitat</option>
-                            <option ng-repeat="esp in especialitats" ng-value="esp.idEdicio">{{esp.nom}}</option>
+                        <select class="form-select mb-4" ng-model="idProjecte">
+                            <option value="-1">--Selecciona projecte</option>
+                            <option ng-repeat="p in projectes" ng-value="p.idProjecte">{{p.titol}}</option>
                         </select>
-                        <input ng-model="nouTitol" type="text" class="form-control" placeholder="titol..."/><br/>
-                        <input ng-model="nouTitulo" type="text" class="form-control" placeholder="titulo..."/><br/>
-                        <input ng-model="nouDescripcio" type="text" class="form-control" placeholder="descripcio..."/><br/>
-                        <input ng-model="nouDescripcion" type="text" class="form-control" placeholder="descripción..."/><br/>
+
+                        <input ng-model="novaDescripcio" type="text" class="form-control" placeholder="descripcio..."/><br/>
+                        <input ng-model="novaDescripcion" type="text" class="form-control" placeholder="descripción..."/><br/>
+                        <input type="file" onchange="angular.element(this).scope().getFileDetails(this)">
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -43,8 +43,13 @@
             <div class="card-body">
                 <img ng-src="../img/{{projecte.url}}" width="200"/>
                 <h5 class="card-title">{{m.url}}</h5>
+                <img class="w-75" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9E-EVCmmhLN51ydEr1uFEgcur-yGtBNOaT83DaRj4-O_eAYWW8gaGsLad35PJTVPD8l0&usqp=CAU">
                 <p class="card-text">{{m.titol}}</p>
                 <p class="card-text">{{m.descripcio}}</p>
+                <b ng-if="m.tipo == 'i'">Imatge</b>
+                <b ng-if="m.tipo == 'v'">Video</b>
+                <b ng-if="m.tipo == 's'">So</b>
+                <br/>
                 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#a{{projecte.idProjecte}}">Modificar</button>
                 <button class="btn btn-danger" ng-click="eliminar(projecte.idProjecte)">Eliminar</button>
             </div>

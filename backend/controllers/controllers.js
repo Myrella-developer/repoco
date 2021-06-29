@@ -209,6 +209,12 @@ angular.module("backend")
             }
 })
 .controller("DirectorsController", ($q, $http, $scope, $routeParams) => {
+    $scope.nom = "";
+    $scope.cog1 = "";
+    $scope.cog2 = "";
+    $scope.correu = "";
+    $scope.pass = "";
+    $scope.idDir = "";
     let idcasa = $routeParams.idcasa;
 	let data= new FormData;
     let defered = $q.defer();
@@ -222,45 +228,49 @@ angular.module("backend")
     })
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})
-
-    $scope.alter = (nom, cog1, cog2, correu,idDir) => {
-        data.append("acc","u");
-        data.append("nom", nom);
-        data.append("cog1", cog1);
-        data.append("cog2", cog2);
-        data.append("correu", correu);
-        data.append("idDir", idDir);
-        console.log (nom);
-    
-        $http.post("models/directors.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
-        .then((res) => { 
-            defered.resolve(res);
-            console.log(res.data)
-        })
-        .catch((err) => { console.log(err.statusText) })
-        .finally(() => {})
+    $scope.editar=(posicion)=>{  
+        if(posicion!="-1"){
+            console.log("Modifico");
+            $scope.nom=$scope.directors[posicion].nom;
+            $scope.cog1=$scope.directors[posicion].cog1;
+            $scope.cog2=$scope.directors[posicion].cog2;
+            $scope.correu=$scope.directors[posicion].correu;
+            $scope.idDir=$scope.directors[posicion].idDir;
+        }
+        else{
+            console.log("añado");
+            $scope.nom = "";
+            $scope.cog1 = "";
+            $scope.cog2 = "";
+            $scope.correu = "";
+            $scope.idDir = "";
+            $scope.pass = "";
+        }
+        $("#modalDir").modal('show');
     }
+    $scope.guardar=()=>{
+        console.log("A modificar:--"+$scope.idDir+"--");
+        let data = new FormData;
+        if($scope.idDir=="") data.append("acc","c");
+        else data.append("acc","u");
+        data.append("idDir",$scope.idDir);
+        data.append("nom",$scope.nom);
+        data.append("cog1",$scope.cog1);
+        data.append("cog2",$scope.cog2);
+        data.append("correu",$scope.correu);
+        data.append("pass",$scope.pass);
 
-    $scope.inserir= () => {
-        console.log($scope.nouNom)
-        console.log($scope.nouCog1)
-        data.append("acc","c");
-        data.append("nom", $scope.nouNom);
-        data.append("cog1", $scope.nouCog1);
-        data.append("cog2", $scope.nouCog2);
-        data.append("correu", $scope.nouCorreu);
-        data.append("pass", $scope.nouPass);
-    
-        $http.post("models/directors.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
-        .then((res) => { 
+        let defered = $q.defer();
+        $http.post("models/directors.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
+        .then((res) =>{
             defered.resolve(res);
-            console.log(res.data)
+            $scope.directors = res.data;
+            console.log(res.data);
         })
-        .catch((err) => { console.log(err.statusText) })
-        .finally(() => {})
+        .catch((err)=>{console.log(err.statusText)})
+        .finally(()=>{});
     }
 })
-
 .controller("EdicionsController", ($q, $http, $scope, $routeParams, $location) => {
     $scope.nom = "";
     $scope.nombre = "";

@@ -42,19 +42,29 @@
                         </div>
                         <div class="mb-2">
                             <label for="message-text" class="col-form-label">Descripció del projecte</label>
-                            <textarea class="form-control" id="message-text" ng-model="descripcio">{{descripcio}}</textarea>
+                            <textarea rows="4" class="form-control" id="message-text" ng-model="descripcio">{{descripcio}}</textarea>
                         </div>
                         <div class="mb-2">
                             <label for="message-text" class="col-form-label">Descripción del proyecto</label>
-                            <textarea class="form-control" id="message-text" ng-model="descripcion">{{descripcion}}</textarea>
+                            <textarea rows="4" class="form-control" id="message-text" ng-model="descripcion">{{descripcion}}</textarea>
                         </div>
                         <div class="mb-2">
                             <input type="file" onchange="angular.element(this).scope().getFileDetails(this)">
                         </div>
                     </form>
-                    <h2>Imatges del projecte</h2>
-                    <div>
+
+                    <div class="mt-5">
+                        <h2>Imatges del projecte</h2>
+                        <img src="..."><br/>
+                        <button class="btn btn-warning mt-2" ng-click="mostrarDesc()">Descripcio</button>
+    
+                        <div class="mb-2" ng-show="showDesc">
+                            <label for="message-text" class="col-form-label">Descripcio multimedia</label>
+                            <input type="text" class="form-control" id="message-text" ng-model="descripcionMulti">
                         
+                            <label for="message-text" class="col-form-label">Descripción multimedia</label>
+                            <input type="text" class="form-control" id="message-text" ng-model="descripcioMulti">
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">

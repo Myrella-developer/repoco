@@ -461,4 +461,9 @@ angular.module("backend")
     $scope.irMultimedia = () => {
         $location.path("/multimedia/"+idcasa)
     }
+
+    $scope.showDesc = false;
+    $scope.mostrarDesc = () => {
+        $scope.showDesc = !$scope.showDesc;
+    }
 })

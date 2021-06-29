@@ -169,8 +169,8 @@ angular.module("backend")
             $scope.descripcio=$scope.especialitats[posicion].descripcio;
             $scope.descripcion=$scope.especialitats[posicion].descripcion;
             $scope.idesp=$scope.especialitats[posicion].idEsp;
-            $scope.selCasa=$scope.cases[posicion].idcasa;
-            console.log($scope.selCasa)
+            $scope.selCasa=$scope.especialitats[posicion].idcasa;
+            console.log($scope.selCasa+ $scope.nom);
         }
         else{
             console.log("añado");
@@ -204,19 +204,6 @@ angular.module("backend")
         })
         .catch((err)=>{console.log(err.statusText)})
         .finally(()=>{});
-    }
-    $scope.eliminar = (idEsp) => {
-        data.append("acc", "d");
-        data.append("idEsp", idEsp);
-
-        $http.post("models/especialitat.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
-        .then((res) => { 
-            defered.resolve(res);
-            $scope.especialitats = res.data.especialitats;
-            console.log(res.data)
-        })
-        .catch((err) => { console.log(err.statusText) })
-        .finally(() => {})
     }
     $scope.irEdiciones = () => {
                 $location.path("/ediciones/"+idcasa)

@@ -4,8 +4,6 @@
     require("../inc/functions.php");
 
     if(isset($_POST['acc']) && $_POST['acc'] == "especialitats"){
-        //TODO ELIMINAR
-        //$_POST['idcasa']=1;
         actualiza();
     }
     if(isset($_POST['acc']) && $_POST['acc'] == "u"){
@@ -20,14 +18,6 @@
 	if(isset($_POST['acc']) && $_POST['acc'] == "c"){
 		$sql = "INSERT INTO especialitats (`nom`,`nombre`,`descripcio`,`descripcion`,`idcasa`) VALUES ('{$_POST['nom']}','{$_POST['nombre']}','{$_POST['descripcio']}','{$_POST['descripcion']}','{$_POST['idcasa']}')";
         $conexion = conectar();
-		$result = mysqli_query($conexion, $sql);
-		desconectar($conexion);
-        echo $sql;
-        actualiza();
-	}
-    if(isset($_POST['acc']) && $_POST['acc'] == "d"){
-		$sql = "DELETE FROM `especialitats` WHERE idEsp = '{$_POST['idEsp']}'";
-		$conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);
         actualiza();

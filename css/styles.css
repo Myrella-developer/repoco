@@ -286,6 +286,11 @@ background-color:#8bacbd;
   }
 img.miniatura{
   opacity: 0.5;
-  width: 15rem;
-  position: relative;
+  width: 15rem;  
+}
+p.anys{
+position: absolute;
+font-size: 45px;
+top: 25%;
+left: 18%;
 }

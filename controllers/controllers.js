@@ -17,10 +17,6 @@ angular.module("repoco")
 	   .catch((err) => { console.log(err.statusText) })
 	   .finally(() => {});
 
-	   // $scope.cambiaIdioma=function(){
-
-	   // }
-
 	   $scope.espai="Espai Personal";
 	   $scope.espacio="Área Personal";
 	   $scope.inici="Inici";
@@ -44,16 +40,6 @@ angular.module("repoco")
 
 
    		};
-   		// <div class="col imagenFondo position-relative"><img id="fotoFondo" ng-src="{{miFoto}}"></div>
-        
-     //    <div class="row position-absolute top-50 start-50 translate-middle">
-     //        <div class="col-4 mt-5" ng-repeat="casa in cases">
-     //            <a href="#/cases/{{casa.idcasa}}"  ng-mouseover="cambioImagen({{casa.idcasa}})">{{casa.nom}}</a>
-     //        </div>
-     //    </div>
-
-		// };
-
 	
 })  
 .controller("LoginController", function($scope, $http, $q, $location, $rootScope){
@@ -100,39 +86,30 @@ angular.module("repoco")
 	   .then((res) => { 
 	       defered.resolve(res);
 	       $scope.casa=res.data.casa;
-	       $scope.especialitats=res.data.especialitats;
-	       $scope.edicio=res.data.edicio;
-	       
+	       console.log($scope.casa);
+	       $scope.url=$scope.casa[5];
 	       $scope.nom=$scope.casa[1];
 	       $scope.nombre=$scope.casa[2];
-	       $scope.dcat=$scope.casa[3].split("/");
-	       $scope.dcas=$scope.casa[4].split("/");
-	       $scope.descripcio1=$scope.dcat[0];
-	       $scope.descripcio2=$scope.dcat[1];
-	       $scope.descripcion1=$scope.dcas[0];
-	       $scope.descripcion2=$scope.dcas[1];
-	       $scope.url=$scope.casa[5];
+		   $scope.dcat=$scope.casa[3]
+		   $scope.dcas=$scope.casa[4]
 
-	       console.log($scope.casa);
-	       console.log($scope.especialitats);
-	       
-	       
-      
 	   })
 	   .catch((err) => { console.log(err.statusText) })
 	   .finally(() => {});
 
 	   data = new FormData();
 	   data.append("acc", "r");
+	   data.append("idcasa",$scope.param1);
 
 	   $http.post("models/edicio.php", data, {
 	      headers:{ "Content-type" : undefined }, transformRequest : angular.identity 
 	   })
 	   .then((res) => { 
-	       defered.resolve(res);
-	      
+	      defered.resolve(res);
 
-      
+	    $scope.dataAnys=res.data.anys;
+	     // console.log($scope.dataAnys);
+	     
 	   })
 	   .catch((err) => { console.log(err.statusText) })
 	   .finally(() => {});
@@ -143,7 +120,7 @@ angular.module("repoco")
 	   $scope.titulo2="¿QUÉ ES LA CASA DE OFICIOS";
 	   $scope.titol3="Casa d'Oficis";
 	   $scope.titulo3="Casa de Oficios";
-	   $scope.anys="Anys";
+	   $scope.acat="Anys";
 	   $scope.acas="Años";
 
 	   

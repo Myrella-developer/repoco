@@ -380,7 +380,7 @@ angular.module("backend")
             console.log(res.data);
         })
         .catch((err)=>{console.log(err.statusText)})
-        .finally(()=>{});
+        .finally(()=>{$("#modalEdicio").modal('hide')});
     }
     
     $scope.irProjectes = () => {
@@ -502,7 +502,7 @@ angular.module("backend")
             console.log(res.data);
         })
         .catch((err)=>{console.log(err.statusText)})
-        .finally(()=>{});
+        .finally(()=>{$("#modalEdicio").modal('hide')});
     }
 
     $scope.eliminar = (idProjecte) => {

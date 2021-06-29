@@ -32,8 +32,11 @@
     }
 
     if(isset($_POST['acc']) && $_POST['acc'] == "u"){
+        $nuevoNombre = $_POST['imgEdicio'] . date("Y-m-d_His");
+        move_uploaded_file($nuevoNombre, "../img/" . $nuevoNombre);
+
 		$sql = "UPDATE edicio SET dataInici = '{$_POST['dataInici']}', datafi = '{$_POST['dataFi']}', 
-		idEsp = '{$_POST['selEsp']}', url = '{$_POST['imgEdicio']}' WHERE idEdicio = '{$_POST['idEdicio']}'";
+		idEsp = (SELECT idEsp FROM especialitats WHERE especialitats.nom = 'Disseny de pàgines web'), url = '{$nuevoNombre}' WHERE idEdicio = '{$_POST['idEdicio']}'";
 		$conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);

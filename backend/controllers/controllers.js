@@ -199,10 +199,24 @@ angular.module("backend")
         $http.post("models/especialitat.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
         .then((res) =>{
             defered.resolve(res);
+            $scope.especialitats = res.data.especialitats;
             console.log(res.data);
         })
         .catch((err)=>{console.log(err.statusText)})
         .finally(()=>{});
+    }
+    $scope.eliminar = (idEsp) => {
+        data.append("acc", "d");
+        data.append("idEsp", idEsp);
+
+        $http.post("models/especialitat.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+        .then((res) => { 
+            defered.resolve(res);
+            $scope.especialitats = res.data.especialitats;
+            console.log(res.data)
+        })
+        .catch((err) => { console.log(err.statusText) })
+        .finally(() => {})
     }
     $scope.irEdiciones = () => {
                 $location.path("/ediciones/"+idcasa)

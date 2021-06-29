@@ -18,6 +18,7 @@
                 <p class="card-text">{{especialitat.descripcio}} </p>
                 <p class="card-text">{{especialitat.descripcion}} </p><br>
                 <a class="btn btn-primary" ng-click="editar($index)">Modificar</a><br><br>
+                <button class="btn btn-danger" ng-click="eliminar(especialitat .idEsp)">Eliminar</button>
             </div>
         </div> 
     </div>       

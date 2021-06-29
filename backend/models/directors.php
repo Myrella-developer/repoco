@@ -15,7 +15,6 @@
         actualiza();
         
 	}
-
 	if(isset($_POST['acc']) && $_POST['acc'] == "c"){
         echo $_POST['idDir'];
 		$sql = "INSERT INTO directors (`nom`, `cog1`, `cog2`, `correu`,`tipus`,`actiu`,`contrasenya`) VALUES ('{$_POST['nom']}','{$_POST['cog1']}','{$_POST['cog2']}','{$_POST['correu']}','d','s','".sha1(md5($_POST['pass']))."')";

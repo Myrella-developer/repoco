@@ -5,7 +5,34 @@
 
     if(isset($_POST['acc']) && $_POST['acc'] == "especialitats"){
         //TODO ELIMINAR
-        $_POST['idcasa']=1;
+        //$_POST['idcasa']=1;
+        actualiza();
+    }
+    if(isset($_POST['acc']) && $_POST['acc'] == "u"){
+		$sql = "UPDATE especialitats SET `nom` = '{$_POST['nom']}', `nombre` = '{$_POST['nombre']}', `descripcio` = '{$_POST['descripcio']}', `descripcion` = '{$_POST['descripcion']}'
+		WHERE `idEsp` = '{$_POST['idEsp']}'";
+		$conexion = conectar();
+		$result = mysqli_query($conexion, $sql);
+		desconectar($conexion);
+        actualiza();
+        
+	}
+	if(isset($_POST['acc']) && $_POST['acc'] == "c"){
+		$sql = "INSERT INTO especialitats (`nom`,`nombre`,`descripcio`,`descripcion`,`idcasa`) VALUES ('{$_POST['nom']}','{$_POST['nombre']}','{$_POST['descripcio']}','{$_POST['descripcion']}','{$_POST['idcasa']}')";
+        $conexion = conectar();
+		$result = mysqli_query($conexion, $sql);
+		desconectar($conexion);
+        echo $sql;
+        actualiza();
+	}
+    if(isset($_POST['acc']) && $_POST['acc'] == "d"){
+		$sql = "DELETE FROM `especialitats` WHERE idEsp = '{$_POST['idEsp']}'";
+		$conexion = conectar();
+		$result = mysqli_query($conexion, $sql);
+		desconectar($conexion);
+        actualiza();
+	}
+    function actualiza(){
         $mySqlEspecialitats = "SELECT especialitats.idcasa, especialitats.idEsp, especialitats.nom, especialitats.nombre, especialitats.url, especialitats.descripcio, especialitats.descripcion
         FROM especialitats WHERE especialitats.idcasa ='{$_POST['idcasa']}' ORDER BY especialitats.nombre ";
         $mySqlCases = "SELECT `idcasa`, `nom`, `nombre`, `descripcio`, `descripcion`, `idDir` FROM `cases`";
@@ -27,22 +54,6 @@
 
         echo $datosExportar;
     }
-    if(isset($_POST['acc']) && $_POST['acc'] == "u"){
-		$sql = "UPDATE especialitats SET `nom` = '{$_POST['nom']}', `nombre` = '{$_POST['nombre']}', `descripcio` = '{$_POST['descripcio']}', `descripcion` = '{$_POST['descripcion']}'
-		WHERE `idEsp` = '{$_POST['idEsp']}'";
-		$conexion = conectar();
-		$result = mysqli_query($conexion, $sql);
-		desconectar($conexion);
-        
-	}
-
-	if(isset($_POST['acc']) && $_POST['acc'] == "c"){
-		$sql = "INSERT INTO especialitats (`nom`,`nombre`,`descripcio`,`descripcion`,`idcasa`) VALUES ('{$_POST['nom']}','{$_POST['nombre']}','{$_POST['descripcio']}','{$_POST['descripcion']}','{$_POST['idcasa']}')";
-        $conexion = conectar();
-		$result = mysqli_query($conexion, $sql);
-		desconectar($conexion);
-        echo $sql;
-	}
 ?>
 
 

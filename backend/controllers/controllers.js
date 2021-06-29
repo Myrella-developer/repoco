@@ -22,7 +22,9 @@ angular.module("backend")
     $scope.nombre="";
     $scope.descripcio="";
     $scope.descripcion="";
-    $scope.url="digitals.png"
+    // $scope.url="";
+    $scope.url="digitals.png";
+    console.log($scope.url);
         let data = new FormData;
         data.append("acc","r");
         let defered =$q.defer();
@@ -71,12 +73,36 @@ angular.module("backend")
             $http.post("models/cases.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
             .then((res) =>{
                 defered.resolve(res);
+                $scope.cases=res.data;
                 console.log(res.data);
             })
             .catch((err)=>{console.log(err.statusText)})
             .finally(()=>{});
         }
 })
+        // $scope.subirImagen = () => {
+        //     let data = new FormData;
+        //     data.append("url",$scope.url)
+        // }
+        // $scope.getFileDetails=function(e){
+        //     console.log(e.files.length);
+        //     $scope.fileImages=[];
+        //     let data = new FormData();            
+        //     data.append()
+        //     let defered = $q.defer();
+        //     $http.post("models/cases.php",data,{headers:{"Content-type": undefined}, transformRequest: angular.identity})
+        //     .then(function(res){
+        //         defered.resolve(res);
+        //         $scope.datos=res.data;
+        //         console.log($scope.datos);
+        //         console.log(res);
+        //     })
+        //     .catch(function(error){
+        //         console.log(error);
+        //         console.log(error.statusText);
+        //     })
+        // }
+
 
 .controller("RecuperarController", ($q, $scope, $http, $location) => {
     $scope.email = "pancracio@gmail.com";

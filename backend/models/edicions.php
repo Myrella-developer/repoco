@@ -2,7 +2,7 @@
 	require("../inc/functions.php");
 
     if(isset($_POST['acc']) && $_POST['acc'] == "r"){
-        $sqlEdicions = "SELECT edicio.dataInici, edicio.url, edicio.dataFi, edicio.idEdicio, cases.idcasa, especialitats.nom
+        $sqlEdicions = "SELECT edicio.dataInici, edicio.url, edicio.dataFi, edicio.idEdicio, cases.idcasa, especialitats.nom, especialitats.idEsp, especialitats.nom
         FROM edicio 
         INNER JOIN cases ON cases.idcasa = '{$_POST['idcasa']}'
         INNER JOIN especialitats ON edicio.idEsp = especialitats.idEsp";

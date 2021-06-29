@@ -141,146 +141,6 @@ angular.module("backend")
     .finally(() => {})
 })
 
-.controller("EdicionsController", ($q, $http, $scope, $routeParams, $location) => {
-    let idcasa = $routeParams.idcasa;
-	let data= new FormData;
-    let defered = $q.defer();
-    data.append("acc","r");
-    data.append("idcasa", idcasa);
-
-    $http.post("models/edicions.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
-    .then((res) => { 
-        defered.resolve(res);
-        $scope.edicions = res.data.edicions;
-        $scope.especialitats = res.data.especialitats;
-    })
-    .catch((err) => { console.log(err.statusText) })
-    .finally(() => {})
-
-    $scope.afegir = (selEspAdd, dataInici, dataFi) => {
-        dataInici = dataInici.getFullYear() + "-" + (dataInici.getMonth()+1) + "-" + dataInici.getDate()
-        dataFi = dataFi.getFullYear() + "-" + (dataFi.getMonth()+1) + "-" + dataFi.getDate()
-        alert("Edicio afegida")
-        data.append("acc","c");
-        data.append("selEspAdd", selEspAdd);
-        data.append("dataInici", dataInici);
-        data.append("dataFi", dataFi);
-    
-        $http.post("models/edicions.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
-        .then((res) => { 
-            defered.resolve(res);
-            console.log(res.data)
-        })
-        .catch((err) => { console.log(err.statusText) })
-        .finally(() => {})
-    }
-    $scope.selEspAdd = "-1";
-
-    $scope.modificar = (selEsp, dataInici, dataFi, idEdicio) => {
-        dataInici = dataInici.getFullYear() + "-" + (dataInici.getMonth()+1) + "-" + dataInici.getDate()
-        dataFi = dataFi.getFullYear() + "-" + (dataFi.getMonth()+1) + "-" + dataFi.getDate()
-        alert("Edicio modificada")
-        data.append("acc","u");
-        data.append("selEsp", selEsp);
-        data.append("dataInici", dataInici);
-        data.append("dataFi", dataFi);
-        data.append("idEdicio", idEdicio);
-    
-        $http.post("models/edicions.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
-        .then((res) => { 
-            defered.resolve(res);
-            console.log(res.data)
-        })
-        .catch((err) => { console.log(err.statusText) })
-        .finally(() => {})
-    }
-    
-    $scope.irProjectes = () => {
-        $location.path("/projectes/"+idcasa)
-    }
-
-    $scope.eliminar = (idEdicio) => {
-        data.append("acc", "d");
-        data.append("idEdicio", idEdicio);
-
-        $http.post("models/edicions.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
-        .then((res) => { 
-            defered.resolve(res);
-            console.log(res.data)
-        })
-        .catch((err) => { console.log(err.statusText) })
-        .finally(() => {})
-    }
-})
-
-.controller("ProjectesController", ($q, $http, $scope, $routeParams, $location) => {
-    let idcasa = $routeParams.idcasa;
-	let data= new FormData;
-    let defered = $q.defer();
-    data.append("acc","r");
-    data.append("idcasa", idcasa);
-
-    $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
-    .then((res) => { 
-        defered.resolve(res);
-        $scope.especialitats = res.data.especialitats;
-        $scope.projectes = res.data.projectes;
-    })
-    .catch((err) => { console.log(err.statusText) })
-    .finally(() => {})
-
-    $scope.editar = (titol, titulo, descripcio, descripcion, idProjecte) => {
-        data.append("acc","u");
-        data.append("titol", titol);
-        data.append("titulo", titulo);
-        data.append("descripcio", descripcio);
-        data.append("descripcion", descripcion);
-        data.append("idProjecte", idProjecte);
-    
-        $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
-        .then((res) => { 
-            defered.resolve(res);
-            console.log(res.data)
-        })
-        .catch((err) => { console.log(err.statusText) })
-        .finally(() => {})
-    }
-
-    $scope.afegir = () => {
-        data.append("acc","c");
-        data.append("titol", $scope.nouTitol);
-        data.append("titulo", $scope.nouTitulo);
-        data.append("descripcio", $scope.nouDescripcio);
-        data.append("descripcion", $scope.nouDescripcion);
-        data.append("idEdicio", $scope.idEdicio);
-    
-        $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
-        .then((res) => { 
-            defered.resolve(res);
-            console.log(res.data)
-        })
-        .catch((err) => { console.log(err.statusText) })
-        .finally(() => {})
-    }
-
-    $scope.eliminar = (idProjecte) => {
-        data.append("acc", "d");
-        data.append("idProjecte", idProjecte);
-
-        $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
-        .then((res) => { 
-            defered.resolve(res);
-            console.log(res.data)
-        })
-        .catch((err) => { console.log(err.statusText) })
-        .finally(() => {})
-    }
-
-    $scope.irMultimedia = () => {
-        $location.path("/multimedia/"+idcasa)
-    }
-})
-
 .controller("EspecialitatController", ($q, $http, $scope, $routeParams, $location) => {
     $scope.nom="";
     $scope.nombre="";
@@ -401,11 +261,12 @@ angular.module("backend")
     }
 })
 
-.controller("MultimediaController", ($q, $http, $scope, $routeParams, $rootScope) => {
-    $scope.idMultimedia = "";
-    $scope.descripcio="";
-    $scope.descripcion="";
-    $scope.url=""
+.controller("EdicionsController", ($q, $http, $scope, $routeParams, $location) => {
+    $scope.nom = "";
+    $scope.nombre = "";
+    $scope.url = "";
+    $scope.dataInici = "";
+    $scope.dataFi = "";
 
     let idcasa = $routeParams.idcasa;
 	let data= new FormData;
@@ -413,31 +274,32 @@ angular.module("backend")
     data.append("acc","r");
     data.append("idcasa", idcasa);
 
-    $http.post("models/multimedia.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+    $http.post("models/edicions.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
     .then((res) => { 
         defered.resolve(res);
-        $scope.multimedia = res.data.multimedia;
-        $scope.projectes = res.data.projectes;
+        $scope.edicions = res.data.edicions;
+        $scope.especialitats = res.data.especialitats;
     })
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})
-    
+
     $scope.editar=(posicion)=>{
         if(posicion !== "-1"){
-            $scope.descripcio=$scope.multimedia[posicion].descripcio;
-            $scope.descripcion=$scope.multimedia[posicion].descripcion;
-            $scope.idMultimedia=$scope.multimedia[posicion].idMult;
-            $scope.url=$scope.multimedia[posicion].url;
-            $scope.sel=$scope.projectes[posicion].titol;
-            console.log($scope.sel)
+            $scope.nom=$scope.especialitats[posicion].nom;
+            $scope.nombre=$scope.especialitats[posicion].nombre;
+            $scope.url=$scope.edicions[posicion].url;
+            $scope.dataInici=$scope.edicions[posicion].dataInici;
+            $scope.dataFi=$scope.edicions[posicion].dataFi;
+            $scope.sel=$scope.especialitats[posicion].idEsp;
         }
         else{
-            $scope.idMultimedia="";
-            $scope.descripcio="";
-            $scope.descripcion="";
-            $scope.sel="-1";
+            $scope.nom="";
+            $scope.nombre="";
+            $scope.dataInici = "";
+            $scope.dataFi = "";
+            $scope.sel="-1"
         }
-        $("#modalMultimedia").modal('show')
+        $("#modalEdicio").modal('show')
     }
 
     $scope.getFileDetails = (e) => {
@@ -445,6 +307,127 @@ angular.module("backend")
     }
 
     $scope.guardar=()=>{
+        if($scope.idProjecte=="") data.append("acc","c");
+        else data.append("acc","u");
+
+        /*dataInici = dataInici.getFullYear() + "-" + (dataInici.getMonth()+1) + "-" + dataInici.getDate()
+        dataFi = dataFi.getFullYear() + "-" + (dataFi.getMonth()+1) + "-" + dataFi.getDate()*/
+
+        data.append("acc","u");
+        data.append("selEsp", $scope.sel);
+        data.append("dataInici", $scope.dataInici);
+        data.append("dataFi", $scope.dataFi);
+        data.append("idEdicio", $scope.idEdicio);
+
+        let defered = $q.defer();
+        $http.post("models/edicions.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
+        .then((res) =>{
+            defered.resolve(res);
+            console.log(res.data);
+        })
+        .catch((err)=>{console.log(err.statusText)})
+        .finally(()=>{});
+    }
+    
+    $scope.irProjectes = () => {
+        $location.path("/projectes/"+idcasa)
+    }
+
+    $scope.eliminar = (idEdicio) => {
+        data.append("acc", "d");
+        data.append("idEdicio", idEdicio);
+
+        $http.post("models/edicions.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+        .then((res) => { 
+            defered.resolve(res);
+            console.log(res.data)
+        })
+        .catch((err) => { console.log(err.statusText) })
+        .finally(() => {})
+    }
+})
+
+.controller("ProjectesController", ($q, $http, $scope, $routeParams, $location) => {
+    $scope.titol = "";
+    $scope.titulo = "";
+    $scope.descripcio="";
+    $scope.descripcion="";
+
+    $scope.idMultimedia = "";
+    $scope.descripcioMulti="";
+    $scope.descripcionMulti="";
+    $scope.urlMulti=""
+
+    let idcasa = $routeParams.idcasa;
+	let data= new FormData;
+    let defered = $q.defer();
+    data.append("acc","r");
+    data.append("idcasa", idcasa);
+
+    $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+    .then((res) => { 
+        defered.resolve(res);
+        $scope.especialitats = res.data.especialitats;
+        $scope.projectes = res.data.projectes;
+    })
+    .catch((err) => { console.log(err.statusText) })
+    .finally(() => {})
+
+    $http.post("models/multimedia.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+    .then((res) => { 
+        defered.resolve(res);
+        $scope.multimedia = res.data.multimedia;
+        //$scope.projectes = res.data.projectes;
+    })
+    .catch((err) => { console.log(err.statusText) })
+    .finally(() => {})
+
+    $scope.editar=(posicion)=>{
+        if(posicion !== "-1"){
+            $scope.titol=$scope.projectes[posicion].titol;
+            $scope.titulo=$scope.projectes[posicion].titulo;
+            $scope.descripcio=$scope.projectes[posicion].descripcio;
+            $scope.descripcion=$scope.projectes[posicion].descripcion;
+            $scope.url=$scope.projectes[posicion].url;
+            $scope.sel=$scope.especialitats[posicion].idEsp;
+
+            $scope.descripcioMulti=$scope.multimedia[posicion].descripcio;
+            $scope.descripcionMulti=$scope.multimedia[posicion].descripcion;
+            $scope.idMultimedia=$scope.multimedia[posicion].idMult;
+            $scope.urMultil=$scope.multimedia[posicion].url;
+        }
+        else{
+            $scope.titol = "";
+            $scope.titulo = "";
+            $scope.descripcio="";
+            $scope.descripcion="";
+            $scope.sel="-1"
+
+            $scope.idMultimedia="";
+            $scope.descripcio="";
+            $scope.descripcion="";
+        }
+        $("#modalProjecte").modal('show')
+    }
+
+    $scope.guardar=()=>{
+        if($scope.idProjecte=="") data.append("acc","c");
+        else data.append("acc","u");
+
+        data.append("titol", $scope.titol);
+        data.append("titulo", $scope.titulo);
+        data.append("descripcio", $scope.descripcio);
+        data.append("descripcion", $scope.descripcion);
+        data.append("idProjecte", $scope.sel);
+
+        $http.post("models/projectes.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
+        .then((res) =>{
+            defered.resolve(res);
+            console.log(res.data);
+        })
+        .catch((err)=>{console.log(err.statusText)})
+        .finally(()=>{});
+
         if($scope.idMultimedia=="") data.append("acc","c");
         else data.append("acc","u");
 
@@ -461,5 +444,27 @@ angular.module("backend")
         })
         .catch((err)=>{console.log(err.statusText)})
         .finally(()=>{});
+    }
+
+    $scope.eliminar = (idProjecte) => {
+        data.append("acc", "d");
+        data.append("idProjecte", idProjecte);
+
+        $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+        .then((res) => { 
+            defered.resolve(res);
+            console.log(res.data)
+        })
+        .catch((err) => { console.log(err.statusText) })
+        .finally(() => {})
+    }
+
+    $scope.irMultimedia = () => {
+        $location.path("/multimedia/"+idcasa)
+    }
+
+    $scope.showDesc = false;
+    $scope.mostrarDesc = () => {
+        $scope.showDesc = !$scope.showDesc;
     }
 })

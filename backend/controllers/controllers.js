@@ -308,8 +308,8 @@ angular.module("backend")
             $scope.nombre=$scope.especialitats[posicion].nombre;
             $scope.descripcio=$scope.especialitats[posicion].descripcio;
             $scope.descripcion=$scope.especialitats[posicion].descripcion;
-            $scope.idesp=$scope.especialitats[posicion].idesp;
-            $scope.selCasa=$scope.cases[posicion].nom;
+            $scope.idesp=$scope.especialitats[posicion].idEsp;
+            $scope.selCasa=$scope.cases[posicion].idcasa;
             console.log($scope.selCasa)
         }
         else{
@@ -328,7 +328,8 @@ angular.module("backend")
         let data = new FormData;
         if($scope.idesp=="") data.append("acc","c");
         else data.append("acc","u");
-        data.append("idesp",$scope.idesp);
+        data.append("idcasa",$scope.selCasa);
+        data.append("idEsp",$scope.idesp);
         data.append("nom",$scope.nom);
         data.append("nombre",$scope.nombre);
         data.append("descripcio",$scope.descripcio);

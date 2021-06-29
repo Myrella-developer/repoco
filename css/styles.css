@@ -29,6 +29,12 @@ header{
     background-color: rgb(110, 32, 47);
     color: rgb(255, 255, 255);
 }
+
+.vidc{
+    background-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    
+}
 .filaGris{
 	background-color: #f2f2f2;
 }
@@ -72,7 +78,7 @@ header{
     padding: 2.5rem;
     position: relative;
     top: 50%;
-    left: 50%;
+    left: 20%;
     background:#fff ;
     text-align: center;
     transition: 0.25s;
@@ -99,7 +105,7 @@ header{
 .box h1 {
     color: #3498db;
     text-transform: uppercase;
-    font-weight: 500
+    font-weight: 500;
 }
 .box input[type="email"]:focus,
 .box input[type="password"]:focus {
@@ -117,7 +123,7 @@ header{
     color: rgb(227, 232, 240);
     border-radius: 24px;
     transition: 0.25s;
-    cursor: pointer
+    cursor: pointer;
 }
 .box input[type="submit"]:hover {
     background:linear-gradient(to left, rgb(151, 220, 241), #699bf7)
@@ -148,7 +154,10 @@ header{
 .hover {
     cursor: pointer;
 }
-
+.boxofc{
+    background-color: rgb(110, 32, 47);
+    border-color: #fff;
+}
 .boxf{
 background-color:#8bacbd;
   width: 200px;
@@ -157,6 +166,7 @@ background-color:#8bacbd;
   border-left: 10px solid #12789a;
   height: 60px;
   float: left;
+  font-size: 2rem;
 }
 
 .boxf2{
@@ -166,37 +176,32 @@ background-color:#8bacbd;
     margin: 0px;
     border-left: 10px solid #ffc107;
     height: 54px;
-    float: left;
     margin-left: 40px;
     background-color: #b5c8e0;
     width: 174px;
-    /* padding: 15px; */
     margin:0px;
     border-left: 10px solid #12789a;
     height: 70px;
     float: left;
+    font-size: 2rem;
 }
 
 .boxf1{
-background-color: #f9d1a4;
-  width: 200px;
-  /* padding: 15px; */
-  
-  border-left: 10px solid #ff9716;
-  height: 60px;
-  float: left;
-  margin-left: 40px;
+    background-color: #f9d1a4;
+    width: 174px;
+    border-left: 10px solid #ff9716;
+    height: 70px;
+    float: left;
+    margin-left: 40px;
 }
 .boxf2{
-
-background-color: #f5d987;
- width: 200px;
-  /* padding: 15px; */
-  margin: 0px;
-  border-left: 10px solid #ffc107;
-  height: 60px;
-  float: left;
-  margin-left: 40px;
+    background-color: #f5d987;
+    width: 174px;
+    margin: 0px;
+    border-left: 10px solid #ffc107;
+    height: 70px;
+    float: left;
+    margin-left: 40px;
 }
 .boxf3{
 background-color:#8bacbd;
@@ -206,7 +211,7 @@ background-color:#8bacbd;
   border-left: 10px solid#12789a;
   height: 60px;
   float: left;
-
+  font-size: 2rem;
   margin-left: 40px;
 
 }
@@ -219,7 +224,7 @@ background-color:#8bacbd;
   height: 60px;
   float: left;
   margin-left: 40px;
-
+  font-size: 2rem;
 }
 
 .textCentral{
@@ -255,7 +260,6 @@ background-color:#8bacbd;
 	padding-left: 5em;
 	padding-right: 5em;
 }
-
 .idioma{
     border: 0;
     font-size: 12px;
@@ -264,23 +268,21 @@ background-color:#8bacbd;
 @media (min-width: 992px){
    .navbar-expand-lg {
         min-width: 500px;
-    } 
+    }
 }
 
 .mov {
     pointer-events: none;
     position: absolute;
-    width: 100%;
+    /* width: 100%; */
     height: 100%;
     z-index: -1;
-    border: none;
-  }
-  .divmov {
-    border: none;
+}
+.divmov {
     display: inline-block;
     overflow: hidden;
-    position: relative;
-    width: 100%;
+    /* position: relative; */
+    /* width: 100%; */
   }
 img.miniatura{
   opacity: 0.5;

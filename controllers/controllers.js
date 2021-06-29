@@ -42,8 +42,7 @@ angular.module("repoco")
    		};
 	
 })  
-.controller("LoginController", function($scope, $http, $q, $location, $rootScope){
-	
+.controller("LoginController", function($scope, $http, $q, $location, $rootScope){	
     $scope.errorLogin=false;
     $scope.entrar = function(){
         if ($scope.email=="" || $scope.pass=="") alert ("verifica datos") 
@@ -62,7 +61,7 @@ angular.module("repoco")
             	$scope.errorLogin=true;
             }
             else{
-            	 window.location.href="./backend/";
+            	window.location.href="./backend/";
             }
         })
         .catch((err)=>{console.log(err.statusText)})

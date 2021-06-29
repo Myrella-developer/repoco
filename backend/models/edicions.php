@@ -2,10 +2,12 @@
 	require("../inc/functions.php");
 
     if(isset($_POST['acc']) && $_POST['acc'] == "r"){
-        $sqlEdicions = "SELECT edicio.dataInici, edicio.url, edicio.dataFi, edicio.idEdicio, cases.idcasa, especialitats.nom
+        $sqlEdicions = "SELECT edicio.dataInici, edicio.url, edicio.dataFi, edicio.idEdicio, cases.idcasa, especialitats.nom, especialitats.idEsp, especialitats.nom
         FROM edicio 
         INNER JOIN cases ON cases.idcasa = '{$_POST['idcasa']}'
-        INNER JOIN especialitats ON edicio.idEsp = especialitats.idEsp";
+        INNER JOIN especialitats ON edicio.idEsp = especialitats.idEsp
+		ORDER BY especialitats.nom DESC,
+		edicio.dataInici ";
         
         $sqlEsp = "SELECT nom, nombre, idEsp FROM `especialitats` WHERE idcasa = '{$_POST['idcasa']}'";
         
@@ -31,7 +33,7 @@
 
     if(isset($_POST['acc']) && $_POST['acc'] == "u"){
 		$sql = "UPDATE edicio SET dataInici = '{$_POST['dataInici']}', datafi = '{$_POST['dataFi']}', 
-		idEsp = '{$_POST['selEsp']}' WHERE idEdicio = '{$_POST['idEdicio']}'";
+		idEsp = '{$_POST['selEsp']}', url = '{$_POST['imgEdicio']}' WHERE idEdicio = '{$_POST['idEdicio']}'";
 		$conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);
@@ -39,7 +41,7 @@
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "c"){
 		$sql = "INSERT INTO edicio(idEdicio, idEsp, dataInici, dataFi, url) 
-		VALUES(NULL, '{$_POST['selEspAdd']}', '{$_POST['dataInici']}', '{$_POST['dataFi']}', '')";
+		VALUES(NULL, '{$_POST['selEsp']}', '{$_POST['dataInici']}', '{$_POST['dataFi']}', '{$_POST['imgEdicio']}')";
 		$conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);
@@ -64,7 +66,7 @@
 			$rows2 = array();
 			while($row2 = mysqli_fetch_array($resultUnlink)){
 				$rows2[] = $row2;
-				unlink('../img/'.$row2['url']);
+				unlink('../../multimedia/img/ediciones/'.$row2['url']);
 				$sql2 = "DELETE FROM multimedia WHERE idProjecte = {$row['idProjecte']};";
 				$conexion = conectar();
 				$result2 = mysqli_query($conexion, $sql2);

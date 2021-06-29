@@ -22,7 +22,6 @@
         $conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);
-        echo $sql;
         actualiza();
 	}
     if(isset($_POST['acc']) && $_POST['acc'] == "d"){

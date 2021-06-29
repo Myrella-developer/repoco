@@ -169,8 +169,8 @@ angular.module("backend")
             $scope.descripcio=$scope.especialitats[posicion].descripcio;
             $scope.descripcion=$scope.especialitats[posicion].descripcion;
             $scope.idesp=$scope.especialitats[posicion].idEsp;
-            $scope.selCasa=$scope.cases[posicion].idcasa;
-            console.log($scope.selCasa)
+            $scope.selCasa=$scope.especialitats[posicion].idcasa;
+            console.log($scope.selCasa+ $scope.nom);
         }
         else{
             console.log("añado");

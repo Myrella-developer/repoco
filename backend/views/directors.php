@@ -18,6 +18,7 @@
                 <p class="card-text">{{director.cog2}} </p>
                 <p class="card-text">{{director.correu}} </p>
                 <a class="btn btn-primary" ng-click="editar($index)">Modificar</a><br><br>
+                <button class="btn btn-danger" ng-click="eliminar(director.idDir)">Eliminar</button>
             </div>
 
             

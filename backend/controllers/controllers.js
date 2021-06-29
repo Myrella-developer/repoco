@@ -270,6 +270,19 @@ angular.module("backend")
         .catch((err)=>{console.log(err.statusText)})
         .finally(()=>{});
     }
+    $scope.eliminar = (idDir) => {
+        data.append("acc", "d");
+        data.append("idDir", idDir);
+
+        $http.post("models/directors.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+        .then((res) => { 
+            defered.resolve(res);
+            $scope.directors = res.data;
+            console.log(res.data)
+        })
+        .catch((err) => { console.log(err.statusText) })
+        .finally(() => {})
+    }
 })
 .controller("EdicionsController", ($q, $http, $scope, $routeParams, $location) => {
     $scope.nom = "";

@@ -24,7 +24,13 @@
 		desconectar($conexion);
         actualiza();
 	}
-
+    if(isset($_POST['acc']) && $_POST['acc'] == "d"){
+		$sql = "DELETE FROM `directors` WHERE idDir = '{$_POST['idDir']}'";
+		$conexion = conectar();
+		$result = mysqli_query($conexion, $sql);
+		desconectar($conexion);
+        actualiza();
+	}
     function actualiza(){
         $mySqlDirectors = "SELECT `idDir`, `nom`, `cog1`, `cog2`, `correu`,`tipus`,`actiu`,`contrasenya` FROM `directors`";
         $conexion = conectar();

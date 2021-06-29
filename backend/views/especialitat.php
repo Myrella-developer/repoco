@@ -9,10 +9,7 @@
     ?>
     <h2 class="text-center mt-5">Especialitats de la teva casa</h2>
 
-    <i class="fas fa-plus-square ms-4 mt-5 text-primary" ng-click="editar('-1')"></i>
-    <label class="ms-1 fw-bold">AFEGIR</label>
-
-    
+    <i class="fas fa-plus-square ms-4 mt-5 text-primary" ng-click="editar('-1')"><label class="ms-1 fw-bold">AFEGIR</label></i>
     <div class="row">
         <div class="card cardGestor m-5" style="width: 18rem;" ng-repeat="especialitat in especialitats">
             <div class="card-body">
@@ -21,6 +18,7 @@
                 <p class="card-text">{{especialitat.descripcio}} </p>
                 <p class="card-text">{{especialitat.descripcion}} </p><br>
                 <a class="btn btn-primary" ng-click="editar($index)">Modificar</a><br><br>
+                <button class="btn btn-danger" ng-click="eliminar(especialitat .idEsp)">Eliminar</button>
             </div>
         </div> 
     </div>       
@@ -47,6 +45,10 @@
                                 <div class="mb-2">
                                     <label for="message-text" class="col-form-label">Descripcio Especialitat</label>
                                     <textarea class="form-control" id="message-text" ng-model="descripcio">{{descripcio}}</textarea>
+                                </div>
+                                <div class="mb-2">
+                                    <label for="message-text" class="col-form-label">Descripción Especialitat</label>
+                                    <textarea class="form-control" id="message-text" ng-model="descripcion">{{descripcion}}</textarea>
                                 </div>
                                 <div class="mb-2">
                                     <label for="message-text" class="col-form-label">Descripción Especialitat</label>

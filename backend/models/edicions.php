@@ -43,9 +43,19 @@
 	}
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "c"){
-		$nuevoNombre = $_POST['imgEdicio'] . date("Y-m-d_His");
-		move_uploaded_file($nuevoNombre, "../img/" . $nuevoNombre);
-		
+		$fileInfo = $_FILES['imgEdicio'];
+
+        $filePath = $fileInfo['tmp_name'];
+        $fileName = $fileInfo['name'];
+
+        $datosFichero = explode(".", $fileName);
+        $nuevoNombre = $datosFichero[0] . date("Y-m-d_His") . "." . $datosFichero[1];
+        move_uploaded_file($filePath, "../img/".$nuevoNombre);
+
+/*
+		$nuevoNombre = $_FILES['imgEdicio'] . date("Y-m-d_His");
+		move_uploaded_file($temporal['tmp_name'], "../img/" . $nuevoNombre);*/
+
 		$sql = "INSERT INTO edicio(idEdicio, idEsp, dataInici, dataFi, url) 
 		VALUES(NULL, '{$_POST['selEsp']}', '{$_POST['dataInici']}', '{$_POST['dataFi']}', '{$_POST['imgEdicio']}')";
 		$conexion = conectar();

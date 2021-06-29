@@ -260,12 +260,13 @@ angular.module("backend")
     }
 })
 
-.controller("EdicionsController", ($q, $http, $scope, $routeParams, $location) => {
+.controller("EdicionsController", ($q, $http, $scope, $routeParams, $location, $rootScope) => {
     $scope.nom = "";
     $scope.nombre = "";
     $scope.url = "";
     $scope.dataInici = "";
     $scope.dataFi = "";
+    $scope.idEdicio="";
 
     let idcasa = $routeParams.idcasa;
 	let data= new FormData;
@@ -282,41 +283,56 @@ angular.module("backend")
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})
 
-    $scope.editar=(posicion)=>{
+    $scope.getFileDetails = (e) => {
+        $rootScope.fotoEdicio = e.files[0].name;
+    }
+
+    $scope.editar=(posicion, idEdicio)=>{
         if(posicion !== "-1"){
             $scope.nom=$scope.especialitats[posicion].nom;
             $scope.nombre=$scope.especialitats[posicion].nombre;
             $scope.url=$scope.edicions[posicion].url;
-            $scope.dataInici=$scope.edicions[posicion].dataInici;
-            $scope.dataFi=$scope.edicions[posicion].dataFi;
-            $scope.sel=$scope.especialitats[posicion].idEsp;
+            $scope.dataFi = new Date($scope.edicions[posicion].dataFi);
+            $scope.dataInici = new Date($scope.edicions[posicion].dataInici);
+            $scope.idEdicio=$scope.edicions[posicion].idEdicio;
+            $scope.sel=$scope.edicions[posicion].nom;
         }
         else{
-            $scope.nom="";
-            $scope.nombre="";
+            $scope.sel="-1"
             $scope.dataInici = "";
             $scope.dataFi = "";
-            $scope.sel="-1"
+            $scope.idEdicio="";
         }
         $("#modalEdicio").modal('show')
-    }
-
-    $scope.getFileDetails = (e) => {
-        $rootScope.nuevaFoto = e.files[0].name;
+        $rootScope.idEdicio = idEdicio;
     }
 
     $scope.guardar=()=>{
-        if($scope.idProjecte=="") data.append("acc","c");
-        else data.append("acc","u");
+        let dataInici = $scope.dataInici.getFullYear() + "-" + ($scope.dataInici.getMonth()+1) + "-" + $scope.dataInici.getDate()
+        let dataFi = $scope.dataFi.getFullYear() + "-" + ($scope.dataFi.getMonth()+1) + "-" + $scope.dataFi.getDate()
+     
+        if($scope.idEdicio==""){
+            if($rootScope.fotoEdicio == undefined){
+                alert("Escoge una imagen")
+            }else{
+                data.append("acc","c");
+                data.append("imgEdicio", $rootScope.fotoEdicio);
+            }
+        }
+        else{
+            if($rootScope.fotoEdicio == undefined){
+                data.append("acc","u");
+                data.append("imgEdicio", $scope.url) 
+            }else{
+                data.append("acc","u");
+                data.append("imgEdicio", $rootScope.fotoEdicio)
+            }
+        }
 
-        /*dataInici = dataInici.getFullYear() + "-" + (dataInici.getMonth()+1) + "-" + dataInici.getDate()
-        dataFi = dataFi.getFullYear() + "-" + (dataFi.getMonth()+1) + "-" + dataFi.getDate()*/
-
-        data.append("acc","u");
         data.append("selEsp", $scope.sel);
-        data.append("dataInici", $scope.dataInici);
-        data.append("dataFi", $scope.dataFi);
-        data.append("idEdicio", $scope.idEdicio);
+        data.append("dataInici", dataInici);
+        data.append("dataFi", dataFi);
+        data.append("idEdicio", $rootScope.idEdicio);
 
         let defered = $q.defer();
         $http.post("models/edicions.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
@@ -333,16 +349,21 @@ angular.module("backend")
     }
 
     $scope.eliminar = (idEdicio) => {
-        data.append("acc", "d");
-        data.append("idEdicio", idEdicio);
-
-        $http.post("models/edicions.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
-        .then((res) => { 
-            defered.resolve(res);
-            console.log(res.data)
-        })
-        .catch((err) => { console.log(err.statusText) })
-        .finally(() => {})
+        let confirmacion = confirm("¿Estás seguro de que deseas eliminar esta edición?");
+        if(confirmacion){
+            data.append("acc", "d");
+            data.append("idEdicio", idEdicio);
+    
+            $http.post("models/edicions.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+            .then((res) => { 
+                defered.resolve(res);
+                console.log(res.data)
+            })
+            .catch((err) => { console.log(err.statusText) })
+            .finally(() => {location.reload()})
+        }else{
+            alert("No se ha eliminado la edición")
+        }
     }
 })
 

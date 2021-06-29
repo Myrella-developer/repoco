@@ -56,6 +56,15 @@
                     <div class="mt-5">
                         <h2>Imatges del projecte</h2>
                         <img src="..."><br/>
+
+                        <img ng-if="m.tipo == 'i'" />
+                        <video ng-if="m.tipo == 'v'" width="250" height="150" controls>
+                            <source src="..." type="video/mp4">
+                        </video><br/>
+                        <audio ng-if="m.tipo == 's'" width="250" height="150" controls>
+                            <source src="..." type="audio/mp3">
+                        </audio><br/>
+
                         <button class="btn btn-warning mt-2" ng-click="mostrarDesc()">Descripcio</button>
     
                         <div class="mb-2" ng-show="showDesc">

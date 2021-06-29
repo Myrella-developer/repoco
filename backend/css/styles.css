@@ -18,6 +18,21 @@ header{
 	font-size: 1em;
 }
 
+.btn-danger{
+    float: right;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+.btn-primary{
+    display: block;
+    margin-bottom: 10px;
+}
+
+.btn-warning{
+    display: block;
+}
+
 #primer {
  /* background-image:url("../img/home-prueba.PNG");  */
 }

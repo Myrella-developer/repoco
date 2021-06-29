@@ -16,12 +16,18 @@ angular.module("backend")
         .finally(()=>{});
     }    
 })
+/*
 .controller("HomeController", ($scope,$q,$http,$location) => {
     $scope.idCasa="";
     $scope.nom="";
     $scope.nombre="";
     $scope.descripcio="";
     $scope.descripcion="";
+<<<<<<< HEAD
+    // $scope.url="";
+    $scope.url="digitals.png";
+    console.log($scope.url);
+=======
     $scope.url="digitals.png"
     let data = new FormData;
     data.append("acc","r");
@@ -59,6 +65,7 @@ angular.module("backend")
     }
     $scope.guardar=()=>{
         console.log("A modificar:--"+$scope.idcasa+"--");
+
         let data = new FormData;
         if($scope.idcasa=="") data.append("acc","c");
         else data.append("acc","u");
@@ -116,12 +123,37 @@ angular.module("backend")
             $http.post("models/cases.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
             .then((res) =>{
                 defered.resolve(res);
+                $scope.cases=res.data;
                 console.log(res.data);
             })
             .catch((err)=>{console.log(err.statusText)})
             .finally(()=>{});
         }
 })
+*/
+        // $scope.subirImagen = () => {
+        //     let data = new FormData;
+        //     data.append("url",$scope.url)
+        // }
+        // $scope.getFileDetails=function(e){
+        //     console.log(e.files.length);
+        //     $scope.fileImages=[];
+        //     let data = new FormData();            
+        //     data.append()
+        //     let defered = $q.defer();
+        //     $http.post("models/cases.php",data,{headers:{"Content-type": undefined}, transformRequest: angular.identity})
+        //     .then(function(res){
+        //         defered.resolve(res);
+        //         $scope.datos=res.data;
+        //         console.log($scope.datos);
+        //         console.log(res);
+        //     })
+        //     .catch(function(error){
+        //         console.log(error);
+        //         console.log(error.statusText);
+        //     })
+        // }
+
 
 .controller("RecuperarController", ($q, $scope, $http, $location) => {
     $scope.email = "pancracio@gmail.com";

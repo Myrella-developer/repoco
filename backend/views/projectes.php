@@ -10,67 +10,75 @@
     <h2 class="text-center mt-5">Els projectes de la teva casa</h2>
 
     <i class="fas fa-plus-square ms-4 mt-5 text-primary"></i>
-    <label class="ms-1 fw-bold" data-bs-toggle="modal" data-bs-target="#afegir">AFEGIR</label>
-
-    <div class="modal fade" id="afegir" tabindex="-1" aria-labelledby="labelDigital" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="labelDigital">AFEGIR PROJECTE</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <select class="form-select mb-4" ng-model="idEdicio">
-                            <option>--Selecciona especialitat</option>
-                            <option ng-repeat="esp in especialitats" ng-value="esp.idEdicio">{{esp.nom}}</option>
-                        </select>
-                        <input ng-model="nouTitol" type="text" class="form-control" placeholder="titol..."/><br/>
-                        <input ng-model="nouTitulo" type="text" class="form-control" placeholder="titulo..."/><br/>
-                        <input ng-model="nouDescripcio" type="text" class="form-control" placeholder="descripcio..."/><br/>
-                        <input ng-model="nouDescripcion" type="text" class="form-control" placeholder="descripción..."/><br/>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" ng-click="afegir()" data-bs-dismiss="modal">Afegir projecte</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <label class="ms-1 fw-bold" ng-click="editar('-1')">AFEGIR</label>
     
     <div class="row">
         <div class="card cardGestor m-5" style="width: 18rem;" ng-repeat="projecte in projectes">
             <div class="card-body">
-                <img ng-src="../img/{{projecte.url}}" width="200"/>
+                <img src="../img/default.png">
+                <!--<img ng-src="../img/{{projecte.url}}" width="200"/>-->
                 <h5 class="card-title">{{projecte.titol}}</h5>
                 <p class="card-text">{{projecte.descripcio}}</p>
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#a{{projecte.idProjecte}}">Modificar</button>
+                <button class="btn btn-primary" ng-click="editar($index)">Modificar</button>
                 <button class="btn btn-danger" ng-click="eliminar(projecte.idProjecte)">Eliminar</button>
             </div>
+        </div>
+    </div>
 
-            <div class="modal fade" id="a{{projecte.idProjecte}}" tabindex="-1" aria-labelledby="labelDigital" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="labelDigital">Modifica projecte</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="modal fade" id="modalProjecte">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Projectes</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form ng-model="projectes">
+                        <div class="mb-2">
+                            <select ng-model="sel">
+                                <option value="-1" ng-model="sel">--Selecciona un projecte</option>
+                                <option ng-repeat="e in especialitats" ng-value="e.idEsp">{{e.nom}}</option>
+                            </select>
                         </div>
-                        <div class="modal-body">
-                            <form>
-                                <select class="form-control">
-                                    <option>--Selecciona especialitat</option>
-                                    <option ng-repeat="esp in especialitats">{{esp.nom}}</option>
-                                </select><br/>
-                                <input class="form-control" type="text" ng-model="projecte.titol"/><br/>
-                                <input class="form-control" type="text" ng-model="projecte.titulo"/><br/>
-                                <textarea class="form-control" ng-model="projecte.descripcio" rows="6" cols="40"></textarea>
-                                <textarea class="form-control" ng-model="projecte.descripcion" rows="6" cols="40"></textarea>
-                            </form>
+                        <div class="mb-2">
+                            <label for="message-text" class="col-form-label">Descripció del projecte</label>
+                            <textarea rows="4" class="form-control" id="message-text" ng-model="descripcio">{{descripcio}}</textarea>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal" ng-click="editar(projecte.titol, projecte.titulo, projecte.descripcio, projecte.descripcion, projecte.idProjecte)">Dessar canvis</button>
+                        <div class="mb-2">
+                            <label for="message-text" class="col-form-label">Descripción del proyecto</label>
+                            <textarea rows="4" class="form-control" id="message-text" ng-model="descripcion">{{descripcion}}</textarea>
+                        </div>
+                        <div class="mb-2">
+                            <input type="file" onchange="angular.element(this).scope().getFileDetails(this)">
+                        </div>
+                    </form>
+
+                    <div class="mt-5">
+                        <h2>Imatges del projecte</h2>
+                        <img src="..."><br/>
+
+                        <img ng-if="m.tipo == 'i'" />
+                        <video ng-if="m.tipo == 'v'" width="250" height="150" controls>
+                            <source src="..." type="video/mp4">
+                        </video><br/>
+                        <audio ng-if="m.tipo == 's'" width="250" height="150" controls>
+                            <source src="..." type="audio/mp3">
+                        </audio><br/>
+
+                        <button class="btn btn-warning mt-2" ng-click="mostrarDesc()">Descripcio</button>
+    
+                        <div class="mb-2" ng-show="showDesc">
+                            <label for="message-text" class="col-form-label">Descripcio multimedia</label>
+                            <input type="text" class="form-control" id="message-text" ng-model="descripcionMulti">
+                        
+                            <label for="message-text" class="col-form-label">Descripción multimedia</label>
+                            <input type="text" class="form-control" id="message-text" ng-model="descripcioMulti">
                         </div>
                     </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tancar</button>
+                    <button type="button" class="btn btn-primary" ng-click="guardar()">Guardar canvis</button>
                 </div>
             </div>
         </div>

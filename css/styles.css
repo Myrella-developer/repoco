@@ -291,3 +291,9 @@ img.miniatura{
     width: 15rem;
     position: relative;
 }
+p.anys{
+    position: absolute;
+    font-size: 45px;
+    top: 25%;
+    left: 18%;
+}

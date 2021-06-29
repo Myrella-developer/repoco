@@ -2,7 +2,7 @@
 	require("../inc/functions.php");
 	
 	if(isset($_POST['acc']) && $_POST['acc'] == "r"){
-		$sql = "SELECT m.idMult, m.url, m.tipo, m.descripcio, m.idProjecte, p.titol
+		$sql = "SELECT m.idMult, m.url, m.tipo, m.descripcio, m.descripcion, m.idProjecte, p.titol
         FROM multimedia m
         INNER JOIN projectes p ON m.idProjecte = p.idProjecte
         INNER JOIN cases ON cases.idcasa = '{$_POST['idcasa']}'";
@@ -31,7 +31,7 @@
 		echo $datosExportar;
 	}
 
-	if(isset($_POST['acc']) && $_POST['acc'] == "r"){
+	if(isset($_POST['acc']) && $_POST['acc'] == "c"){
 		$foto = $_POST['nuevaFoto'];
 		$porciones = explode(".", $foto);
 

@@ -1,3 +1,4 @@
+
 <div id="slideCasa" class="carousel slide" data-bs-ride="carousel">
 	<div class="carousel-indicators">
 		<button type="button" data-bs-target="#slideCasa" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -6,7 +7,7 @@
 	</div>
 	<div class="carousel-inner">
 	    <div class="carousel-item active">
-	      <img ng-src="multimedia/img/provisionales/{{url=NULL?'no-imageSlide.png' : url}}" class="d-block w-100" alt="Casa d'ofici">
+	      <img src="multimedia/img/provisionales/{{url==null?'no-imageSlide.png' : url}}" class="d-block w-100" alt="Casa d'ofici">
 
 	    </div>
 	    <!-- falta sentencia para img de especialitats -->
@@ -24,12 +25,16 @@
 </div>
 <div class="textCentral">
 	<p class="fw-bold">{{idioma=="cat"?titol2:titulo2}} {{idioma=="cat"?nom:nombre | uppercase}}?</p>
-	<p>La <span class="fw-bold">{{idioma=="cat"?titol3:titulo3}} {{idioma=="cat"?nom:nombre}}</span> {{idioma=="cat"?descripcio1:descripcion1}}<br><br>{{idioma=="cat"?descripcio2:descripcion2}}</p>
+	<p>La <span class="fw-bold">{{idioma=="cat"?titol3:titulo3}} {{idioma=="cat"?nom:nombre}}</span>{{idioma=="cat"?dcat:dcas}}</p>
 </div>
 <div class="textCentral">
-	<h6 class="fw-bold">{{idioma=="cat"?anys:acas}}</h6>
+	<h6 class="fw-bold">{{idioma=="cat"?acat:acas}}</h6>
 	<div class="row row-cols-3"></div>
 </div>
-<div class="row row-cols-3 textCentral">
-	<div class="col"><img class="miniatura" src="multimedia/img/miniatura1.jpg"></div>
+<div class="row row-cols-3 textCentral ">
+	<div class="col position-relative" ng-repeat="any in dataAnys">
+		<img class="miniatura" src="multimedia/img/miniatura1.jpg">
+		<p class="anys">{{(any.anyEdicio.split('/')[0])|limitTo:4:0}}/{{(any.anyEdicio.split('/')[1])|limitTo:2:2}}</p>
+		<p class="badge bg-secondary fw-bold" ng-repeat="especialitat in any.especialitats">{{idioma=="cat"?especialitat.nom:especialitat.nombre}}</p>
+	</div>
 </div>

@@ -2,9 +2,9 @@
 	require("../inc/functions.php");
 	
 	if(isset($_POST['acc']) && $_POST['acc'] == "r"){
-		$sqlEsp = "SELECT nom, nombre FROM `especialitats` WHERE idcasa = '{$_POST['idcasa']}'";
+		$sqlEsp = "SELECT nom, nombre, idEsp FROM `especialitats` WHERE idcasa = '{$_POST['idcasa']}'";
 
-		$sqlProj="SELECT p.titol, p.titulo, p.descripcio, p.descripcion, p.idProjecte
+		$sqlProj="SELECT p.titol, p.titulo, p.descripcio, p.descripcion, p.idProjecte, p.url
 		FROM projectes p
 		INNER JOIN cases ON cases.idcasa = {$_POST['idcasa']}";
 

@@ -286,16 +286,16 @@ angular.module("backend")
     $scope.nombre="";
     $scope.descripcio="";
     $scope.descripcion="";
-    $scope.idcasa="";
     $scope.idesp="";
+    let idcasa = $routeParams.idcasa;
     let data= new FormData;
     let defered = $q.defer();
     data.append("acc","especialitats");
-    data.append("idcasa",$scope.idcasa);
+    data.append("idcasa",idcasa);
     $http.post("models/especialitat.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
     .then((res) => { 
         defered.resolve(res);
-        $scope.especialitats = res.data;
+        $scope.especialitats = res.data.especialitats;
         $scope.cases = res.data.cases;
         console.log($scope.especialitats);
     })
@@ -309,24 +309,25 @@ angular.module("backend")
             $scope.descripcio=$scope.especialitats[posicion].descripcio;
             $scope.descripcion=$scope.especialitats[posicion].descripcion;
             $scope.idesp=$scope.especialitats[posicion].idesp;
-            $scope.idcasa=$scope.especialitats[posicion].idcasa;
+            $scope.selCasa=$scope.cases[posicion].nom;
+            console.log($scope.selCasa)
         }
         else{
             console.log("añado");
-            $scope.idcasa="";
             $scope.idesp="";
             $scope.nom="";
             $scope.nombre="";
             $scope.descripcio="";
             $scope.descripcion="";
+            $scope.selCasa="-1";
         }
+        $("#modalEsp").modal('show')
     }
     $scope.guardar=()=>{
         console.log("A modificar:--"+$scope.idesp+"--");
         let data = new FormData;
-        if($scope.idcasa=="") data.append("acc","c");
+        if($scope.idesp=="") data.append("acc","c");
         else data.append("acc","u");
-        data.append("idcasa",$scope.idcasa);
         data.append("idesp",$scope.idesp);
         data.append("nom",$scope.nom);
         data.append("nombre",$scope.nombre);
@@ -334,7 +335,7 @@ angular.module("backend")
         data.append("descripcion",$scope.descripcion);
 
         let defered = $q.defer();
-        $http.post("models/especialitats.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
+        $http.post("models/especialitat.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
         .then((res) =>{
             defered.resolve(res);
             console.log(res.data);

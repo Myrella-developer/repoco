@@ -39,8 +39,7 @@
 
         
         <div class="col-10 offset-1">
-           <h2>Tu video aquí xd</h2>
-             
+        
             <div id="slidehome" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#slidehome" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -135,8 +134,8 @@
     <div class="row row-cols-2 segonc mt-5">
 
         <div class="col-6 mt-5  offset-1">
-                        <p class="pi">Informació d'acces a les <br> Cases d'oficis</p>
-                        <button type="button" class="btn btn-danger boxofc mb-5 mt-4" >Info Cases D'oficis</button>
+                        <p class="pi">{{idioma=="cat"?informacio1:informacion1}}<br>{{idioma=="cat"?informacio2:informacion2}}</p>
+                        <button type="button" class="btn btn-danger boxofc mb-5 mt-4" >{{idioma=="cat"?botoncat:botoncast}}</button>
         </div>
         <div class="col-4">
                     <img src="multimedia/img/hoja.png" alt="" class="img-fluid">

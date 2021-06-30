@@ -35,6 +35,13 @@ angular.module("repoco")
 	   $scope.parrafo2="Te invitamos que veas todo aquello que basura y hemos hecho a lo largo de estos años dentro del proyecto Casa de Oficios.";
 	   $scope.parraf3="Si vols participar, consulta la pàgina inicial del projecte de les pròximes dates i inscriu-te en el formulari d'inscripció.";
 	   $scope.parrafo3="Si quieres participar, consulta la página inicial del proyecto de las próximas fechas e inscríbete en el formulario de inscripción.";
+	   $scope.informacio1="Informació d'acces a les";
+	   $scope.informacion1="Información de acceso a las";
+	   $scope.informacio2="Cases d'oficis";
+	   $scope.informacion2="Casas de oficios";
+	   $scope.botoncat="Info Cases D'oficis";
+	   $scope.botoncast="información casas de oficios";
+
 
 	   $scope.changeimg=(posicion) =>{
 		$scope.rutaimg=$scope.cases[posicion].url;

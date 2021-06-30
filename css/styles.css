@@ -295,12 +295,18 @@ header{
   }
 img.miniatura{
     opacity: 0.5;
-    width: 15rem;
+    width: 16rem;
     position: relative;
+    /*display: block;
+    margin-left: auto;
+     margin-right: auto;*/
 }
 p.anys{
     position: absolute;
     font-size: 45px;
-    top: 25%;
-    left: 18%;
+    top: 24%;
+    left: 25%;
+}
+.nameEspec{
+    font-size: 15px;
 }

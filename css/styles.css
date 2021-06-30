@@ -27,6 +27,9 @@ header{
 .pi{
     font-size: 2rem;
 }
+.textg{
+    font-size: 20px;  
+}
 .segonc{
     background-color: rgb(110, 32, 47);
     color: rgb(255, 255, 255);
@@ -64,12 +67,22 @@ header{
 	padding-right: 15px;
 	padding-left: 15px;
 }
-.iconsFooter{
-    color: #8bacbd;
+
+.bfooter{
+    background-color:  #f9f9f9;
 }
-.iconsfooter1{
-	margin-right: 10.5rem!important;
-   
+.bfooterb{
+    background-color: #e8e8e8;
+}
+
+.tite{
+    color:  #5d6669;
+}
+.iconsfooter2{
+    color: #6d7980;
+}
+.iconsFooter{
+    color: #12789a;
 }
  
 .iconsfooter2{
@@ -164,6 +177,7 @@ header{
     background-color: rgb(110, 32, 47);
     border-color: #fff;
 }
+
 .boxf{
     background-color:#8bacbd;
     width: 200px;
@@ -280,12 +294,23 @@ header{
   }
 img.miniatura{
     opacity: 0.5;
-    width: 15rem;
+    width: 16rem;
     position: relative;
+    /*display: block;
+    margin-left: auto;
+     margin-right: auto;*/
 }
 p.anys{
     position: absolute;
     font-size: 45px;
-    top: 25%;
-    left: 18%;
+    top: 24%;
+    left: 25%;
 }
+.nameEspec{
+    font-size: 12px;
+}
+.nameEspec a{
+    text-decoration: none;
+    color: white;
+}
+

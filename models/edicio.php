@@ -18,51 +18,60 @@ if(isset($_POST['acc']) && $_POST['acc']=='r'){
 	
 	desconectar($conexion);
 
-	$datosExportar='{"anys":
-						[';
+	$datosExportar='{"anysEdicio":';
 
-	$i=0;
-	while ($row=mysqli_fetch_array($anys)) {
-		if ($i!=0) {
-			$datosExportar.=',';
-			};
-		$datosExportar.='{"anyEdicio":"'.$row['dataInici'].'/'.$row['dataFi'].'",
+	$rows= array();
 
-						  "especialitats":
-						  [';
+	while ($row= mysqli_fetch_array($anys)) {
 
-						$mySql2="SELECT `es`.`idEsp`,`es`.`nombre`,`es`.`nom` FROM `especialitats` AS `es` LEFT JOIN `edicio` AS `ed` ON `es`.`idEsp`=`ed`.`idEsp` WHERE `ed`.`dataInici`= '{$row['dataInici']}' AND `es`.`idcasa`='{$_POST['idcasa']}'";
+		$inici=$row['dataInici'];
+		$fi=$row['dataFi'];
 
-						$conexion=conectar();
-						$especialitats=mysqli_query($conexion,$mySql2);
-						desconectar($conexion);
+		$mySql2="SELECT `es`.`idEsp`,`es`.`nombre`,`es`.`nom`,`ed`.`idEdicio` FROM `especialitats` AS `es` LEFT JOIN `edicio` AS `ed` ON `es`.`idEsp`=`ed`.`idEsp` WHERE `ed`.`dataInici`= '{$row['dataInici']}' AND `es`.`idcasa`='{$_POST['idcasa']}'";
 
+		$conexion=conectar();
+		$especialitats=mysqli_query($conexion,$mySql2);
+		desconectar($conexion);
 
-						$j=0;
-						while ($rowEspecialitats=mysqli_fetch_array($especialitats)) {
-							if ($j!=0) {
-								$datosExportar.=',';
-								};	
-						$datosExportar.='{"idEsp":"'.$rowEspecialitats['idEsp'].'"';
+		$rows2=array();
 
-						$datosExportar.=', "nombre":"'.$rowEspecialitats['nombre'].'"';
+		while ($rowEspecialitats=mysqli_fetch_array($especialitats)) {
 
-						$datosExportar.=',"nom":"'.$rowEspecialitats['nom'].'"';
+			$idEsp=$rowEspecialitats['idEsp'];
+			$nombre=$rowEspecialitats['nombre'];
+			$nom=$rowEspecialitats['nom'];
+			$idEdicio=$rowEspecialitats['idEdicio'];
 
-						$datosExportar.='}';
-						$j++;
-						};
+			$rows2[]= array('idEsp'=>$idEsp, 'nombre'=>$nombre, 'nom'=>$nom, 'idEdicio'=>$idEdicio);
+		}
 
+		$rows[]=array('inici'=>$inici, 'fi'=>$fi, 'especialitats'=>$rows2);
+	}
 
-		$datosExportar.=']}';
-		$i++;
-	};
-		
-	$datosExportar.=']}';
-	
+	$datosExportar.=json_encode($rows);
+	$datosExportar.='}';
 
 	echo $datosExportar;
 
+}
+
+
+if(isset($_POST['acc']) && $_POST['acc']=='anyEsp'){
+
+$mySql2="SELECT `es`.`idEsp`,`es`.`nombre`,`es`.`nom`,`ed`.`idEdicio` FROM `especialitats` AS `es` LEFT JOIN `edicio` AS `ed` ON `es`.`idEsp`=`ed`.`idEsp` WHERE `ed`.`dataInici`= '{$_POST['any']}' AND `es`.`idcasa`='{$_POST['idCasa']}'";
+
+		$conexion=conectar();
+		$especialitats=mysqli_query($conexion,$mySql2);
+		desconectar($conexion);
+
+$rows= array();
+
+	while ($row= mysqli_fetch_array($especialitats)) {
+		$rows[]=$row;
+
+}
+
+echo json_encode($rows);
 
 
 

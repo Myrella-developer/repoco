@@ -9,10 +9,10 @@ app.config(['$routeProvider',function($routeProvider){
 		templateUrl:'views/login.php',
 		controller:'LoginController'
 	})
-	.when('/ediciones',{
-		templateUrl:'views/ediciones.php',
-		controller:'EdicionesController'
-	})	
+	.when('/espAny/:any/:idCasa',{
+		templateUrl:'views/edicions.html',
+		controller:'EdicionsController'
+	})
 	.when('/projectes',{
 		templateUrl:'views/projectes.php',
 		controller:'ProjectesController'
@@ -21,10 +21,15 @@ app.config(['$routeProvider',function($routeProvider){
 		templateUrl:'views/cases.html',
 		controller:'CasesController'
 	})
+	.when('/edEsp/:idCasa/:idEdicio',{
+		templateUrl:'views/especialitat.html',
+		controller:'EspecialitatController'
+	})
 	.when('/contacte',{
 		templateUrl:'views/contacte.html',
 		controller:'ContacteController'
 	})
+	
 	.otherwise({
 		redirectTo: '/'
 	})

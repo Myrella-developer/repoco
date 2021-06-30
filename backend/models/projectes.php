@@ -4,9 +4,11 @@
 	if(isset($_POST['acc']) && $_POST['acc'] == "r"){
 		$sqlEsp = "SELECT nom, nombre, idEsp FROM `especialitats` WHERE idcasa = '{$_POST['idcasa']}'";
 
-		$sqlProj="SELECT p.titol, p.titulo, p.descripcio, p.descripcion, p.idProjecte, p.url
+		$sqlProj=
+		"SELECT p.titol, p.titulo, p.descripcio, p.descripcion, p.idProjecte, p.url, e.nom, e.nombre, e.idEsp
 		FROM projectes p
-		INNER JOIN cases ON cases.idcasa = {$_POST['idcasa']}";
+		INNER JOIN cases ON cases.idcasa = {$_POST['idcasa']}
+		INNER JOIN especialitats e ON p.idEdicio = e.idEsp";
 
 		$conexion = conectar();
 		$resultEsp = mysqli_query($conexion, $sqlEsp);

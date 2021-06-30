@@ -422,7 +422,7 @@ angular.module("backend")
             $scope.descripcio=$scope.projectes[posicion].descripcio;
             $scope.descripcion=$scope.projectes[posicion].descripcion;
             $scope.url=$scope.projectes[posicion].url;
-            $scope.sel=$scope.especialitats[posicion].nom;
+            $scope.sel=$scope.projectes[posicion].nom;
 
             $scope.descripcioMulti=$scope.multimedia[posicion].descripcio;
             $scope.descripcionMulti=$scope.multimedia[posicion].descripcion;

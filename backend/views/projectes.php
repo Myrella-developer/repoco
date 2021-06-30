@@ -33,30 +33,37 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form ng-model="projectes">
+                    <form ng-model="projectes" enctype="multipart/form-data">
                         <div class="mb-2">
-                            <select ng-model="sel">
-                                <option value="-1" ng-model="sel">--Selecciona un projecte</option>
-                                <option ng-model="sel" ng-repeat="e in especialitats">{{e.nom}}</option>
+                            <select ng-model="sel" class="form-control">
+                                <option value="-1" ng-model="sel">--Selecciona una edicio</option>
+                                <option ng-model="sel" ng-repeat="e in especialitats">{{e.nom}} * {{e.dataInici}} * {{e.dataFi}}</option>
                             </select>
                         </div>
                         <div class="mb-2">
+                            <label for="message-text" class="col-form-label">Titol del projecte</label>
+                            <input type="text" class="form-control" ng-model="titol">
+                        </div>
+                        <div class="mb-2">
+                            <label for="message-text" class="col-form-label">Titulo del proyecto</label>
+                            <input type="text" class="form-control" ng-model="titulo">
+                        </div>
+                        <div class="mb-2">
                             <label for="message-text" class="col-form-label">Descripció del projecte</label>
-                            <textarea rows="4" class="form-control" id="message-text" ng-model="descripcio">{{descripcio}}</textarea>
+                            <textarea rows="4" class="form-control" ng-model="descripcio">{{descripcio}}</textarea>
                         </div>
                         <div class="mb-2">
                             <label for="message-text" class="col-form-label">Descripción del proyecto</label>
-                            <textarea rows="4" class="form-control" id="message-text" ng-model="descripcion">{{descripcion}}</textarea>
+                            <textarea rows="4" class="form-control" ng-model="descripcion">{{descripcion}}</textarea>
                         </div>
                         <div class="mb-2">
-                            <input type="file" onchange="angular.element(this).scope().getFileDetails(this)">
+                            <h2>Imatge del projecte</h2>
+                            <img src="..."><br/>
+                            <input type="file" multiple onchange="angular.element(this).scope().getFileDetails(this)">
                         </div>
                     </form>
 
-                    <div class="mt-5">
-                        <h2>Imatges del projecte</h2>
-                        <img src="..."><br/>
-
+                    <div class="mt-1">
                         <img ng-if="m.tipo == 'i'" />
                         <video ng-if="m.tipo == 'v'" width="250" height="150" controls>
                             <source src="..." type="video/mp4">
@@ -69,10 +76,10 @@
     
                         <div class="mb-2" ng-show="showDesc">
                             <label for="message-text" class="col-form-label">Descripcio multimedia</label>
-                            <input type="text" class="form-control" id="message-text" ng-model="descripcionMulti">
+                            <input type="text" class="form-control" ng-model="descripcioMulti">
                         
                             <label for="message-text" class="col-form-label">Descripción multimedia</label>
-                            <input type="text" class="form-control" id="message-text" ng-model="descripcioMulti">
+                            <input type="text" class="form-control" ng-model="descripcionMulti">
                         </div>
                     </div>
                 </div>

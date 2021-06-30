@@ -380,11 +380,10 @@ angular.module("backend")
     }
 })
 
-.controller("ProjectesController", ($q, $http, $scope, $routeParams, $location) => {
-    $scope.titol = "";
-    $scope.titulo = "";
+.controller("ProjectesController", ($q, $http, $scope, $routeParams, $location, $rootScope) => {
     $scope.descripcio="";
     $scope.descripcion="";
+    $scope.idProjecte = "";
 
     $scope.idMultimedia = "";
     $scope.descripcioMulti="";
@@ -402,27 +401,24 @@ angular.module("backend")
         defered.resolve(res);
         $scope.especialitats = res.data.especialitats;
         $scope.projectes = res.data.projectes;
+        $scope.multimedia = res.data.multimedia;
     })
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})
 
-    $http.post("models/multimedia.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
-    .then((res) => { 
-        defered.resolve(res);
-        $scope.multimedia = res.data.multimedia;
-        //$scope.projectes = res.data.projectes;
-    })
-    .catch((err) => { console.log(err.statusText) })
-    .finally(() => {})
+    $scope.getFileDetails = (e) => {
+        $rootScope.multimedia = e.files[0];
+    }
 
     $scope.editar=(posicion)=>{
         if(posicion !== "-1"){
-            $scope.titol=$scope.projectes[posicion].titol;
-            $scope.titulo=$scope.projectes[posicion].titulo;
             $scope.descripcio=$scope.projectes[posicion].descripcio;
             $scope.descripcion=$scope.projectes[posicion].descripcion;
             $scope.url=$scope.projectes[posicion].url;
             $scope.sel=$scope.projectes[posicion].nom;
+            $scope.titol=$scope.projectes[posicion].titol;
+            $scope.titulo=$scope.projectes[posicion].titulo;
+            $scope.idProjecte=$scope.projectes[posicion].idProjecte;
 
             $scope.descripcioMulti=$scope.multimedia[posicion].descripcio;
             $scope.descripcionMulti=$scope.multimedia[posicion].descripcion;
@@ -430,15 +426,16 @@ angular.module("backend")
             $scope.urMultil=$scope.multimedia[posicion].url;
         }
         else{
-            $scope.titol = "";
-            $scope.titulo = "";
             $scope.descripcio="";
             $scope.descripcion="";
             $scope.sel="-1"
+            $scope.idProjecte = "";
+            $scope.titol="";
+            $scope.titulo="";
 
             $scope.idMultimedia="";
-            $scope.descripcio="";
-            $scope.descripcion="";
+            $scope.descripcioMulti="";
+            $scope.descripcionMulti="";
         }
         $("#modalProjecte").modal('show')
     }
@@ -447,11 +444,16 @@ angular.module("backend")
         if($scope.idProjecte=="") data.append("acc","c");
         else data.append("acc","u");
 
-        data.append("titol", $scope.titol);
-        data.append("titulo", $scope.titulo);
         data.append("descripcio", $scope.descripcio);
         data.append("descripcion", $scope.descripcion);
-        data.append("idProjecte", $scope.sel);
+        data.append("titol", $scope.titol);
+        data.append("titulo", $scope.titulo);
+        data.append("edicio", $scope.sel);
+
+        data.append("idProjecte", $scope.idProjecte);
+        data.append("multimedia", $rootScope.multimedia);
+        data.append("descripcioMulti", $scope.descripcioMulti);
+        data.append("descripcionMulti", $scope.descripcionMulti);
 
         $http.post("models/projectes.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
         .then((res) =>{
@@ -459,37 +461,26 @@ angular.module("backend")
             console.log(res.data);
         })
         .catch((err)=>{console.log(err.statusText)})
-        .finally(()=>{});
-
-        if($scope.idMultimedia=="") data.append("acc","c");
-        else data.append("acc","u");
-
-        data.append("idProjecte", $scope.idProjecte);
-        data.append("novaDescripcio", $scope.descripcio);
-        data.append("novaDescripcion", $scope.descripcion);
-        data.append("nuevaFoto", $rootScope.nuevaFoto);
-
-        let defered = $q.defer();
-        $http.post("models/multimedia.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
-        .then((res) =>{
-            defered.resolve(res);
-            console.log(res.data);
-        })
-        .catch((err)=>{console.log(err.statusText)})
-        .finally(()=>{$("#modalEdicio").modal('hide')});
+        .finally(()=>{$("#modalProjecte").modal('hide')});
     }
 
     $scope.eliminar = (idProjecte) => {
-        data.append("acc", "d");
-        data.append("idProjecte", idProjecte);
-
-        $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
-        .then((res) => { 
-            defered.resolve(res);
-            console.log(res.data)
-        })
-        .catch((err) => { console.log(err.statusText) })
-        .finally(() => {})
+        let confirmacion = confirm("¿Estás seguro de que quieres eliminar este proyecto?");
+    
+        if(confirmacion){
+            data.append("acc", "d");
+            data.append("idProjecte", idProjecte);
+    
+            $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+            .then((res) => { 
+                defered.resolve(res);
+                console.log(res.data)
+            })
+            .catch((err) => { console.log(err.statusText) })
+            .finally(() => {})
+        }else{
+            alert("No se ha eliminado el proyecto");
+        }
     }
 
     $scope.irMultimedia = () => {

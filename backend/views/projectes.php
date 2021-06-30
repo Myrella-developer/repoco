@@ -15,8 +15,7 @@
     <div class="row">
         <div class="card cardGestor m-5" style="width: 18rem;" ng-repeat="projecte in projectes">
             <div class="card-body">
-                <img src="../img/default.png">
-                <!--<img ng-src="../img/{{projecte.url}}" width="200"/>-->
+                <img src="./img/{{projecte.url}}" width="200"/>
                 <h5 class="card-title">{{projecte.titol}}</h5>
                 <p class="card-text">{{projecte.descripcio}}</p>
                 <button class="btn btn-primary" ng-click="editar($index)">Modificar</button>
@@ -26,7 +25,7 @@
     </div>
 
     <div class="modal fade" id="modalProjecte">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-projecte">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Projectes</h5>
@@ -58,29 +57,44 @@
                         </div>
                         <div class="mb-2">
                             <h2>Imatge del projecte</h2>
-                            <img src="..."><br/>
+                            <img src="./img/{{url}}" width="100"/><br/>
                             <input type="file" multiple onchange="angular.element(this).scope().getFileDetails(this)">
+                        
+                            <button class="btn btn-warning mt-2" ng-click="mostrarDesc()">Descripcio</button>
+    
+                            <div class="mb-2" ng-show="showDesc">
+                                <label for="message-text" class="col-form-label">Descripcio multimedia</label>
+                                <input type="text" class="form-control" ng-model="descripcioMulti">
+                            
+                                <label for="message-text" class="col-form-label">Descripción multimedia</label>
+                                <input type="text" class="form-control" ng-model="descripcionMulti">
+                            </div>
                         </div>
                     </form>
 
-                    <div class="mt-1">
+                    <div class="mt-3">
+                        <h2>Imatges del projecte</h2>
+                        <div ng-repeat="u in urlMulti" class="d-inline-flex">
+                            <img src="./img/{{u.url}}" width="100"/>
+                            <input type="file" multiple onchange="angular.element(this).scope().getFileDetails(this)">
+                            <button class="btn btn-warning mt-2" ng-click="mostrarDesc()">Descripcio</button>
+                            <div class="mb-2" ng-show="showDesc">
+                                <label for="message-text" class="col-form-label">Descripcio multimedia</label>
+                                <input type="text" class="form-control" ng-model="descripcioMulti">
+                            
+                                <label for="message-text" class="col-form-label">Descripción multimedia</label>
+                                <input type="text" class="form-control" ng-model="descripcionMulti">
+                            </div>
+                        </div>
+                        
+                        <!--
                         <img ng-if="m.tipo == 'i'" />
                         <video ng-if="m.tipo == 'v'" width="250" height="150" controls>
                             <source src="..." type="video/mp4">
                         </video><br/>
                         <audio ng-if="m.tipo == 's'" width="250" height="150" controls>
                             <source src="..." type="audio/mp3">
-                        </audio><br/>
-
-                        <button class="btn btn-warning mt-2" ng-click="mostrarDesc()">Descripcio</button>
-    
-                        <div class="mb-2" ng-show="showDesc">
-                            <label for="message-text" class="col-form-label">Descripcio multimedia</label>
-                            <input type="text" class="form-control" ng-model="descripcioMulti">
-                        
-                            <label for="message-text" class="col-form-label">Descripción multimedia</label>
-                            <input type="text" class="form-control" ng-model="descripcionMulti">
-                        </div>
+                        </audio><br/>-->
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -90,8 +104,6 @@
             </div>
         </div>
     </div>
-
-    <button class="btn btn-warning mb-5" ng-click="irMultimedia()">Gestionar multimedia</button>
     
     <?php 
         endif; 

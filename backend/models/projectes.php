@@ -8,15 +8,16 @@
 		INNER JOIN cases ON cases.idcasa = '{$_POST['idcasa']}'";
 
 		$sqlProj=
-		"SELECT p.titol, p.titulo, p.descripcio, p.descripcion, p.idProjecte, p.url, e.nom, e.nombre, e.idEsp
+		"SELECT p.titol, p.titulo, p.descripcio, p.descripcion, p.idProjecte, p.url
 		FROM projectes p
 		INNER JOIN cases ON cases.idcasa = {$_POST['idcasa']}
-		INNER JOIN especialitats e ON p.idEdicio = e.idEsp";
+		INNER JOIN edicio  ON p.idEdicio = edicio.idEdicio
+		";
 
 		$sqlMult = "SELECT m.idMult, m.url, m.tipo, m.descripcio, m.descripcion, m.idProjecte, p.titol
 		FROM multimedia m
 		INNER JOIN projectes p ON m.idProjecte = p.idProjecte
-		INNER JOIN cases ON cases.idcasa = '{$_POST['idcasa']}'";
+		INNER JOIN cases ON cases.idcasa = '{$_POST['idcasa']}'  WHERE p.idProjecte = 2";
 
 		$conexion = conectar();
 		$resultEsp = mysqli_query($conexion, $sqlEsp);
@@ -52,7 +53,7 @@
 		$fileNew=explode(".",$_FILES['multimedia']['name']); 
 		$file=$fileNew[0].date("dmYhis").".".$fileNew[1]; 
 		move_uploaded_file($_FILES['multimedia']['tmp_name'],"../img/".$file);
-
+		
 		$sql = "UPDATE projectes SET titol = '{$_POST['titol']}', titulo = '{$_POST['titulo']}', 
 		descripcio = '{$_POST['descripcio']}', descripcion = '{$_POST['descripcion']}', url = '{$file}',
 		idEdicio = (SELECT edicio.idEdicio FROM edicio INNER JOIN especialitats 

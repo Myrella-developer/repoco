@@ -71,11 +71,11 @@ angular.module("repoco")
 })
 .controller("CasesController", ($q, $http, $scope, $routeParams) => {
 	
-	$scope.param1=$routeParams.idCasa;
+	$scope.idCasa=$routeParams.idCasa;
 
 	let data = new FormData();
 	   data.append("acc", "r");
-	   data.append("idcasa",$scope.param1);
+	   data.append("idcasa",$scope.idCasa);
 	  
 	   let defered = $q.defer();
 
@@ -98,7 +98,7 @@ angular.module("repoco")
 
 	   data = new FormData();
 	   data.append("acc", "r");
-	   data.append("idcasa",$scope.param1);
+	   data.append("idcasa",$scope.idCasa);
 
 	   $http.post("models/edicio.php", data, {
 	      headers:{ "Content-type" : undefined }, transformRequest : angular.identity 
@@ -125,3 +125,28 @@ angular.module("repoco")
 	   
 
 })
+.controller("EdicionsController", ($q, $http, $scope, $routeParams) => {
+	$scope.any=$routeParams.any;
+	$scope.idCasa=$routeParams.idCasa;
+
+  let data = new FormData();
+	   data.append("acc", "anyEsp");
+	   data.append("any",$scope.any);
+	   data.append("idCasa",$scope.idCasa);
+
+	    let defered = $q.defer();
+
+	   $http.post("models/edicio.php", data, {
+	      headers:{ "Content-type" : undefined }, transformRequest : angular.identity 
+	   })
+	   .then((res) => { 
+	      defered.resolve(res);
+
+	    
+	    console.log(res.data);
+	     
+	   })
+	   .catch((err) => { console.log(err.statusText) })
+	   .finally(() => {});
+
+	})

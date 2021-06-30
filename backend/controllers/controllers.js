@@ -16,18 +16,16 @@ angular.module("backend")
         .finally(()=>{});
     }    
 })
-/*
+
 .controller("HomeController", ($scope,$q,$http,$location) => {
     $scope.idCasa="";
     $scope.nom="";
     $scope.nombre="";
     $scope.descripcio="";
     $scope.descripcion="";
-<<<<<<< HEAD
     // $scope.url="";
     $scope.url="digitals.png";
     console.log($scope.url);
-=======
     $scope.url="digitals.png"
     let data = new FormData;
     data.append("acc","r");
@@ -86,51 +84,8 @@ angular.module("backend")
         .finally(()=>{});
 
     }
-
-        $scope.editar=(posicion)=>{
-           
-            if(posicion!="-1"){
-                $scope.nom=$scope.cases[posicion].nom;
-                $scope.nombre=$scope.cases[posicion].nombre;
-                $scope.descripcio=$scope.cases[posicion].descripcio;
-                $scope.descripcion=$scope.cases[posicion].descripcion;
-                $scope.idcasa=$scope.cases[posicion].idcasa;
-                $scope.url=$scope.cases[posicion].url;
-            }
-            else{
-                $scope.idCasa="";
-                $scope.nom="";
-                $scope.nombre="";
-                $scope.descripcio="";
-                $scope.descripcion="";
-            }
-            document.querySelector("#ModalCases").style = "display:block|important";
-            
-        }
-        $scope.guardar=()=>{
-            console.log("A modificar:--"+$scope.idcasa+"--");
-            let data = new FormData;
-            if($scope.idcasa=="") data.append("acc","c");
-            else data.append("acc","u");
-            data.append("idcasa",$scope.idcasa);
-            data.append("nom",$scope.nom);
-            data.append("nombre",$scope.nombre);
-            data.append("descripcio",$scope.descripcio);
-            data.append("descripcion",$scope.descripcion);
-            data.append("url",$scope.url);
-
-            let defered = $q.defer();
-            $http.post("models/cases.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
-            .then((res) =>{
-                defered.resolve(res);
-                $scope.cases=res.data;
-                console.log(res.data);
-            })
-            .catch((err)=>{console.log(err.statusText)})
-            .finally(()=>{});
-        }
 })
-*/
+
         // $scope.subirImagen = () => {
         //     let data = new FormData;
         //     data.append("url",$scope.url)

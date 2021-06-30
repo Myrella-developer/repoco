@@ -149,6 +149,7 @@ angular.module("repoco")
 	$scope.idCasa=$routeParams.idCasa;
 
   let data = new FormData();
+ 
 	   data.append("acc", "anyEsp");
 	   data.append("any",$scope.any);
 	   data.append("idCasa",$scope.idCasa);
@@ -161,7 +162,7 @@ angular.module("repoco")
 	   .then((res) => { 
 	      defered.resolve(res);
 
-	    
+	    $scope.especialitats=res.data;
 	    console.log(res.data);
 	     
 	   })

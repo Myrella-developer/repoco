@@ -169,3 +169,10 @@ angular.module("repoco")
 	   .finally(() => {});
 
 	})
+
+.controller("EspecialitatController", ($q, $http, $scope, $routeParams) => {
+
+	$scope.idEdicio=$routeParams.idEdicio;
+	
+
+})

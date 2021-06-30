@@ -10,19 +10,23 @@
     <h2 class="text-center mt-5">Gestionar Directors</h2>
 
     <i class="fas fa-plus-square ms-4 mt-5 text-primary" ng-click="editar('-1')"><label class="ms-1 fw-bold">AFEGIR</label></i>
-    <div class="row">
-        <div class="card cardGestor m-5" style="width: 18rem;" ng-repeat="director in directors">
-            <div class="card-body">
-                <p class="card-title">{{director.nom}}</p>
-                <p class="card-text">{{director.cog1}} </p>
-                <p class="card-text">{{director.cog2}} </p>
-                <p class="card-text">{{director.correu}} </p>
-                <a class="btn btn-primary" ng-click="editar($index)">Modificar</a><br><br>
-                <button class="btn btn-danger" ng-click="eliminar(director.idDir)">Eliminar</button>
-            </div>
 
-            
-        </div>
+    <div class="container">
+        <div class="row ms-2">    
+            <div class="col-md-3" ng-repeat="director in directors">
+			    <div class="card gestorDir-card">
+				    <div class="card-content text-center">
+					    <h3>{{director.nom}} {{director.cog1}}<small>Director/a</small></h4>
+					    <div class="icon-block">
+                            <i class="fa fa-cog" aria-hidden="true" ng-click="editar($index)"></i>
+						    <a href="mailto:{{director.correu}}"> <i class="fa fa-paper-plane"></i></a>
+                            <a href="tel:{{director.contacte}}"><i class="fa fa-phone"></i></a>
+					    </div>
+                    </div>   
+			    </div>   
+		    </div>
+        </div>        
+    </div>        
         <div class="modal fade" id="modalDir" tabindex="-1" aria-labelledby="labelDigital" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">

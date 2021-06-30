@@ -307,5 +307,10 @@ p.anys{
     left: 25%;
 }
 .nameEspec{
-    font-size: 15px;
+    font-size: 12px;
 }
+.nameEspec a{
+    text-decoration: none;
+    color: white;
+}
+

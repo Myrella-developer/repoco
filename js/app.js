@@ -21,6 +21,10 @@ app.config(['$routeProvider',function($routeProvider){
 		templateUrl:'views/cases.html',
 		controller:'CasesController'
 	})
+	.when('/edEsp/:idCasa/:idEdicio',{
+		templateUrl:'views/especialitat.html',
+		controller:'EspecialitatController'
+	})
 	.when('/contacte',{
 		templateUrl:'views/contacte.html',
 		controller:'ContacteController'

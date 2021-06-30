@@ -65,12 +65,16 @@ header{
 	padding-left: 15px;
 }
 .iconsFooter{
-    color: #8bacbd
+    color: #8bacbd;
 }
 .iconsfooter1{
-	margin-right: 10.5rem!important
+	margin-right: 10.5rem!important;
+   
+}
  
-
+.iconsfooter2{
+	
+    color: #8bacbd;
 }
 .inconsf2{
     color: #8bacbd;

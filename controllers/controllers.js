@@ -89,8 +89,8 @@ angular.module("repoco")
 	       $scope.url=$scope.casa[5];
 	       $scope.nom=$scope.casa[1];
 	       $scope.nombre=$scope.casa[2];
-		   $scope.dcat=$scope.casa[3]
-		   $scope.dcas=$scope.casa[4]
+		   $scope.dcat=$scope.casa[3];
+		   $scope.dcas=$scope.casa[4];
 
 	   })
 	   .catch((err) => { console.log(err.statusText) })
@@ -106,8 +106,8 @@ angular.module("repoco")
 	   .then((res) => { 
 	      defered.resolve(res);
 
-	    $scope.dataAnys=res.data.anys;
-	     // console.log($scope.dataAnys);
+	    $scope.dataAnys=res.data.anysEdicio;
+	    console.log($scope.dataAnys);
 	     
 	   })
 	   .catch((err) => { console.log(err.statusText) })

@@ -10,6 +10,75 @@ body {
     background-color: rgb(255, 255, 255);
   
 }
+.gestorDir-card{
+    font-family: 'Open Sans', Arial, sans-serif;
+    position: relative;
+    float: left;
+    overflow: hidden;
+    max-width: 250px;
+    text-align: center;
+    max-height:300px;
+    border-radius: 0.5rem;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.5);
+    margin-top: 20px;
+}
+.gestorDir-card .card-content {
+    width: 100%;
+    padding: 15px 25px;
+    color:#04080e !important;
+    float:left;
+    background:linear-gradient(to left, rgba(240, 246, 247, 0.246), #eef1f5a6);
+    height:50%;
+    border-radius:0 0 5px 5px;
+    position: relative;
+    z-index: 9999;
+}
+.gestorDir-card .card-content::before {
+    content: '';
+    background:linear-gradient( #12789a, rgba(240, 246, 247, 0.246));
+    width: 120%;
+    height: 100%;
+    left: 0.8px;
+    bottom: 51px;
+    position: absolute;
+    z-index: -1;
+}
+.gestorDir-card h3 {
+    margin: 0 0 5px;
+    font-weight: 600;
+    font-size:18px;
+}
+.gestorDir-card h3 small {
+    display: block;
+    font-size: 12px;
+    margin-top:10px;
+}
+.gestorDir-card i {
+    display: inline-block;
+    font-size: 16px;
+    color: #12789a;
+    text-align: center;
+    border: 1px solid #edf3f7;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 20px;
+    margin: 0 5px;
+}
+.gestorDir-card .icon-block{
+    float:left;
+    width:100%;
+    margin-top:15px;
+}
+.gestorDir-card .icon-block a{
+    text-decoration:none;
+}
+.gestorDir-card i:hover {
+    background-color:#12789a;
+    color:#fff;
+    text-decoration:none;
+    cursor: pointer;
+}
 a{
 	text-decoration: none;
 	color: black;
@@ -17,13 +86,6 @@ a{
 header{
 	font-size: 1em;
 }
-
-#primer {
- /* background-image:url("../img/home-prueba.PNG");  */
-}
-#segonc {
-    /* background-image:url("../img/rojo-prueba.PNG"); */
-    }
 .textoc{
     font-size: 4rem;
     margin-top: 6rem;
@@ -47,66 +109,11 @@ header{
 .brandIcons i{
 	margin: 0 4px;
 }
-.box {
-    max-width: 25rem;
-    padding: 2.5rem;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    background:#fff ;
-    text-align: center;
-    transition: 0.25s;
-    margin-top: 6rem;
-	border-radius: 2rem;
-	background:linear-gradient(to left, rgba(240, 246, 247, 0.246), #eef1f5)
-}
-.box input[type="email"],
-.box input[type="password"] {
-    border: 0;
-    background: none;
-    display: block;
-    margin: 20px auto;
-    text-align: center;
-    border: 2px solid #3498db;
-    padding: 10px 10px;
-    width: 250px;
-    outline: none;
-    color: rgb(74, 79, 87);
-    border-radius: 24px;
-    transition: 0.25s
-}
-.box h1 {
-    color: #3498db;
-    text-transform: uppercase;
-    font-weight: 500
-}
-.box input[type="email"]:focus,
-.box input[type="password"]:focus {
-    width: 300px;
-    border-color: #699bf7
-}
-.box input[type="submit"]{
-    border: 0;
-    background: linear-gradient(to right, rgb(151, 220, 241), #699bf7);
-    display: block;
-    margin: 20px auto;
-    text-align: center;
-    padding: 14px 40px;
-    outline: none;
-    color: rgb(227, 232, 240);
-    border-radius: 24px;
-    transition: 0.25s;
-    cursor: pointer
-}
-.box input[type="submit"]:hover {
-    background:linear-gradient(to left, rgb(151, 220, 241), #699bf7)
-}
 .hoverMenu:hover{
     background-color: black;
     transition: 1.5s;
     font-size: 16.8px;
 }
-
 .navbar{
     border-radius: 10px;
 	padding-bottom: 0.7rem;

@@ -214,6 +214,7 @@ angular.module("backend")
     $scope.cog1 = "";
     $scope.cog2 = "";
     $scope.correu = "";
+    $scope.contacte = "";
     $scope.pass = "";
     $scope.idDir = "";
     let idcasa = $routeParams.idcasa;
@@ -236,6 +237,7 @@ angular.module("backend")
             $scope.cog1=$scope.directors[posicion].cog1;
             $scope.cog2=$scope.directors[posicion].cog2;
             $scope.correu=$scope.directors[posicion].correu;
+            $scope.contacte = $scope.directors[posicion].contacte;
             $scope.idDir=$scope.directors[posicion].idDir;
         }
         else{
@@ -244,6 +246,7 @@ angular.module("backend")
             $scope.cog1 = "";
             $scope.cog2 = "";
             $scope.correu = "";
+            $scope.contacte = "";
             $scope.idDir = "";
             $scope.pass = "";
         }
@@ -259,6 +262,7 @@ angular.module("backend")
         data.append("cog1",$scope.cog1);
         data.append("cog2",$scope.cog2);
         data.append("correu",$scope.correu);
+        data.append("contacte",$scope.contacte);
         data.append("pass",$scope.pass);
 
         let defered = $q.defer();

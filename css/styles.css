@@ -67,9 +67,11 @@ header{
 
 .bfooter{
     background-color:  #f9f9f9;
+
 }
 .bfooterb{
     background-color: #e8e8e8;
+    margin-left: -25px;
 }
 
 .tite{
@@ -77,18 +79,20 @@ header{
 }
 .iconsfooter2{
     color: #6d7980;
+
 }
 .iconsFooter{
     color: #12789a;
 }
 .iconsfooter1{
-	margin-right: 10.5rem!important;
+	margin-left: 197px;
    
 }
  
 .iconsfooter2{
 	
     color: #8bacbd;
+    margin-right: 88px;
 }
 .inconsf2{
     color: #8bacbd;

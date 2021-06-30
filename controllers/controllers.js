@@ -23,6 +23,18 @@ angular.module("repoco")
 	   $scope.inicio="Inicio";
 	   $scope.contacte="Contacte";
 	   $scope.contacto="Contacto";
+	   $scope.banner="QUÈ ET TROBARÀS EN AQUESTA WEB";
+	   $scope.banneres="QUÉ ENCONTRARÁS EN ESTA WEB";
+	   $scope.titol1="T'OBRIM LA PORTA A";
+	   $scope.titulo1="TE ABRIMOS LA PUERTA A";
+	   $scope.titol1a="LES CASES D'OFICIS";
+	   $scope.titulo1a="LAS CASAS DE OFICIOS";
+	   $scope.parraf1="L'objectiu d'aquesta web, és mostrar-vos tots aquells projectes i serveis desenvolupats dins de cadascuna de les especialitats que té cada casa d'oficis.";
+	   $scope.parrafo1="El objetivo de esta web, es mostraros todos aquellos proyectos y servicios desarrollados dentro de cada una de las especialidades que tiene cada casa de oficios.";
+	   $scope.parraf2="Et convidem que vegis tot allò que fem i hem fet al llarg d'aquests anys dins del projecte Casa d'Oficis.";
+	   $scope.parrafo2="Te invitamos que veas todo aquello que basura y hemos hecho a lo largo de estos años dentro del proyecto Casa de Oficios.";
+	   $scope.parraf3="Si vols participar, consulta la pàgina inicial del projecte de les pròximes dates i inscriu-te en el formulari d'inscripció.";
+	   $scope.parrafo3="Si quieres participar, consulta la página inicial del proyecto de las próximas fechas e inscríbete en el formulario de inscripción.";
 
 	   $scope.changeimg=(posicion) =>{
 		$scope.rutaimg=$scope.cases[posicion].url;

@@ -427,7 +427,7 @@ angular.module("backend")
             $scope.descripcioMulti=$scope.multimedia[posicion].descripcio;
             $scope.descripcionMulti=$scope.multimedia[posicion].descripcion;
             $scope.idMultimedia=$scope.multimedia[posicion].idMult;
-            $scope.urMultil=$scope.multimedia[posicion].url;
+            $scope.urlMulti=$scope.multimedia;
         }
         else{
             $scope.descripcio="";
@@ -485,10 +485,6 @@ angular.module("backend")
         }else{
             alert("No se ha eliminado el proyecto");
         }
-    }
-
-    $scope.irMultimedia = () => {
-        $location.path("/multimedia/"+idcasa)
     }
 
     $scope.showDesc = false;

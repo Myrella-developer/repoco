@@ -118,6 +118,10 @@ header{
     font-size: 16.8px;
 }
 
+.modal-projecte{
+    min-width: 800px !important;
+}
+
 /* CAMBIAR NOMBRE CLASES
 a{
 	text-decoration: none;

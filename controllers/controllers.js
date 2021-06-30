@@ -209,8 +209,10 @@ angular.module("repoco")
 	   })
 	   .then((res) => { 
 	      defered.resolve(res);
-
-	    
+	    $scope.nombreEsp=res.data[0][0];
+	    $scope.nomEsp=res.data[0][1];
+	    $scope.desEspcat=res.data[0][2];
+	    $scope.desEspcas=res.data[0][3];
 	    console.log(res.data);
 	     
 	   })
@@ -219,5 +221,9 @@ angular.module("repoco")
 
   	$scope.titol="CASES D'OFICIS";
 	$scope.titulo="CASAS DE OFICIOS";
+	$scope.atras="Atrás";
+	$scope.enrere="Torna enrere";
+	$scope.proCat="Projectes i serveis";
+	$scope.proCas="Proyectos y servicios";
 
 })

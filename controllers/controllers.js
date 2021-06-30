@@ -17,16 +17,31 @@ angular.module("repoco")
 	   .catch((err) => { console.log(err.statusText) })
 	   .finally(() => {});
 
-	   // $scope.cambiaIdioma=function(){
-
-	   // }
-
 	   $scope.espai="Espai Personal";
 	   $scope.espacio="Área Personal";
 	   $scope.inici="Inici";
 	   $scope.inicio="Inicio";
 	   $scope.contacte="Contacte";
 	   $scope.contacto="Contacto";
+	   $scope.banner="QUÈ ET TROBARÀS EN AQUESTA WEB";
+	   $scope.banneres="QUÉ ENCONTRARÁS EN ESTA WEB";
+	   $scope.titol1="T'OBRIM LA PORTA A";
+	   $scope.titulo1="TE ABRIMOS LA PUERTA A";
+	   $scope.titol1a="LES CASES D'OFICIS";
+	   $scope.titulo1a="LAS CASAS DE OFICIOS";
+	   $scope.parraf1="L'objectiu d'aquesta web, és mostrar-vos tots aquells projectes i serveis desenvolupats dins de cadascuna de les especialitats que té cada casa d'oficis.";
+	   $scope.parrafo1="El objetivo de esta web, es mostraros todos aquellos proyectos y servicios desarrollados dentro de cada una de las especialidades que tiene cada casa de oficios.";
+	   $scope.parraf2="Et convidem que vegis tot allò que fem i hem fet al llarg d'aquests anys dins del projecte Casa d'Oficis.";
+	   $scope.parrafo2="Te invitamos que veas todo aquello que basura y hemos hecho a lo largo de estos años dentro del proyecto Casa de Oficios.";
+	   $scope.parraf3="Si vols participar, consulta la pàgina inicial del projecte de les pròximes dates i inscriu-te en el formulari d'inscripció.";
+	   $scope.parrafo3="Si quieres participar, consulta la página inicial del proyecto de las próximas fechas e inscríbete en el formulario de inscripción.";
+	   $scope.informacio1="Informació d'acces a les";
+	   $scope.informacion1="Información de acceso a las";
+	   $scope.informacio2="Cases d'oficis";
+	   $scope.informacion2="Casas de oficios";
+	   $scope.botoncat="Info Cases D'oficis";
+	   $scope.botoncast="información casas de oficios";
+
 
 	   $scope.changeimg=(posicion) =>{
 		$scope.rutaimg=$scope.cases[posicion].url;
@@ -44,16 +59,6 @@ angular.module("repoco")
 
 
    		};
-   		// <div class="col imagenFondo position-relative"><img id="fotoFondo" ng-src="{{miFoto}}"></div>
-        
-     //    <div class="row position-absolute top-50 start-50 translate-middle">
-     //        <div class="col-4 mt-5" ng-repeat="casa in cases">
-     //            <a href="#/cases/{{casa.idcasa}}"  ng-mouseover="cambioImagen({{casa.idcasa}})">{{casa.nom}}</a>
-     //        </div>
-     //    </div>
-
-		// };
-
 	
 })  
 .controller("LoginController", function($scope, $http, $q, $location, $rootScope){	
@@ -85,11 +90,11 @@ angular.module("repoco")
 })
 .controller("CasesController", ($q, $http, $scope, $routeParams) => {
 	
-	$scope.param1=$routeParams.idCasa;
+	$scope.idCasa=$routeParams.idCasa;
 
 	let data = new FormData();
 	   data.append("acc", "r");
-	   data.append("idcasa",$scope.param1);
+	   data.append("idcasa",$scope.idCasa);
 	  
 	   let defered = $q.defer();
 
@@ -99,39 +104,30 @@ angular.module("repoco")
 	   .then((res) => { 
 	       defered.resolve(res);
 	       $scope.casa=res.data.casa;
-	       $scope.especialitats=res.data.especialitats;
-	       $scope.edicio=res.data.edicio;
-	       
+	       // console.log($scope.casa);
+	       $scope.url=$scope.casa[5];
 	       $scope.nom=$scope.casa[1];
 	       $scope.nombre=$scope.casa[2];
-	       $scope.dcat=$scope.casa[3].split("/");
-	       $scope.dcas=$scope.casa[4].split("/");
-	       $scope.descripcio1=$scope.dcat[0];
-	       $scope.descripcio2=$scope.dcat[1];
-	       $scope.descripcion1=$scope.dcas[0];
-	       $scope.descripcion2=$scope.dcas[1];
-	       $scope.url=$scope.casa[5];
+		   $scope.dcat=$scope.casa[3];
+		   $scope.dcas=$scope.casa[4];
 
-	       console.log($scope.casa);
-	       console.log($scope.especialitats);
-	       
-	       
-      
 	   })
 	   .catch((err) => { console.log(err.statusText) })
 	   .finally(() => {});
 
 	   data = new FormData();
 	   data.append("acc", "r");
+	   data.append("idcasa",$scope.idCasa);
 
 	   $http.post("models/edicio.php", data, {
 	      headers:{ "Content-type" : undefined }, transformRequest : angular.identity 
 	   })
 	   .then((res) => { 
-	       defered.resolve(res);
-	      
+	      defered.resolve(res);
 
-      
+	    $scope.dataAnys=res.data.anysEdicio;
+	    console.log($scope.dataAnys);
+	     
 	   })
 	   .catch((err) => { console.log(err.statusText) })
 	   .finally(() => {});
@@ -142,9 +138,34 @@ angular.module("repoco")
 	   $scope.titulo2="¿QUÉ ES LA CASA DE OFICIOS";
 	   $scope.titol3="Casa d'Oficis";
 	   $scope.titulo3="Casa de Oficios";
-	   $scope.anys="Anys";
+	   $scope.acat="Anys";
 	   $scope.acas="Años";
 
 	   
 
 })
+.controller("EdicionsController", ($q, $http, $scope, $routeParams) => {
+	$scope.any=$routeParams.any;
+	$scope.idCasa=$routeParams.idCasa;
+
+  let data = new FormData();
+	   data.append("acc", "anyEsp");
+	   data.append("any",$scope.any);
+	   data.append("idCasa",$scope.idCasa);
+
+	    let defered = $q.defer();
+
+	   $http.post("models/edicio.php", data, {
+	      headers:{ "Content-type" : undefined }, transformRequest : angular.identity 
+	   })
+	   .then((res) => { 
+	      defered.resolve(res);
+
+	    
+	    console.log(res.data);
+	     
+	   })
+	   .catch((err) => { console.log(err.statusText) })
+	   .finally(() => {});
+
+	})

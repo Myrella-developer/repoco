@@ -37,7 +37,7 @@
                         <div class="mb-2">
                             <select ng-model="sel">
                                 <option value="-1" ng-model="sel">--Selecciona un projecte</option>
-                                <option ng-repeat="e in especialitats" ng-value="e.idEsp">{{e.nom}}</option>
+                                <option ng-model="sel" ng-repeat="e in especialitats">{{e.nom}}</option>
                             </select>
                         </div>
                         <div class="mb-2">

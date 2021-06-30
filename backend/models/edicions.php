@@ -32,16 +32,25 @@
     }
 
     if(isset($_POST['acc']) && $_POST['acc'] == "u"){
+		$fileNew=explode(".",$_FILES['imgEdicio']['name']); 
+		$file=$fileNew[0].date("dmYhis").".".$fileNew[1]; 
+		move_uploaded_file($_FILES['imgEdicio']['tmp_name'],"../img/".$file); 
+
 		$sql = "UPDATE edicio SET dataInici = '{$_POST['dataInici']}', datafi = '{$_POST['dataFi']}', 
-		idEsp = '{$_POST['selEsp']}', url = '{$_POST['imgEdicio']}' WHERE idEdicio = '{$_POST['idEdicio']}'";
+		idEsp = (SELECT idEsp FROM especialitats WHERE especialitats.nom = 'Disseny de pàgines web'), url = '{$file}' WHERE idEdicio = '{$_POST['idEdicio']}'";
 		$conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);
 	}
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "c"){
+		$fileNew=explode(".",$_FILES['imgEdicio']['name']); 
+		$file=$fileNew[0].date("dmYhis").".".$fileNew[1]; 
+		move_uploaded_file($_FILES['imgEdicio']['tmp_name'],"../img/".$file); 
+        
+
 		$sql = "INSERT INTO edicio(idEdicio, idEsp, dataInici, dataFi, url) 
-		VALUES(NULL, '{$_POST['selEsp']}', '{$_POST['dataInici']}', '{$_POST['dataFi']}', '{$_POST['imgEdicio']}')";
+		VALUES(NULL, '{$_POST['selEsp']}', '{$_POST['dataInici']}', '{$_POST['dataFi']}', '{$file}')";
 		$conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);

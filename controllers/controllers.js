@@ -23,6 +23,25 @@ angular.module("repoco")
 	   $scope.inicio="Inicio";
 	   $scope.contacte="Contacte";
 	   $scope.contacto="Contacto";
+	   $scope.banner="QUÈ ET TROBARÀS EN AQUESTA WEB";
+	   $scope.banneres="QUÉ ENCONTRARÁS EN ESTA WEB";
+	   $scope.titol1="T'OBRIM LA PORTA A";
+	   $scope.titulo1="TE ABRIMOS LA PUERTA A";
+	   $scope.titol1a="LES CASES D'OFICIS";
+	   $scope.titulo1a="LAS CASAS DE OFICIOS";
+	   $scope.parraf1="L'objectiu d'aquesta web, és mostrar-vos tots aquells projectes i serveis desenvolupats dins de cadascuna de les especialitats que té cada casa d'oficis.";
+	   $scope.parrafo1="El objetivo de esta web, es mostraros todos aquellos proyectos y servicios desarrollados dentro de cada una de las especialidades que tiene cada casa de oficios.";
+	   $scope.parraf2="Et convidem que vegis tot allò que fem i hem fet al llarg d'aquests anys dins del projecte Casa d'Oficis.";
+	   $scope.parrafo2="Te invitamos que veas todo aquello que basura y hemos hecho a lo largo de estos años dentro del proyecto Casa de Oficios.";
+	   $scope.parraf3="Si vols participar, consulta la pàgina inicial del projecte de les pròximes dates i inscriu-te en el formulari d'inscripció.";
+	   $scope.parrafo3="Si quieres participar, consulta la página inicial del proyecto de las próximas fechas e inscríbete en el formulario de inscripción.";
+	   $scope.informacio1="Informació d'acces a les";
+	   $scope.informacion1="Información de acceso a las";
+	   $scope.informacio2="Cases d'oficis";
+	   $scope.informacion2="Casas de oficios";
+	   $scope.botoncat="Info Cases D'oficis";
+	   $scope.botoncast="información casas de oficios";
+
 
 	   $scope.changeimg=(posicion) =>{
 		$scope.rutaimg=$scope.cases[posicion].url;
@@ -89,8 +108,8 @@ angular.module("repoco")
 	       $scope.url=$scope.casa[5];
 	       $scope.nom=$scope.casa[1];
 	       $scope.nombre=$scope.casa[2];
-		   $scope.dcat=$scope.casa[3]
-		   $scope.dcas=$scope.casa[4]
+		   $scope.dcat=$scope.casa[3];
+		   $scope.dcas=$scope.casa[4];
 
 	   })
 	   .catch((err) => { console.log(err.statusText) })
@@ -106,8 +125,8 @@ angular.module("repoco")
 	   .then((res) => { 
 	      defered.resolve(res);
 
-	    $scope.dataAnys=res.data.anys;
-	     // console.log($scope.dataAnys);
+	    $scope.dataAnys=res.data.anysEdicio;
+	    console.log($scope.dataAnys);
 	     
 	   })
 	   .catch((err) => { console.log(err.statusText) })

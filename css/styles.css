@@ -70,32 +70,29 @@ header{
 
 .bfooter{
     background-color:  #f9f9f9;
-
+/* margin-right: 5px!important;*/
 }
+
 .bfooterb{
     background-color: #e8e8e8;
-    margin-left: -25px;
-}
+  }
 
 .tite{
     color:  #5d6669;
 }
-.iconsfooter2{
-    color: #6d7980;
 
-}
 .iconsFooter{
     color: #12789a;
+    margin-right: 24px;
 }
 .iconsfooter1{
-	margin-left: 197px;
+margin-left: 197px;
    
-}
- 
+} 
 .iconsfooter2{
 	
     color: #8bacbd;
-    margin-right: 88px;
+  margin-right: -67%!important;
 }
 .inconsf2{
     color: #8bacbd;

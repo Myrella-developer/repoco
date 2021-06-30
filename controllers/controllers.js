@@ -199,8 +199,25 @@ angular.module("repoco")
 	   .catch((err) => { console.log(err.statusText) })
 	   .finally(() => {});
 
-	   $scope.titol="CASES D'OFICIS";
-	   $scope.titulo="CASAS DE OFICIOS";
+	 
+	    data = new FormData();
+	   	data.append("acc", "r");
+	   	data.append("idEdicio",$scope.idEdicio);
 
+	   $http.post("models/projectes.php", data, {
+	      headers:{ "Content-type" : undefined }, transformRequest : angular.identity 
+	   })
+	   .then((res) => { 
+	      defered.resolve(res);
+
+	    
+	    console.log(res.data);
+	     
+	   })
+	   .catch((err) => { console.log(err.statusText) })
+	   .finally(() => {});
+
+  	$scope.titol="CASES D'OFICIS";
+	$scope.titulo="CASAS DE OFICIOS";
 
 })

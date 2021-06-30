@@ -34,7 +34,7 @@
 <div class="row row-cols-3 textCentral ">
 	<div class="col position-relative" ng-repeat="any in dataAnys">
 		<img class="miniatura" src="multimedia/img/miniatura1.jpg">
-		<p class="anys">{{(any.anyEdicio.split('/')[0])|limitTo:4:0}}/{{(any.anyEdicio.split('/')[1])|limitTo:2:2}}</p>
+		<p class="anys">{{any.inici|limitTo:4:0}}/{{any.fi|limitTo:2:2}} </p>
 		<p class="badge bg-secondary fw-bold" ng-repeat="especialitat in any.especialitats">{{idioma=="cat"?especialitat.nom:especialitat.nombre}}</p>
 	</div>
 </div>

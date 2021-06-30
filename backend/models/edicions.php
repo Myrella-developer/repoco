@@ -32,32 +32,25 @@
     }
 
     if(isset($_POST['acc']) && $_POST['acc'] == "u"){
-        $nuevoNombre = $_POST['imgEdicio'] . date("Y-m-d_His");
-        move_uploaded_file($nuevoNombre, "../img/" . $nuevoNombre);
+		$fileNew=explode(".",$_FILES['imgEdicio']['name']); 
+		$file=$fileNew[0].date("dmYhis").".".$fileNew[1]; 
+		move_uploaded_file($_FILES['imgEdicio']['tmp_name'],"../img/".$file); 
 
 		$sql = "UPDATE edicio SET dataInici = '{$_POST['dataInici']}', datafi = '{$_POST['dataFi']}', 
-		idEsp = (SELECT idEsp FROM especialitats WHERE especialitats.nom = 'Disseny de pàgines web'), url = '{$nuevoNombre}' WHERE idEdicio = '{$_POST['idEdicio']}'";
+		idEsp = (SELECT idEsp FROM especialitats WHERE especialitats.nom = 'Disseny de pàgines web'), url = '{$file}' WHERE idEdicio = '{$_POST['idEdicio']}'";
 		$conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);
 	}
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "c"){
-		$fileInfo = $_FILES['imgEdicio'];
-
-        $filePath = $fileInfo['tmp_name'];
-        $fileName = $fileInfo['name'];
-
-        $datosFichero = explode(".", $fileName);
-        $nuevoNombre = $datosFichero[0] . date("Y-m-d_His") . "." . $datosFichero[1];
-        move_uploaded_file($filePath, "../img/".$nuevoNombre);
-
-/*
-		$nuevoNombre = $_FILES['imgEdicio'] . date("Y-m-d_His");
-		move_uploaded_file($temporal['tmp_name'], "../img/" . $nuevoNombre);*/
+		$fileNew=explode(".",$_FILES['imgEdicio']['name']); 
+		$file=$fileNew[0].date("dmYhis").".".$fileNew[1]; 
+		move_uploaded_file($_FILES['imgEdicio']['tmp_name'],"../img/".$file); 
+        
 
 		$sql = "INSERT INTO edicio(idEdicio, idEsp, dataInici, dataFi, url) 
-		VALUES(NULL, '{$_POST['selEsp']}', '{$_POST['dataInici']}', '{$_POST['dataFi']}', '{$_POST['imgEdicio']}')";
+		VALUES(NULL, '{$_POST['selEsp']}', '{$_POST['dataInici']}', '{$_POST['dataFi']}', '{$file}')";
 		$conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);

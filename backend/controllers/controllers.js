@@ -297,7 +297,7 @@ angular.module("backend")
     .finally(() => {})
 
     $scope.getFileDetails = (e) => {
-        $rootScope.fotoEdicio = e.files[0].name;
+        $rootScope.fotoEdicio = e.files[0];
     }
 
     $scope.editar=(posicion, idEdicio)=>{
@@ -422,7 +422,7 @@ angular.module("backend")
             $scope.descripcio=$scope.projectes[posicion].descripcio;
             $scope.descripcion=$scope.projectes[posicion].descripcion;
             $scope.url=$scope.projectes[posicion].url;
-            $scope.sel=$scope.especialitats[posicion].idEsp;
+            $scope.sel=$scope.especialitats[posicion].nom;
 
             $scope.descripcioMulti=$scope.multimedia[posicion].descripcio;
             $scope.descripcionMulti=$scope.multimedia[posicion].descripcion;

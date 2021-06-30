@@ -39,7 +39,7 @@
         				<a href="https://www.facebook.com/barcelonactiva/" target="_blank"><i class="bi bi-facebook"></i></a>
 						<a href="https://www.youtube.com/user/videosbarcelonactiva" target="_blank"><i class="bi bi-youtube"></i></a>
 						<a href="https://www.slideshare.net/barcelonactiva" target="_blank"><i class="fab fa-slideshare"></i></a>
-						<a ng-href="#/login"><span class="espai">{{idioma=="cat"?espai:espacio}}</span></a>
+						<a ng-href="#/login"><span class="espai">{{idioma=="cat"?banner:banneres}}</span></a>
         			</div>
         		</div>
         		<div class="row menu">
@@ -70,13 +70,13 @@
 
 		<div data-ng-view=""></div>
 
-		<footer class="mt-5">
+		<footer class="mt-5 bfooter">
 			
 			
-			<div class="container">
+			<div class="container " >
 				<div class="row mt-5">
 					<div class="col-10 text-center">
-						<h2>En què podem ajudar-te</h2>
+						<h2 class="tite">En què podem ajudar-te</h2>
 					</div>
 				</div>	
 				<div class="row">
@@ -135,8 +135,10 @@
 							</div>
 					</div>		
 			</div>	
-					<div class="row  mt-5">						
-							<div class="col-2 text-center">
+					<div class="row  mt-5">
+
+
+							<div class="col-1 text-center">
 								<img src="multimedia/img/Logo Basa.jpg">
 							</div>
 
@@ -162,13 +164,13 @@
 					</div>
 			</div>
 		<hr>
-			<div class="container">
-				<div class="row row-cols-10">
-					<div class="col-2 text-center">
-						<img src="multimedia/img/logo.svg">
-					</div>
-					<div class="col-8 text-end me-4">
-						<li class="list-inline-item"><a href="#">Queixes i suggeriments</a></li> 
+			<div class="container-fluid bfooterb">
+				<div class="row row-cols-10" >
+					<div class="col-5 text-center"><a href="https://ajuntament.barcelona.cat/ca/">
+						<img src="multimedia/img/logo.svg"></a></div>
+
+					<div class="col-5 text-end me-4" >
+						<li class="list-inline-item"><a href="#" class="iconsfooter2">Queixes i suggeriments</a></li> 
 					</div>
 				</div>		
 			</div>		

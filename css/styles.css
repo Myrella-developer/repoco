@@ -64,8 +64,21 @@ header{
 	padding-right: 15px;
 	padding-left: 15px;
 }
+
+.bfooter{
+    background-color:  #f9f9f9;
+}
+.bfooterb{
+    background-color: #e8e8e8;
+}
+.tite{
+    color:  #5d6669;
+}
+.iconsfooter2{
+    color: #6d7980;
+}
 .iconsFooter{
-    color: #8bacbd;
+    color: #12789a;
 }
 .iconsfooter1{
 	margin-right: 10.5rem!important;
@@ -164,6 +177,7 @@ header{
     background-color: rgb(110, 32, 47);
     border-color: #fff;
 }
+
 .boxf{
     background-color:#8bacbd;
     width: 200px;

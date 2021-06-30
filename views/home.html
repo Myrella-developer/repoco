@@ -5,31 +5,31 @@
         
         <div class="col"  >
                 <div class="textoc mb-5" id="prueba">
-                    <p  class="text-center">T'OBRIM LA PORTA A <br> LES CASES D'OFICIS</p>
+                    <p  class="text-center">{{idioma=="cat"?titol1:titulo1}}<br>{{idioma=="cat"?titol1a:titulo1a}}</p>
                 </div>  
                    
                 <div class="row cols-3 mt-5 mb-5">
 
                         <div class="col text-center pi imgbanner mt-5" ng-repeat="casa in cases"  >
                            
-                           <p class="hover"  ><a href="#/cases/{{casa.idcasa}}" id="numweb" ng-mouseover="changeimg($index)">{{casa.nom}}</a></p>
+                           <p class="hover"  ><a href="#/cases/{{casa.idcasa}}" id="numweb" ng-mouseover="changeimg($index)">{{idioma=="cat"?casa.nom:casa.nombre}}</a></p>
                           
                         </div>    
                 </div> 
                
                 <div class="row row-cols-10 mt-5 offset-1 ">
                         <div class="col-10 row-cols-10">
-                            <p class="pi">QUÉ ET TROBARÁS EN AQUESTA WEB</p>
+                            <p class="pi">{{idioma=="cat"?espai:espacio}}</p>
                         </div>
                         
                         <div class="col-8 mt-2">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident expedita minima doloribus autem voluptas voluptate, consequuntur vitae sapiente quae omnis beatae nesciunt voluptatibus harum nisi quam laboriosam obcaecati ipsam eos.</p>
+                            <p>{{idioma=="cat"?parraf1:parrafo1}}</p>
                         </div>
                         <div class="col-8 mt-2">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cum, repellat velit ipsam iste facilis. Quasi neque culpa unde praesentium ad illum itaque quia, explicabo placeat adipisci error! Ex, at!</p>
+                            <p>{{idioma=="cat"?parraf2:parrafo2}}</p>
                         </div>
                         <div class="col-8 mt-2 mb-5">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit odit cum repellendus esse. Voluptates corrupti quia error at expedita accusamus nesciunt explicabo molestiae, cumque dolor veniam cupiditate quae. Non, aspernatur.</p>
+                            <p>{{idioma=="cat"?parraf3:parrafo3}}</p>
                         </div>
                 </div>
                    
@@ -39,8 +39,7 @@
 
         
         <div class="col-10 offset-1">
-           <h2>Tu video aquí xd</h2>
-             
+        
             <div id="slidehome" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#slidehome" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -135,8 +134,8 @@
     <div class="row row-cols-2 segonc mt-5">
 
         <div class="col-6 mt-5  offset-1">
-                        <p class="pi">Informació d'acces a les <br> Cases d'oficis</p>
-                        <button type="button" class="btn btn-danger boxofc mb-5 mt-4" >Info Cases D'oficis</button>
+                        <p class="pi">{{idioma=="cat"?informacio1:informacion1}}<br>{{idioma=="cat"?informacio2:informacion2}}</p>
+                        <button type="button" class="btn btn-danger boxofc mb-5 mt-4" >{{idioma=="cat"?botoncat:botoncast}}</button>
         </div>
         <div class="col-4">
                     <img src="multimedia/img/hoja.png" alt="" class="img-fluid">

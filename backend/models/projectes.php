@@ -17,7 +17,7 @@
 		$sqlMult = "SELECT m.idMult, m.url, m.tipo, m.descripcio, m.descripcion, m.idProjecte, p.titol
 		FROM multimedia m
 		INNER JOIN projectes p ON m.idProjecte = p.idProjecte
-		INNER JOIN cases ON cases.idcasa = '{$_POST['idcasa']}'  WHERE p.idProjecte = 2";
+		INNER JOIN cases ON cases.idcasa = '{$_POST['idcasa']}'";
 
 		$conexion = conectar();
 		$resultEsp = mysqli_query($conexion, $sqlEsp);

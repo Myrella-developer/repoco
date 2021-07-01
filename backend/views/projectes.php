@@ -1,9 +1,7 @@
 <div class="container-fluid">
     <?php 
         session_start();
-        if(!isset($_SESSION['login']['idDir'])){
-            echo "Debes iniciar sesión";
-        }
+        if(!isset($_SESSION['login'])) header('Location: ../#');
     
         if(isset($_SESSION['login']['idDir'])) :
     ?>
@@ -74,6 +72,7 @@
 
                     <div class="mt-3">
                         <h2>Imatges del projecte</h2>
+                        <!--
                         <div ng-repeat="u in urlMulti" class="d-inline-flex">
                             <img src="./img/{{u.url}}" width="100"/>
                             <input type="file" multiple onchange="angular.element(this).scope().getFileDetails(this)">
@@ -85,7 +84,7 @@
                                 <label for="message-text" class="col-form-label">Descripción multimedia</label>
                                 <input type="text" class="form-control" ng-model="descripcionMulti">
                             </div>
-                        </div>
+                        </div>-->
                         
                         <!--
                         <img ng-if="m.tipo == 'i'" />

@@ -1,9 +1,7 @@
 <div class="container-fluid">
     <?php 
         session_start();
-        if(!isset($_SESSION['login']['idDir'])){
-            echo "Debes iniciar sesión";
-        }
+        if(!isset($_SESSION['login'])) header('Location: ../#');
         if(isset($_SESSION['login']['idDir'])) :
     ?>
     <h2 class="text-center mt-5">Les edicions de la teva casa</h2>

@@ -1,6 +1,6 @@
 angular.module("backend")
 .controller("IndexController", ($scope,$q,$http,$routeParams) => {  
-       $scope.tancar=()=>{
+    $scope.tancar=()=>{
         let data = new FormData;
         data.append("acc","tancar");
 
@@ -406,12 +406,13 @@ angular.module("backend")
         $scope.especialitats = res.data.especialitats;
         $scope.projectes = res.data.projectes;
         $scope.multimedia = res.data.multimedia;
+        console.log($scope.multimedia)
     })
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})
 
     $scope.getFileDetails = (e) => {
-        $rootScope.multimedia = e.files[0];
+        $rootScope.multimedias = e.files[0];
     }
 
     $scope.editar=(posicion)=>{
@@ -427,7 +428,8 @@ angular.module("backend")
             $scope.descripcioMulti=$scope.multimedia[posicion].descripcio;
             $scope.descripcionMulti=$scope.multimedia[posicion].descripcion;
             $scope.idMultimedia=$scope.multimedia[posicion].idMult;
-            $scope.urlMulti=$scope.multimedia;
+            $scope.urlMulti=$scope.multimedia[posicion];
+            console.log($scope.urlMulti)
         }
         else{
             $scope.descripcio="";
@@ -455,7 +457,7 @@ angular.module("backend")
         data.append("edicio", $scope.sel);
 
         data.append("idProjecte", $scope.idProjecte);
-        data.append("multimedia", $rootScope.multimedia);
+        data.append("multimedia", $rootScope.multimedias);
         data.append("descripcioMulti", $scope.descripcioMulti);
         data.append("descripcionMulti", $scope.descripcionMulti);
 

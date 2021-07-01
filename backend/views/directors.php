@@ -27,43 +27,41 @@
 		    </div>
         </div>        
     </div>        
-        <div class="modal fade" id="modalDir" tabindex="-1" aria-labelledby="labelDigital" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="labelDigital">Director</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="modal fade" id="modalDir" tabindex="-1" aria-labelledby="labelDigital" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content modalgestorDir">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="labelDigital">Director</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>        
+                <div class="modal-body">
+                    <form ng-model="directors">
+                        <div class="mb-2">
+                           <label for="message-text" class="col-form-label">Nom Director</label>
+                          <input class="form-control" id="message-text" ng-model="nom"></input>
                         </div>
-                        <div class="modal-body">
-                            <form ng-model="directors">
-                                <div class="mb-2">
-                                    <label for="message-text" class="col-form-label">Nom Director</label>
-                                    <input class="form-control" id="message-text" ng-model="nom"></input>
-                                </div>
-                                <div class="mb-2">
-                                    <label for="message-text" class="col-form-label">Primer Cognom Director</label>
-                                    <textarea class="form-control" id="message-text" ng-model="cog1">{{cog1}}</textarea>
-                                </div>
-                                <div class="mb-2">
-                                    <label for="message-text" class="col-form-label">Segon Cognom Director</label>
-                                    <textarea class="form-control" id="message-text" ng-model="cog2">{{cog2}}}</textarea>
-                                </div>
-                                <div class="mb-2">
-                                    <label for="message-text" class="col-form-label">Correu Director</label>
-                                    <textarea class="form-control" id="message-text" ng-model="correu">{{correu}}</textarea>
-                                </div>
-                                <div class="mb-2">
-                                    <label for="message-text" class="col-form-label">Contrasenya Director</label>
-                                    <textarea class="form-control" id="message-text" ng-model="pass">{{pass}}</textarea>
-                                </div>
-                            </form>
+                        <div class="mb-2">
+                            <label for="message-text" class="col-form-label">Primer Cognom Director</label>
+                            <textarea class="form-control" id="message-text" ng-model="cog1">{{cog1}}</textarea>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal" ng-click="guardar()">Dessar canvis</button>
+                        <div class="mb-2">
+                            <label for="message-text" class="col-form-label">Segon Cognom Director</label>
+                            <textarea class="form-control" id="message-text" ng-model="cog2">{{cog2}}}</textarea>
                         </div>
-                    </div>
+                        <div class="mb-2">
+                            <label for="message-text" class="col-form-label">Correu Director</label>
+                            <textarea class="form-control" id="message-text" ng-model="correu">{{correu}}</textarea>
+                       </div>
+                        <div class="mb-2">
+                            <label for="message-text" class="col-form-label">Contrasenya Director</label>
+                            <textarea class="form-control" id="message-text" ng-model="pass">{{pass}}</textarea>
+                        </div>
+                    </form>
                 </div>
-            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal" ng-click="guardar()">Dessar canvis</button>
+           </div>
+        </div>
     </div>
     <?php 
         endif; 
@@ -75,3 +73,6 @@
 
     <?php endif; ?>
 </div>
+
+
+

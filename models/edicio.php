@@ -27,7 +27,7 @@ if(isset($_POST['acc']) && $_POST['acc']=='r'){
 		$inici=$row['dataInici'];
 		$fi=$row['dataFi'];
 
-		$mySql2="SELECT `es`.`idEsp`,`es`.`nombre`,`es`.`nom` FROM `especialitats` AS `es` LEFT JOIN `edicio` AS `ed` ON `es`.`idEsp`=`ed`.`idEsp` WHERE `ed`.`dataInici`= '{$row['dataInici']}' AND `es`.`idcasa`='{$_POST['idcasa']}'";
+		$mySql2="SELECT `es`.`idEsp`,`es`.`nombre`,`es`.`nom`,`ed`.`idEdicio` FROM `especialitats` AS `es` LEFT JOIN `edicio` AS `ed` ON `es`.`idEsp`=`ed`.`idEsp` WHERE `ed`.`dataInici`= '{$row['dataInici']}' AND `es`.`idcasa`='{$_POST['idcasa']}'";
 
 		$conexion=conectar();
 		$especialitats=mysqli_query($conexion,$mySql2);
@@ -40,8 +40,9 @@ if(isset($_POST['acc']) && $_POST['acc']=='r'){
 			$idEsp=$rowEspecialitats['idEsp'];
 			$nombre=$rowEspecialitats['nombre'];
 			$nom=$rowEspecialitats['nom'];
+			$idEdicio=$rowEspecialitats['idEdicio'];
 
-			$rows2[]= array('idEsp'=>$idEsp, 'nombre'=>$nombre, 'nom'=>$nom);
+			$rows2[]= array('idEsp'=>$idEsp, 'nombre'=>$nombre, 'nom'=>$nom, 'idEdicio'=>$idEdicio);
 		}
 
 		$rows[]=array('inici'=>$inici, 'fi'=>$fi, 'especialitats'=>$rows2);
@@ -57,7 +58,7 @@ if(isset($_POST['acc']) && $_POST['acc']=='r'){
 
 if(isset($_POST['acc']) && $_POST['acc']=='anyEsp'){
 
-$mySql2="SELECT `es`.`idEsp`,`es`.`nombre`,`es`.`nom` FROM `especialitats` AS `es` LEFT JOIN `edicio` AS `ed` ON `es`.`idEsp`=`ed`.`idEsp` WHERE `ed`.`dataInici`= '{$_POST['any']}' AND `es`.`idcasa`='{$_POST['idCasa']}'";
+$mySql2="SELECT `es`.`idEsp`,`es`.`nombre`,`es`.`nom`,`ed`.`idEdicio` FROM `especialitats` AS `es` LEFT JOIN `edicio` AS `ed` ON `es`.`idEsp`=`ed`.`idEsp` WHERE `ed`.`dataInici`= '{$_POST['any']}' AND `es`.`idcasa`='{$_POST['idCasa']}'";
 
 		$conexion=conectar();
 		$especialitats=mysqli_query($conexion,$mySql2);

@@ -169,3 +169,60 @@ angular.module("repoco")
 	   .finally(() => {});
 
 	})
+
+.controller("EspecialitatController", ($q, $http, $scope, $routeParams) => {
+
+	$scope.idEdicio=$routeParams.idEdicio;
+	$scope.idCasa=$routeParams.idCasa;
+
+	let data = new FormData();
+	   data.append("acc", "r");
+	   data.append("idcasa",$scope.idCasa);
+	  
+	   let defered = $q.defer();
+
+	   $http.post("models/cases.php", data, {
+	      headers:{ "Content-type" : undefined }, transformRequest : angular.identity 
+	   })
+	   .then((res) => { 
+	       defered.resolve(res);
+	       $scope.casa=res.data.casa;
+	       // console.log($scope.casa);
+	       $scope.url=$scope.casa[5];
+	       $scope.nom=$scope.casa[1];
+	       $scope.nombre=$scope.casa[2];
+		   $scope.dcat=$scope.casa[3];
+		   $scope.dcas=$scope.casa[4];
+
+	   })
+	   .catch((err) => { console.log(err.statusText) })
+	   .finally(() => {});
+
+	 
+	    data = new FormData();
+	   	data.append("acc", "r");
+	   	data.append("idEdicio",$scope.idEdicio);
+
+	   $http.post("models/projectes.php", data, {
+	      headers:{ "Content-type" : undefined }, transformRequest : angular.identity 
+	   })
+	   .then((res) => { 
+	      defered.resolve(res);
+	    $scope.nombreEsp=res.data[0][0];
+	    $scope.nomEsp=res.data[0][1];
+	    $scope.desEspcat=res.data[0][2];
+	    $scope.desEspcas=res.data[0][3];
+	    console.log(res.data);
+	     
+	   })
+	   .catch((err) => { console.log(err.statusText) })
+	   .finally(() => {});
+
+  	$scope.titol="CASES D'OFICIS";
+	$scope.titulo="CASAS DE OFICIOS";
+	$scope.atras="Atrás";
+	$scope.enrere="Torna enrere";
+	$scope.proCat="Projectes i serveis";
+	$scope.proCas="Proyectos y servicios";
+
+})

@@ -22,19 +22,17 @@
 		<p>{{idioma=="cat"?titol:titulo}}</p><hr>
 		<h2>{{idioma=="cat"?nom:nombre | uppercase}}</h2>
 	</div>
-</div>
-<div class="textCentral">
-	<p class="fw-bold">{{idioma=="cat"?titol2:titulo2}} {{idioma=="cat"?nom:nombre | uppercase}}?</p>
-	<p>La <span class="fw-bold">{{idioma=="cat"?titol3:titulo3}} {{idioma=="cat"?nom:nombre}}</span>{{idioma=="cat"?dcat:dcas}}</p>
-</div>
-<div class="textCentral">
-	<h6 class="fw-bold">{{idioma=="cat"?acat:acas}}</h6>
-	<div class="row row-cols-3"></div>
-</div>
-<div class="row row-cols-3 textCentral text-center">
-	<div class="col position-relative" ng-repeat="any in dataAnys">
-		<a href="#/espAny/{{any.inici}}/{{idCasa}}"><img class="miniatura" src="multimedia/img/miniatura1.jpg">
-		<p class="anys">{{any.inici|limitTo:4:0}}/{{any.fi|limitTo:2:2}} </p></a>
-		<p class="nameEspec badge bg-secondary fw-bold m-1" ng-repeat="especialitat in any.especialitats"><a href="#/edEsp/{{idCasa}}/{{especialitat.idEdicio}}">{{idioma=="cat"?especialitat.nom:especialitat.nombre}}</a></p>
+	<div class="textCentral">
+		<a href="#/"><i class="fas fa-chevron-left"></i><span class="ms-1">{{idioma=="cat"?enrere:atras}}</span></a>
+		<h6 class="mt-3 fw-bold">{{idioma=="cat"?nomEsp:nombreEsp | uppercase}}</h6>
+		<p>{{idioma=="cat"?desEspcat:desEspcas}}</p>
+		<h6 class="mt-3">{{idioma=="cat"?proCat:proCas | uppercase}}</h6>
 	</div>
+	<div class="row textCentral">
+		
+			
+
+	</div>
+
+	
 </div>

@@ -23,7 +23,6 @@
 		<script src="controllers/controllers.js"></script>
 	</head>
 	<body>
-
 		<div class="container-fluid">
        		 <header>
         		<div class="row row-cols-3 brandLogo">
@@ -50,7 +49,7 @@
 
     	
 
-    	<button class="btn btn-danger" ng-click="tancar()">Tancar sessió</button>
+    	<button class="btn btn-danger ms-2 mt-2" ng-click="tancar()">Tancar sessió</button><br/>
 
 		<div data-ng-view=""></div>
 		

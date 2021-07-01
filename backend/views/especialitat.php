@@ -1,4 +1,5 @@
 <div class="container-fluid">
+<a class="btn btn-warning mt-4 ms-2" ng-href="http://localhost/repoco/backend/#/edicions/1">Gestionar edicions</a>
     <?php 
         session_start();
         if(!isset($_SESSION['login']['idDir'])){

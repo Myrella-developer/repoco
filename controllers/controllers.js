@@ -209,11 +209,13 @@ angular.module("repoco")
 	   })
 	   .then((res) => { 
 	      defered.resolve(res);
-	    $scope.nombreEsp=res.data[0][0];
-	    $scope.nomEsp=res.data[0][1];
-	    $scope.desEspcat=res.data[0][2];
-	    $scope.desEspcas=res.data[0][3];
-	    console.log(res.data);
+
+	      $scope.proyectos=res.data;
+	    $scope.nombreEsp=$scope.proyectos[0][0];
+	    $scope.nomEsp=$scope.proyectos[0][1];
+	    $scope.desEspcat=$scope.proyectos[0][2];
+	    $scope.desEspcas=$scope.proyectos[0][3];
+	    console.log($scope.proyectos);
 	     
 	   })
 	   .catch((err) => { console.log(err.statusText) })

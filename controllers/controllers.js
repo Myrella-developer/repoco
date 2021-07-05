@@ -231,5 +231,44 @@ angular.module("repoco")
 })
 .controller("ProjecteController", ($q, $http, $scope, $routeParams) => {
 
+	$scope.idEdicio=$routeParams.idEdicio;
+	$scope.idProjecte=$routeParams.idProjecte;
+
+	$scope.titol="CASES D'OFICIS";
+	$scope.titulo="CASAS DE OFICIOS";
+	$scope.atras="Atrás";
+	$scope.enrere="Torna enrere";
+	$scope.textCat="Text explicatiu d'activitat, projecte i servei";
+	$scope.textCas="Texto explicativo de la actividad, proyecto y servicio";
+
+	let data = new FormData();
+	   data.append("acc", "pro");
+	   data.append("idProjecte",$scope.idProjecte);
+	  
+	   let defered = $q.defer();
+
+	   $http.post("models/projectes.php", data, {
+	      headers:{ "Content-type" : undefined }, transformRequest : angular.identity 
+	   })
+	   .then((res) => { 
+	       defered.resolve(res);
+	      $scope.proyecto=res.data;
+	      console.log($scope.proyecto);
+	      $scope.casaCat=$scope.proyecto[1];
+	      $scope.casaCas=$scope.proyecto[2];
+	      $scope.imgCasa=$scope.proyecto[3];
+	      $scope.prin=$scope.proyecto[7];
+	      $scope.final=$scope.proyecto[8];
+	      $scope.projCat=$scope.proyecto[12];
+	      $scope.projCas=$scope.proyecto[13];
+	      $scope.desProcat=$scope.proyecto[14];
+	      $scope.desProcas=$scope.proyecto[15];
+	      
+
+
+
+	   })
+	   .catch((err) => { console.log(err.statusText) })
+	   .finally(() => {});
 
 })

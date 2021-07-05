@@ -6,7 +6,7 @@
 	</div>
 	<div class="carousel-inner">
 	    <div class="carousel-item active">
-	      <img src="multimedia/img/provisionales/{{url==null?'no-imageSlide.png' : url}}" class="d-block w-100" alt="Casa d'ofici">
+	      <img src="multimedia/img/provisionales/{{imgCasa==null?'no-imageSlide.png' : imgCasa}}" class="d-block w-100" alt="Casa d'ofici">
 
 	    </div>
 	    <!-- falta sentencia para img de especialitats -->
@@ -18,7 +18,14 @@
 	    </div>
 	</div>
 	<div class="position-absolute top-50 start-50 translate-middle">
-		<p>{{idioma=="cat"?titol:titulo}}</p><hr>
-		<h2>{{idioma=="cat"?nom:nombre | uppercase}}</h2>
+		<p class="lineProj">{{idioma=="cat"?titol:titulo}} {{idioma=="cat"?casaCat:casaCas | uppercase}} {{prin|limitTo:2:2}}/{{final|limitTo:2:2}}</p><hr>
+		<h2>{{idioma=="cat"?projCat:projCas}}</h2>
 	</div>
+
+</div>
+<div class="textCentral">
+
+	<h6 class="fw-bold">{{idioma=="cat"?textCat:textCas}}</h6>
+	<p>{{idioma=="cat"?desProcat:desProcas}}</p>
+
 </div>

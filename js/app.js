@@ -25,6 +25,10 @@ app.config(['$routeProvider',function($routeProvider){
 		templateUrl:'views/especialitat.html',
 		controller:'EspecialitatController'
 	})
+	.when('/pro/:idEdicio/:idProjecte',{
+		templateUrl:'views/projecte.html',
+		controller:'ProjecteController'
+	})
 	.when('/contacte',{
 		templateUrl:'views/contacte.html',
 		controller:'ContacteController'

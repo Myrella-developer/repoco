@@ -1,4 +1,3 @@
-
 <div id="slideCasa" class="carousel slide" data-bs-ride="carousel">
 	<div class="carousel-indicators">
 		<button type="button" data-bs-target="#slideCasa" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -23,22 +22,3 @@
 		<h2>{{idioma=="cat"?nom:nombre | uppercase}}</h2>
 	</div>
 </div>
-<div class="textCentral">
-	<a href="#/"><i class="fas fa-chevron-left"></i><span class="ms-1">{{idioma=="cat"?enrere:atras}}</span></a>
-	<h6 class="mt-3 fw-bold">{{idioma=="cat"?nomEsp:nombreEsp | uppercase}}</h6>
-	<p>{{idioma=="cat"?desEspcat:desEspcas}}</p>
-	<h6 class="mt-3">{{idioma=="cat"?proCat:proCas | uppercase}}</h6>
-</div>
-<div class="row row-cols-3 textCentral">
-	<div class="col" ng-repeat="proyecto in proyectos">
-		<a href="#/pro/{{proyecto.idEdicio}}/{{proyecto.idProjecte}}">
-			<div class="card" >
-			 <img src="multimedia/img/{{proyecto.url==''?'noimagen.png': proyecto.url}}" class="card-img-top" alt="Imagen Proyecto">
-			 <div id="cardProyectos" class="card-body">
-			 	<h5 class="card-title  border border-1 fw-bold">{{idioma=="cat"?proyecto.titol: proyecto.titulo}}</h5>
-			 </div>
-			</div>
-		</a>
-	</div>
-</div>
-

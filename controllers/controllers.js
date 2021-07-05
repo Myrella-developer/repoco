@@ -229,3 +229,7 @@ angular.module("repoco")
 	$scope.proCas="Proyectos y servicios";
 
 })
+.controller("ProjecteController", ($q, $http, $scope, $routeParams) => {
+
+
+})

@@ -44,8 +44,8 @@ header{
 	background-color: #f2f2f2;
 }
 .brandLogo, .brandIcons, .menu, .textCentral{
-	margin-right: 248px;
-	margin-left: 248px;
+	margin-right: 175px;
+	margin-left: 175px;
 
 }
 .brandIcons{
@@ -69,7 +69,7 @@ header{
 }
 
 .bfooter{
-    background-color:  #f9f9f9;
+    background-color:  #f8f9fa;
 /* margin-right: 5px!important;*/
 }
 
@@ -77,9 +77,9 @@ header{
     background-color: #e8e8e8;
   }
 
-.tite{
+/*.tite{
     color:  #5d6669;
-}
+}*/
 
 .iconsFooter{
     color: #12789a;

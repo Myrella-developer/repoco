@@ -11,20 +11,23 @@
     <h2 class="text-center mt-5">Especialitats de la teva casa</h2>
 
     <i class="fas fa-plus-square ms-4 mt-5 text-primary" ng-click="editar('-1')"><label class="ms-1 fw-bold">AFEGIR</label></i>
-    <div class="row">
-        <div class="card cardGestor m-5" style="width: 18rem;" ng-repeat="especialitat in especialitats">
-            <div class="card gestorEsp-card">
-			    |<div class="card-content text-center">
-                    <p class="card-title">{{especialitat.nom}}</p>
-                    <p class="card-text">{{especialitat.nombre}} </p>
-                    <p class="card-text">{{especialitat.descripcio}} </p>
-                    <p class="card-text">{{especialitat.descripcion}} </p><br>
-                     <a class="btn btn-primary" ng-click="editar($index)">Modificar</a><br><br>
-                </div>
-            </div>
-        </div>
-    </div>
-               
+    <div class="container">
+        <div class="row ms-2">    
+            <div class="col-md-3" ng-repeat="especialitat in especialitats">
+			    <div class="card gestorDir-card">
+				    <div class="card-content text-center">
+                        <h3 class="card-title">{{especialitat.nom}}</h3>
+                        <p class="card-text">{{especialitat.nombre}} </p>
+                        <p class="card-text">{{especialitat.descripcio}} </p>
+                        <p class="card-text">{{especialitat.descripcion}} </p><br>
+					    <div class="icon-block">
+                            <i class="fa fa-cog" aria-hidden="true" ng-click="editar($index)"></i>
+					    </div>
+                    </div>   
+			    </div>   
+		    </div>
+        </div>        
+    </div>     
             <div class="modal fade" id="modalEsp" tabindex="-1" aria-labelledby="labelDigital" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">

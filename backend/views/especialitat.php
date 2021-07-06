@@ -30,9 +30,9 @@
     </div>     
             <div class="modal fade" id="modalEsp" tabindex="-1" aria-labelledby="labelDigital" aria-hidden="true">
                 <div class="modal-dialog">
-                    <div class="modal-content">
+                    <div class="modal-content modalgestorDir">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="labelDigital">Especialitat</h5>
+                            <h5 class="modal-title labelModal" id="labelDigital">Especialitat</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -41,29 +41,25 @@
                                     <option ng-repeat="case in cases" ng-value="case.idcasa" ng-selected="case.nom">{{case.nom}}</option>
                                 </select>
                                 <div class="mb-2">
-                                    <label for="message-text" class="col-form-label">Nom Especialitat</label>
-                                    <textarea class="form-control" id="message-text" ng-model="nom">{{nom}}</textarea>
+                                    <label for="message-text" class="col-form-label labelModal">Nom Especialitat</label>
+                                    <input type="text" class="form-control" ng-model="nom"></input>
                                 </div>
                                 <div class="mb-2">
-                                    <label for="message-text" class="col-form-label">Nombre Especialitat</label>
-                                    <textarea class="form-control" id="message-text" ng-model="nombre">{{nombre}}</textarea>
+                                    <label for="message-text" class="col-form-label labelModal">Nombre Especialitat</label>
+                                    <input type="text" class="form-control" ng-model="nombre"></input>
                                 </div>
                                 <div class="mb-2">
-                                    <label for="message-text" class="col-form-label">Descripcio Especialitat</label>
-                                    <textarea class="form-control" id="message-text" ng-model="descripcio">{{descripcio}}</textarea>
+                                    <label for="message-text" class="col-form-label labelModal">Descripcio Especialitat</label>
+                                    <input type="text" class="form-control"  ng-model="descripcio"></input>
                                 </div>
                                 <div class="mb-2">
-                                    <label for="message-text" class="col-form-label">Descripción Especialitat</label>
-                                    <textarea class="form-control" id="message-text" ng-model="descripcion">{{descripcion}}</textarea>
-                                </div>
-                                <div class="mb-2">
-                                    <label for="message-text" class="col-form-label">Descripción Especialitat</label>
-                                    <textarea class="form-control" id="message-text" ng-model="descripcion">{{descripcion}}</textarea>
+                                    <label for="message-text" class="col-form-label labelModal">Descripción Especialitat</label>
+                                    <input type="text" class="form-control"  ng-model="descripcion"></input>
                                 </div>
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal" ng-click="guardar()">Dessar canvis</button>
+                            <button type="button" class="btnModal" data-bs-dismiss="modal" ng-click="guardar()">Dessar canvis</button>
                         </div>
                     </div>
                 </div>

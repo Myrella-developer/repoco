@@ -236,10 +236,16 @@ angular.module("repoco")
 
 	$scope.titol="CASES D'OFICIS";
 	$scope.titulo="CASAS DE OFICIOS";
-	$scope.atras="Atrás";
-	$scope.enrere="Torna enrere";
 	$scope.textCat="Text explicatiu d'activitat, projecte i servei";
 	$scope.textCas="Texto explicativo de la actividad, proyecto y servicio";
+	$scope.galCat="Galeria digital";
+	$scope.galCas="Galería digital";
+	$scope.loCat="Localització:";
+	$scope.loCas="Localización:";
+	$scope.partCat="Especialitats que han participat:";
+	$scope.partCas="Especialidades que han participado:";
+	$scope.datcat="Data:";
+	$scope.datcas="Fecha:";
 
 	let data = new FormData();
 	   data.append("acc", "pro");
@@ -257,6 +263,8 @@ angular.module("repoco")
 	      $scope.casaCat=$scope.proyecto[1];
 	      $scope.casaCas=$scope.proyecto[2];
 	      $scope.imgCasa=$scope.proyecto[3];
+	      $scope.espeCas=$scope.proyecto[4];
+	      $scope.espeCat=$scope.proyecto[5];
 	      $scope.prin=$scope.proyecto[7];
 	      $scope.final=$scope.proyecto[8];
 	      $scope.projCat=$scope.proyecto[12];

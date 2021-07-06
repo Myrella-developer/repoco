@@ -330,3 +330,9 @@ p.anys{
 .lineProj{
 font-style: italic!important;
 }
+.titProyecto{
+    font-size: 14px;
+}
+.parrProyecto{
+    color: grey;
+}

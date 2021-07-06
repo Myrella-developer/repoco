@@ -44,8 +44,8 @@ header{
 	background-color: #f2f2f2;
 }
 .brandLogo, .brandIcons, .menu, .textCentral{
-	margin-right: 175px;
-	margin-left: 175px;
+	margin-right: 130px;
+	margin-left: 130px;
 
 }
 .brandIcons{
@@ -184,14 +184,14 @@ margin-left: 197px;
 }
 
 .boxf{
-    background-color:#8bacbd;
+    background-color:#8bacbd70;
     width: 200px;
     /* padding: 15px; */
     margin:0px;
-    border-left: 10px solid #12789a;
-    height: 60px;
+    border-left: 15px solid #12789a;
+    height: 90px;
     float: left;
-    font-size: 2rem;
+    font-size: 20px;
 }
 
 .boxf2{
@@ -199,45 +199,50 @@ margin-left: 197px;
     width: 200px;
     /* padding: 15px; */
     margin: 0px;
-    border-left: 10px solid #ffc107;
-    height: 60px;
-    margin-left: 40px;
+    border-left: 15px solid #ffc107;
+    height: 90px;
+    margin-left: auto;
     float: left;
-    font-size: 2rem;
+    font-size: 20px;
 }
 
 .boxf1{
     background-color: #f9d1a4;
     width: 200px;
     margin: 0px;
-    border-left: 10px solid #ff9716;
-    height: 60px;
+    border-left: 15px solid #ff9716;
+    height: 90px;
     float: left;
-    margin-left: 40px;
-    font-size: 2rem;
+    margin-left: auto;
+    font-size: 20px;
 }
 
 .boxf3{
-    background-color:#8bacbd;
+    background-color:#8bacbd70;
     width: 200px;
     /* padding: 15px; */
     margin: 0px;
-    border-left: 10px solid#12789a;
-    height: 60px;
+    border-left: 15px solid #12789a;
+    height: 90px;
     float: left;
-    font-size: 2rem;
-    margin-left: 40px;
+    font-size: 18px;
+    margin-left: auto;
+    color: #12789a; 
+}
+.boxf3 i{
+    color: #12789a;
+    font-size: 3rem;
 }
 .boxf4{
 	background-color: #f58f87;
     width: 200px;
     /* padding: 15px; */
     margin: 0px;
-    border-left: 10px solid red;
-    height: 60px;
+    border-left: 15px solid red;
+    height: 90px;
     float: left;
-    margin-left: 40px;
-    font-size: 2rem;
+    margin-left: auto;
+    font-size: 20px;
 }
 
 .textCentral{

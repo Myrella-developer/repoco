@@ -72,8 +72,7 @@ footer a{
 }
 
 .bfooter{
-    background-color:  #f8f9fa;
-/* margin-right: 5px!important;*/
+    background-color: #6c757d0f;
 }
 
 .bfooterb{
@@ -82,10 +81,6 @@ footer a{
     padding-left: 130px;
   }
 
-/*.tite{
-    color:  #5d6669;
-}*/
-
 .iconsFooter{
     color: #12789a;
     margin-right: 24px;
@@ -93,9 +88,6 @@ footer a{
 .iconsfooter2{
     color: #8bacbd;
 
-}
-.inconsf2{
-    color: #8bacbd;
 }
 .box {
     max-width: 25rem;
@@ -381,6 +373,9 @@ font-style: italic!important;
 }
 .colFlecha{
     padding: 0;
+}
+.footLogos{
+    margin-bottom: 30px;
 }
 .footLogos div, ul{
     padding: 0;

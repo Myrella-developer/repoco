@@ -160,13 +160,35 @@ angular.module("repoco")
 	$scope.any=$routeParams.any;
 	$scope.idCasa=$routeParams.idCasa;
 
-  let data = new FormData();
+
+	let data = new FormData();
+	   data.append("acc", "r");
+	   data.append("idcasa",$scope.idCasa);
+	  
+	   let defered = $q.defer();
+
+	   $http.post("models/cases.php", data, {
+	      headers:{ "Content-type" : undefined }, transformRequest : angular.identity 
+	   })
+	   .then((res) => { 
+	       defered.resolve(res);
+	       $scope.casa=res.data.casa;
+	       // console.log($scope.casa);
+	       $scope.url=$scope.casa[5];
+	       $scope.nom=$scope.casa[1];
+	       $scope.nombre=$scope.casa[2];
+		   $scope.dcat=$scope.casa[3];
+		   $scope.dcas=$scope.casa[4];
+
+	   })
+	   .catch((err) => { console.log(err.statusText) })
+	   .finally(() => {});
+
+  		data = new FormData();
  
 	   data.append("acc", "anyEsp");
 	   data.append("any",$scope.any);
 	   data.append("idCasa",$scope.idCasa);
-
-	    let defered = $q.defer();
 
 	   $http.post("models/edicio.php", data, {
 	      headers:{ "Content-type" : undefined }, transformRequest : angular.identity 
@@ -185,6 +207,8 @@ angular.module("repoco")
 
 .controller("EspecialitatController", ($q, $http, $scope, $routeParams) => {
 
+	$scope.onProyec=false;
+	$scope.noProyec=true;
 	$scope.idEdicio=$routeParams.idEdicio;
 	$scope.idCasa=$routeParams.idCasa;
 
@@ -222,7 +246,18 @@ angular.module("repoco")
 	   .then((res) => { 
 	      defered.resolve(res);
 
-	      $scope.proyectos=res.data;
+	    $scope.proyectos=res.data;
+	  for (var i = 0; i < $scope.proyectos.length; i++) {
+	  	if ($scope.proyectos[i][8]=="" || $scope.proyectos[i][8]==null){
+	  		$scope.noProyec=true;
+	  		$scope.onProyec=false;
+	  	}
+		else{
+			$scope.noProyec=false;
+	  		$scope.onProyec=true;
+		}
+	  }
+	
 	    $scope.nombreEsp=$scope.proyectos[0][0];
 	    $scope.nomEsp=$scope.proyectos[0][1];
 	    $scope.desEspcat=$scope.proyectos[0][2];
@@ -239,6 +274,8 @@ angular.module("repoco")
 	$scope.enrere="Torna enrere";
 	$scope.proCat="Projectes i serveis";
 	$scope.proCas="Proyectos y servicios";
+	$scope.divNocat="No hi han projectes";
+	$scope.divNocas="No hay proyectos";
 
 })
 .controller("ProjecteController", ($q, $http, $scope, $routeParams) => {

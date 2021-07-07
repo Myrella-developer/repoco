@@ -13,15 +13,19 @@ body {
     position: relative;
     float: left;
     overflow: hidden;
-    max-width: 250px;
+    max-width: 450px;
+    max-height: 650px;
     text-align: center;
-    max-height:300px;
     border-radius: 0.5rem;
     box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.5);
     margin-top: 20px;
 }
-.gestorDir-card .card-content {
-    width: 100%;
+.gestorDir-card  .imgCard-Gestor{
+    width: 25%;
+    opacity: 1;
+}
+.gestorDir-card .card-body {
+    width: 50%;
     padding: 15px 25px;
     color:#04080e !important;
     float:left;
@@ -30,24 +34,19 @@ body {
     border-radius:0 0 5px 5px;
     position: relative;
 }
-.gestorDir-card .card-content::before {
+.gestorDir-card .card-body::before {
     content: '';
     background:linear-gradient( #12789a, rgba(240, 246, 247, 0.246));
     width: 120%;
     height: 100%;
     left: 0.8px;
     bottom: 51px;
-    position: absolute;
+   position: absolute; 
 }
 .gestorDir-card h3 {
     margin: 0 0 5px;
     font-weight: 600;
     font-size:18px;
-}
-.gestorDir-card h3 small {
-    display: block;
-    font-size: 12px;
-    margin-top:10px;
 }
 .gestorDir-card i {
     display: inline-block;
@@ -109,6 +108,7 @@ body {
     text-align: center;
     color: #3498db
 }
+
 .modalgestorDir .btnModal{
     border: 0;
     background: linear-gradient(to right, rgb(151, 220, 241), #699bf7);

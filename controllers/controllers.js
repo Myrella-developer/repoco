@@ -42,6 +42,18 @@ angular.module("repoco")
 	   $scope.botoncat="Info Cases D'oficis";
 	   $scope.botoncast="información casas de oficios";
 
+	   $scope.footTitol="En què podem ajudar-te?";
+	   $scope.footTitulo="¿En qué podemos ayudarte?";
+	   $scope.foot1cat="Ens vols conèixer?";
+	   $scope.foot1cas="¿Quieres conocernos?";
+	   $scope.foot2cat="Estàs buscant feina?";
+	   $scope.foot2cas="¿Estás buscando trabajo?";
+	   $scope.foot3cat="Tens una idea emprenedora?";
+	   $scope.foot3cas="¿Tienes una idea emprendedora?";
+	   $scope.foot4cat="Vols impulsar el teu negoci?";
+	   $scope.foot4cas="¿Quieres impulsar tu negocio?";
+	   $scope.foot5cat="Busques formació?";
+	   $scope.foot5cas="¿Buscas formación?";
 
 	   $scope.changeimg=(posicion) =>{
 		$scope.rutaimg=$scope.cases[posicion].url;

@@ -17,7 +17,10 @@ a{
 header{
 	font-size: 1em;
 }
-
+footer a{
+    padding: 0;
+    
+}
 
 
 .textoc{
@@ -75,6 +78,8 @@ header{
 
 .bfooterb{
     background-color: #e8e8e8;
+    padding-right: 130px;
+    padding-left: 130px;
   }
 
 /*.tite{
@@ -85,14 +90,9 @@ header{
     color: #12789a;
     margin-right: 24px;
 }
-.iconsfooter1{
-margin-left: 197px;
-   
-} 
 .iconsfooter2{
-	
     color: #8bacbd;
-  margin-right: -67%!important;
+
 }
 .inconsf2{
     color: #8bacbd;
@@ -189,15 +189,18 @@ margin-left: 197px;
     /* padding: 15px; */
     margin:0px;
     border-left: 15px solid #12789a;
-    height: 90px;
+    height: 100px;
     float: left;
     font-size: 20px;
-    color:  #12789a;
+  
 }
 .boxf i{
     color: #12789a;
      font-size: 3rem;
     }
+.boxf p{
+  color:  #12789a;
+}
 
 .boxf2{
     background-color: #f5d9878a;
@@ -205,15 +208,18 @@ margin-left: 197px;
     /* padding: 15px; */
     margin: 0px;
     border-left: 15px solid #ffc107;
-    height: 90px;
+    height: 100px;
     margin-left: auto;
     float: left;
     font-size: 20px;
-    color: #ffc107;
+    
 }
 .boxf2 i{
     color: #ffc107;
     font-size: 3rem;
+    }
+.boxf2 p{
+    color: #ffc107;
     }
 
 .boxf1{
@@ -221,15 +227,18 @@ margin-left: 197px;
     width: 200px;
     margin: 0px;
     border-left: 15px solid #ff9716;
-    height: 90px;
+    height: 100px;
     float: left;
     margin-left: auto;
     font-size: 20px;
-    color: #ff9716;
+   
 }
 .boxf1 i{
     color: #ff9716;
     font-size: 3rem;
+}
+.boxf1 p{
+    color: #ff9716;
 }
 
 .boxf3{
@@ -238,15 +247,18 @@ margin-left: 197px;
     /* padding: 15px; */
     margin: 0px;
     border-left: 15px solid #12789a;
-    height: 90px;
-    /*float: left;*/
+    height: 100px;
+    float: left;
     font-size: 18px;
     margin-left: auto;
-    color: #12789a; 
+    
 }
 .boxf3 i{
     color: #12789a;
     font-size: 3rem;
+}
+.boxf3 p{
+   color: #12789a; 
 }
 .boxf4{
 	background-color: #f58f8787;
@@ -254,16 +266,19 @@ margin-left: 197px;
     /* padding: 15px; */
     margin: 0px;
     border-left: 15px solid red;
-    height: 90px;
+    height: 100px;
     float: left;
     margin-left: auto;
     font-size: 20px;
-    color: red;
+    
 }
 .boxf4 i{
     color: red;
     font-size: 3rem;
     }
+.boxf4 p{
+  color: red;  
+}
 
 .textCentral{
 	margin-top: 50px;
@@ -360,4 +375,19 @@ font-style: italic!important;
 }
 .parrProyecto{
     color: grey;
+}
+.colCajas{
+    padding-right: 0;
+}
+.colFlecha{
+    padding: 0;
+}
+.footLogos div, ul{
+    padding: 0;
+}
+ .brandFooter{
+    margin-left: 130px;
+ }
+.brandFooter2{
+    margin-right: 130px;
 }

@@ -1,6 +1,6 @@
 <?php
 
-	include("../inc/functions.php");
+	include("../../inc/functions.php");
     session_start();
     if (isset($_POST['acc']) && $_POST['acc'] == "r") {
         actualizar();     

@@ -1,5 +1,5 @@
 <?php
-    require_once("../inc/functions.php");
+    require_once("../../inc/functions.php");
 
     if(isset($_POST['acc']) && $_POST['acc'] == "recuperar"){
         $newPass = sha1(md5("{$_POST['nuevaContra']}"));

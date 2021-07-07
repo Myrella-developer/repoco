@@ -18,7 +18,7 @@
         <div class="row ms-2">    
             <div class="col-md-3" ng-repeat="especialitat in especialitats">
                 <div class="card cardGestor-ESP mx-auto mt-3">
-					<img src="img/{{especialitat.url!=null?especialitat.url: 'noimage.png'}}" class="card-img-top imgCard-Gestor" alt="especialitat" />                       <div class="card-content text-center">
+					<img src="img/{{especialitat.url!=null?especialitat.url: 'default.png'}}" class="card-img-top imgCard-Gestor" alt="especialitat" />                       <div class="card-content text-center">
                     <div class="card-body card-content">
                         <span class="card-title">{{especialitat.nom}}</span><br>
                         <span class="card-text">{{especialitat.nombre}} </span><br>

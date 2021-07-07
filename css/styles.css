@@ -192,10 +192,15 @@ margin-left: 197px;
     height: 90px;
     float: left;
     font-size: 20px;
+    color:  #12789a;
 }
+.boxf i{
+    color: #12789a;
+     font-size: 3rem;
+    }
 
 .boxf2{
-    background-color: #f5d987;
+    background-color: #f5d9878a;
     width: 200px;
     /* padding: 15px; */
     margin: 0px;
@@ -204,10 +209,15 @@ margin-left: 197px;
     margin-left: auto;
     float: left;
     font-size: 20px;
+    color: #ffc107;
 }
+.boxf2 i{
+    color: #ffc107;
+    font-size: 3rem;
+    }
 
 .boxf1{
-    background-color: #f9d1a4;
+    background-color: #f9d1a4a6;
     width: 200px;
     margin: 0px;
     border-left: 15px solid #ff9716;
@@ -215,6 +225,11 @@ margin-left: 197px;
     float: left;
     margin-left: auto;
     font-size: 20px;
+    color: #ff9716;
+}
+.boxf1 i{
+    color: #ff9716;
+    font-size: 3rem;
 }
 
 .boxf3{
@@ -224,7 +239,7 @@ margin-left: 197px;
     margin: 0px;
     border-left: 15px solid #12789a;
     height: 90px;
-    float: left;
+    /*float: left;*/
     font-size: 18px;
     margin-left: auto;
     color: #12789a; 
@@ -234,7 +249,7 @@ margin-left: 197px;
     font-size: 3rem;
 }
 .boxf4{
-	background-color: #f58f87;
+	background-color: #f58f8787;
     width: 200px;
     /* padding: 15px; */
     margin: 0px;
@@ -243,7 +258,12 @@ margin-left: 197px;
     float: left;
     margin-left: auto;
     font-size: 20px;
+    color: red;
 }
+.boxf4 i{
+    color: red;
+    font-size: 3rem;
+    }
 
 .textCentral{
 	margin-top: 50px;

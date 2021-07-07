@@ -1,5 +1,5 @@
 <?php
-	require("../inc/functions.php");
+	require("../../inc/functions.php");
 	
 	if(isset($_POST['acc']) && $_POST['acc'] == "r"){
 		$sqlEsp = "SELECT e.nom, e.nombre, e.idEsp, edicio.dataInici, edicio.dataFi, edicio.idEdicio

@@ -1,7 +1,7 @@
 <?php
     session_start();
     // if(!isset($_SESSION['login'])) header ('Location:../#');
-    require("../inc/functions.php");
+    require("../../inc/functions.php");
 
     if(isset($_POST['acc']) && $_POST['acc'] == "especialitats"){
         actualiza();

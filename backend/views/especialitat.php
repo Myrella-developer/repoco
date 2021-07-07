@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid mb-5">
 <a class="btn btn-warning mt-4 ms-2" ng-href="http://localhost/repoco/backend/#/edicions/1">Gestionar edicions</a>
     <?php 
         session_start();
@@ -8,20 +8,22 @@
     
         if(isset($_SESSION['login']['idDir'])) :
     ?>
-    <h2 class="text-center mt-5">Especialitats de la teva casa</h2>
+	<div class="text-center">
+		<h2>Especialitats de la teva casa</h2>
+	</div>
    
 
     <i class="fas fa-plus-square ms-4 mt-5 text-primary" ng-click="editar('-1')"><label class="ms-1 fw-bold">AFEGIR</label></i>
     <div class="container">
         <div class="row ms-2">    
             <div class="col-md-3" ng-repeat="especialitat in especialitats">
-			    <div class="card gestorDir-card">
-					<img src="img/{{especialitat.url!=null?especialitat.url: 'noimage.png'}}" class="card-img imgCard-Gestor" alt="especialitat" />                       <div class="card-content text-center">
-                    <div class="card-body text-center">
-                        <h3 class="card-title">{{especialitat.nom}}</h3>
-                        <p class="card-text">{{especialitat.nombre}} </p>
-                        <p class="card-text">{{especialitat.descripcio}} </p>
-                        <p class="card-text">{{especialitat.descripcion}} </p><br>
+                <div class="card cardGestor-ESP mx-auto mt-3">
+					<img src="img/{{especialitat.url!=null?especialitat.url: 'noimage.png'}}" class="card-img-top imgCard-Gestor" alt="especialitat" />                       <div class="card-content text-center">
+                    <div class="card-body card-content">
+                        <span class="card-title">{{especialitat.nom}}</span><br>
+                        <span class="card-text">{{especialitat.nombre}} </span><br>
+                        <p class="card-text">{{especialitat.descripcio}} </p><br>
+                        <p class="card-text">{{especialitat.descripcion}} </p>
 					    <div class="icon-block">
                             <i class="fa fa-cog" aria-hidden="true" ng-click="editar($index)"></i>
 					    </div>

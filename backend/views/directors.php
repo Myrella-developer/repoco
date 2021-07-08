@@ -4,7 +4,7 @@
 	?>
 <div class="">
 
-    <h2 class="text-center mt-5">Gestionar Directors</h2>
+    <h2 class="titolGestor mt-5">Gestionar Directors</h2>
 
     <i class="fas fa-plus-square ms-4 mt-5 text-primary" ng-click="editar('-1')"><label class="ms-1 fw-bold">AFEGIR</label></i>
 

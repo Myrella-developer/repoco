@@ -386,3 +386,13 @@ font-style: italic!important;
 .brandFooter2{
     margin-right: 130px;
 }
+.cardGestor-ESP{
+	max-width: 400px;
+	border-radius: 7px;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  	transition: 0.3s;
+  	margin-top: 5rem;
+  	border-width: 0px;
+    color: #12789a;
+    background:linear-gradient(to left, rgba(240, 246, 247, 0.246), #eef1f5)
+}

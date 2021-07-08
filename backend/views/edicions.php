@@ -71,5 +71,5 @@
 
     <h2>Totes les edicions</h2>
 
-    <?php endif; ?>
+    <?php endif; endif;?>
 </div>

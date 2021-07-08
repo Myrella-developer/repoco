@@ -58,9 +58,8 @@
         </div>
     </div>
     <?php 
-        endif; 
     
-        if(isset($_SESSION['login']['idDir']) && $_SESSION['login']['tipus'] == "d") :
+        if(isset($_SESSION['login']['tipus']) && $_SESSION['login']['tipus'] == "d") :
     ?>
 
     <h2>Tots els archius</h2>

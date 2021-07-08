@@ -63,9 +63,8 @@
     <button class="btn btn-warning mb-5" ng-click="irProjectes()">Gestionar projectes</button>
     
     <?php 
-        endif; 
     
-        if(isset($_SESSION['login']['idDir']) && $_SESSION['login']['tipus'] == "a") :
+        if(isset($_SESSION['login']['tipus']) && $_SESSION['login']['tipus'] == "a") :
     ?>
 
     <h2>Totes les edicions</h2>

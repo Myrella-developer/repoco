@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="">
     <?php 
         session_start();
         if(!isset($_SESSION['login'])) header('Location: ../#');
@@ -11,13 +11,15 @@
     <label class="ms-1 fw-bold" ng-click="editar('-1')">AFEGIR</label>
     
     <div class="row">
-        <div class="card cardGestor m-5" style="width: 18rem;" ng-repeat="projecte in projectes">
+        <div class="card cardGestor-ESP m-5" style="width: 18rem;" ng-repeat="projecte in projectes">
             <div class="card-body">
                 <img src="./img/{{projecte.url}}" width="200"/>
                 <h5 class="card-title">{{projecte.titol}}</h5>
                 <p class="card-text">{{projecte.descripcio}}</p>
-                <button class="btn btn-primary" ng-click="editar($index)">Modificar</button>
-                <button class="btn btn-danger" ng-click="eliminar(projecte.idProjecte)">Eliminar</button>
+                <div class="icon-block">
+                    <i class="fa fa-cog" aria-hidden="true" ng-click="editar($index)"></i>
+                    <i class="fa fa-trash" aria-hidden="true" ng-click="eliminar(projecte.idProjecte)"></i>
+				</div>
             </div>
         </div>
     </div>
@@ -105,9 +107,8 @@
     </div>
     
     <?php 
-        endif; 
-    
-        if(isset($_SESSION['login']['idDir']) && $_SESSION['login']['tipus'] == "a") :
+       
+        if(isset($_SESSION['login']['tipus']) && $_SESSION['login']['tipus'] == "a") :
     ?>
 
     <h2>Tots els projectes</h2>

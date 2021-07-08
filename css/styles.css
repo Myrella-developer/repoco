@@ -181,7 +181,7 @@ footer a{
     /* padding: 15px; */
     margin:0px;
     border-left: 15px solid #12789a;
-    height: 100px;
+    height: 73px;
     float: left;
     font-size: 20px;
   
@@ -200,7 +200,7 @@ footer a{
     /* padding: 15px; */
     margin: 0px;
     border-left: 15px solid #ffc107;
-    height: 100px;
+    height: 73px;
     margin-left: auto;
     float: left;
     font-size: 20px;
@@ -219,7 +219,7 @@ footer a{
     width: 200px;
     margin: 0px;
     border-left: 15px solid #ff9716;
-    height: 100px;
+    height: 73px;
     float: left;
     margin-left: auto;
     font-size: 20px;
@@ -239,7 +239,7 @@ footer a{
     /* padding: 15px; */
     margin: 0px;
     border-left: 15px solid #12789a;
-    height: 100px;
+    height: 73px;
     float: left;
     font-size: 18px;
     margin-left: auto;
@@ -258,7 +258,7 @@ footer a{
     /* padding: 15px; */
     margin: 0px;
     border-left: 15px solid red;
-    height: 100px;
+    height: 73px;
     float: left;
     margin-left: auto;
     font-size: 20px;
@@ -319,15 +319,15 @@ footer a{
 .mov {
     pointer-events: none;
     position: absolute;
-    /* width: 100%; */
+    width: 100%;
     height: 100%;
     z-index: -1;
 }
 .divmov {
     display: inline-block;
     overflow: hidden;
-    /* position: relative; */
-    /* width: 100%; */
+    position: relative;
+    width: 100%;
   }
 img.miniatura{
     opacity: 0.5;

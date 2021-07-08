@@ -2,33 +2,18 @@
 	require("../../inc/functions.php");
 
     if(isset($_POST['acc']) && $_POST['acc'] == "r"){
-        $sqlEdicions = "SELECT edicio.dataInici, edicio.url, edicio.dataFi, edicio.idEdicio, cases.idcasa, especialitats.nom, especialitats.idEsp, especialitats.nom
-        FROM edicio 
-        INNER JOIN cases ON cases.idcasa = '{$_POST['idcasa']}'
-        INNER JOIN especialitats ON edicio.idEsp = especialitats.idEsp
-		ORDER BY especialitats.nom DESC,
-		edicio.dataInici ";
-        
-        $sqlEsp = "SELECT nom, nombre, idEsp FROM `especialitats` WHERE idcasa = '{$_POST['idcasa']}'";
+        $sqlEdicions = "SELECT `idEdicio`, `idEsp`, `dataInici`, `dataFi`, `url`
+		FROM edicio WHERE idEsp = {$_POST['idEsp']}";
         
         $conexion = conectar();
-        $resultEsp = mysqli_query($conexion, $sqlEsp);
         $resultEdicions = mysqli_query($conexion, $sqlEdicions);
         desconectar($conexion);
-
+		
         $rows = array();
-		while($row = mysqli_fetch_array($resultEsp)){
-			$rows[] = $row;
-		}
-		$datosExportar = '{"especialitats" : ' . json_encode($rows) . ', "edicions" : ';
-
-		$rows = array();
 		while($row = mysqli_fetch_array($resultEdicions)){
 			$rows[] = $row;
 		}
-		$datosExportar .= json_encode($rows) . '}';
-
-		echo $datosExportar;
+		echo json_encode($rows);
     }
 
     if(isset($_POST['acc']) && $_POST['acc'] == "u"){

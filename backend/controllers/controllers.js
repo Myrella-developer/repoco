@@ -144,7 +144,7 @@ angular.module("backend")
         defered.resolve(res);
         $scope.especialitats = res.data.especialitats;
         $scope.cases = res.data.cases;
-        console.log($scope.especialitats);
+        //console.log($scope.especialitats);
     })
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})
@@ -285,17 +285,17 @@ angular.module("backend")
     $scope.dataFi = "";
     $scope.idEdicio="";
 
-    let idcasa = $routeParams.idcasa;
+    let idEsp = $routeParams.idEsp;
 	let data= new FormData;
     let defered = $q.defer();
     data.append("acc","r");
-    data.append("idcasa", idcasa);
+    data.append("idEsp", idEsp);
 
     $http.post("models/edicions.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
     .then((res) => { 
         defered.resolve(res);
-        $scope.edicions = res.data.edicions;
-        $scope.especialitats = res.data.especialitats;
+        $scope.edicions = res.data;
+        console.log(res.data);
     })
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})

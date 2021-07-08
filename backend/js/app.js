@@ -5,7 +5,7 @@ app.config(['$routeProvider',function($routeProvider){
 		templateUrl:'views/cases.php',
 		controller:'HomeController'
 	})
-	.when('/edicions/:idcasa',{
+	.when('/edicions/:idEsp',{
 		templateUrl:'views/edicions.php',
 		controller:'EdicionsController'
 	})	

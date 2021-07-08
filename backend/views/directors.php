@@ -10,9 +10,10 @@
     <div class="container">
         <div class="row ms-2">    
             <div class="col-md-3" ng-repeat="director in directors">
-			    <div class="card gestorDir-card">
+			    <div class="card cardGestor-ESP">
 				    <div class="card-content text-center">
-					    <h3>{{director.nom}} {{director.cog1}}<small>Director/a</small></h4>
+					    <h3>{{director.nom}} {{director.cog1}}</h3>
+                            <span>Director/a</span>
 					    <div class="icon-block">
                             <i class="fa fa-cog" aria-hidden="true" ng-click="editar($index)"></i>
 						    <a href="mailto:{{director.correu}}"> <i class="fa fa-paper-plane"></i></a>

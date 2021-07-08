@@ -9,14 +9,16 @@
     <label class="ms-1 fw-bold">AFEGIR</label>
 
     <div class="row">
-        <div class="card cardGestor m-5" style="width: 18rem;" ng-repeat="edicio in edicions">
+        <div class="card cardGestor-ESP m-5" style="width: 18rem;" ng-repeat="edicio in edicions">
             <div class="card-body">
                 <h5 class="card-title">{{edicio.dataInici}} - {{edicio.dataFi}}</h5>
                 <img src="img/default.png" class="w-75" ng-if="!edicio.url"/>
                 <img ng-src="img/edicio.url" class="w-75" ng-if="edicio.url"/>
                 <p class="card-text">{{edicio.nom}}</p>
-                <button class="btn btn-primary" ng-click="editar($index, edicio.idEdicio)">Modificar</button>
-                <button class="btn btn-danger" ng-click="eliminar(edicio.idEdicio)">Eliminar</button>
+                <div class="icon-block">
+                    <i class="fa fa-cog" aria-hidden="true" ng-click="editar($index)"></i>
+                    <i class="fa fa-trash" aria-hidden="true" ng-click="eliminar(projecte.idProjecte)"></i>
+				</div>
             </div>
         </div>
     </div>

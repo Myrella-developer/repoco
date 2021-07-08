@@ -27,7 +27,7 @@
 
     <div class="modal fade" id="modalEdicio">
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content modalgestorDir">
                 <div class="modal-header">
                     <h5 class="modal-title">Edicions</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -71,5 +71,5 @@
 
     <h2>Totes les edicions</h2>
 
-    <?php endif; ?>
+    <?php endif; endif;?>
 </div>

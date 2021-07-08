@@ -5,7 +5,7 @@
         if(isset($_SESSION['login']['idDir'])) :
     ?>
 
-    <h2 class="text-center mt-5">Les edicions de la teva casa</h2>
+    <h2 class="titolGestor mt-5">Les edicions de la teva casa</h2>
 
     <i class="fas fa-plus-square ms-4 mt-5 text-primary" ng-click="editar('-1')"></i>
     <label class="ms-1 fw-bold">AFEGIR</label>
@@ -27,7 +27,7 @@
 
     <div class="modal fade" id="modalEdicio">
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content modalgestorDir">
                 <div class="modal-header">
                     <h5 class="modal-title">Edicions</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

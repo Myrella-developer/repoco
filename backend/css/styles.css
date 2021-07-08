@@ -9,6 +9,11 @@ body {
     background-color: rgb(255, 255, 255);
 }
 
+.titolGestor{
+    font-size: 3rem;
+    color: #000102;
+    text-align: center;
+}
 .cardGestor-ESP{
 	max-width: 400px;
 	border-radius: 7px;

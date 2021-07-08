@@ -2,48 +2,37 @@
 	require("../../inc/functions.php");
 	
 	if(isset($_POST['acc']) && $_POST['acc'] == "r"){
-		$sqlEsp = "SELECT e.nom, e.nombre, e.idEsp, edicio.dataInici, edicio.dataFi, edicio.idEdicio
-		FROM `especialitats` e
-		INNER JOIN edicio ON edicio.idEsp = e.idEsp
-		INNER JOIN cases ON cases.idcasa = '{$_POST['idcasa']}'";
-
 		$sqlProj=
 		"SELECT p.titol, p.titulo, p.descripcio, p.descripcion, p.idProjecte, p.url
 		FROM projectes p
-		INNER JOIN cases ON cases.idcasa = {$_POST['idcasa']}
-		INNER JOIN edicio  ON p.idEdicio = edicio.idEdicio
+		WHERE p.idEdicio = '{$_POST['idEdicio']}'
 		";
-
+		/*
 		$sqlMult = "SELECT m.idMult, m.url, m.tipo, m.descripcio, m.descripcion, m.idProjecte, p.titol
 		FROM multimedia m
 		INNER JOIN projectes p ON m.idProjecte = p.idProjecte
-		INNER JOIN cases ON cases.idcasa = '{$_POST['idcasa']}'";
+		INNER JOIN cases ON cases.idcasa = '{$_POST['idcasa']}'";*/
 
 		$conexion = conectar();
-		$resultEsp = mysqli_query($conexion, $sqlEsp);
 		$resultProj = mysqli_query($conexion, $sqlProj);
-		$resultMult = mysqli_query($conexion, $sqlMult);
+		//$resultMult = mysqli_query($conexion, $sqlMult);
 		desconectar($conexion);
-
-		$rows = array();
-		while($row = mysqli_fetch_array($resultEsp)){
-			$rows[] = $row;
-		}
-		$datosExportar = '{"especialitats" : ' . json_encode($rows) . ', "multimedia" : ';
-
-		$rows = array();
-		while($row = mysqli_fetch_array($resultMult)){
-			$rows[] = $row;
-		}
-		$datosExportar .= json_encode($rows) . ', "projectes" : ';
 
 		$rows = array();
 		while($row = mysqli_fetch_array($resultProj)){
 			$rows[] = $row;
 		}
-		$datosExportar .= json_encode($rows) . '}';
+		echo json_encode($rows);
+		
+		/*$datosExportar = '{"projectes" : ' . json_encode($rows);
 
-		echo $datosExportar;
+		$rows = array();
+		while($row = mysqli_fetch_array($resultMult)){
+			$rows[] = $row;
+		}
+		$datosExportar .= ', "multimedia" : ' . json_encode($rows) . '}';
+
+		echo $datosExportar;*/
 	}
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "u"){

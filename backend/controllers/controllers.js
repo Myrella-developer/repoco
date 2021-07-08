@@ -278,8 +278,6 @@ angular.module("backend")
 })
 
 .controller("EdicionsController", ($q, $http, $scope, $routeParams, $location, $rootScope) => {
-    $scope.nom = "";
-    $scope.nombre = "";
     $scope.url = "";
     $scope.dataInici = "";
     $scope.dataFi = "";
@@ -306,16 +304,12 @@ angular.module("backend")
 
     $scope.editar=(posicion, idEdicio)=>{
         if(posicion !== "-1"){
-            $scope.nom=$scope.especialitats[posicion].nom;
-            $scope.nombre=$scope.especialitats[posicion].nombre;
             $scope.url=$scope.edicions[posicion].url;
             $scope.dataFi = new Date($scope.edicions[posicion].dataFi);
             $scope.dataInici = new Date($scope.edicions[posicion].dataInici);
             $scope.idEdicio=$scope.edicions[posicion].idEdicio;
-            $scope.sel=$scope.edicions[posicion].nom;
         }
         else{
-            $scope.sel="-1"
             $scope.dataInici = "";
             $scope.dataFi = "";
             $scope.idEdicio="";
@@ -346,10 +340,10 @@ angular.module("backend")
             }
         }
 
-        data.append("selEsp", $scope.sel);
         data.append("dataInici", dataInici);
         data.append("dataFi", dataFi);
         data.append("idEdicio", $rootScope.idEdicio);
+        data.append("idEsp", idEsp);
 
         let defered = $q.defer();
         $http.post("models/edicions.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
@@ -359,10 +353,6 @@ angular.module("backend")
         })
         .catch((err)=>{console.log(err.statusText)})
         .finally(()=>{$("#modalEdicio").modal('hide')});
-    }
-    
-    $scope.irProjectes = () => {
-        $location.path("/projectes/"+idcasa)
     }
 
     $scope.eliminar = (idEdicio) => {
@@ -394,19 +384,18 @@ angular.module("backend")
     $scope.descripcionMulti="";
     $scope.urlMulti=""
 
-    let idcasa = $routeParams.idcasa;
+    let idEdicio = $routeParams.idEdicio;
 	let data= new FormData;
     let defered = $q.defer();
     data.append("acc","r");
-    data.append("idcasa", idcasa);
+    data.append("idEdicio", idEdicio);
 
     $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
     .then((res) => { 
         defered.resolve(res);
-        $scope.especialitats = res.data.especialitats;
-        $scope.projectes = res.data.projectes;
-        $scope.multimedia = res.data.multimedia;
-        console.log($scope.multimedia)
+        $scope.projectes = res.data;
+        //$scope.multimedia = res.data.multimedia;
+        console.log(res.data)
     })
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})

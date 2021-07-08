@@ -22,6 +22,7 @@
                     <i class="fa fa-trash" aria-hidden="true" ng-click="eliminar(projecte.idProjecte)"></i>
 				</div>
             </div>
+            <a class="btn btn-warning mb-2" ng-href="http://localhost/repoco/backend/#/projectes/{{edicio.idEdicio}}">Gestionar projectes</a>
         </div>
     </div>
 
@@ -34,12 +35,6 @@
                 </div>
                 <div class="modal-body">
                     <form ng-model="edicions">
-                        <div class="mb-2">
-                            <select ng-model="sel">
-                                <option value="-1" ng-model="sel">--Selecciona especialitat</option>
-                                <option ng-model="sel" ng-repeat="e in especialitats">{{e.nom}}</option>
-                            </select>
-                        </div>
                         <div class="mb-2">
                             <label for="message-text" class="col-form-label">Data Inici</label>
                             <input type="date" ng-model="dataInici">
@@ -61,8 +56,6 @@
             </div>
         </div>
     </div>
-    
-    <button class="btn btn-warning mb-5" ng-click="irProjectes()">Gestionar projectes</button>
     
     <?php 
     

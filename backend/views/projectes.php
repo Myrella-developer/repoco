@@ -113,5 +113,5 @@
 
     <h2>Tots els projectes</h2>
 
-    <?php endif; ?>
+    <?php endif; endif;?>
 </div>

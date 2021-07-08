@@ -1,12 +1,8 @@
+<?php
+	session_start();
+	if (!isset($_SESSION['login']['idDir'])) header("location: ../");
+	?>
 <div class="container-fluid">
-    <?php 
-        session_start();
-        if(!isset($_SESSION['login']['idDir'])){
-            echo "Debes iniciar sesión";
-        }
-    
-        if(isset($_SESSION['login']['idDir'])) :
-    ?>
     <h2 class="text-center mt-5">Gestionar Directors</h2>
 
     <i class="fas fa-plus-square ms-4 mt-5 text-primary" ng-click="editar('-1')"><label class="ms-1 fw-bold">AFEGIR</label></i>

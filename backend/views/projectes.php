@@ -1,10 +1,8 @@
+<?php
+	session_start();
+	if (!isset($_SESSION['login']['idDir'])) header("location: ../");
+	?>
 <div class="container-fluid">
-    <?php 
-        session_start();
-        if(!isset($_SESSION['login'])) header('Location: ../#');
-    
-        if(isset($_SESSION['login']['idDir'])) :
-    ?>
     <h2 class="text-center mt-5">Els projectes de la teva casa</h2>
 
     <i class="fas fa-plus-square ms-4 mt-5 text-primary"></i>

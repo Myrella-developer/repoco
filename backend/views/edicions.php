@@ -4,6 +4,7 @@
         if(!isset($_SESSION['login'])) header('Location: ../#');
         if(isset($_SESSION['login']['idDir'])) :
     ?>
+
     <h2 class="text-center mt-5">Les edicions de la teva casa</h2>
 
     <i class="fas fa-plus-square ms-4 mt-5 text-primary" ng-click="editar('-1')"></i>

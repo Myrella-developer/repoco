@@ -1,18 +1,11 @@
 <div class="mb-5">
-<a class="btn btn-warning mt-4 ms-2" ng-href="http://localhost/repoco/backend/#/edicions/1">Gestionar edicions</a>
-    <?php 
-        session_start();
-        if(!isset($_SESSION['login']['idDir'])){
-            echo "Debes iniciar sesión";
-        }
-    
-        if(isset($_SESSION['login']['idDir'])) :
-    ?>
-	<div class="text-center">
-		<h2>Especialitats de la teva casa</h2>
-	</div>
-   
 
+<?php
+	session_start();
+	if (!isset($_SESSION['login']['idDir'])) header("location: ../");
+	?>
+<a class="btn btn-warning mt-4 ms-2" ng-href="http://localhost/repoco/backend/#/edicions/1">Gestionar edicions</a>
+    <h2 class="text-center mt-5">Especialitats de la teva casa</h2>
     <i class="fas fa-plus-square ms-4 mt-5 text-primary" ng-click="editar('-1')"><label class="ms-1 fw-bold">AFEGIR</label></i>
     <div class="container">
         <div class="row ms-2">    

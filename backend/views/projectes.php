@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="">
     <?php 
         session_start();
         if(!isset($_SESSION['login'])) header('Location: ../#');

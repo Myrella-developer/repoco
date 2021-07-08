@@ -1,6 +1,6 @@
 <a class="btn btn-warning mt-4 ms-2" ng-href="http://localhost/repoco/backend/#/especialitats/1">Gestionar especialitats</a>
 <div class="row">
-  <div class="ms-4 mt-4 container-fluid d-block" ng-repeat="casa in cases">
+  <div class="ms-4 mt-4 d-block" ng-repeat="casa in cases">
     <div class="card" id="card-cases" ng-model="cases" style="width: 18rem;">
       <div class="card-body">
         <img src="../multimedia/img/{{casa.url}}" class="card-img-top" alt="...">

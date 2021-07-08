@@ -6,9 +6,14 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Source Sans Pro', sans-serif;;
-    background-color: rgb(255, 255, 255);
+    background:linear-gradient(to left, rgba(135, 169, 175, 0.246), #eef1f5)
 }
 
+.titolGestor{
+    font-size: 3rem;
+    color: #000102;
+    text-align: center;
+}
 .cardGestor-ESP{
 	max-width: 400px;
 	border-radius: 7px;

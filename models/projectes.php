@@ -42,5 +42,30 @@ if(isset($_POST['acc']) && $_POST['acc']=='pro'){
 
 }
 
+if(isset($_POST['acc']) && $_POST['acc']=='galeria'){
+
+	$mysql="SELECT `url`,`tipo`,`descripcio`,`descripcion` FROM `multimedia` WHERE `idProjecte`='{$_POST['idProjecte']}'";
+
+	$conexion=conectar();
+	$galeria=mysqli_query($conexion,$mysql);
+	desconectar($conexion);
+	// $cantidad= mysqli_num_rows($galeria);
+
+	// if ($cantidad!=1) {
+		
+		$rows= array();
+
+		while ($row= mysqli_fetch_array($galeria)) {
+		$rows[]=$row;
+
+			}
+
+	// }else{
+	// 	$row=mysqli_fetch_row($galeria); 
+	// }
+	echo json_encode($rows);
+	
+	}
+
 ?>
 

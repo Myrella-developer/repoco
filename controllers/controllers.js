@@ -328,4 +328,20 @@ angular.module("repoco")
 	   .catch((err) => { console.log(err.statusText) })
 	   .finally(() => {});
 
+	   data = new FormData();
+	   data.append("acc", "galeria");
+	   data.append("idProjecte",$scope.idProjecte);
+
+	   $http.post("models/projectes.php", data, {
+	      headers:{ "Content-type" : undefined }, transformRequest : angular.identity 
+	   })
+	   .then((res) => { 
+	       defered.resolve(res);
+	       $scope.galerias=res.data;
+	       console.log($scope.galerias);
+	      
+	   })
+	   .catch((err) => { console.log(err.statusText) })
+	   .finally(() => {});
+
 })

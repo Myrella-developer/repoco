@@ -50,6 +50,26 @@ body {
     text-decoration:none;
     cursor: pointer;
 }
+.cardGestor-ESP .cardButton{  
+        border: 0;
+        background: linear-gradient(to left, #1d4d7a,  #12789a);
+        display: block;
+        margin: 20px auto;
+        text-align: center;
+        padding: 14px 30px;
+        outline: none;
+        font-size: 16px;
+        color: rgb(227, 232, 240);
+        border-radius: 24px;
+        transition: 0.25s;
+        cursor: pointer;
+}
+.cardGestor-ESP .cardButton:hover {
+    background:linear-gradient(to left, rgba(240, 246, 247, 0.246), #eef1f5);
+    color: #12789a;
+    border: 1px solid #12789a;
+    ;
+}
 .modalgestorDir {
     width: 40rem;
     padding: 4rem 2rem;

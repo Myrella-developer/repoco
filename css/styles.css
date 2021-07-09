@@ -337,6 +337,7 @@ img.miniatura{
     opacity: 0.5;
     width: 16rem;
     position: relative;
+    margin-bottom: 1rem;
     /*display: block;
     margin-left: auto;
      margin-right: auto;*/
@@ -345,10 +346,10 @@ p.anys{
     position: absolute;
     font-size: 45px;
     top: 24%;
-    left: 25%;
+    left: 30%;
 }
 .nameEspec{
-    font-size: 12px;
+    font-size: 13.5px;
 }
 .nameEspec a{
     text-decoration: none;

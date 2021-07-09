@@ -7,7 +7,7 @@
 	</div>
 	<div class="carousel-inner">
 	    <div class="carousel-item active">
-	      <img src="multimedia/img/provisionales/{{url==null?'no-imageSlide.png' : url}}" class="d-block w-100" alt="Casa d'ofici">
+	      <img src="multimedia/img/especialitats/{{url==null?'no-imageSlide.png' : url}}" class="d-block w-100" alt="Casa d'ofici">
 
 	    </div>
 	    <!-- falta sentencia para img de especialitats -->
@@ -19,13 +19,13 @@
 	    </div>
 	</div>
 	<div class="position-absolute top-50 start-50 translate-middle">
-		<p>{{idioma=="cat"?titol:titulo}}</p><hr>
+		<p>{{idioma=="cat"?titol:titulo}}<hr></p>
 		<h2>{{idioma=="cat"?nom:nombre | uppercase}}</h2>
 	</div>
 </div>
 <div class="textCentral">
 	<p class="fw-bold">{{idioma=="cat"?titol2:titulo2}} {{idioma=="cat"?nom:nombre | uppercase}}?</p>
-	<p>La <span class="fw-bold">{{idioma=="cat"?titol3:titulo3}} {{idioma=="cat"?nom:nombre}}</span>{{idioma=="cat"?dcat:dcas}}</p>
+	<p>La <span class="fw-bold">{{idioma=="cat"?titol3:titulo3}} {{idioma=="cat"?nom:nombre}}</span> {{idioma=="cat"?dcat:dcas}}</p>
 </div>
 <div class="textCentral">
 	<h6 class="fw-bold">{{idioma=="cat"?acat:acas}}</h6>
@@ -33,7 +33,7 @@
 </div>
 <div class="row row-cols-3 textCentral text-center">
 	<div class="col position-relative" ng-repeat="any in dataAnys">
-		<a href="#/espAny/{{any.inici}}/{{idCasa}}"><img class="miniatura" src="multimedia/img/miniatura1.jpg">
+		<a href="#/espAny/{{any.inici}}/{{idCasa}}"><img class="miniatura" src="multimedia/img/miniaturas/{{mini==null?'noimagen.png' : mini}}">
 		<p class="anys">{{any.inici|limitTo:4:0}}/{{any.fi|limitTo:2:2}} </p></a>
 		<p class="nameEspec badge bg-secondary fw-bold m-1" ng-repeat="especialitat in any.especialitats"><a href="#/edEsp/{{idCasa}}/{{especialitat.idEdicio}}">{{idioma=="cat"?especialitat.nom:especialitat.nombre}}</a></p>
 	</div>

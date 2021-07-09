@@ -58,7 +58,7 @@ angular.module("backend")
             $scope.descripcio="";
             $scope.descripcion="";
         }
-        //document.querySelector("#carlosModal").style = "display:block|important";
+        $("#modalCases").modal('show')
         
     }
     $scope.guardar=()=>{

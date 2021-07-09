@@ -12,7 +12,7 @@
         <div class="row ms-2">    
             <div class="col-md-3" ng-repeat="especialitat in especialitats">
                 <div class="card cardGestor-ESP mx-auto mt-3">
-					<img src="img/{{especialitat.url}}" class="card-img-top imgCard-Gestor" alt="especialitat" />                       <div class="card-content text-center">
+					<img src="img/{{especialitat.url}}" class="card-img-top imgCard-Gestor" alt="especialitat" />                      
                     <div class="card-body card-content">
                         <span class="card-title">{{especialitat.nom}}</span><br>
                         <span class="card-text">{{especialitat.nombre}} </span><br>
@@ -20,8 +20,9 @@
                         <p class="card-text">{{especialitat.descripcion}} </p>
 					    <div class="icon-block">
                             <i class="fa fa-cog" aria-hidden="true" ng-click="editar($index)"></i>
+                            <a class="btn cardButton" ng-href="http://localhost/repoco/backend/#/edicions/{{especialitat.idEsp}}">Gestionar edicions</a>
 					    </div>
-                        <a class="btn btn-warning mt-4 ms-2" ng-href="http://localhost/repoco/backend/#/edicions/{{especialitat.idEsp}}">Gestionar edicions</a>
+                        
                     </div>
                 </div>   
 			</div>   

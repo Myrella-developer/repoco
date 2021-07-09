@@ -33,7 +33,7 @@
 </div>
 <div class="row row-cols-3 textCentral text-center">
 	<div class="col position-relative" ng-repeat="any in dataAnys">
-		<a href="#/espAny/{{any.inici}}/{{idCasa}}"><img class="miniatura" src="multimedia/img/especialitats/{{mini==null?'noimagen.png' : mini}}">
+		<a href="#/espAny/{{any.inici}}/{{idCasa}}"><img class="miniatura" src="multimedia/img/miniaturas/{{mini==null?'noimagen.png' : mini}}">
 		<p class="anys">{{any.inici|limitTo:4:0}}/{{any.fi|limitTo:2:2}} </p></a>
 		<p class="nameEspec badge bg-secondary fw-bold m-1" ng-repeat="especialitat in any.especialitats"><a href="#/edEsp/{{idCasa}}/{{especialitat.idEdicio}}">{{idioma=="cat"?especialitat.nom:especialitat.nombre}}</a></p>
 	</div>

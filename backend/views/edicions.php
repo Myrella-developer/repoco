@@ -5,10 +5,9 @@
         if(isset($_SESSION['login']['idDir'])) :
     ?>
 
-    <h2 class="titolGestor mt-5">Les edicions de la teva Especialitat</h2>
+    <h2 class="titolGestor">Les edicions de la teva Especialitat</h2>
 
-    <i class="fas fa-plus-square ms-4 mt-5 text-primary" ng-click="editar('-1')"></i>
-    <label class="ms-1 fw-bold">AFEGIR</label>
+    <div class="row cols-12"><button class="btnAfegir fas fa-plus-circle" ng-click="editar('-1')"> AFEGIR</button></div>
 
     <div class="row">
         <div class="card cardGestor-ESP m-5" style="width: 18rem;" ng-repeat="edicio in edicions">

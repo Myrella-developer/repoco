@@ -5,11 +5,10 @@
     
         if(isset($_SESSION['login']['idDir'])) :
     ?>
-    <h2 class="titolGestor mt-5">Els projectes de la teva casa</h2>
+    <h2 class="titolGestor">Els projectes de la teva casa</h2>
 
-    <i class="fas fa-plus-square ms-4 mt-5 text-primary"></i>
-    <label class="ms-1 fw-bold" ng-click="editar('-1')">AFEGIR</label>
-    
+
+    <div class="row cols-12"><button class="btnAfegir fas fa-plus-circle" ng-click="editar('-1')"> AFEGIR</button></div>
     <div class="row">
         <div class="card cardGestor-ESP m-5" style="width: 18rem;" ng-repeat="projecte in projectes">
             <div class="card-body">

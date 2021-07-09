@@ -5,15 +5,39 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Source Sans Pro', sans-serif;;
+    font-family: 'Open Sans', Arial, sans-serif;
     background-color: rgb(255, 255, 255);
 }
-
-.titolGestor{
-    font-size: 3rem;
-    color: #000102;
-    text-align: center;
+h2 {
+    text-align: center !important;
+    font-size: 36px;
+    line-height: 78px;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
 }
+.btnAfegir, .btnTancar{
+    margin-right: 0;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 130px;
+    height: 40px;
+    color: #f3f8fa;
+    font-family: 'Open Sans', Arial, sans-serif;
+    background: linear-gradient(to left, #1d4d7a,  #12789a);
+    border-radius: 8px;
+    font-weight: bolder;
+    border: none;
+    cursor: pointer;
+}
+.btnAfegir:hover {
+    background:linear-gradient(to left, rgba(240, 246, 247, 0.246), #eef1f5);
+    color: #12789a;
+    font-weight: bolder;
+    border: 1px solid #12789a;
+}
+
 .cardGestor-ESP{
 	max-width: 400px;
 	border-radius: 7px;
@@ -22,6 +46,7 @@ body {
   	margin-top: 5rem;
   	border-width: 0px;
     color: #12789a;
+    font-weight: bolder;
     background:linear-gradient(to left, rgba(240, 246, 247, 0.246), #eef1f5)
 }
 .cardGestor-ESP  i {
@@ -58,7 +83,7 @@ body {
         text-align: center;
         padding: 14px 30px;
         outline: none;
-        font-size: 16px;
+        font-weight: bolder;
         color: rgb(227, 232, 240);
         border-radius: 24px;
         transition: 0.25s;
@@ -67,6 +92,7 @@ body {
 .cardGestor-ESP .cardButton:hover {
     background:linear-gradient(to left, rgba(240, 246, 247, 0.246), #eef1f5);
     color: #12789a;
+    font-weight: bolder;
     border: 1px solid #12789a;
     ;
 }
@@ -85,11 +111,11 @@ body {
     display: block;
     margin: 20px auto;
     text-align: center;
-    border: 1px solid #3498db;
+    border: 1px solid #12789a;
     padding: 10px 10px;
     width: 350px;
     outline: none;
-    color: rgb(74, 79, 87);
+    color: rgb(74, 82, 87);
     border-radius: 24px;
     transition: 0.25s
 }
@@ -102,24 +128,28 @@ body {
     font-size: 18px;
     margin-top:10px;
     text-align: center;
-    color: #3498db
+    color: #12789a
 }
 
 .modalgestorDir .btnModal{
     border: 0;
-    background: linear-gradient(to right, rgb(151, 220, 241), #699bf7);
+    background: linear-gradient(to left, #1d4d7a,  #12789a);
     display: block;
     margin: 20px auto;
     text-align: center;
     padding: 14px 40px;
     outline: none;
     color: rgb(227, 232, 240);
+    font-weight: bolder;
     border-radius: 24px;
     transition: 0.25s;
-    cursor: pointer;
+    cursor: pointer
 }
 .modalgestorDir .btnModal:hover {
-    background:linear-gradient(to left, rgb(151, 220, 241), #699bf7)
+    background:linear-gradient(to left, rgba(240, 246, 247, 0.246), #eef1f5);
+    color: #12789a;
+    font-weight: bolder;
+    border: 1px solid #12789a;
 }
   
 /* TODO REVISAR ESAS CLASES */

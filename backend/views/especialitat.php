@@ -5,10 +5,9 @@
 	if (!isset($_SESSION['login']['idDir'])) header("location: ../");
 	?>
     
-    <h2 class="text-center mt-5">Especialitats de la teva casa</h2>
- 
-    <i class="fas fa-plus-square ms-4 mt-5 text-primary" ng-click="editar('-1')"><label class="ms-1 fw-bold">AFEGIR</label></i>
+    <h2 class="titolGestor text-center">Especialitats de la teva casa</h2> 
     <div class="container">
+        <div class="row cols-12"><button class="btnAfegir fas fa-plus-circle" ng-click="editar('-1')"> AFEGIR</button></div>
         <div class="row ms-2">    
             <div class="col-md-3" ng-repeat="especialitat in especialitats">
                 <div class="card cardGestor-ESP mx-auto mt-3">

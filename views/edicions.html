@@ -32,9 +32,9 @@
         <h2>{{idioma=="cat"?nom:nombre | uppercase}}</h2>
     </div>
 </div>
-<div class="row row-cols-3 textCentral">
-        <div class="col text-center" ng-repeat="esp in especialitats">
-            <a href="#/edEsp/{{idCasa}}/{{esp.idEdicio}}"><div class="card  cardGestor-ESP border border-2"  style="width: 18rem;"  >
+<div class="row row-cols-2 textCentral">
+        <div class="col" ng-repeat="esp in especialitats">
+            <a href="#/edEsp/{{idCasa}}/{{esp.idEdicio}}"><div class="card  text-center cardGestor-ESP border border-2 mx-auto"  style="width: 30rem;"  >
                 <div class="card-body" >
                     <h3>{{esp.nom}} </h3>
                 <p class="card-text text-wrap">Descripcion de especialdad o vídeo o imagen <br> Depende del mockup</p>

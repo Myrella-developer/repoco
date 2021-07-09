@@ -48,6 +48,13 @@
                             <label for="message-text" class="col-form-label labelModal">Descripción de la Casa</label>
                             <input type="text" class="form-control"  ng-model="descripcion"></input>
                         </div>
+                        <div class="mb-2">
+                          <ul class="list-group" ng-model="url">
+                            <li class="list-group-item">{{url}}</li>
+                          </ul>
+                          <label for="upload" class="col-form-label">Penjar una imatge</label>
+                          <input type="file" id="upload" multiple="true">
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">

@@ -21,6 +21,10 @@ app.config(['$routeProvider',function($routeProvider){
 		templateUrl:'views/directors.php',
 		controller:'DirectorsController'
 	})
+	.when('/multimedia/:idProjecte',{
+		templateUrl:'views/multimedia.php',
+		controller:'MultimediaController'
+	})
 	.otherwise({
 		redirectTo: '/'
 

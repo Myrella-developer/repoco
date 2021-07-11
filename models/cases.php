@@ -2,7 +2,7 @@
 include("../inc/functions.php");
 if(isset($_POST['acc']) && $_POST['acc']=='r'){
 
-	$mySql="SELECT `idcasa`,`nom`,`nombre`,`descripcio`,`descripcion`,`url` FROM `cases` WHERE `idcasa`='{$_POST['idcasa']}'";
+	$mySql="SELECT `idcasa`,`nom`,`nombre`,`descripcio`,`descripcion`,`url`,`miniatura` FROM `cases` WHERE `idcasa`='{$_POST['idcasa']}'";
 
 
 	$conexion=conectar();

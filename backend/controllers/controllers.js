@@ -302,7 +302,7 @@ angular.module("backend")
 
     $scope.editar=(posicion, idEdicio)=>{
         if(posicion !== "-1"){
-            $scope.url=$scope.edicions[posicion].url;
+            $rootScope.url = $scope.edicions[posicion].url;
             $scope.dataFi = new Date($scope.edicions[posicion].dataFi);
             $scope.dataInici = new Date($scope.edicions[posicion].dataInici);
             $scope.idEdicio=$scope.edicions[posicion].idEdicio;
@@ -332,7 +332,7 @@ angular.module("backend")
         else{
             if($rootScope.fotoEdicio == undefined){
                 data.append("acc","u");
-                data.append("imgEdicio", $scope.url) 
+                data.append("imgEdicio", $rootScope.url) 
             }else{
                 data.append("acc","u");
                 data.append("imgEdicio", $rootScope.fotoEdicio)

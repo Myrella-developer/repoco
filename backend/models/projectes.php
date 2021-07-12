@@ -7,16 +7,40 @@
 		FROM projectes p
 		WHERE p.idEdicio = '{$_POST['idEdicio']}'
 		";
+		
+		$sqlEsp = "SELECT idEdicio from edicio
+		WHERE idEdicio != 19 AND idEdicio != 20 ORDER BY idEdicio";
+
+		$sqlEsp2 = "SELECT esp_proj.idEdicio
+		FROM esp_proj 
+		INNER JOIN projectes ON projectes.idProjecte = 14";
 
 		$conexion = conectar();
 		$resultProj = mysqli_query($conexion, $sqlProj);
+		$resultEsp = mysqli_query($conexion, $sqlEsp);
+		$resultEsp2 = mysqli_query($conexion, $sqlEsp2);
 		desconectar($conexion);
 
 		$rows = array();
 		while($row = mysqli_fetch_array($resultProj)){
 			$rows[] = $row;
 		}
-		echo json_encode($rows);
+
+		$datosExportar = '{"projectes" : ' . json_encode($rows) . ', "especialitats" : ';
+
+		$rows = array();
+		while($row = mysqli_fetch_array($resultEsp)){
+			$rows[] = $row;
+		}
+		
+        $datosExportar .= json_encode($rows) . ', "edicionsExistents" : ';
+
+		$rows = array();
+		while($row = mysqli_fetch_array($resultEsp2)){
+			$rows[] = $row;
+		}
+		$datosExportar .= json_encode($rows) . '}';
+        echo $datosExportar;
 	}
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "u"){

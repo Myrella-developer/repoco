@@ -389,7 +389,9 @@ angular.module("backend")
     $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
     .then((res) => { 
         defered.resolve(res);
-        $scope.projectes = res.data;
+        $scope.projectes = res.data.projectes;
+        $scope.especialitats = res.data.especialitats;
+        $scope.edicionsExistents = res.data.edicionsExistents
     })
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})

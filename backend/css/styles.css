@@ -216,3 +216,7 @@ a{
 .btn-warning{
     display: block;
 }*/
+.bi-x{
+    cursor: pointer;
+    color: red;
+}

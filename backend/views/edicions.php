@@ -44,7 +44,7 @@
                         </div>
                         <div class="mb-2">
                             <input type="file" onchange="angular.element(this).scope().getFileDetails(this)"><br/>
-                            <img src="../multimedia/img/edicions/{{url}}" ng-model="url" width="250" height="150" class="mt-2">
+                            <img src="../multimedia/img/edicions/{{url}}" width="250" height="150" class="mt-2">
                         </div>
                     </form>
                 </div>

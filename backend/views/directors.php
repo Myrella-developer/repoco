@@ -1,12 +1,10 @@
+<div class="">
 <?php
 	session_start();
 	if (!isset($_SESSION['login']['idDir'])) header("location: ../");
-	?>
-<div class="">
-
+?>
     <h2 class="titolGestor">Gestionar Directors</h2>
-    <div class="container">
-        <div class="row cols-12"><button class="btnAfegir fas fa-plus-circle" ng-click="editar('-1')"> AFEGIR</button></div>
+    <div class="row cols-12"><button class="btnAfegir fas fa-plus-circle" ng-click="editar('-1')"> AFEGIR</button></div>
         <div class="row ms-2">    
             <div class="col-md-3" ng-repeat="director in directors">
 			    <div class="card cardGestor-ESP">
@@ -59,14 +57,14 @@
            </div>
         </div>
     </div>
-    <?php 
+<?php 
     
-        if(isset($_SESSION['login']['tipus']) && $_SESSION['login']['tipus'] == "a") :
-    ?>
+    if(isset($_SESSION['login']['tipus']) && $_SESSION['login']['tipus'] == "a") :
+?>
 
-    <h2>Tots els archius</h2>
+<h2>Tots els archius</h2>
 
-    <?php endif; ?>
+<?php endif; ?>
 </div>
 
 

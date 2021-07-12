@@ -23,9 +23,7 @@ angular.module("backend")
     $scope.nombre="";
     $scope.descripcio="";
     $scope.descripcion="";
-    // $scope.url="";
-    $scope.url="digitals.png";
-    $scope.url="digitals.png"
+    $scope.url="";
     let data = new FormData;
     data.append("acc","r");
     let defered =$q.defer();
@@ -143,7 +141,6 @@ angular.module("backend")
         defered.resolve(res);
         $scope.especialitats = res.data.especialitats;
         $scope.cases = res.data.cases;
-        //console.log($scope.especialitats);
     })
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})

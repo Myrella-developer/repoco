@@ -2,57 +2,49 @@
 <?php
 	session_start();
 	if (!isset($_SESSION['login']['idDir'])) header("location: ../");
-	?>
-
-
-<div class="container">
-        <div class="row ms-2">    
-            <div class="col-md-3" ng-repeat="casa in cases">
-                <div class="card cardGestor-ESP mx-auto mt-3">
-				      	    <img src="../multimedia/img/miniaturas/{{casa.url}}" class="card-img-top imgCard-Gestor" alt="cases" />                      
-                    <div class="card-body card-content">
-                        <span class="card-title">{{casa.nom}}</span><br>
-                        <p class="card-text">{{casa.descripcio}} </p><br>
-                        <p class="card-text">{{especialitat.descripcion}} </p>
-					              <div class="icon-block">
-                            <i class="fa fa-cog" aria-hidden="true" ng-click="editar($index)"></i>
-                            <a class="btn cardButton" href="#/especialitats/{{casa.idcasa}}">Gestionar especialitats</a>
-					              </div>
-                    </div>
+?>
+    <div class="row ms-2">    
+        <div class="col-md-3" ng-repeat="casa in cases">
+            <div class="card cardGestor-ESP mx-auto mt-3">
+				<img src="../multimedia/img/casas/{{casa.url}}" class="card-img-top imgCard-Gestor" alt="cases" title="{{casa.descripcio}}"/>                      
+                <div class="card-body card-content">
+                    <span class="card-title">{{casa.nom}}</span><br>
+                    <p class="card-text">{{casa.descripcio|limitTo:25:0}}</p><span>...</span>
+					<div class="icon-block">
+                        <i class="fa fa-cog" aria-hidden="true" ng-click="editar($index)"></i>
+					</div>
+                    <a class="btn cardButton" href="#/especialitats/{{casa.idcasa}}">Gestionar especialitats</a>    
                 </div>   
-			        </div>   
+			</div>   
         </div>        
     </div>   
     <div class="modal fade" id="modalCases" tabindex="-1" aria-labelledby="labelDigital" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content modalgestorDir">
                 <div class="modal-header">
-                    <h3 class="modal-title labelModal" id="labelDigital">Especialitat</h3>
+                    <h3 class="modal-title labelModal" id="labelDigital">CASES D'OFICIS</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form ng-model="especialitats">
                         <div class="mb-2">
-                            <label for="message-text" class="col-form-label labelModal">Nom de la Casa</label>
+                            <label for="message-text" class="col-form-label labelModal">Nom Case - CAT</label>
                             <input type="text" class="form-control" ng-model="nom"></input>
                         </div>
                         <div class="mb-2">
-                            <label for="message-text" class="col-form-label labelModal">Nombre de la Casa</label>
+                            <label for="message-text" class="col-form-label labelModal">Nombre Casa - ESP</label>
                             <input type="text" class="form-control" ng-model="nombre"></input>
                         </div>
                         <div class="mb-2">
-                            <label for="message-text" class="col-form-label labelModal">Descripció de la Casa</label>
+                            <label for="message-text" class="col-form-label labelModal">Descripció Case - ESP</label>
                             <input type="text" class="form-control"  ng-model="descripcio"></input>
                         </div>
                         <div class="mb-2">
-                            <label for="message-text" class="col-form-label labelModal">Descripción de la Casa</label>
+                            <label for="message-text" class="col-form-label labelModal">Descripción Casa - ESP</label>
                             <input type="text" class="form-control"  ng-model="descripcion"></input>
                         </div>
                         <div class="mb-2">
-                          <ul class="list-group" ng-model="url">
-                            <li class="list-group-item">{{url}}</li>
-                          </ul>
-                          <label for="upload" class="col-form-label">Penjar una imatge</label>
+                          <label for="upload" class="col-form-label labelModal ">Penjar una imatge</label>
                           <input type="file" id="upload" multiple="true">
                         </div>
                     </form>
@@ -63,13 +55,9 @@
             </div>
         </div>
     </div>    
-
-    <?php 
-    
+<?php    
     if(isset($_SESSION['login']['tipus']) && $_SESSION['login']['tipus'] == "d") :
 ?>
-
 <h2>Tots els archius</h2>
-
 <?php endif; ?>
 </div>

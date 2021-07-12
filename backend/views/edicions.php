@@ -13,11 +13,11 @@
         <div class="card cardGestor-ESP m-5" style="width: 18rem;" ng-repeat="edicio in edicions">
             <div class="card-body">
                 <h5 class="card-title">{{edicio.dataInici}} - {{edicio.dataFi}}</h5>
-                <img src="img/default.png" class="w-75" ng-if="!edicio.url"/>
+                <img src="img/default.png" class="w-75" ng-if="!edicio.url || edicio.url == '' "/>
                 <img src="../multimedia/img/edicions/{{edicio.url}}" class="w-75" ng-if="edicio.url"/>
                 <p class="card-text">{{edicio.nom}}</p>
                 <div class="icon-block">
-                    <i class="fa fa-cog" aria-hidden="true" ng-click="editar($index)"></i>
+                    <i class="fa fa-cog" aria-hidden="true" ng-click="editar($index, edicio.idEdicio)"></i>
                     <i class="fa fa-trash" aria-hidden="true" ng-click="eliminar(projecte.idProjecte)"></i>
 				</div>
             </div>
@@ -44,7 +44,7 @@
                         </div>
                         <div class="mb-2">
                             <input type="file" onchange="angular.element(this).scope().getFileDetails(this)"><br/>
-                            <img src="../multimedia/img/edicions/{{url}}" ng-model="url" width="250" height="150" class="mt-2">
+                            <img src="../multimedia/img/edicions/{{url}}" width="250" height="150" class="mt-2">
                         </div>
                     </form>
                 </div>

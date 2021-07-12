@@ -46,10 +46,8 @@
         		</div>
         	</header>
     	</div>
-
 		<div class="row cols-12"><button class="btnTancar fa fa-sign-out fa-5" ng-click="tancar()"> Tancar</button></div>
-
-		<div data-ng-view=""></div>
+		<div data-ng-view="row"></div>
 		
         <footer>
 

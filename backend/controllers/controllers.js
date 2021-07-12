@@ -491,7 +491,6 @@ angular.module("backend")
             $scope.descripcion=$scope.multimedia[posicion].descripcion;
             $scope.idMultimedia=$scope.multimedia[posicion].idMult;
             $scope.url=$scope.multimedia[posicion].url;
-            console.log($scope.multimedia[posicion].url)
         }
         else{
             $scope.idMultimedia="";
@@ -499,18 +498,20 @@ angular.module("backend")
             $scope.descripcionMulti="";
             $scope.url="";
         }
-        $("#modalMultimedia").modal('show')
+        $("#modalMultimedia").modal('show');
+        $rootScope.idMult = $scope.multimedia[posicion].idMult;
     }
 
     $scope.guardar=()=>{
         if($scope.idMultimedia=="") data.append("acc","c");
         else data.append("acc","u");
 
-        data.append("idProjecte", $scope.idProjecte);
+        data.append("idMult", $rootScope.idMult);
+        data.append("idProjecte", idProjecte);
         data.append("multimedia", $rootScope.archivo);
-        data.append("descripcioMulti", $scope.descripcio);
-        data.append("descripcionMulti", $scope.descripcion);
-       
+        data.append("descripcio", $scope.descripcio);
+        data.append("descripcion", $scope.descripcion);
+        
         $http.post("models/multimedia.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
         .then((res) =>{
             defered.resolve(res);
@@ -525,7 +526,7 @@ angular.module("backend")
     
         if(confirmacion){
             data.append("acc", "d");
-            data.append("idMultimedia", idMultimedia);
+            data.append("idMult", idMultimedia);
     
             $http.post("models/multimedia.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
             .then((res) => { 

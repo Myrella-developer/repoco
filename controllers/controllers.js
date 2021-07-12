@@ -11,8 +11,11 @@ angular.module("repoco")
 	   })
 	   .then((res) => { 
 	       defered.resolve(res);
-	       $scope.cases=res.data;
-	       // console.log($scope.cases);
+	       $scope.datosCasas=res.data.datosCasas;
+	       console.log($scope.datosCasas);
+
+		   $scope.datosEspecialidades=res.data.datosEspecialidades;
+		   console.log($scope.datosEspecialidades);
 	   })
 	   .catch((err) => { console.log(err.statusText) })
 	   .finally(() => {});
@@ -56,7 +59,7 @@ angular.module("repoco")
 	   $scope.foot5cas="¿Buscas formación?";
 
 	   $scope.changeimg=(posicion) =>{
-		$scope.rutaimg=$scope.cases[posicion].url;
+		$scope.rutaimg=$scope.datosCasas[posicion].url;
 		// $scope.myDynamicClass = '.primer';
 		// var myEl = angular.element( document.querySelector( '#myDynamicClass' ) );
 		// 	myEl.addClass('primer');

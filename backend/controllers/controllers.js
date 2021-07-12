@@ -299,7 +299,7 @@ angular.module("backend")
 
     $scope.editar=(posicion, idEdicio)=>{
         if(posicion !== "-1"){
-            $scope.url=$scope.edicions[posicion].url;
+            $rootScope.url = $scope.edicions[posicion].url;
             $scope.dataFi = new Date($scope.edicions[posicion].dataFi);
             $scope.dataInici = new Date($scope.edicions[posicion].dataInici);
             $scope.idEdicio=$scope.edicions[posicion].idEdicio;
@@ -329,7 +329,7 @@ angular.module("backend")
         else{
             if($rootScope.fotoEdicio == undefined){
                 data.append("acc","u");
-                data.append("imgEdicio", $scope.url) 
+                data.append("imgEdicio", $rootScope.url) 
             }else{
                 data.append("acc","u");
                 data.append("imgEdicio", $rootScope.fotoEdicio)
@@ -376,7 +376,21 @@ angular.module("backend")
     $scope.idProjecte = "";
     $scope.titol="";
     $scope.titulo="";
+    $scope.selEsp = "-1";
 
+    $scope.onChange = () => {
+        alert("Edición "+ $scope.selEsp+" añadida")
+    }
+
+    $scope.onDelete = (idEdicio) => {
+        let confirmacion = confirm("¿Estás seguro de que quieres eliminar la edición "+idEdicio+"?")
+        if(confirmacion){
+            alert("Edición eliminada");
+        }else{
+            alert("Edición salvada");
+        }
+    }
+    
     let idEdicio = $routeParams.idEdicio;
 	let data= new FormData;
     let defered = $q.defer();
@@ -386,7 +400,9 @@ angular.module("backend")
     $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
     .then((res) => { 
         defered.resolve(res);
-        $scope.projectes = res.data;
+        $scope.projectes = res.data.projectes;
+        $scope.especialitats = res.data.especialitats;
+        $scope.edicionsExistents = res.data.edicionsExistents
     })
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})

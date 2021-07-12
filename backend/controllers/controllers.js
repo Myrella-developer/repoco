@@ -379,7 +379,21 @@ angular.module("backend")
     $scope.idProjecte = "";
     $scope.titol="";
     $scope.titulo="";
+    $scope.selEsp = "-1";
 
+    $scope.onChange = () => {
+        alert("Edición "+ $scope.selEsp+" añadida")
+    }
+
+    $scope.onDelete = (idEdicio) => {
+        let confirmacion = confirm("¿Estás seguro de que quieres eliminar la edición "+idEdicio+"?")
+        if(confirmacion){
+            alert("Edición eliminada");
+        }else{
+            alert("Edición salvada");
+        }
+    }
+    
     let idEdicio = $routeParams.idEdicio;
 	let data= new FormData;
     let defered = $q.defer();

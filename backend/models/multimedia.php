@@ -2,18 +2,10 @@
 	require("../../inc/functions.php");
 	
 	if(isset($_POST['acc']) && $_POST['acc'] == "r"){
-        /*
-		$sqlProj=
-		"SELECT p.titol, p.titulo, p.descripcio, p.descripcion, p.idProjecte, p.url
-		FROM projectes p
-		WHERE p.idEdicio = '{$_POST['idEdicio']}'
-		";*/
-		
 		$sqlMult = "SELECT m.idMult, m.url, m.tipo, m.descripcio, m.descripcion, m.idProjecte
 		FROM multimedia m WHERE m.idProjecte = {$_POST['idProjecte']}";
 
 		$conexion = conectar();
-		//$resultProj = mysqli_query($conexion, $sqlProj);
 		$resultMult = mysqli_query($conexion, $sqlMult);
 		desconectar($conexion);
 
@@ -22,16 +14,6 @@
 			$rows[] = $row;
 		}
 		echo json_encode($rows);
-		
-		/*$datosExportar = '{"projectes" : ' . json_encode($rows);
-
-		$rows = array();
-		while($row = mysqli_fetch_array($resultMult)){
-			$rows[] = $row;
-		}
-		$datosExportar .= ', "multimedia" : ' . json_encode($rows) . '}';
-
-		echo $datosExportar;*/
 	}
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "u"){
@@ -73,21 +55,6 @@
 		$conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);
-		
-		/*
-		$fileNew=explode(".",$_FILES['multimedia']['name']); 
-		$file=$fileNew[0].date("dmYhis").".".$fileNew[1]; 
-		move_uploaded_file($_FILES['multimedia']['tmp_name'],"../img/".$file);
-
-		$sql = "INSERT INTO `multimedia`(`url`, `tipo`, `descripcio`, `descripcion`, `idProjecte`) 
-		VALUES ('{$file}', 'i', '{$_POST['descripcioMulti']}', '{$_POST['descripcionMulti']}', 
-		'{$_POST['idProjecte']}'
-		)";
-
-		$conexion = conectar();
-		$result = mysqli_query($conexion, $sql);
-		desconectar($conexion);
-		echo $sql;*/
 	}
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "d"){

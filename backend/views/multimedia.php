@@ -47,31 +47,6 @@
                             <input type="file" multiple onchange="angular.element(this).scope().getFileDetails(this)">
                         </div>
                     </form>
-
-                    <div class="mt-3">
-                        <!--
-                        <div ng-repeat="u in urlMulti" class="d-inline-flex">
-                            <img src="./img/{{u.url}}" width="100"/>
-                            <input type="file" multiple onchange="angular.element(this).scope().getFileDetails(this)">
-                            <button class="btn btn-warning mt-2" ng-click="mostrarDesc()">Descripcio</button>
-                            <div class="mb-2" ng-show="showDesc">
-                                <label for="message-text" class="col-form-label">Descripcio multimedia</label>
-                                <input type="text" class="form-control" ng-model="descripcioMulti">
-                            
-                                <label for="message-text" class="col-form-label">Descripción multimedia</label>
-                                <input type="text" class="form-control" ng-model="descripcionMulti">
-                            </div>
-                        </div>-->
-                        
-                        <!--
-                        <img ng-if="m.tipo == 'i'" />
-                        <video ng-if="m.tipo == 'v'" width="250" height="150" controls>
-                            <source src="..." type="video/mp4">
-                        </video><br/>
-                        <audio ng-if="m.tipo == 's'" width="250" height="150" controls>
-                            <source src="..." type="audio/mp3">
-                        </audio><br/>-->
-                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tancar</button>

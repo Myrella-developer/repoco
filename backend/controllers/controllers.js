@@ -293,7 +293,6 @@ angular.module("backend")
     .then((res) => { 
         defered.resolve(res);
         $scope.edicions = res.data;
-        console.log(res.data);
     })
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})
@@ -310,6 +309,7 @@ angular.module("backend")
             $scope.idEdicio=$scope.edicions[posicion].idEdicio;
         }
         else{
+            $scope.url = "";
             $scope.dataInici = "";
             $scope.dataFi = "";
             $scope.idEdicio="";
@@ -381,12 +381,6 @@ angular.module("backend")
     $scope.titol="";
     $scope.titulo="";
 
-    /*
-    $scope.idMultimedia = "";
-    $scope.descripcioMulti="";
-    $scope.descripcionMulti="";
-    $scope.urlMulti=""*/
-
     let idEdicio = $routeParams.idEdicio;
 	let data= new FormData;
     let defered = $q.defer();
@@ -397,7 +391,6 @@ angular.module("backend")
     .then((res) => { 
         defered.resolve(res);
         $scope.projectes = res.data;
-        //$scope.multimedia = res.data.multimedia;
     })
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})
@@ -414,13 +407,6 @@ angular.module("backend")
             $scope.titol=$scope.projectes[posicion].titol;
             $scope.titulo=$scope.projectes[posicion].titulo;
             $scope.idProjecte=$scope.projectes[posicion].idProjecte;
-
-            /*
-            $scope.descripcioMulti=$scope.multimedia[posicion].descripcio;
-            $scope.descripcionMulti=$scope.multimedia[posicion].descripcion;
-            $scope.idMultimedia=$scope.multimedia[posicion].idMult;
-            $scope.urlMulti=$scope.multimedia[posicion];
-            console.log($scope.urlMulti)*/
         }
         else{
             $scope.descripcio="";
@@ -428,11 +414,6 @@ angular.module("backend")
             $scope.idProjecte = "";
             $scope.titol="";
             $scope.titulo="";
-
-            /*
-            $scope.idMultimedia="";
-            $scope.descripcioMulti="";
-            $scope.descripcionMulti="";*/
         }
         $("#modalProjecte").modal('show')
     }
@@ -446,12 +427,6 @@ angular.module("backend")
         data.append("titol", $scope.titol);
         data.append("titulo", $scope.titulo);
         data.append("edicio", $scope.sel);
-
-        /*
-        data.append("idProjecte", $scope.idProjecte);
-        data.append("multimedia", $rootScope.multimedias);
-        data.append("descripcioMulti", $scope.descripcioMulti);
-        data.append("descripcionMulti", $scope.descripcionMulti);*/
 
         $http.post("models/projectes.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
         .then((res) =>{

@@ -25,7 +25,6 @@ angular.module("backend")
     $scope.descripcion="";
     // $scope.url="";
     $scope.url="digitals.png";
-    console.log($scope.url);
     $scope.url="digitals.png"
     let data = new FormData;
     data.append("acc","r");
@@ -483,7 +482,7 @@ angular.module("backend")
     .finally(() => {})
 
     $scope.getFileDetails = (e) => {
-        $rootScope.multimediass = e.files[0];
+        $rootScope.archivo = e.files[0];
     }
 
     $scope.editar=(posicion)=>{
@@ -492,6 +491,7 @@ angular.module("backend")
             $scope.descripcion=$scope.multimedia[posicion].descripcion;
             $scope.idMultimedia=$scope.multimedia[posicion].idMult;
             $scope.url=$scope.multimedia[posicion].url;
+            console.log($scope.multimedia[posicion].url)
         }
         else{
             $scope.idMultimedia="";
@@ -507,10 +507,10 @@ angular.module("backend")
         else data.append("acc","u");
 
         data.append("idProjecte", $scope.idProjecte);
-        data.append("multimedia", $rootScope.multimedias);
-        data.append("descripcioMulti", $scope.descripcioMulti);
-        data.append("descripcionMulti", $scope.descripcionMulti);
-
+        data.append("multimedia", $rootScope.archivo);
+        data.append("descripcioMulti", $scope.descripcio);
+        data.append("descripcionMulti", $scope.descripcion);
+       
         $http.post("models/multimedia.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
         .then((res) =>{
             defered.resolve(res);

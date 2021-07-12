@@ -12,7 +12,7 @@
     <div class="row">
         <div class="card cardGestor-ESP m-5" style="width: 18rem;" ng-repeat="projecte in projectes">
             <div class="card-body">
-                <img src="./img/{{projecte.url}}" width="200"/>
+                <img src="../multimedia/img/projectes/{{projecte.url}}" width="200"/>
                 <h5 class="card-title">{{projecte.titol}}</h5>
                 <p class="card-text">{{projecte.descripcio}}</p>
                 <div class="icon-block">
@@ -51,7 +51,7 @@
                         </div>
                         <div class="mb-2">
                             <h2>Imatge del projecte</h2>
-                            <img src="./img/{{url}}" width="100"/><br/>
+                            <img src="../multimedia/img/projectes/{{url}}" width="100"/><br/>
                             <input type="file" onchange="angular.element(this).scope().getFileDetails(this)">
                         </div>
                     </form>

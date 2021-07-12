@@ -13,7 +13,7 @@
     <div class="row">
         <div class="card cardGestor-ESP m-5" style="width: 18rem;" ng-repeat="m in multimedia">
             <div class="card-body">
-                <img ng-src="../../multimedia/img/projectes/{{m.url}}" width="200"/>
+                <img ng-src="../multimedia/img/projectes/{{m.url}}" width="200"/>
                 <h5 class="card-title">{{m.url}}</h5>
                 <p class="card-text">{{m.descripcio}}</p>
                 <div class="icon-block">
@@ -43,7 +43,7 @@
                         </div>
                         <div class="mb-2">
                             <h2>Imatge del projecte</h2>
-                            <img src="../../multimedia/img/projectes/{{url}}" width="100"/><br/>
+                            <img src="../multimedia/img/projectes/{{url}}" width="100"/><br/>
                             <input type="file" multiple onchange="angular.element(this).scope().getFileDetails(this)">
                         </div>
                     </form>

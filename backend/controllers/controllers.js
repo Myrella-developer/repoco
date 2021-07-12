@@ -380,19 +380,6 @@ angular.module("backend")
     $scope.titol="";
     $scope.titulo="";
     $scope.selEsp = "-1";
-
-    $scope.onChange = () => {
-        alert("Edición "+ $scope.selEsp+" añadida")
-    }
-
-    $scope.onDelete = (idEdicio) => {
-        let confirmacion = confirm("¿Estás seguro de que quieres eliminar la edición "+idEdicio+"?")
-        if(confirmacion){
-            alert("Edición eliminada");
-        }else{
-            alert("Edición salvada");
-        }
-    }
     
     let idEdicio = $routeParams.idEdicio;
 	let data= new FormData;
@@ -421,7 +408,7 @@ angular.module("backend")
             $scope.url=$scope.projectes[posicion].url;
             $scope.titol=$scope.projectes[posicion].titol;
             $scope.titulo=$scope.projectes[posicion].titulo;
-            $scope.idProjecte=$scope.projectes[posicion].idProjecte;
+            $rootScope.idProjecte=$scope.projectes[posicion].idProjecte;
         }
         else{
             $scope.descripcio="";
@@ -471,9 +458,44 @@ angular.module("backend")
         }
     }
 
-    $scope.showDesc = false;
-    $scope.mostrarDesc = () => {
-        $scope.showDesc = !$scope.showDesc;
+    $scope.onChange = () => {
+        let confirmacion = confirm("¿Estás seguro de que quieres añador la edición "+$scope.selEsp+"?")
+        if(confirmacion){
+            alert("Edición "+ $scope.selEsp+" añadida");
+            let data= new FormData;
+            let defered = $q.defer();
+            data.append("acc","addEdicio");
+            data.append("idEdicio", $scope.selEsp);
+            data.append("idProjecte", $rootScope.idProjecte);
+            $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+            .then((res) => { 
+                defered.resolve(res);
+                console.log(res.data)
+            })
+            .catch((err) => { console.log(err.statusText) })
+            .finally(() => {})
+        }
+    }
+
+    $scope.onDelete = (idEdicio) => {
+        let confirmacion = confirm("¿Estás seguro de que quieres eliminar la edición "+idEdicio+"?")
+        if(confirmacion){
+            alert("Edición eliminada");
+            let data= new FormData;
+            let defered = $q.defer();
+            data.append("acc","deleteEdicio");
+            data.append("idEdicio", idEdicio);
+            data.append("idProjecte", $rootScope.idProjecte);
+            $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+            .then((res) => { 
+                defered.resolve(res);
+                console.log(res.data)
+            })
+            .catch((err) => { console.log(err.statusText) })
+            .finally(() => {})
+        }else{
+            alert("Edición salvada");
+        }
     }
 })
 

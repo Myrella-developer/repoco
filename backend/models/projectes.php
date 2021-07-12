@@ -106,4 +106,23 @@
 		desconectar($conexion);
 	}
 
+	if(isset($_POST['acc']) && $_POST['acc'] == "addEdicio"){
+		$sql = "INSERT INTO `esp_proj`(`idProjecte`, `idEdicio`) 
+		VALUES ({$_POST['idProjecte']} , {$_POST['idEdicio']} )";
+
+		$conexion = conectar();
+		$result = mysqli_query($conexion, $sql);
+		desconectar($conexion);
+	}
+
+	if(isset($_POST['acc']) && $_POST['acc'] == "deleteEdicio"){
+		$sql = "DELETE FROM `esp_proj` 
+		WHERE idProjecte = {$_POST['idProjecte']} 
+		AND idEdicio = {$_POST['idEdicio']} ";
+
+		$conexion = conectar();
+		$result = mysqli_query($conexion, $sql);
+		desconectar($conexion);
+	}
+
 ?>

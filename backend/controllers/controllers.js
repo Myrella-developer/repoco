@@ -387,15 +387,13 @@ angular.module("backend")
     $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
     .then((res) => { 
         defered.resolve(res);
-        $scope.projectes = res.data.projectes;
-        $scope.especialitats = res.data.especialitats;
-        $scope.edicionsExistents = res.data.edicionsExistents
+        $scope.projectes = res.data;
     })
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})
 
     $scope.getFileDetails = (e) => {
-        $rootScope.multimedias = e.files[0];
+        $rootScope.projecteMultimedia = e.files[0];
     }
 
     $scope.editar=(posicion)=>{
@@ -406,6 +404,18 @@ angular.module("backend")
             $scope.titol=$scope.projectes[posicion].titol;
             $scope.titulo=$scope.projectes[posicion].titulo;
             $rootScope.idProjecte=$scope.projectes[posicion].idProjecte;
+            $scope.idProjecte="12"
+            
+            data.append("acc","updateEdicio");
+            data.append("idProjecte", $rootScope.idProjecte);
+            $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+            .then((res) => { 
+                defered.resolve(res);
+                $scope.existents = res.data.edicionsExistents;
+                $scope.inexistents = res.data.edicionsInexistents;
+            })
+            .catch((err) => { console.log(err.statusText) })
+            .finally(() => {})
         }
         else{
             $scope.descripcio="";
@@ -413,6 +423,7 @@ angular.module("backend")
             $scope.idProjecte = "";
             $scope.titol="";
             $scope.titulo="";
+            $scope.idProjecte=""
         }
         $("#modalProjecte").modal('show')
     }
@@ -425,7 +436,9 @@ angular.module("backend")
         data.append("descripcion", $scope.descripcion);
         data.append("titol", $scope.titol);
         data.append("titulo", $scope.titulo);
-        data.append("edicio", $scope.sel);
+        data.append("idEdicio", $scope.sel);
+        data.append("multimedia", $rootScope.projecteMultimedia);
+        data.append("idProjecte", $rootScope.idProjecte);
 
         $http.post("models/projectes.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
         .then((res) =>{
@@ -456,7 +469,7 @@ angular.module("backend")
     }
 
     $scope.onChange = () => {
-        let confirmacion = confirm("¿Estás seguro de que quieres añador la edición "+$scope.selEsp+"?")
+        let confirmacion = confirm("¿Estás seguro de que quieres añadir la edición "+$scope.selEsp+"?")
         if(confirmacion){
             alert("Edición "+ $scope.selEsp+" añadida");
             let data= new FormData;

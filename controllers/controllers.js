@@ -283,6 +283,7 @@ angular.module("repoco")
 
 	$scope.idEdicio=$routeParams.idEdicio;
 	$scope.idProjecte=$routeParams.idProjecte;
+	$scope.oculto=true;
 
 	$scope.titol="CASES D'OFICIS";
 	$scope.titulo="CASAS DE OFICIOS";
@@ -343,6 +344,13 @@ angular.module("repoco")
 	      
 	   })
 	   .catch((err) => { console.log(err.statusText) })
-	   .finally(() => {});
+	   .finally(() => {
+
+	   	$scope.abreModal=function(numImg){
+	   		
+	   	}
+
+
+	   });
 
 })

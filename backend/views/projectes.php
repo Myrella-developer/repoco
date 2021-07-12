@@ -36,12 +36,11 @@
                         <div class="mb-4">
                             <select class="form-control" ng-model="selEsp" ng-change="onChange()">
                                 <option value="-1">--Selecciona especialitat a afegir</option>
-                                <!--<option ng-repeat="esp in especialitats">{{esp.nom}}</option>-->
-                                <option ng-repeat="esp in especialitats">{{esp.idEdicio}}</option>
+                                <option ng-repeat="esp in especialitats">{{esp.nom}}</option>
                             </select>
                          
                             <hr/>
-                            <span ng-repeat="edicio in edicionsExistents" class="mx-2"><span class="badge bg-info text-dark">{{edicio.idEdicio}}</span><i class="bi bi-x" ng-click="onDelete(edicio.idEdicio)"></i></span>
+                            <span ng-repeat="edicio in edicionsExistents" class="mx-2"><span class="badge bg-info text-dark">{{edicio.nom}}</span><i class="bi bi-x" ng-click="onDelete(edicio.idEdicio)"></i></span>
                         </div>
                         
                         <div class="mb-2">

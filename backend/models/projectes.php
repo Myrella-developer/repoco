@@ -8,12 +8,22 @@
 		WHERE p.idEdicio = '{$_POST['idEdicio']}'
 		";
 		
-		$sqlEsp = "SELECT idEdicio from edicio
-		WHERE idEdicio != 19 AND idEdicio != 20 ORDER BY idEdicio";
+		$sqlEsp = "SELECT esp_proj.idEdicio, edicio.idEsp, especialitats.nom
+		FROM esp_proj
+		INNER JOIN edicio 
+		ON edicio.idEdicio = esp_proj.idEdicio
+		INNER JOIN especialitats
+		ON edicio.idEsp = especialitats.idEsp
+		WHERE esp_proj.idProjecte != 14 
+		ORDER BY esp_proj.idEdicio";
 
-		$sqlEsp2 = "SELECT esp_proj.idEdicio
-		FROM esp_proj 
-		INNER JOIN projectes ON projectes.idProjecte = 14";
+		$sqlEsp2 = "SELECT esp_proj.idEdicio, edicio.idEsp, especialitats.nom
+		FROM esp_proj
+		INNER JOIN edicio 
+		ON edicio.idEdicio = esp_proj.idEdicio
+		INNER JOIN especialitats
+		ON edicio.idEsp = especialitats.idEsp
+		WHERE esp_proj.idProjecte = 14";
 
 		$conexion = conectar();
 		$resultProj = mysqli_query($conexion, $sqlProj);

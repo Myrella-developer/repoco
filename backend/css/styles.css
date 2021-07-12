@@ -31,7 +31,8 @@ h2 {
     border: none;
     cursor: pointer;
 }
-.btnAfegir:hover {
+.btnAfegir:hover,
+.btnTancar:hover {
     background:linear-gradient(to left, rgba(240, 246, 247, 0.246), #eef1f5);
     color: #12789a;
     font-weight: bolder;
@@ -43,15 +44,24 @@ h2 {
 	border-radius: 7px;
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   	transition: 0.3s;
-  	margin-top: 5rem;
+  	margin: 3rem 0;
   	border-width: 0px;
     color: #12789a;
     font-weight: bolder;
     background:linear-gradient(to left, rgba(240, 246, 247, 0.246), #eef1f5)
 }
+.cardGestor-ESP .card-title{
+    font-size: 14px;
+    text-align: center;
+}
+.cardGestor-ESP .card-text{
+    margin-top: 20px;
+    margin-left: 0.1px;
+    font-size: 12px;
+}
 .cardGestor-ESP  i {
     display: inline-block;
-    font-size: 16px;
+    font-size: 12px;
     color: #12789a;
     text-align: center;
     border: 1px solid #edf3f7;
@@ -66,8 +76,16 @@ h2 {
     width:100%;
     margin-top:5px;
 }
-.cardGestor-ESP.icon-block a{
+.cardGestor-ESP .icon-block a{
     text-decoration:none;
+
+}
+.cardGestor-ESP .fa-cog{
+    position: absolute;
+	z-index: 1;
+	top: 0.1px;
+    left: 0.1px;
+	background-color: #fff;
 }
 .cardGestor-ESP i:hover {
     background-color:#12789a;
@@ -80,10 +98,12 @@ h2 {
         background: linear-gradient(to left, #1d4d7a,  #12789a);
         display: block;
         margin: 20px auto;
+        height: auto;
         text-align: center;
-        padding: 14px 30px;
+        padding: 10px 25px;
         outline: none;
-        font-weight: bolder;
+        font-size: small;
+        font-weight: bold;
         color: rgb(227, 232, 240);
         border-radius: 24px;
         transition: 0.25s;
@@ -92,7 +112,7 @@ h2 {
 .cardGestor-ESP .cardButton:hover {
     background:linear-gradient(to left, rgba(240, 246, 247, 0.246), #eef1f5);
     color: #12789a;
-    font-weight: bolder;
+    font-weight: bold;
     border: 1px solid #12789a;
     ;
 }
@@ -105,7 +125,8 @@ h2 {
     font-family: 'Open Sans', Arial, sans-serif;
    
 }
-.modalgestorDir input[type="text"] {
+.modalgestorDir input[type="text"],
+.modalgestorDir input[type="file"]{
     border: 0;
     background: none;
     display: block;
@@ -119,7 +140,8 @@ h2 {
     border-radius: 24px;
     transition: 0.25s
 }
-.modalgestorDir input[type="text"]:focus {
+.modalgestorDir input[type="text"],
+.modalgestorDir input[type="file"]:focus {
     width: 300px;
     border-color: #699bf7
 }

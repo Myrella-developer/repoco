@@ -3,30 +3,26 @@
 <?php
 	session_start();
 	if (!isset($_SESSION['login']['idDir'])) header("location: ../");
-	?>
-    
+?>
     <h2 class="titolGestor text-center">Especialitats de la teva casa</h2> 
-    <div class="container">
-        <div class="row cols-12"><button class="btnAfegir fas fa-plus-circle" ng-click="editar('-1')"> AFEGIR</button></div>
+    <div class="row cols-12"><button class="btnAfegir fas fa-plus-circle" ng-click="editar('-1')"> AFEGIR</button></div>
         <div class="row ms-2">    
             <div class="col-md-3" ng-repeat="especialitat in especialitats">
                 <div class="card cardGestor-ESP mx-auto mt-3">
-					<img src="img/{{especialitat.url}}" class="card-img-top imgCard-Gestor" alt="especialitat" />                      
+					<img src="../multimedia/img/especialitats/{{especialitat.url}}" class="card-img-top imgCard-Gestor" alt="especialitat" title="{{especialitat.descripcio}}"/>                      
                     <div class="card-body card-content">
-                        <span class="card-title">{{especialitat.nom}}</span><br>
-                        <span class="card-text">{{especialitat.nombre}} </span><br>
-                        <p class="card-text">{{especialitat.descripcio}} </p><br>
-                        <p class="card-text">{{especialitat.descripcion}} </p>
+                        <span class="card-title">{{especialitat.nom}}</span>
+                        <p class="card-text">{{especialitat.descripcio|limitTo:25:0}}..<i class="fa fa-plus-circle"></i></p>
 					    <div class="icon-block">
                             <i class="fa fa-cog" aria-hidden="true" ng-click="editar($index)"></i>
-                            <a class="btn cardButton" ng-href="http://localhost/repoco/backend/#/edicions/{{especialitat.idEsp}}">Gestionar edicions</a>
 					    </div>
-                        
-                    </div>
-                </div>   
-			</div>   
-        </div>        
-    </div>     
+                        <a class="btn cardButton" ng-href="http://localhost/repoco/backend/#/edicions/{{especialitat.idEsp}}">Gestionar edicions</a>    
+                    </div>    
+                </div>
+            </div>   
+		</div>   
+    </div>        
+   
     <div class="modal fade" id="modalEsp" tabindex="-1" aria-labelledby="labelDigital" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content modalgestorDir">
@@ -37,19 +33,19 @@
                 <div class="modal-body">
                     <form ng-model="especialitats">
                         <div class="mb-2">
-                            <label for="message-text" class="col-form-label labelModal">Nom Especialitat</label>
+                            <label for="message-text" class="col-form-label labelModal">Nom Especialitat - CAT</label>
                             <input type="text" class="form-control" ng-model="nom"></input>
                         </div>
                         <div class="mb-2">
-                            <label for="message-text" class="col-form-label labelModal">Nombre Especialitat</label>
+                            <label for="message-text" class="col-form-label labelModal">Nombre Especialitat - ESP</label>
                             <input type="text" class="form-control" ng-model="nombre"></input>
                         </div>
                         <div class="mb-2">
-                            <label for="message-text" class="col-form-label labelModal">Descripcio Especialitat</label>
+                            <label for="message-text" class="col-form-label labelModal">Descripció Especialitat - CAT</label>
                             <input type="text" class="form-control"  ng-model="descripcio"></input>
                         </div>
                         <div class="mb-2">
-                            <label for="message-text" class="col-form-label labelModal">Descripción Especialitat</label>
+                            <label for="message-text" class="col-form-label labelModal">Descripción Especialitat - ESP</label>
                             <input type="text" class="form-control"  ng-model="descripcion"></input>
                         </div>
                     </form>
@@ -60,13 +56,10 @@
             </div>
         </div>
     </div>
-    <?php 
-    
-        if(isset($_SESSION['login']['tipus']) && $_SESSION['login']['tipus'] == "d") :
-    ?>
-
-    <h2>Tots els archius</h2>
-
-    <?php endif; ?>
+<?php 
+     if(isset($_SESSION['login']['tipus']) && $_SESSION['login']['tipus'] == "d") :
+?>
+<h2>Tots els archius</h2>
+<?php endif; ?>
 </div>
 

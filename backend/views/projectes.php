@@ -11,7 +11,7 @@
     <div class="row cols-12"><button class="btnAfegir fas fa-plus-circle" ng-click="editar('-1')"> AFEGIR</button></div>
     <div class="row ms-2">
         <div class="col-md-3" ng-repeat="projecte in projectes">
-            <div class="card cardGestor-ESP m-5" style="width: 18rem;">
+            <div class="card cardGestor-ESP mx-auto mt-3" style="width: 18rem;">
                 <div class="card-body">
                     <img src="../multimedia/img/projectes/{{projecte.url}}" class="w-100"/>
                     <span class="card-title">{{projecte.titol}}</span>

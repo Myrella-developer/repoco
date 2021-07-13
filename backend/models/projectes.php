@@ -2,22 +2,7 @@
 	require("../../inc/functions.php");
 	
 	if(isset($_POST['acc']) && $_POST['acc'] == "r"){
-		$sqlProj=
-		"SELECT p.titol, p.titulo, p.descripcio, p.descripcion, p.idProjecte, p.url
-		FROM projectes p
-		WHERE p.idEdicio = '{$_POST['idEdicio']}'
-		";
-
-		$conexion = conectar();
-		$resultProj = mysqli_query($conexion, $sqlProj);
-		desconectar($conexion);
-
-		$rows = array();
-		while($row = mysqli_fetch_array($resultProj)){
-			$rows[] = $row;
-		}
-
-		echo json_encode($rows);
+		read();
 	}
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "u"){		
@@ -27,31 +12,31 @@
 		
 		$sql = "UPDATE projectes SET titol = '{$_POST['titol']}', titulo = '{$_POST['titulo']}', 
 		descripcio = '{$_POST['descripcio']}', descripcion = '{$_POST['descripcion']}', url = '{$file}',
-		idEdicio = '26'";
+		idEdicio = {$_POST['idEdicio']}";
 		
 		$conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);
-		echo $sql;
+		read();
 	}
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "c"){
 		$fileNew=explode(".",$_FILES['multimedia']['name']); 
 		$file=$fileNew[0].date("dmYhis").".".$fileNew[1]; 
-		move_uploaded_file($_FILES['multimedia']['tmp_name'],"../img/".$file);
+		move_uploaded_file($_FILES['multimedia']['tmp_name'],"../../multimedia/img/projectes/".$file);
 
 		$sql = "INSERT INTO projectes (url, titol, titulo, descripcio, descripcion, idEdicio) 
 		VALUES('{$file}', '{$_POST['titol']}', '{$_POST['titulo']}', '{$_POST['descripcio']}', 
-		'{$_POST['descripcion']}', '26'";
+		'{$_POST['descripcion']}', '{$_POST['idEdicio']}')";
 
 		$conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);
-		echo $sql;
+		read();
 	}
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "d"){
-		$sqlUnlink = "SELECT url FROM multimedia WHERE idProjecte = {$row['idProjecte']};";
+		$sqlUnlink = "SELECT url FROM multimedia WHERE idProjecte = {$_POST['idProjecte']};";
 
 		$conexion = conectar();
 		$resultUnlink = mysqli_query($conexion, $sqlUnlink);
@@ -61,7 +46,7 @@
 		while($row = mysqli_fetch_array($resultUnlink)){
 			$rows[] = $row;
 
-			unlink('../img/'.$row['url']);
+			unlink('../../multimedia/img/projectes/'.$row['url']);
 		}
 
 		$sql = "DELETE FROM `multimedia` WHERE idProjecte = '{$_POST['idProjecte']}'";
@@ -70,6 +55,7 @@
 		$result = mysqli_query($conexion, $sql);
 		$result2 = mysqli_query($conexion, $sql2);
 		desconectar($conexion);
+		read();
 	}
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "addEdicio"){
@@ -79,6 +65,7 @@
 		$conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);
+		read();
 	}
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "deleteEdicio"){
@@ -89,6 +76,7 @@
 		$conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);
+		read();
 	}
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "updateEdicio"){
@@ -128,6 +116,26 @@
 		}
 		$datosExportar .= json_encode($rows) . '}';
 		echo $datosExportar;
+		read();
+	}
+
+	function read(){
+		$sqlProj=
+		"SELECT p.titol, p.titulo, p.descripcio, p.descripcion, p.idProjecte, p.url
+		FROM projectes p
+		WHERE p.idEdicio = '{$_POST['idEdicio']}'
+		";
+
+		$conexion = conectar();
+		$resultProj = mysqli_query($conexion, $sqlProj);
+		desconectar($conexion);
+
+		$rows = array();
+		while($row = mysqli_fetch_array($resultProj)){
+			$rows[] = $row;
+		}
+
+		echo json_encode($rows);
 	}
 
 ?>

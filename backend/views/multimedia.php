@@ -45,7 +45,7 @@
                         <div class="mb-2">
                             <h2>Imatge del projecte</h2>
                             <img src="../multimedia/img/projectes/{{url}}" width="100"/><br/>
-                            <input type="file" multiple onchange="angular.element(this).scope().getFileDetails(this)">
+                            <input type="file" onchange="angular.element(this).scope().getFileDetails(this)">
                         </div>
                     </form>
                 </div>

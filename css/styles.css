@@ -49,7 +49,10 @@ footer a{
     color: rgb(255, 255, 255);
     
 }
-
+.divcar{
+    padding-right: calc(var(--bs-gutter-x)/ -2);
+    padding-left: calc(var(--bs-gutter-x)/ -2);
+}
 .vidc{
     background-color: rgb(255, 255, 255);
     color: rgb(255, 255, 255);
@@ -340,6 +343,8 @@ footer a{
     z-index: -1;
 }
 .divmov {
+    padding-right: calc(var(--bs-gutter-x)/ 2);
+    padding-left: calc(var(--bs-gutter-x)/ 2);
     display: inline-block;
     overflow: hidden;
     position: relative;

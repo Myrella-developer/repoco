@@ -302,6 +302,7 @@ angular.module("backend")
             $rootScope.url = $scope.edicions[posicion].url;
             $scope.dataFi = new Date($scope.edicions[posicion].dataFi);
             $scope.dataInici = new Date($scope.edicions[posicion].dataInici);
+           
             $scope.idEdicio=$scope.edicions[posicion].idEdicio;
         }
         else{
@@ -314,10 +315,11 @@ angular.module("backend")
         $rootScope.idEdicio = idEdicio;
     }
 
+
     $scope.guardar=()=>{
         let dataInici = $scope.dataInici.getFullYear() + "-" + ($scope.dataInici.getMonth()+1) + "-" + $scope.dataInici.getDate()
         let dataFi = $scope.dataFi.getFullYear() + "-" + ($scope.dataFi.getMonth()+1) + "-" + $scope.dataFi.getDate()
-     
+        
         if($scope.idEdicio==""){
             if($rootScope.fotoEdicio == undefined){
                 alert("Escoge una imagen")

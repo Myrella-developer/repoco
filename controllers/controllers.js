@@ -26,8 +26,8 @@ angular.module("repoco")
 	   $scope.inicio="Inicio";
 	   $scope.contacte="Contacte";
 	   $scope.contacto="Contacto";
-	   $scope.banner="QUÈ ET TROBARÀS EN AQUESTA WEB";
-	   $scope.banneres="QUÉ ENCONTRARÁS EN ESTA WEB";
+	   $scope.banner="Espai Personal";
+	   $scope.banneres="Espacio Personal";
 	   $scope.titol1="T'OBRIM LA PORTA A";
 	   $scope.titulo1="TE ABRIMOS LA PUERTA A";
 	   $scope.titol1a="LES CASES D'OFICIS";

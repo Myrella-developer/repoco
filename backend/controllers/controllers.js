@@ -544,8 +544,8 @@ angular.module("backend")
         }
         else{
             $scope.idMultimedia="";
-            $scope.descripcioMulti="";
-            $scope.descripcionMulti="";
+            $scope.descripcio="";
+            $scope.descripcion="";
             $scope.url="";
         }
         $("#modalMultimedia").modal('show');
@@ -553,22 +553,61 @@ angular.module("backend")
     }
 
     $scope.guardar=()=>{
-        if($scope.idMultimedia=="") data.append("acc","c");
-        else data.append("acc","u");
+        if($scope.idMultimedia==""){
+            data.append("acc","c");
 
-        data.append("idMult", $rootScope.idMult);
-        data.append("idProjecte", idProjecte);
-        data.append("multimedia", $rootScope.archivo);
-        data.append("descripcio", $scope.descripcio);
-        data.append("descripcion", $scope.descripcion);
+            if($rootScope.archivo == undefined){
+                alert("Selecciona un archivo")
+            }else{
+                data.append("idMult", $rootScope.idMult);
+                data.append("idProjecte", idProjecte);
+                data.append("multimedia", $rootScope.archivo);
+                data.append("descripcio", $scope.descripcio);
+                data.append("descripcion", $scope.descripcion);
+                
+                $http.post("models/multimedia.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
+                .then((res) =>{
+                    defered.resolve(res);
+                    $scope.multimedia = res.data;
+                })
+                .catch((err)=>{console.log(err.statusText)})
+                .finally(()=>{$("#modalMultimedia").modal('hide')});
+            }
+        }else{
+            data.append("acc","u");
+            if($rootScope.archivo == undefined){
+                if($scope.descripcio == "" || $scope.descripcion == ""){
+                    alert("Les dos descripcions han de ser omplertes")
+                }else{
+                    data.append("multimedia", $scope.url);
+                    data.append("idMult", $rootScope.idMult);
+                    data.append("descripcio", $scope.descripcio);
+                    data.append("descripcion", $scope.descripcion);
+                   
+                    $http.post("models/multimedia.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
+                    .then((res) =>{
+                        defered.resolve(res);
+                        $scope.multimedia = res.data;
+                    })
+                    .catch((err)=>{console.log(err.statusText)})
+                    .finally(()=>{$("#modalMultimedia").modal('hide')});
+                }
+            }else{
+                data.append("idMult", $rootScope.idMult);
+                data.append("idProjecte", idProjecte);
+                data.append("multimedia", $rootScope.archivo);
+                data.append("descripcio", $scope.descripcio);
+                data.append("descripcion", $scope.descripcion);
         
-        $http.post("models/multimedia.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
-        .then((res) =>{
-            defered.resolve(res);
-            console.log(res.data);
-        })
-        .catch((err)=>{console.log(err.statusText)})
-        .finally(()=>{$("#modalMultimedia").modal('hide')});
+                $http.post("models/multimedia.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
+                .then((res) =>{
+                    defered.resolve(res);
+                    $scope.multimedia = res.data;
+                })
+                .catch((err)=>{console.log(err.statusText)})
+                .finally(()=>{$("#modalMultimedia").modal('hide')});
+            }
+        }
     }
 
     $scope.eliminar = (idMultimedia) => {
@@ -581,17 +620,12 @@ angular.module("backend")
             $http.post("models/multimedia.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
             .then((res) => { 
                 defered.resolve(res);
-                console.log(res.data)
+                $scope.multimedia = res.data;
             })
             .catch((err) => { console.log(err.statusText) })
             .finally(() => {})
         }else{
             alert("No se ha eliminado el proyecto");
         }
-    }
-
-    $scope.showDesc = false;
-    $scope.mostrarDesc = () => {
-        $scope.showDesc = !$scope.showDesc;
     }
 })

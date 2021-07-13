@@ -22,7 +22,18 @@ footer a{
     
 }
 
-
+#cardProyectos{
+    padding: 0!important; 
+    margin-top: 1em;
+}
+#cardProyectos h5{
+    padding: 10px!important;
+    text-align: center;
+    box-shadow:5px 8px 10px #f2f2f2;
+}
+#participants{
+    list-style: none;
+}
 .textoc{
     font-size: 4rem;
     margin-top: 6rem;
@@ -356,15 +367,7 @@ p.anys{
     text-decoration: none;
     color: white;
 }
-#cardProyectos{
-    padding: 0!important; 
-    margin-top: 1em;
-}
-#cardProyectos h5{
-    padding: 10px!important;
-    text-align: center;
-    box-shadow:5px 8px 10px #f2f2f2;
-}
+
 .lineProj{
 font-style: italic!important;
 }

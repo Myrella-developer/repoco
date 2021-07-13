@@ -5,8 +5,8 @@
     
         if(isset($_SESSION['login']['idDir'])) :
     ?>
-    <h2 class="titolGestor">Els projectes de la teva casa</h2>
-
+    <h2 class="titolGestor" ng-if="projectes.length > 0">Els projectes de la teva casa</h2>
+    <h2 class="titolGestor" ng-if="projectes.length == 0">No hi ha projectes, afegeix un!</h2>
 
     <div class="row cols-12"><button class="btnAfegir fas fa-plus-circle" ng-click="editar('-1')"> AFEGIR</button></div>
     <div class="row">

@@ -5,7 +5,8 @@
     
         if(isset($_SESSION['login']['idDir'])) :
     ?>
-    <h2 class="titolGestor mt-5">La multimedia de la teva casa</h2>
+    <h2 class="titolGestor mt-5" ng-if="multimedia.length > 0">La multimedia de la teva casa</h2>
+    <h2 class="titolGestor mt-5" ng-if="multimedia.length == 0">No hi ha archius</h2>
 
     <i class="fas fa-plus-square ms-4 mt-5 text-primary"></i>
     <label class="ms-1 fw-bold" ng-click="editar('-1')">AFEGIR</label>

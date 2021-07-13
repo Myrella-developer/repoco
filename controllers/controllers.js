@@ -1,4 +1,13 @@
 angular.module("repoco")
+app.filter('trusted', ['$sce', function ($sce) { 
+
+    return function(url) { 
+
+        return $sce.trustAsResourceUrl("https://www.youtube.com/embed/" + url); 
+
+    }; 
+
+}]) 
 .controller("IndexController", function($scope, $http, $q, $rootScope, $routeParams){
 	$rootScope.idioma="cat";
 	let data = new FormData();
@@ -14,8 +23,8 @@ angular.module("repoco")
 	       $scope.datosCasas=res.data.datosCasas;
 	       console.log($scope.datosCasas);
 
-		   $scope.datosEspecialidades=res.data.datosEspecialidades;
-		   console.log($scope.datosEspecialidades);
+		   $scope.datosVideos=res.data.datosVideos;
+		   console.log($scope.datosVideos);
 	   })
 	   .catch((err) => { console.log(err.statusText) })
 	   .finally(() => {});
@@ -74,8 +83,15 @@ angular.module("repoco")
 
 
    		};
-	
+		   $scope.rutavid="";
+		$scope.changevid=(numurl) =>{
+			$scope.rutavid="";
+			console.log(numurl);
+			$scope.rutavid=$scope.datosVideos[numurl].url;
+		console.log($scope.rutavid);
+		}	
 })  
+
 .controller("LoginController", function($scope, $http, $q, $location, $rootScope){	
     $scope.errorLogin=false;
     $scope.entrar = function(){

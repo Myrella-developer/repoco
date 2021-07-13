@@ -11,7 +11,7 @@
 
 	    </div>
 	    <div class="carousel-item" ng-repeat="actual in actuals">
-	      <img src="multimedia/img/{{actual.url==null?'especialitats/no-imatgeSlide.png': 'edicions/'+actual.url}}" class="d-block w-100" alt="Foto Especialitat">
+	      <img src="multimedia/img/{{actual.url==''?'especialitats/no-imatgeSlide.png': 'edicions/'+actual.url}}" class="d-block w-100" alt="Foto Especialitat">
 	    </div>
 	</div>
 	<div class="position-absolute top-50 start-50 translate-middle">

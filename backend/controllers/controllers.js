@@ -408,7 +408,6 @@ angular.module("backend")
             $scope.descripcio=$scope.projectes[posicion].descripcio;
             $scope.descripcion=$scope.projectes[posicion].descripcion;
             $rootScope.url=$scope.projectes[posicion].url;
-            console.log($rootScope.url)
             $scope.titol=$scope.projectes[posicion].titol;
             $scope.titulo=$scope.projectes[posicion].titulo;
             $rootScope.idProjecte=$scope.projectes[posicion].idProjecte;
@@ -451,6 +450,7 @@ angular.module("backend")
                 data.append("acc","u");
                 data.append("multimedia", $rootScope.url);
             }else{
+                data.append("acc","u");
                 data.append("multimedia", $rootScope.projecteMultimedia);
             }
         }

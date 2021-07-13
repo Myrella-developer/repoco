@@ -8,15 +8,18 @@
 	if(isset($_POST['acc']) && $_POST['acc'] == "u"){		
 		$fileNew=explode(".",$_FILES['multimedia']['name']); 
 		$file=$fileNew[0].date("dmYhis").".".$fileNew[1]; 
-		move_uploaded_file($_FILES['multimedia']['tmp_name'],"../img/".$file);
+		move_uploaded_file($_FILES['multimedia']['tmp_name'],"../../multimedia/img/projectes/".$file);
 		
 		$sql = "UPDATE projectes SET titol = '{$_POST['titol']}', titulo = '{$_POST['titulo']}', 
-		descripcio = '{$_POST['descripcio']}', descripcion = '{$_POST['descripcion']}', url = '{$file}',
-		idEdicio = {$_POST['idEdicio']}";
+		descripcio = '{$_POST['descripcio']}', descripcion = '{$_POST['descripcion']}', 
+		url = '{$file}',
+		idEdicio = {$_POST['idEdicio']} 
+		WHERE idProjecte = {$_POST['idProjecte']}";
 		
 		$conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);
+	
 		read();
 	}
 
@@ -32,6 +35,7 @@
 		$conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);
+
 		read();
 	}
 

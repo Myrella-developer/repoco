@@ -45,25 +45,36 @@ if(isset($_POST['acc']) && $_POST['acc']=='pro'){
 if(isset($_POST['acc']) && $_POST['acc']=='galeria'){
 
 	$mysql="SELECT `url`,`tipo`,`descripcio`,`descripcion` FROM `multimedia` WHERE `idProjecte`='{$_POST['idProjecte']}'";
+	$mysql2="SELECT `esp_proj`.`idEdicio`,`esp_proj`.`idProjecte`,`especialitats`.`nombre`,`especialitats`.`nom` FROM `esp_proj`
+		LEFT JOIN `edicio` ON `edicio`.`idEdicio` = `esp_proj`.`idEdicio`
+		LEFT JOIN `especialitats` ON `especialitats`.`idEsp`=`edicio`.`idEsp`
+		WHERE `esp_proj`.`idProjecte`='{$_POST['idProjecte']}'";
 
 	$conexion=conectar();
 	$galeria=mysqli_query($conexion,$mysql);
+	$participants=mysqli_query($conexion,$mysql2);
 	desconectar($conexion);
-	// $cantidad= mysqli_num_rows($galeria);
-
-	// if ($cantidad!=1) {
-		
+	
+	$datosExportar='{"galeria":';
 		$rows= array();
 
 		while ($row= mysqli_fetch_array($galeria)) {
 		$rows[]=$row;
 
 			}
+		$datosExportar.=json_encode($rows);
+		$datosExportar.=', "participants":';
 
-	// }else{
-	// 	$row=mysqli_fetch_row($galeria); 
-	// }
-	echo json_encode($rows);
+		$rows= array();
+
+		while ($row= mysqli_fetch_array($participants)) {
+		$rows[]=$row;
+
+			}
+			$datosExportar.=json_encode($rows);
+			$datosExportar.='}';
+	
+	echo $datosExportar;
 	
 	}
 

@@ -2,22 +2,7 @@
 	require("../../inc/functions.php");
 	
 	if(isset($_POST['acc']) && $_POST['acc'] == "r"){
-		$sqlProj=
-		"SELECT p.titol, p.titulo, p.descripcio, p.descripcion, p.idProjecte, p.url
-		FROM projectes p
-		WHERE p.idEdicio = '{$_POST['idEdicio']}'
-		";
-
-		$conexion = conectar();
-		$resultProj = mysqli_query($conexion, $sqlProj);
-		desconectar($conexion);
-
-		$rows = array();
-		while($row = mysqli_fetch_array($resultProj)){
-			$rows[] = $row;
-		}
-
-		echo json_encode($rows);
+		read();
 	}
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "u"){		
@@ -33,6 +18,7 @@
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);
 		echo $sql;
+		read();
 	}
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "c"){
@@ -48,6 +34,7 @@
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);
 		echo $sql;
+		read();
 	}
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "d"){
@@ -70,6 +57,7 @@
 		$result = mysqli_query($conexion, $sql);
 		$result2 = mysqli_query($conexion, $sql2);
 		desconectar($conexion);
+		read();
 	}
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "addEdicio"){
@@ -79,6 +67,7 @@
 		$conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);
+		read();
 	}
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "deleteEdicio"){
@@ -89,6 +78,7 @@
 		$conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);
+		read();
 	}
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "updateEdicio"){
@@ -128,6 +118,26 @@
 		}
 		$datosExportar .= json_encode($rows) . '}';
 		echo $datosExportar;
+		read();
+	}
+
+	function read(){
+		$sqlProj=
+		"SELECT p.titol, p.titulo, p.descripcio, p.descripcion, p.idProjecte, p.url
+		FROM projectes p
+		WHERE p.idEdicio = '{$_POST['idEdicio']}'
+		";
+
+		$conexion = conectar();
+		$resultProj = mysqli_query($conexion, $sqlProj);
+		desconectar($conexion);
+
+		$rows = array();
+		while($row = mysqli_fetch_array($resultProj)){
+			$rows[] = $row;
+		}
+
+		echo json_encode($rows);
 	}
 
 ?>

@@ -13,9 +13,9 @@
         <div class="col-md-3"  ng-repeat="edicio in edicions">
             <div class="card cardGestor-ESP m-5" style="width: 18rem;">
                 <div class="card-body">
-                    <img src="../multimedia/img/edicions/{{edicio.url}}" class="card-img-top imgCard-Gestor"/>
-                
+                    <img src="../multimedia/img/edicions/{{edicio.url}}" class="card-img-top imgCard-Gestor"/> 
                     <h5 class="card-title text-center">{{edicio.dataInici}} - {{edicio.dataFi}}</h5>
+                    
                     <div class="icon-block">
                         <i class="fa fa-cog" aria-hidden="true" ng-click="editar($index, edicio.idEdicio)"></i>
                         <i class="fa fa-trash" aria-hidden="true" ng-click="eliminar(projecte.idProjecte)"></i>

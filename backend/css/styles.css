@@ -50,12 +50,18 @@ h2 {
     font-weight: bolder;
     background:linear-gradient(to left, rgba(240, 246, 247, 0.246), #eef1f5)
 }
+.cardGestor-ESP .imgCard-Gestor{
+    margin-top: 10px;
+    border-radius: 10px;
+}
 .cardGestor-ESP .card-title{
     font-size: 14px;
+    margin-top: 2px;
+    text-align: center;
 }
 .cardGestor-ESP .card-text{
-    margin-top: 20px;
-    margin-left: 0.1px;
+    margin-top: 10px;
+    text-align: center;
     font-size: 12px;
 }
 .cardGestor-ESP  i {
@@ -81,7 +87,7 @@ h2 {
 }
 .cardGestor-ESP .fa-cog{
     position: absolute;
-    font-size: 14px;
+    font-size: 16px;
 	z-index: 1;
 	top: 0.1px;
     left: 0.1px;

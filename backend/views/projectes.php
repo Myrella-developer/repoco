@@ -9,19 +9,21 @@
     <h2 class="titolGestor" ng-if="projectes.length == 0">No hi ha projectes, afegeix un!</h2>
 
     <div class="row cols-12"><button class="btnAfegir fas fa-plus-circle" ng-click="editar('-1')"> AFEGIR</button></div>
-    <div class="row">
-        <div class="card cardGestor-ESP m-5" style="width: 18rem;" ng-repeat="projecte in projectes">
-            <div class="card-body">
-                <img src="../multimedia/img/projectes/{{projecte.url}}" class="w-100"/>
-                <h5 class="card-title mt-2 text-center">{{projecte.titol}}</h5>
-                <p class="card-text text-center">{{projecte.descripcio}}</p>
-                <div class="icon-block">
-                    <i class="fa fa-cog" aria-hidden="true" ng-click="editar($index)"></i>
-                    <i class="fa fa-trash" aria-hidden="true" ng-click="eliminar(projecte.idProjecte)"></i>
-				</div>
+    <div class="row ms-2">
+        <div class="col-md-3" ng-repeat="projecte in projectes">
+            <div class="card cardGestor-ESP m-5" style="width: 18rem;">
+                <div class="card-body">
+                    <img src="../multimedia/img/projectes/{{projecte.url}}" class="w-100"/>
+                    <span class="card-title">{{projecte.titol}}</span>
+                    <p class="card-text">{{projecte.descripcio}}</p>
+                    <div class="icon-block">
+                        <i class="fa fa-cog" aria-hidden="true" ng-click="editar($index)"></i>
+                        <i class="fa fa-trash" aria-hidden="true" ng-click="eliminar(projecte.idProjecte)"></i>
+                    </div>
+                </div>
+                <a class="btn cardButton" ng-href="http://localhost/repoco/backend/#/multimedia/{{projecte.idProjecte}}">Gestionar multimedia</a>
             </div>
-            <a class="btn cardButton" ng-href="http://localhost/repoco/backend/#/multimedia/{{projecte.idProjecte}}">Gestionar multimedia</a>
-        </div>
+        </div>    
     </div>
 
     <div class="modal fade" id="modalProjecte">

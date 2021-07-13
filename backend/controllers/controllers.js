@@ -299,10 +299,9 @@ angular.module("backend")
 
     $scope.editar=(posicion, idEdicio)=>{
         if(posicion !== "-1"){
-            $rootScope.url = $scope.edicions[posicion].url;
+            $scope.url = $scope.edicions[posicion].url;
             $scope.dataFi = new Date($scope.edicions[posicion].dataFi);
             $scope.dataInici = new Date($scope.edicions[posicion].dataInici);
-           
             $scope.idEdicio=$scope.edicions[posicion].idEdicio;
         }
         else{

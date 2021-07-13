@@ -13,8 +13,7 @@
         <div class="col-md-3"  ng-repeat="edicio in edicions">
             <div class="card cardGestor-ESP m-5" style="width: 18rem;">
                 <div class="card-body">
-                    <img src="img/default.png" class="card-img-top imgCard-Gestor" ng-if="!edicio.url || edicio.url == '' "/>
-                    <img src="../multimedia/img/edicions/{{edicio.url}}" class="card-img-top imgCard-Gestor" ng-if="edicio.url"/>
+                    <img src="../multimedia/img/edicions/{{edicio.url}}" class="card-img-top imgCard-Gestor"/>
                 
                     <h5 class="card-title text-center">{{edicio.dataInici}} - {{edicio.dataFi}}</h5>
                     <div class="icon-block">
@@ -46,7 +45,7 @@
                         </div>
                         <div class="mb-2">
                             <input type="file" onchange="angular.element(this).scope().getFileDetails(this)"><br/>
-                            <img src="../multimedia/img/edicions/{{url}}" width="250" height="150" class="mt-2">
+                            <img src="../multimedia/img/edicions/{{url}}" class="card-img-top w-25 ms-5 imgCard-Gestor"/>
                         </div>
                     </form>
                 </div>

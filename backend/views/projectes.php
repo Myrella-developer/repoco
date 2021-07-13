@@ -13,15 +13,17 @@
         <div class="col-md-3" ng-repeat="projecte in projectes">
             <div class="card cardGestor-ESP mx-auto mt-3" style="width: 18rem;">
                 <div class="card-body">
-                    <img src="../multimedia/img/projectes/{{projecte.url}}" class="w-100"/>
-                    <span class="card-title">{{projecte.titol}}</span>
+                    <img src="../multimedia/img/projectes/{{projecte.url}}" class="card-img-top imgCard-Gestor"/>
+                    <span class="card-title titolCard">{{projecte.titol}}</span>
                     <p class="card-text">{{projecte.descripcio}}</p>
                     <div class="icon-block">
                         <i class="fa fa-cog" aria-hidden="true" ng-click="editar($index)"></i>
-                        <i class="fa fa-trash" aria-hidden="true" ng-click="eliminar(projecte.idProjecte)"></i>
                     </div>
                 </div>
-                <a class="btn cardButton" ng-href="http://localhost/repoco/backend/#/multimedia/{{projecte.idProjecte}}">Gestionar multimedia</a>
+                <div class="row">
+                    <div class="col-2"><i class="fa fa-trash" aria-hidden="true" ng-click="eliminar(projecte.idProjecte)"></i></div>
+                    <div class="col-9"><a class="btn cardButton" ng-href="http://localhost/repoco/backend/#/multimedia/{{projecte.idProjecte}}">Gestionar multimedia</a></div>
+                </div>
             </div>
         </div>    
     </div>

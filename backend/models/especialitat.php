@@ -23,7 +23,7 @@
         actualiza();
 	}
     function actualiza(){
-        $mySqlEspecialitats = "SELECT especialitats.idcasa, especialitats.idEsp, especialitats.nom, especialitats.nombre, especialitats.url, especialitats.descripcio, especialitats.descripcion
+        $mySqlEspecialitats = "SELECT especialitats.idcasa, especialitats.idEsp, especialitats.nom, especialitats.nombre, especialitats.descripcio, especialitats.descripcion
         FROM especialitats WHERE especialitats.idcasa ='{$_POST['idcasa']}' ORDER BY especialitats.nombre ";
         $mySqlCases = "SELECT `idcasa`, `nom`, `nombre`, `descripcio`, `descripcion`, `idDir` FROM `cases`";
         $conexion = conectar();

@@ -13,14 +13,18 @@
         <div class="col-md-3"  ng-repeat="edicio in edicions">
             <div class="card cardGestor-ESP mx-auto mt-3" style="width: 18rem;">
                 <div class="card-body">
-                    <img src="../multimedia/img/edicions/{{edicio.url}}" class="card-img-top imgCard-Gestor"/> 
-                    <h5 class="card-title text-center">{{edicio.dataInici}} - {{edicio.dataFi}}</h5>
-                    
+                    <img src="img/default.png" class="card-img-top imgCard-Gestor" ng-if="!edicio.url || edicio.url == '' "/>
+                    <img src="../multimedia/img/edicions/{{edicio.url}}" class="card-img-top imgCard-Gestor" ng-if="edicio.url"/>
+                    <p class="card-text">{{edicio.nom}}</p>
+                    <span class="card-title">{{edicio.dataInici}} - {{edicio.dataFi}}</span>
                     <div class="icon-block">
                         <i class="fa fa-cog" aria-hidden="true" ng-click="editar($index, edicio.idEdicio)"></i>
                     </div>
                 </div>
-                <a class="btn cardButton" ng-href="http://localhost/repoco/backend/#/projectes/{{edicio.idEdicio}}">Gestionar projectes</a>
+                <div class="row">
+                <div class="col-2"><i class="fa fa-trash" aria-hidden="true" ng-click="eliminar(projecte.idProjecte)"></i></div>
+                <div class="col-9"><a class="btn cardButton" ng-href="http://localhost/repoco/backend/#/projectes/{{edicio.idEdicio}}">Gestionar projectes</a><div>
+                </div>
             </div>
         </div>    
     </div>
@@ -44,7 +48,7 @@
                         </div>
                         <div class="mb-2">
                             <input type="file" onchange="angular.element(this).scope().getFileDetails(this)"><br/>
-                            <img src="../multimedia/img/edicions/{{url}}" class="card-img-top w-25 ms-5 imgCard-Gestor"/>
+                            <img src="../multimedia/img/edicions/{{url}}" width="250" height="150" class="mt-2">
                         </div>
                     </form>
                 </div>

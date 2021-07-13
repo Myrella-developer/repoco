@@ -52,7 +52,6 @@ h2 {
 }
 .cardGestor-ESP .card-title{
     font-size: 14px;
-    text-align: center;
 }
 .cardGestor-ESP .card-text{
     margin-top: 20px;
@@ -82,10 +81,11 @@ h2 {
 }
 .cardGestor-ESP .fa-cog{
     position: absolute;
+    font-size: 14px;
 	z-index: 1;
 	top: 0.1px;
     left: 0.1px;
-	background-color: #fff;
+    border: none;
 }
 .cardGestor-ESP i:hover {
     background-color:#12789a;
@@ -140,10 +140,10 @@ h2 {
     border-radius: 24px;
     transition: 0.25s
 }
-.modalgestorDir input[type="text"],
+.modalgestorDir input[type="text"]:focus,
 .modalgestorDir input[type="file"]:focus {
     width: 300px;
-    border-color: #699bf7
+    border-color: #12789a
 }
 .modalgestorDir .labelModal{
     display: block;
@@ -152,7 +152,15 @@ h2 {
     text-align: center;
     color: #12789a
 }
-
+.modalgestorDir .edFecha{
+    margin: 20px auto;
+    display: block;
+    color: rgb(74, 82, 87);
+    padding: 10px 10px;
+    border-radius: 24px;
+    border: 1px solid #12789a;
+    transition: 0.25s
+}
 .modalgestorDir .btnModal{
     border: 0;
     background: linear-gradient(to left, #1d4d7a,  #12789a);

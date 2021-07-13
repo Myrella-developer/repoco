@@ -1,9 +1,9 @@
 <div class="container-fluid">
     
-    <div class="row divmov">
+    <div class="divmov">
         <img ng-src="multimedia/img/provisionales/{{rutaimg==NULL ? 'prueba3.png' : rutaimg}}" alt="" class="mov" ng-model="rutaimg">
         
-        <div class="col"  >
+        <div class=""  >
                 <div class="textoc mb-5" id="prueba">
                     <p  class="text-center">{{idioma=="cat"?titol1:titulo1}}<br>{{idioma=="cat"?titol1a:titulo1a}}</p>
                 </div>  
@@ -35,10 +35,10 @@
                    
         </div>
     </div>
-    <div class="row row-cols-12 segonc mt-5 text-center">
+    <div class="row row-cols-12 segonc  text-center">
 
         
-      <div class="col-12">
+      <div class="col-12 divcar">
           <div id="carouselEspecialitats" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner" >
               <div class="carousel-item" ng-class="{'active': $index==0}" ng-repeat="videos in datosVideos">

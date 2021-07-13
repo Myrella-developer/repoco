@@ -7,7 +7,7 @@
     <div class="row cols-12"><button class="btnAfegir fas fa-plus-circle" ng-click="editar('-1')"> AFEGIR</button></div>
         <div class="row ms-2">    
             <div class="col-md-3" ng-repeat="director in directors">
-			    <div class="card cardGestor-ESP">
+			    <div class="card cardGestor-ESP mx-auto mt-3" style="width: 18rem;">
 				    <div class="card-content text-center">
 					    <h3>{{director.nom}} {{director.cog1}}</h3>
                             <span>Director/a</span>

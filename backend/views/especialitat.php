@@ -8,15 +8,14 @@
     <div class="row cols-12"><button class="btnAfegir fas fa-plus-circle" ng-click="editar('-1')"> AFEGIR</button></div>
     <div class="row ms-2">
         <div class="col-md-3" ng-repeat="especialitat in especialitats">
-            <div class="card cardGestor-ESP mx-auto mt-3" style="width: 18rem;">
-                <div class="card-body">
-                    <img src="../multimedia/img/especialitats/{{especialitat.url}}" class="card-img-top imgCard-Gestor" alt="especialitat" title="{{especialitat.descripcio}}"/>
-                    <span class="card-title">{{especialitat.nom}}</span>
-                    <p class="card-text">{{especialitat.descripcio|limitTo:25:0}}..<i class="fa fa-plus-circle"></i></p>
-                    <div class="icon-block">
-                        <i class="fa fa-cog" aria-hidden="true" ng-click="editar($index)"></i>
-                    </div>
-                </div>
+        <div class="card cardGestor-ESP mx-auto mt-3" style="width: 18rem;">
+				    <div class="card-content text-center">
+					    <h4 class="titolCard">{{especialitat.nom}}</h4>
+                        <p class="card-text">{{especialitat.descripcio}}</p>
+					    <div class="icon-block">
+                            <i class="fa fa-cog" aria-hidden="true" ng-click="editar($index)"></i>
+					    </div>
+                    </div> 
                 <a class="btn cardButton" ng-href="http://localhost/repoco/backend/#/edicions/{{especialitat.idEsp}}">Gestionar edicions</a>    
             </div>
         </div>    

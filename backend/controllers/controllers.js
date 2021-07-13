@@ -568,7 +568,7 @@ angular.module("backend")
                 $http.post("models/multimedia.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
                 .then((res) =>{
                     defered.resolve(res);
-                    console.log(res.data);
+                    $scope.multimedia = res.data;
                 })
                 .catch((err)=>{console.log(err.statusText)})
                 .finally(()=>{$("#modalMultimedia").modal('hide')});
@@ -576,18 +576,33 @@ angular.module("backend")
         }else{
             data.append("acc","u");
             if($rootScope.archivo == undefined){
-                data.append("multimedia", $scope.url);
+                if($scope.descripcio == "" || $scope.descripcion == ""){
+                    alert("Les dos descripcions han de ser omplertes")
+                }else{
+                    data.append("multimedia", $scope.url);
+                    data.append("idMult", $rootScope.idMult);
+                    data.append("descripcio", $scope.descripcio);
+                    data.append("descripcion", $scope.descripcion);
+                   
+                    $http.post("models/multimedia.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
+                    .then((res) =>{
+                        defered.resolve(res);
+                        $scope.multimedia = res.data;
+                    })
+                    .catch((err)=>{console.log(err.statusText)})
+                    .finally(()=>{$("#modalMultimedia").modal('hide')});
+                }
             }else{
                 data.append("idMult", $rootScope.idMult);
                 data.append("idProjecte", idProjecte);
                 data.append("multimedia", $rootScope.archivo);
                 data.append("descripcio", $scope.descripcio);
                 data.append("descripcion", $scope.descripcion);
-                
+        
                 $http.post("models/multimedia.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
                 .then((res) =>{
                     defered.resolve(res);
-                    console.log(res.data);
+                    $scope.multimedia = res.data;
                 })
                 .catch((err)=>{console.log(err.statusText)})
                 .finally(()=>{$("#modalMultimedia").modal('hide')});
@@ -605,17 +620,12 @@ angular.module("backend")
             $http.post("models/multimedia.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
             .then((res) => { 
                 defered.resolve(res);
-                console.log(res.data)
+                $scope.multimedia = res.data;
             })
             .catch((err) => { console.log(err.statusText) })
             .finally(() => {})
         }else{
             alert("No se ha eliminado el proyecto");
         }
-    }
-
-    $scope.showDesc = false;
-    $scope.mostrarDesc = () => {
-        $scope.showDesc = !$scope.showDesc;
     }
 })

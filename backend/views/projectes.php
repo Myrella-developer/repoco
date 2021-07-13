@@ -13,7 +13,7 @@
         <div class="card cardGestor-ESP m-5" style="width: 18rem;" ng-repeat="projecte in projectes">
             <div class="card-body">
                 <img src="../multimedia/img/projectes/{{projecte.url}}" class="w-100"/>
-                <h5 class="card-title mt-2">{{projecte.titol}}</h5>
+                <h5 class="card-title mt-2 text-center">{{projecte.titol}}</h5>
                 <p class="card-text text-center">{{projecte.descripcio}}</p>
                 <div class="icon-block">
                     <i class="fa fa-cog" aria-hidden="true" ng-click="editar($index)"></i>

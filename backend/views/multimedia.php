@@ -15,7 +15,7 @@
         <div class="card cardGestor-ESP m-5" style="width: 18rem;" ng-repeat="m in multimedia">
             <div class="card-body">
                 <img ng-src="../multimedia/img/projectes/{{m.url}}" class="w-100"/>
-                <h5 class="card-title mt-2">{{m.url}}</h5>
+                <h5 class="card-title mt-2 text-center">{{m.url}}</h5>
                 <p class="card-text text-center">{{m.descripcio}}</p>
                 <div class="icon-block">
                     <i class="fa fa-cog" aria-hidden="true" ng-click="editar($index)"></i>

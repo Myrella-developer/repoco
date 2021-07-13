@@ -15,8 +15,8 @@
                 <div class="card-body">
                     <img src="img/default.png" class="card-img-top imgCard-Gestor" ng-if="!edicio.url || edicio.url == '' "/>
                     <img src="../multimedia/img/edicions/{{edicio.url}}" class="card-img-top imgCard-Gestor" ng-if="edicio.url"/>
-                    <p class="card-text">{{edicio.nom}}</p>
-                    <h5 class="card-title">{{edicio.dataInici}} - {{edicio.dataFi}}</h5>
+                
+                    <h5 class="card-title text-center">{{edicio.dataInici}} - {{edicio.dataFi}}</h5>
                     <div class="icon-block">
                         <i class="fa fa-cog" aria-hidden="true" ng-click="editar($index, edicio.idEdicio)"></i>
                         <i class="fa fa-trash" aria-hidden="true" ng-click="eliminar(projecte.idProjecte)"></i>

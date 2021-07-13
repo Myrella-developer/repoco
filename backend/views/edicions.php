@@ -11,7 +11,7 @@
 
     <div class="row ms-2">
         <div class="col-md-3"  ng-repeat="edicio in edicions">
-            <div class="card cardGestor-ESP m-5" style="width: 18rem;">
+            <div class="card cardGestor-ESP mx-auto mt-3" style="width: 18rem;">
                 <div class="card-body">
                     <img src="img/default.png" class="card-img-top imgCard-Gestor" ng-if="!edicio.url || edicio.url == '' "/>
                     <img src="../multimedia/img/edicions/{{edicio.url}}" class="card-img-top imgCard-Gestor" ng-if="edicio.url"/>

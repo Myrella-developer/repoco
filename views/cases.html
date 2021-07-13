@@ -2,20 +2,16 @@
 <div id="slideCasa" class="carousel slide" data-bs-ride="carousel">
 	<div class="carousel-indicators">
 		<button type="button" data-bs-target="#slideCasa" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-		<button type="button" data-bs-target="#slideCasa" data-bs-slide-to="1" aria-label="Slide 2"></button>
-		<button type="button" data-bs-target="#slideCasa" data-bs-slide-to="2" aria-label="Slide 3"></button>
+		<button type="button" data-bs-target="#slideCasa" data-bs-slide-to="{{$index+1}}" aria-label="{{$index+1}}" ng-repeat="actual in actuals"></button>
+		
 	</div>
 	<div class="carousel-inner">
 	    <div class="carousel-item active">
 	      <img src="multimedia/img/especialitats/{{url==null?'no-imageSlide.png' : url}}" class="d-block w-100" alt="Casa d'ofici">
 
 	    </div>
-	    <!-- falta sentencia para img de especialitats -->
-	    <div class="carousel-item">
-	      <img src="multimedia/img/provisionales/prueba2.png" class="d-block w-100" alt="Foto Especialitat">
-	    </div>
-	    <div class="carousel-item">
-	      <img src="multimedia/img/provisionales/prueba3.png" class="d-block w-100" alt="Foto Especialitat">
+	    <div class="carousel-item" ng-repeat="actual in actuals">
+	      <img src="multimedia/img/{{actual.url==''?'especialitats/no-imatgeSlide.png': 'edicions/'+actual.url}}" class="d-block w-100" alt="Foto Especialitat">
 	    </div>
 	</div>
 	<div class="position-absolute top-50 start-50 translate-middle">
@@ -33,7 +29,7 @@
 </div>
 <div class="row row-cols-3 textCentral ">
 	<div class="col position-relative text-center" ng-repeat="any in dataAnys">
-		<a href="#/espAny/{{any.inici}}/{{idCasa}}"><img class="miniatura" src="multimedia/img/miniatures/{{mini==null?'noimagen.png' : mini}}">
+		<a href="#/espAny/{{any.inici}}/{{idCasa}}"><img class="miniatura" src="multimedia/img/{{mini==null?'noimatge.png' : 'miniatures/'+mini}}">
 		<p class="anys">{{any.inici|limitTo:4:0}}/{{any.fi|limitTo:2:2}} </p></a>
 		<div>
 			<p class="nameEspec badge bg-secondary fw-bold m-1" ng-repeat="especialitat in any.especialitats"><a href="#/edEsp/{{idCasa}}/{{especialitat.idEdicio}}">{{idioma=="cat"?especialitat.nom:especialitat.nombre}}</a></p>

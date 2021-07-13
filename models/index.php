@@ -9,7 +9,9 @@ include("../inc/functions.php");
 if(isset($_POST['acc']) && $_POST['acc']=='r'){
 
 	$mySql="SELECT `idcasa`,`nom`,`nombre`,`descripcio`,`descripcion`,`url` FROM `cases`";
+
 	$mySql2="SELECT `idcasavideo`, `url`, `idcasa`, `miniatura` FROM `casesvideos`";
+
 	
 	$conexion=conectar();
 	$resultcasas=mysqli_query($conexion,$mySql);

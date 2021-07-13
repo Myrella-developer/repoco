@@ -48,19 +48,19 @@
                         </div>
                         
                         <div class="mb-2">
-                            <label for="message-text" class="col-form-label labelModal">Titol del projecte</label>
+                            <label for="message-text" class="col-form-label labelModal">Titol del projecte - CAT</label>
                             <input type="text" class="form-control" ng-model="titol">
                         </div>
                         <div class="mb-2">
-                            <label for="message-text" class="col-form-label labelModal">Titulo del proyecto</label>
+                            <label for="message-text" class="col-form-label labelModal">Titulo del proyecto - ESP</label>
                             <input type="text" class="form-control" ng-model="titulo">
                         </div>
                         <div class="mb-2">
-                            <label for="message-text" class="col-form-label labelModal">Descripció del projecte</label>
+                            <label for="message-text" class="col-form-label labelModal">Descripció del projecte - CAT</label>
                             <textarea rows="4" class="form-control" ng-model="descripcio">{{descripcio}}</textarea>
                         </div>
                         <div class="mb-2">
-                            <label for="message-text" class="col-form-label labelModal">Descripción del proyecto</label>
+                            <label for="message-text" class="col-form-label labelModal">Descripción del proyecto - ESP</label>
                             <textarea rows="4" class="form-control" ng-model="descripcion">{{descripcion}}</textarea>
                         </div>
                         <div class="mb-2">

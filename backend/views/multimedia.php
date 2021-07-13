@@ -35,11 +35,11 @@
                 <div class="modal-body">
                     <form ng-model="multimedia" enctype="multipart/form-data">
                         <div class="mb-2">
-                            <label for="message-text" class="col-form-label labelModal">Descripció</label>
+                            <label for="message-text" class="col-form-label labelModal">Descripció - CAT</label>
                             <textarea rows="4" class="form-control" ng-model="descripcio">{{descripcio}}</textarea>
                         </div>
                         <div class="mb-2">
-                            <label for="message-text" class="col-form-label labelModal">Descripción</label>
+                            <label for="message-text" class="col-form-label labelModal">Descripción - ESP</label>
                             <textarea rows="4" class="form-control" ng-model="descripcion">{{descripcion}}</textarea>
                         </div>
                         <div class="mb-2">

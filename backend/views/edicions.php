@@ -12,10 +12,8 @@
     <div class="row">
         <div class="card cardGestor-ESP m-5" style="width: 18rem;" ng-repeat="edicio in edicions">
             <div class="card-body">
-                <h5 class="card-title">{{edicio.dataInici}} - {{edicio.dataFi}}</h5>
-                <img src="img/default.png" class="w-75" ng-if="!edicio.url || edicio.url == '' "/>
-                <img src="../multimedia/img/edicions/{{edicio.url}}" class="w-75" ng-if="edicio.url"/>
-                <p class="card-text">{{edicio.nom}}</p>
+                <img src="../multimedia/img/edicions/{{edicio.url}}" class="w-100" ng-if="edicio.url"/>
+                <h5 class="card-title mt-3">{{edicio.dataInici}} - {{edicio.dataFi}}</h5>
                 <div class="icon-block">
                     <i class="fa fa-cog" aria-hidden="true" ng-click="editar($index, edicio.idEdicio)"></i>
                     <i class="fa fa-trash" aria-hidden="true" ng-click="eliminar(projecte.idProjecte)"></i>

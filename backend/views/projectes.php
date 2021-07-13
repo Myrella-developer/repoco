@@ -20,7 +20,7 @@
                     <i class="fa fa-trash" aria-hidden="true" ng-click="eliminar(projecte.idProjecte)"></i>
 				</div>
             </div>
-            <a class="btn btn-warning mb-2" ng-href="http://localhost/repoco/backend/#/multimedia/{{projecte.idProjecte}}">Gestionar multimedia</a>
+            <a class="btn cardButton" ng-href="http://localhost/repoco/backend/#/multimedia/{{projecte.idProjecte}}">Gestionar multimedia</a>
         </div>
     </div>
 

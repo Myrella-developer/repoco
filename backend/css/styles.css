@@ -15,6 +15,10 @@ h2 {
     margin-bottom: 3rem;
     margin-top: 3rem;
 }
+a{
+	text-decoration: none;
+	color: black;
+}
 .btnAfegir, .btnTancar{
     margin-right: 0;
     margin-left: auto;
@@ -50,13 +54,19 @@ h2 {
     font-weight: bolder;
     background:linear-gradient(to left, rgba(240, 246, 247, 0.246), #eef1f5)
 }
-.cardGestor-ESP .card-title{
-    font-size: 14px;
+.cardGestor-ESP .imgCard-Gestor{
+    margin-top: 10px;
+    border-radius: 10px;
+}
+.cardGestor-ESP .titolCard{
+    font-size: 18px;
+    font-weight: bold;
     text-align: center;
+    margin: 20px 20px auto;
 }
 .cardGestor-ESP .card-text{
-    margin-top: 20px;
-    margin-left: 0.1px;
+    margin-top: 10px;
+    text-align: center;
     font-size: 12px;
 }
 .cardGestor-ESP  i {
@@ -78,14 +88,19 @@ h2 {
 }
 .cardGestor-ESP .icon-block a{
     text-decoration:none;
-
 }
 .cardGestor-ESP .fa-cog{
     position: absolute;
+    font-size: 16px;
 	z-index: 1;
 	top: 0.1px;
     left: 0.1px;
-	background-color: #fff;
+    border: none;
+}
+.cardGestor-ESP .fa-trash{
+    font-size: 18px;
+    left: 0.1px;
+    border: none;
 }
 .cardGestor-ESP i:hover {
     background-color:#12789a;
@@ -94,20 +109,20 @@ h2 {
     cursor: pointer;
 }
 .cardGestor-ESP .cardButton{  
-        border: 0;
-        background: linear-gradient(to left, #1d4d7a,  #12789a);
-        display: block;
-        margin: 20px auto;
-        height: auto;
-        text-align: center;
-        padding: 10px 25px;
-        outline: none;
-        font-size: small;
-        font-weight: bold;
-        color: rgb(227, 232, 240);
-        border-radius: 24px;
-        transition: 0.25s;
-        cursor: pointer;
+    border: 0;
+    background: linear-gradient(to left, #1d4d7a,  #12789a);
+    display: block;
+    margin-bottom: 20px;
+    height: auto;
+    text-align: center;
+    padding: 10px 25px;
+    outline: none;
+    font-size: small;
+    font-weight: bold;
+    color: rgb(227, 232, 240);
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer;
 }
 .cardGestor-ESP .cardButton:hover {
     background:linear-gradient(to left, rgba(240, 246, 247, 0.246), #eef1f5);
@@ -140,10 +155,10 @@ h2 {
     border-radius: 24px;
     transition: 0.25s
 }
-.modalgestorDir input[type="text"],
+.modalgestorDir input[type="text"]:focus,
 .modalgestorDir input[type="file"]:focus {
     width: 300px;
-    border-color: #699bf7
+    border-color: #12789a
 }
 .modalgestorDir .labelModal{
     display: block;
@@ -152,7 +167,15 @@ h2 {
     text-align: center;
     color: #12789a
 }
-
+.modalgestorDir .edFecha{
+    margin: 20px auto;
+    display: block;
+    color: rgb(74, 82, 87);
+    padding: 10px 10px;
+    border-radius: 24px;
+    border: 1px solid #12789a;
+    transition: 0.25s
+}
 .modalgestorDir .btnModal{
     border: 0;
     background: linear-gradient(to left, #1d4d7a,  #12789a);
@@ -219,25 +242,8 @@ header{
     min-width: 800px !important;
 }
 
-/* CAMBIAR NOMBRE CLASES
-a{
-	text-decoration: none;
-	color: black;
-}
-.btn-danger{
-    float: right;
-    margin-right: 20px;
-    margin-top: 20px;
-}
 
-.btn-primary{
-    display: block;
-    margin-bottom: 10px;
-}
 
-.btn-warning{
-    display: block;
-}*/
 .bi-x{
     cursor: pointer;
     color: red;

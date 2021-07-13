@@ -21,7 +21,7 @@ app.filter('trusted', ['$sce', function ($sce) {
 	   .then((res) => { 
 	       defered.resolve(res);
 	       $scope.datosCasas=res.data.datosCasas;
-	       console.log($scope.datosCasas);
+	       // console.log($scope.datosCasas);
 
 		   $scope.datosVideos=res.data.datosVideos;
 		   console.log($scope.datosVideos);
@@ -135,7 +135,7 @@ app.filter('trusted', ['$sce', function ($sce) {
 	   .then((res) => { 
 	       defered.resolve(res);
 	       $scope.casa=res.data.casa;
-	       console.log($scope.casa);
+	       // console.log($scope.casa);
 	       $scope.url=$scope.casa[5];
 	       $scope.nom=$scope.casa[1];
 	       $scope.nombre=$scope.casa[2];
@@ -158,7 +158,7 @@ app.filter('trusted', ['$sce', function ($sce) {
 	      defered.resolve(res);
 
 	    $scope.dataAnys=res.data.anysEdicio;
-	    console.log($scope.dataAnys);
+	    // console.log($scope.dataAnys);
 	     
 	   })
 	   .catch((err) => { console.log(err.statusText) })
@@ -217,7 +217,7 @@ app.filter('trusted', ['$sce', function ($sce) {
 	      defered.resolve(res);
 
 	    $scope.especialitats=res.data;
-	    console.log(res.data);
+	    // console.log(res.data);
 	     
 	   })
 	   .catch((err) => { console.log(err.statusText) })
@@ -329,7 +329,7 @@ app.filter('trusted', ['$sce', function ($sce) {
 	   .then((res) => { 
 	       defered.resolve(res);
 	      $scope.proyecto=res.data;
-	      console.log($scope.proyecto);
+	      // console.log($scope.proyecto);
 	      $scope.casaCat=$scope.proyecto[1];
 	      $scope.casaCas=$scope.proyecto[2];
 	      $scope.imgCasa=$scope.proyecto[3];
@@ -358,15 +358,17 @@ app.filter('trusted', ['$sce', function ($sce) {
 	   })
 	   .then((res) => { 
 	       defered.resolve(res);
-	       $scope.galerias=res.data;
-	       console.log($scope.galerias);
+	       $scope.galerias=res.data.galeria;
+	       $scope.participants=res.data.participants;
+	       console.log($scope.participants);
 	      
 	   })
 	   .catch((err) => { console.log(err.statusText) })
 	   .finally(() => {
 
 	   	$scope.abreModal=function(numImg){
-	   		
+	   		$scope.selCarousel=numImg;
+
 	   	}
 
 

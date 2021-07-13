@@ -37,7 +37,7 @@
 
 
     <div class="modal fade" id="modalCases" tabindex="-1" aria-labelledby="labelDigital" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-md">
             <div class="modal-content modalgestorDir">
                 <div class="modal-header">
                     <h3 class="modal-title labelModal" id="labelDigital">CASES D'OFICIS</h3>
@@ -63,7 +63,7 @@
                         </div>
                         <div class="mb-2">
                           <label for="upload" class="col-form-label labelModal ">Penjar una imatge</label>
-                          <input type="file" id="upload" multiple="true">
+                          <input type="file" id="upload" multiple="true"></input>
                         </div>
                     </form>
                 </div>

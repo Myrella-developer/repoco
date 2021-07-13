@@ -459,7 +459,7 @@ angular.module("backend")
         data.append("descripcion", $scope.descripcion);
         data.append("titol", $scope.titol);
         data.append("titulo", $scope.titulo);
-        data.append("idEdicio", $scope.sel);
+        data.append("idEdicio", idEdicio);
         data.append("idProjecte", $rootScope.idProjecte);
 
         $http.post("models/projectes.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
@@ -582,6 +582,8 @@ angular.module("backend")
 
             if($rootScope.archivo == undefined){
                 alert("Selecciona un archivo")
+            }else if($scope.descripcio == "" || $scope.descripcion == ""){
+                alert("Tots els camps son obligatoris");
             }else{
                 data.append("idMult", $rootScope.idMult);
                 data.append("idProjecte", idProjecte);

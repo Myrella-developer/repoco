@@ -38,8 +38,9 @@
                 <div class="modal-body">
                     <form ng-model="projectes" enctype="multipart/form-data">
                         <div class="mb-4">
+                            <h3>Especialitats que han participat a part de la teva</h3>
                             <select class="form-control" ng-model="selEsp" ng-change="onChange()">
-                                <option value="-1">--Selecciona especialitat a afegir</option>
+                                <option value="-1">--Selecciona</option>
                                 <option ng-repeat="esp in inexistents" value="{{esp.idEdicio}}">{{esp.nom}}</option>
                             </select>
                          

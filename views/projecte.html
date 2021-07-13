@@ -46,7 +46,13 @@
 	<h6 class="fw-bold mb-4">{{idioma=="cat"?galCat:galCas | uppercase}}</h6>
 	<div class="row row-cols-3">
 		<div class="col" ng-repeat="galeria in galerias">
-			<div class="card" style="width: 18rem;" data-bs-toggle="modal" data-bs-target="#cardProjecte">
+			<!-- <div class="card" style="width: 18rem;" ng-click="abreModal($index)">
+			  <img src="multimedia/img/projectes/{{galeria.url==null?'noimagen.png' : galeria.url}}" class="card-img-top" alt="Foto Projecte">
+			  <div id="cardProyectos" class="card-body">
+			    <h5 class="card-title border border-1 fw-bold">{{idioma=="cat"?galeria.descripcio:galeria.descripcion}}</h5>
+			  </div>
+			</div> -->
+			<div class="card" style="width: 18rem;" data-bs-toggle="modal" data-bs-target="#cardProjecte" ng-click="abreModal($index)">
 			  <img src="multimedia/img/projectes/{{galeria.url==null?'noimagen.png' : galeria.url}}" class="card-img-top" alt="Foto Projecte">
 			  <div id="cardProyectos" class="card-body">
 			    <h5 class="card-title border border-1 fw-bold">{{idioma=="cat"?galeria.descripcio:galeria.descripcion}}</h5>
@@ -60,14 +66,36 @@
 <!-- Modal -->
 <div class="modal fade" id="cardProjecte" tabindex="-1" aria-labelledby="cardProjecte" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content" ng-repeat="galeria in galerias">
+    <div class="modal-content">
+
       <div class="modal-header">
-        <h5 class="modal-title" id="cardProjecte">{{idioma=="cat"?galeria.descripcio:galeria.descripcion}}</h5>
+       
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-         <img src="multimedia/img/projectes/{{galeria.url==null?'noimagen.png' : galeria.url}}" class="card-img-top" alt="Foto Projecte">
+
+      	<div id="carouselPro" class="carousel slide" ng-repeat="galeria in galerias" data-bs-ride="carousel">
+      		 <h5 class="modal-title" id="cardProjecte">{{idioma=="cat"?galeria.descripcio:galeria.descripcion}}</h5>
+			  <div class="carousel-inner">
+			    <div class="carousel-item active">
+			      <img src="multimedia/img/projectes/{{galeria.url==null?'noimagen.png' : galeria.url}}" class="d-block w-100" alt="Foto Projecte">
+			    </div>
+			    <div class="carousel-item">
+			      <img src="..." class="d-block w-100" alt="...">
+			    </div>
+			  </div>
+			  <button class="carousel-control-prev" type="button" data-bs-target="#carouselPro" data-bs-slide="prev">
+			    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			    <span class="visually-hidden">Previous</span>
+			  </button>
+			  <button class="carousel-control-next" type="button" data-bs-target="#carouselPro" data-bs-slide="next">
+			    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+			    <span class="visually-hidden">Next</span>
+			  </button>
+		</div>
+         <!-- <img src="multimedia/img/projectes/{{galeria.url==null?'noimagen.png' : galeria.url}}" class="card-img-top" alt="Foto Projecte"> -->
       </div>
     </div>
   </div>
 </div>
+

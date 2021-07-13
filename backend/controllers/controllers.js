@@ -23,9 +23,7 @@ angular.module("backend")
     $scope.nombre="";
     $scope.descripcio="";
     $scope.descripcion="";
-    // $scope.url="";
-    $scope.url="digitals.png";
-    $scope.url="digitals.png"
+    $scope.url="";
     let data = new FormData;
     data.append("acc","r");
     let defered =$q.defer();
@@ -143,7 +141,6 @@ angular.module("backend")
         defered.resolve(res);
         $scope.especialitats = res.data.especialitats;
         $scope.cases = res.data.cases;
-        //console.log($scope.especialitats);
     })
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})
@@ -305,6 +302,7 @@ angular.module("backend")
             $rootScope.url = $scope.edicions[posicion].url;
             $scope.dataFi = new Date($scope.edicions[posicion].dataFi);
             $scope.dataInici = new Date($scope.edicions[posicion].dataInici);
+           
             $scope.idEdicio=$scope.edicions[posicion].idEdicio;
         }
         else{
@@ -317,10 +315,11 @@ angular.module("backend")
         $rootScope.idEdicio = idEdicio;
     }
 
+
     $scope.guardar=()=>{
         let dataInici = $scope.dataInici.getFullYear() + "-" + ($scope.dataInici.getMonth()+1) + "-" + $scope.dataInici.getDate()
         let dataFi = $scope.dataFi.getFullYear() + "-" + ($scope.dataFi.getMonth()+1) + "-" + $scope.dataFi.getDate()
-     
+        
         if($scope.idEdicio==""){
             if($rootScope.fotoEdicio == undefined){
                 alert("Escoge una imagen")
@@ -380,19 +379,6 @@ angular.module("backend")
     $scope.titol="";
     $scope.titulo="";
     $scope.selEsp = "-1";
-
-    $scope.onChange = () => {
-        alert("Edición "+ $scope.selEsp+" añadida")
-    }
-
-    $scope.onDelete = (idEdicio) => {
-        let confirmacion = confirm("¿Estás seguro de que quieres eliminar la edición "+idEdicio+"?")
-        if(confirmacion){
-            alert("Edición eliminada");
-        }else{
-            alert("Edición salvada");
-        }
-    }
     
     let idEdicio = $routeParams.idEdicio;
 	let data= new FormData;
@@ -403,15 +389,13 @@ angular.module("backend")
     $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
     .then((res) => { 
         defered.resolve(res);
-        $scope.projectes = res.data.projectes;
-        $scope.especialitats = res.data.especialitats;
-        $scope.edicionsExistents = res.data.edicionsExistents
+        $scope.projectes = res.data;
     })
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})
 
     $scope.getFileDetails = (e) => {
-        $rootScope.multimedias = e.files[0];
+        $rootScope.projecteMultimedia = e.files[0];
     }
 
     $scope.editar=(posicion)=>{
@@ -421,7 +405,19 @@ angular.module("backend")
             $scope.url=$scope.projectes[posicion].url;
             $scope.titol=$scope.projectes[posicion].titol;
             $scope.titulo=$scope.projectes[posicion].titulo;
-            $scope.idProjecte=$scope.projectes[posicion].idProjecte;
+            $rootScope.idProjecte=$scope.projectes[posicion].idProjecte;
+            $scope.idProjecte="12"
+            
+            data.append("acc","updateEdicio");
+            data.append("idProjecte", $rootScope.idProjecte);
+            $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+            .then((res) => { 
+                defered.resolve(res);
+                $scope.existents = res.data.edicionsExistents;
+                $scope.inexistents = res.data.edicionsInexistents;
+            })
+            .catch((err) => { console.log(err.statusText) })
+            .finally(() => {})
         }
         else{
             $scope.descripcio="";
@@ -429,6 +425,7 @@ angular.module("backend")
             $scope.idProjecte = "";
             $scope.titol="";
             $scope.titulo="";
+            $scope.idProjecte=""
         }
         $("#modalProjecte").modal('show')
     }
@@ -441,7 +438,9 @@ angular.module("backend")
         data.append("descripcion", $scope.descripcion);
         data.append("titol", $scope.titol);
         data.append("titulo", $scope.titulo);
-        data.append("edicio", $scope.sel);
+        data.append("idEdicio", $scope.sel);
+        data.append("multimedia", $rootScope.projecteMultimedia);
+        data.append("idProjecte", $rootScope.idProjecte);
 
         $http.post("models/projectes.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
         .then((res) =>{
@@ -471,9 +470,44 @@ angular.module("backend")
         }
     }
 
-    $scope.showDesc = false;
-    $scope.mostrarDesc = () => {
-        $scope.showDesc = !$scope.showDesc;
+    $scope.onChange = () => {
+        let confirmacion = confirm("¿Estás seguro de que quieres añadir la edición "+$scope.selEsp+"?")
+        if(confirmacion){
+            alert("Edición "+ $scope.selEsp+" añadida");
+            let data= new FormData;
+            let defered = $q.defer();
+            data.append("acc","addEdicio");
+            data.append("idEdicio", $scope.selEsp);
+            data.append("idProjecte", $rootScope.idProjecte);
+            $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+            .then((res) => { 
+                defered.resolve(res);
+                console.log(res.data)
+            })
+            .catch((err) => { console.log(err.statusText) })
+            .finally(() => {})
+        }
+    }
+
+    $scope.onDelete = (idEdicio) => {
+        let confirmacion = confirm("¿Estás seguro de que quieres eliminar la edición "+idEdicio+"?")
+        if(confirmacion){
+            alert("Edición eliminada");
+            let data= new FormData;
+            let defered = $q.defer();
+            data.append("acc","deleteEdicio");
+            data.append("idEdicio", idEdicio);
+            data.append("idProjecte", $rootScope.idProjecte);
+            $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+            .then((res) => { 
+                defered.resolve(res);
+                console.log(res.data)
+            })
+            .catch((err) => { console.log(err.statusText) })
+            .finally(() => {})
+        }else{
+            alert("Edición salvada");
+        }
     }
 })
 

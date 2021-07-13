@@ -5,7 +5,8 @@
     
         if(isset($_SESSION['login']['idDir'])) :
     ?>
-    <h2 class="titolGestor mt-5">La multimedia de la teva casa</h2>
+    <h2 class="titolGestor mt-5" ng-if="multimedia.length > 0">La multimedia de la teva casa</h2>
+    <h2 class="titolGestor mt-5" ng-if="multimedia.length == 0">No hi ha archius</h2>
 
     <i class="fas fa-plus-square ms-4 mt-5 text-primary"></i>
     <label class="ms-1 fw-bold" ng-click="editar('-1')">AFEGIR</label>
@@ -13,9 +14,9 @@
     <div class="row">
         <div class="card cardGestor-ESP m-5" style="width: 18rem;" ng-repeat="m in multimedia">
             <div class="card-body">
-                <img ng-src="../multimedia/img/projectes/{{m.url}}" width="200"/>
-                <h5 class="card-title">{{m.url}}</h5>
-                <p class="card-text">{{m.descripcio}}</p>
+                <img ng-src="../multimedia/img/projectes/{{m.url}}" class="w-100"/>
+                <h5 class="card-title mt-2">{{m.url}}</h5>
+                <p class="card-text text-center">{{m.descripcio}}</p>
                 <div class="icon-block">
                     <i class="fa fa-cog" aria-hidden="true" ng-click="editar($index)"></i>
                     <i class="fa fa-trash" aria-hidden="true" ng-click="eliminar(m.idMult)"></i>

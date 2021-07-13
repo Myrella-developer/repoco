@@ -56,7 +56,6 @@
 			$rows[] = $row;
 			unlink('../../multimedia/img/projectes/'.$row['url']);
 		}
-		echo json_encode($rows);
 
 		$sqlUnlink = "DELETE FROM `multimedia` WHERE idMult = {$_POST['idMult']}";
 

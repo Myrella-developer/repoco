@@ -2,7 +2,8 @@
 	require("../../inc/functions.php");
 
     if(isset($_POST['acc']) && $_POST['acc'] == "r"){
-        $sqlEdicions = "SELECT `idEdicio`, `idEsp`, `dataInici`, `dataFi`, `url`
+        $sqlEdicions = "SELECT `idEdicio`, `idEsp`, DATE_FORMAT(`dataInici`,'%d/%m/%Y') AS dataInici, DATE_FORMAT(`dataFi`,'%d/%m/%Y') AS dataFi,
+		`url`
 		FROM edicio WHERE idEsp = {$_POST['idEsp']} 
 		ORDER BY dataInici";
 	

@@ -302,6 +302,7 @@ angular.module("backend")
             $rootScope.url = $scope.edicions[posicion].url;
             $scope.dataFi = new Date($scope.edicions[posicion].dataFi);
             $scope.dataInici = new Date($scope.edicions[posicion].dataInici);
+           
             $scope.idEdicio=$scope.edicions[posicion].idEdicio;
         }
         else{
@@ -314,10 +315,11 @@ angular.module("backend")
         $rootScope.idEdicio = idEdicio;
     }
 
+
     $scope.guardar=()=>{
         let dataInici = $scope.dataInici.getFullYear() + "-" + ($scope.dataInici.getMonth()+1) + "-" + $scope.dataInici.getDate()
         let dataFi = $scope.dataFi.getFullYear() + "-" + ($scope.dataFi.getMonth()+1) + "-" + $scope.dataFi.getDate()
-     
+        
         if($scope.idEdicio==""){
             if($rootScope.fotoEdicio == undefined){
                 alert("Escoge una imagen")
@@ -542,8 +544,8 @@ angular.module("backend")
         }
         else{
             $scope.idMultimedia="";
-            $scope.descripcioMulti="";
-            $scope.descripcionMulti="";
+            $scope.descripcio="";
+            $scope.descripcion="";
             $scope.url="";
         }
         $("#modalMultimedia").modal('show');
@@ -551,22 +553,46 @@ angular.module("backend")
     }
 
     $scope.guardar=()=>{
-        if($scope.idMultimedia=="") data.append("acc","c");
-        else data.append("acc","u");
+        if($scope.idMultimedia==""){
+            data.append("acc","c");
 
-        data.append("idMult", $rootScope.idMult);
-        data.append("idProjecte", idProjecte);
-        data.append("multimedia", $rootScope.archivo);
-        data.append("descripcio", $scope.descripcio);
-        data.append("descripcion", $scope.descripcion);
-        
-        $http.post("models/multimedia.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
-        .then((res) =>{
-            defered.resolve(res);
-            console.log(res.data);
-        })
-        .catch((err)=>{console.log(err.statusText)})
-        .finally(()=>{$("#modalMultimedia").modal('hide')});
+            if($rootScope.archivo == undefined){
+                alert("Selecciona un archivo")
+            }else{
+                data.append("idMult", $rootScope.idMult);
+                data.append("idProjecte", idProjecte);
+                data.append("multimedia", $rootScope.archivo);
+                data.append("descripcio", $scope.descripcio);
+                data.append("descripcion", $scope.descripcion);
+                
+                $http.post("models/multimedia.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
+                .then((res) =>{
+                    defered.resolve(res);
+                    console.log(res.data);
+                })
+                .catch((err)=>{console.log(err.statusText)})
+                .finally(()=>{$("#modalMultimedia").modal('hide')});
+            }
+        }else{
+            data.append("acc","u");
+            if($rootScope.archivo == undefined){
+                data.append("multimedia", $scope.url);
+            }else{
+                data.append("idMult", $rootScope.idMult);
+                data.append("idProjecte", idProjecte);
+                data.append("multimedia", $rootScope.archivo);
+                data.append("descripcio", $scope.descripcio);
+                data.append("descripcion", $scope.descripcion);
+                
+                $http.post("models/multimedia.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
+                .then((res) =>{
+                    defered.resolve(res);
+                    console.log(res.data);
+                })
+                .catch((err)=>{console.log(err.statusText)})
+                .finally(()=>{$("#modalMultimedia").modal('hide')});
+            }
+        }
     }
 
     $scope.eliminar = (idMultimedia) => {

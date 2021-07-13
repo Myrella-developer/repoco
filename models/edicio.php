@@ -16,7 +16,7 @@ if(isset($_POST['acc']) && $_POST['acc']=='r'){
 	$conexion=conectar();
 	$anys=mysqli_query($conexion,$mySql);
 	
-	desconectar($conexion);
+	
 
 	$datosExportar='{"anysEdicio":';
 
@@ -27,11 +27,11 @@ if(isset($_POST['acc']) && $_POST['acc']=='r'){
 		$inici=$row['dataInici'];
 		$fi=$row['dataFi'];
 
-		$mySql2="SELECT `es`.`idEsp`,`es`.`nombre`,`es`.`nom`,`ed`.`idEdicio` FROM `especialitats` AS `es` LEFT JOIN `edicio` AS `ed` ON `es`.`idEsp`=`ed`.`idEsp` WHERE `ed`.`dataInici`= '{$row['dataInici']}' AND `es`.`idcasa`='{$_POST['idcasa']}'";
+		$mySql2="SELECT `es`.`idEsp`,`es`.`nombre`,`es`.`nom`,`ed`.`idEdicio`,`ed`.`url` FROM `especialitats` AS `es` LEFT JOIN `edicio` AS `ed` ON `es`.`idEsp`=`ed`.`idEsp` WHERE `ed`.`dataInici`= '{$row['dataInici']}' AND `es`.`idcasa`='{$_POST['idcasa']}'";
 
-		$conexion=conectar();
+		// $conexion=conectar();
 		$especialitats=mysqli_query($conexion,$mySql2);
-		desconectar($conexion);
+		// desconectar($conexion);
 
 		$rows2=array();
 
@@ -41,13 +41,14 @@ if(isset($_POST['acc']) && $_POST['acc']=='r'){
 			$nombre=$rowEspecialitats['nombre'];
 			$nom=$rowEspecialitats['nom'];
 			$idEdicio=$rowEspecialitats['idEdicio'];
+			$url=$rowEspecialitats['url'];
 
-			$rows2[]= array('idEsp'=>$idEsp, 'nombre'=>$nombre, 'nom'=>$nom, 'idEdicio'=>$idEdicio);
+			$rows2[]= array('idEsp'=>$idEsp, 'nombre'=>$nombre, 'nom'=>$nom, 'idEdicio'=>$idEdicio, 'url'=>$url);
 		}
 
 		$rows[]=array('inici'=>$inici, 'fi'=>$fi, 'especialitats'=>$rows2);
 	}
-
+	desconectar($conexion);
 	$datosExportar.=json_encode($rows);
 	$datosExportar.='}';
 

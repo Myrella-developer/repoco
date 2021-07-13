@@ -3,7 +3,7 @@ include("../inc/functions.php");
 
 if(isset($_POST['acc']) && $_POST['acc']=='r'){
 
-	$mySql="SELECT `especialitats`.`nombre`,`especialitats`.`nom`,`especialitats`.`descripcio`,`especialitats`.`descripcion`,`especialitats`.`url`, `edicio`.`idEdicio`, `projectes`.`idProjecte`, `projectes`.`url`,`projectes`.`titol`,`projectes`.`titulo`,`projectes`.`descripcio`,`projectes`.`descripcion` FROM `especialitats` 
+	$mySql="SELECT `especialitats`.`nombre`,`especialitats`.`nom`,`especialitats`.`descripcio`,`especialitats`.`descripcion`, `edicio`.`idEdicio`, `projectes`.`idProjecte`, `projectes`.`url`,`projectes`.`titol`,`projectes`.`titulo`,`projectes`.`descripcio`,`projectes`.`descripcion` FROM `especialitats` 
 		LEFT JOIN `edicio` ON `edicio`.`idEsp` = `especialitats`.`idEsp` 
 		LEFT JOIN `projectes` ON `projectes`.`idEdicio` = `edicio`.`idEdicio` 
 		WHERE `edicio`.`idEdicio`='{$_POST['idEdicio']}'";
@@ -27,7 +27,7 @@ echo json_encode($rows);
 
 if(isset($_POST['acc']) && $_POST['acc']=='pro'){
 
-	$mySql="SELECT `cases`.`idcasa`, `cases`.`nom`, `cases`.`nombre`, `cases`.`url`,`especialitats`.`nombre`,`especialitats`.`nom`,`especialitats`.`url`, `edicio`.`dataInici`,`edicio`.`dataFi`, `edicio`.`url`,`projectes`.`idProjecte`, `projectes`.`url`,`projectes`.`titol`,`projectes`.`titulo`,`projectes`.`descripcio`,`projectes`.`descripcion` FROM `especialitats` 
+	$mySql="SELECT `cases`.`idcasa`, `cases`.`nom`, `cases`.`nombre`, `cases`.`url`,`especialitats`.`nombre`,`especialitats`.`nom`, `edicio`.`dataInici`,`edicio`.`dataFi`, `edicio`.`url`,`projectes`.`idProjecte`, `projectes`.`url`,`projectes`.`titol`,`projectes`.`titulo`,`projectes`.`descripcio`,`projectes`.`descripcion` FROM `especialitats` 
 		LEFT JOIN `cases` ON `cases`.`idcasa`=`especialitats`.`idcasa` 
 		LEFT JOIN `edicio` ON `edicio`.`idEsp` = `especialitats`.`idEsp` 
 		LEFT JOIN `projectes` ON `projectes`.`idEdicio` = `edicio`.`idEdicio` WHERE `projectes`.`idProjecte`='{$_POST['idProjecte']}'";

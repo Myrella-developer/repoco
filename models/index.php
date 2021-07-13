@@ -9,7 +9,7 @@ include("../inc/functions.php");
 if(isset($_POST['acc']) && $_POST['acc']=='r'){
 
 	$mySql="SELECT `idcasa`,`nom`,`nombre`,`descripcio`,`descripcion`,`url` FROM `cases`";
-	$mySql2="SELECT `idEsp`,`nombre`,`nom`,`descripcio`,`descripcion`,`url`,`idcasa` FROM `especialitats`";
+	$mySql2="SELECT `idEsp`,`nombre`,`nom`,`descripcio`,`descripcion`,`idcasa` FROM `especialitats`";
 	
 	$conexion=conectar();
 	$resultcasas=mysqli_query($conexion,$mySql);

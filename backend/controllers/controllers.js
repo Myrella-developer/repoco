@@ -60,6 +60,7 @@ angular.module("backend")
     }
     $scope.guardar=()=>{
         console.log("A modificar:--"+$scope.idcasa+"--");
+
         let data = new FormData;
         if($scope.idcasa=="") data.append("acc","c");
         else data.append("acc","u");
@@ -78,8 +79,11 @@ angular.module("backend")
         })
         .catch((err)=>{console.log(err.statusText)})
         .finally(()=>{});
+
     }
 })
+
+
 .controller("RecuperarController", ($q, $scope, $http, $location) => {
     $scope.email = "pancracio@gmail.com";
     $scope.nuevaContra = "nueva contra";

@@ -21,7 +21,7 @@
         </div>    
     </div>
     <div class="modal fade" id="modalEsp" tabindex="-1" aria-labelledby="labelDigital" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content modalgestorDir">
                 <div class="modal-header">
                     <h3 class="modal-title labelModal" id="labelDigital">Especialitat</h3>

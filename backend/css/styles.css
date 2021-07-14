@@ -8,6 +8,13 @@ body {
     font-family: 'Open Sans', Arial, sans-serif;
     background-color: rgb(255, 255, 255);
 }
+
+
+.titolGestor{
+    font-size: 3rem;
+    color: #000102;
+    text-align: center;
+}
 h2 {
     text-align: center !important;
     font-size: 36px;
@@ -53,7 +60,7 @@ a{
   	border-width: 0px;
     color: #12789a;
     font-weight: bolder;
-    background:linear-gradient(to left, rgba(240, 246, 247, 0.246), #eef1f5)
+    background:linear-gradient(to left, rgba(240, 246, 247, 0.246), #eef1f5);
 }
 .cardGestor-ESP .imgCard-Gestor{
     margin-top: 10px;
@@ -130,7 +137,6 @@ a{
     color: #12789a;
     font-weight: bold;
     border: 1px solid #12789a;
-    ;
 }
 .modalgestorDir {
     width: 30rem;
@@ -138,9 +144,9 @@ a{
     border-radius: .8rem;
     box-shadow: .4rem .4rem 2.4rem .2rem hsla(199, 50%, 50%, 0.3);
     position: absolute;
-    font-family: 'Open Sans', Arial, sans-serif;
-   
+    font-family: 'Open Sans', Arial, sans-serif; 
 }
+
 .modalgestorDir input[type="text"],
 .modalgestorDir input[type="file"]{
     border: 0;
@@ -154,19 +160,19 @@ a{
     outline: none;
     color: rgb(74, 82, 87);
     border-radius: 24px;
-    transition: 0.25s
+    transition: 0.25s;
 }
-.modalgestorDir input[type="text"]:focus,
+.modalgestorDir input[type="text"], 
 .modalgestorDir input[type="file"]:focus {
     width: 300px;
-    border-color: #12789a
+    border-color: #699bf7;
 }
 .modalgestorDir .labelModal{
     display: block;
     font-size: 18px;
     margin-top:10px;
     text-align: center;
-    color: #12789a
+    color: #12789a;
 }
 .modalgestorDir .edFecha{
     margin: 20px auto;
@@ -189,7 +195,7 @@ a{
     font-weight: bolder;
     border-radius: 24px;
     transition: 0.25s;
-    cursor: pointer
+    cursor: pointer;
 }
 .modalgestorDir .btnModal:hover {
     background:linear-gradient(to left, rgba(240, 246, 247, 0.246), #eef1f5);

@@ -9,7 +9,7 @@ app.config(['$routeProvider',function($routeProvider){
 		templateUrl:'views/edicions.php',
 		controller:'EdicionsController'
 	})	
-	.when('/projectes/:idEdicio',{
+	.when('/projectes/:idEdicio/:dataInici',{
 		templateUrl:'views/projectes.php',
 		controller:'ProjectesController'
 	})	
@@ -17,7 +17,7 @@ app.config(['$routeProvider',function($routeProvider){
         templateUrl:'views/especialitat.php',
         controller:'EspecialitatController'
     })
-	.when('/directors/:idcasa',{
+	.when('/directors/',{
 		templateUrl:'views/directors.php',
 		controller:'DirectorsController'
 	})

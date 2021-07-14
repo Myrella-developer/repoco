@@ -47,7 +47,7 @@
 	<h6 class="fw-bold mb-4">{{idioma=="cat"?galCat:galCas | uppercase}}</h6>
 	<div class="row row-cols-3">
 		<div class="col" ng-repeat="galeria in galerias">
-			<div class="card" style="width: 18rem;"ng-click="abreModal($index)">
+			<div class="card" style="width: 18rem;" ng-click="abreModal($index)">
 			  <img  data-bs-toggle="modal" data-bs-target="#cardProjecte" src="multimedia/img/{{galeria.url==null?'noimatge.png' : 'projectes/'+galeria.url}}" class="card-img-top" alt="Foto Projecte">
 			  <div id="cardProyectos" class="card-body" data-bs-toggle="modal" data-bs-target="#cardProjecte">
 			    <h5 class="card-title border border-1 fw-bold">{{idioma=="cat"?galeria.descripcio:galeria.descripcion}}</h5>
@@ -66,10 +66,10 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body pt-0">			    		
-      	<div id="carouselPro" class="carousel slide"data-bs-ride="carousel"> 
+      	<div id="carouselPro" class="carousel slide" data-bs-ride="carousel"> 
       		<div class="carousel-inner" >
-			    <div class="carousel-item active" ng-repeat="galeria in galerias"  ng-class="{'active': $index==selCarousel}">
-			    	<h5 class="modal-title" id="cardProjecte">{{idioma=="cat"?galeria.descripcio:galeria.descripcion}}</h5>
+			    <div class="carousel-item" ng-repeat="galeria in galerias"  ng-class="{'active': $index==selCarousel}">
+			    	<h5 >{{idioma=="cat"?galeria.descripcio:galeria.descripcion}}</h5>
 			    	<img src="multimedia/img/{{galeria.url==null?'noimatge.png' : 'projectes/'+galeria.url}}" class="d-block w-100" alt="Foto Projecte">
 			    </div>
 			  </div>

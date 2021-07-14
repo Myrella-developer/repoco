@@ -17,7 +17,10 @@
 					    <h3>{{director.nom}} {{director.cog1}}</h3>
                             <span>Director/a</span>
 					    <div class="icon-block">
+                        <?php if(isset($_SESSION['login']['tipus']) && $_SESSION['login']['tipus'] == "a") :?>
                             <i class="fa fa-cog" aria-hidden="true" ng-click="editar($index)"></i>
+                            <i class="fas fa-key" aria-hidden="true"></i>
+                        <?php endif; ?>    
 						    <a href="mailto:{{director.correu}}"> <i class="fa fa-paper-plane"></i></a>
                             <a href="tel:{{director.contacte}}"><i class="fa fa-phone"></i></a>
 					    </div>
@@ -27,7 +30,7 @@
         </div>        
     </div>        
     <div class="modal fade" id="modalDir" tabindex="-1" aria-labelledby="labelDigital" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog  modal-dialog-centered">
             <div class="modal-content modalgestorDir">
                 <div class="modal-header">
                     <h5 class="modal-title labelModal" id="labelDigital">Director</h5>

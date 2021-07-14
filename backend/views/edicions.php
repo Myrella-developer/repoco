@@ -22,15 +22,14 @@
                     </div>
                 </div>
                 <div class="row">
-                <div class="col-2"><i class="fa fa-trash" aria-hidden="true" ng-click="eliminar(projecte.idProjecte)"></i></div>
-                <div class="col-9"><a class="btn cardButton" ng-href="http://localhost/repoco/backend/#/projectes/{{edicio.idEdicio}}">Gestionar projectes</a><div>
+                <div class="col-9"><a class="btn cardButton" ng-href="http://localhost/repoco/backend/#/projectes/21/2020-12-31">Gestionar projectes</a><div>
                 </div>
             </div>
         </div>    
     </div>
 
     <div class="modal fade" id="modalEdicio">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content modalgestorDir">
                 <div class="modal-header">
                     <h5 class="modal-title labelModal">Edicions</h5>
@@ -40,11 +39,11 @@
                     <form ng-model="edicions">
                         <div class="mb-2">
                             <label for="message-text" class="col-form-label labelModal">Data Inici</label>
-                            <input type="date" class="edFecha" ng-model="dataInici">
+                            <input type="date" class="edFecha" ng-model="dataInici" ng-change="cambiDataInici(dataInici)">
                         </div>
                         <div class="mb-2">
                             <label for="message-text" class="col-form-label labelModal">Data Fi</label>
-                            <input type="date" class="edFecha" ng-model="dataFi">
+                            <input type="date" class="edFecha" ng-model="dataFi" ng-change="cambiDataFi(dataFi)">
                         </div>
                         <div class="mb-2">
                             <input type="file" onchange="angular.element(this).scope().getFileDetails(this)"><br/>

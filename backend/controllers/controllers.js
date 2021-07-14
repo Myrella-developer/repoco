@@ -177,11 +177,9 @@ angular.module("backend")
     $scope.contacte = "";
     $scope.pass = "";
     $scope.idDir = "";
-    let idcasa = $routeParams.idcasa;
 	let data= new FormData;
     let defered = $q.defer();
     data.append("acc","r");
-    data.append("idcasa", idcasa);
 
     $http.post("models/directors.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
     .then((res) => { 
@@ -277,6 +275,7 @@ angular.module("backend")
     $scope.editar=(posicion, idEdicio)=>{
         if(posicion !== "-1"){
             $rootScope.url = $scope.edicions[posicion].url;
+            console.log($rootScope.url)
             $scope.dataInici = new Date($scope.edicions[posicion].dataInici);
             $scope.dataFi = new Date($scope.edicions[posicion].dataFi);
             $scope.idEdicio=$scope.edicions[posicion].idEdicio;
@@ -291,6 +290,13 @@ angular.module("backend")
         $rootScope.idEdicio = idEdicio;
     }
 
+    $scope.cambiDataInici = (dataInici) => {
+        $rootScope.dataInici = dataInici.getFullYear() + "-" + (dataInici.getMonth()+1) + "-" + dataInici.getDate()
+    }
+
+    $scope.cambiDataFi = (dataFi) => {
+        $rootScope.dataFi = dataFi.getFullYear() + "-" + (dataFi.getMonth()+1) + "-" + dataFi.getDate()
+    }
 
     $scope.guardar=()=>{    
         if($scope.idEdicio==""){
@@ -307,19 +313,20 @@ angular.module("backend")
             if($rootScope.fotoEdicio == undefined){
                 data.append("acc","u");
                 data.append("imgEdicio", $rootScope.url) 
-                console.log($rootScope.url)
             }else{
                 data.append("acc","u");
                 data.append("imgEdicio", $rootScope.fotoEdicio)
-                console.log($rootScope.fotoEdicio)
             }
         }
 
-        let dataInici = $scope.dataInici.getFullYear() + "-" + ($scope.dataInici.getMonth()+1) + "-" + $scope.dataInici.getDate()
-        let dataFi = $scope.dataFi.getFullYear() + "-" + ($scope.dataFi.getMonth()+1) + "-" + $scope.dataFi.getDate()
+        if($rootScope.dataInici == undefined || $rootScope.dataFi == undefined){
+            data.append("dataInici", $scope.dataInici);
+            data.append("dataFi", $scope.dataFi);
+        }else{
+            data.append("dataInici", $rootScope.dataInici);
+            data.append("dataFi", $rootScope.dataFi);
+        }
 
-        data.append("dataInici", dataInici);
-        data.append("dataFi", dataFi);
         data.append("idEdicio", $rootScope.idEdicio);
         data.append("idEsp", idEsp);
 
@@ -333,25 +340,6 @@ angular.module("backend")
         .catch((err)=>{console.log(err.statusText)})
         .finally(()=>{$("#modalEdicio").modal('hide')});
     }
-
-    $scope.eliminar = (idEdicio) => {
-        let confirmacion = confirm("¿Estás seguro de que deseas eliminar esta edición?");
-        if(confirmacion){
-            data.append("acc", "d");
-            data.append("idEdicio", idEdicio);
-    
-            $http.post("models/edicions.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
-            .then((res) => { 
-                defered.resolve(res);
-                $scope.edicions = res.data;
-                console.log(res.data)
-            })
-            .catch((err) => { console.log(err.statusText) })
-            .finally(() => {})
-        }else{
-            alert("No se ha eliminado la edición")
-        }
-    }
 })
 
 .controller("ProjectesController", ($q, $http, $scope, $routeParams, $location, $rootScope) => {
@@ -363,6 +351,8 @@ angular.module("backend")
     $scope.selEsp = "-1";
     
     let idEdicio = $routeParams.idEdicio;
+    let dataIniciEdicio = $routeParams.dataInici;
+
 	let data= new FormData;
     let defered = $q.defer();
     data.append("acc","r");
@@ -391,11 +381,13 @@ angular.module("backend")
            
             data.append("acc","updateEdicio");
             data.append("idProjecte", $rootScope.idProjecte);
+            data.append("dataIniciEdicio", dataIniciEdicio);
             $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
             .then((res) => { 
                 defered.resolve(res);
                 $scope.existents = res.data.edicionsExistents;
                 $scope.inexistents = res.data.edicionsInexistents;
+                console.log(res.data)
             })
             .catch((err) => { console.log(err.statusText) })
             .finally(() => {})

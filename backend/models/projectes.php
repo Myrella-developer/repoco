@@ -36,6 +36,16 @@
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);
 
+		$fileNew=explode(".",$_FILES['imgEdicio']['name']); 
+		$file=$fileNew[0].date("dmYhis").".".$fileNew[1]; 
+		move_uploaded_file($_FILES['imgEdicio']['tmp_name'],"../../multimedia/img/edicions/".$file); 
+
+		$sql = "INSERT INTO edicio(idEsp, dataInici, dataFi, url) 
+		VALUES('{$_POST['idEsp']}', '{$_POST['dataInici']}', '{$_POST['dataFi']}', '{$file}')";
+		$conexion = conectar();
+		$result = mysqli_query($conexion, $sql);
+		desconectar($conexion);
+
 		read();
 	}
 
@@ -106,16 +116,13 @@
 	}
 
 	function updateEdicio(){
-		$sqlEsp = "SELECT esp_proj.idEdicio, edicio.idEsp, especialitats.nom
-		FROM esp_proj
-		INNER JOIN edicio 
-		ON edicio.idEdicio = esp_proj.idEdicio
-		INNER JOIN especialitats
-		ON edicio.idEsp = especialitats.idEsp
-		WHERE esp_proj.idProjecte != {$_POST['idProjecte']} 
-		ORDER BY esp_proj.idEdicio";
+		$sqlSelect = "SELECT `especialitats`.`nom`,`especialitats`.`nombre`, `edicio`.`idEdicio`
+		FROM `especialitats`
+		LEFT JOIN `edicio` ON `edicio`.`idEsp` = `especialitats`.`idEsp`
+		WHERE `edicio`.`dataInici`='{$_POST['dataIniciEdicio']}'
+		AND `edicio`.`idEdicio` NOT IN (SELECT `idEdicio` FROM `esp_proj` WHERE `idProjecte`= {$_POST['idProjecte']})";
 
-		$sqlEsp2 = "SELECT esp_proj.idEdicio, edicio.idEsp, especialitats.nom
+		$sqlExistents = "SELECT esp_proj.idEdicio, edicio.idEsp, especialitats.nom
 		FROM esp_proj
 		INNER JOIN edicio 
 		ON edicio.idEdicio = esp_proj.idEdicio
@@ -125,22 +132,22 @@
 
 		$conexion = conectar();
 		
-		$resultEsp = mysqli_query($conexion, $sqlEsp);
-		$resultEsp2 = mysqli_query($conexion, $sqlEsp2);
+		$resultSelect = mysqli_query($conexion, $sqlSelect);
+		$resultExistents = mysqli_query($conexion, $sqlExistents);
 		desconectar($conexion);
 
 		$rows = array();
-		while($row = mysqli_fetch_array($resultEsp)){
+		while($row = mysqli_fetch_array($resultSelect)){
 			$rows[] = $row;
 		}
 
-		$datosExportar = '{"edicionsInexistents" : ' . json_encode($rows) . ', "edicionsExistents" : ';
+		$datosExportar = '{"edicionsInexistents" : ' . json_encode($rows);
 
 		$rows = array();
-		while($row = mysqli_fetch_array($resultEsp2)){
+		while($row = mysqli_fetch_array($resultExistents)){
 			$rows[] = $row;
 		}
-		$datosExportar .= json_encode($rows) . '}';
+		$datosExportar .=', "edicionsExistents" : ' . json_encode($rows) . '}';
 		echo $datosExportar;
 	}
 ?>

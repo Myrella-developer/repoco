@@ -22,6 +22,9 @@ footer a{
     
 }
 
+#card-cases{
+    margin-top: 20px;
+}
 #cardProyectos{
     padding: 0!important; 
     margin-top: 1em;
@@ -177,7 +180,7 @@ footer a{
     border-width: 0;
 }
 .navbar-expand-md{
-    justify-content: space-between;;
+    justify-content: space-between;
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -308,11 +311,6 @@ footer a{
     border: 0;
     margin-bottom: 50px;
 }
-
-#card-cases{
-    margin-top: 20px;
-}
-
 .filtrar{
 	color: black;
 	border-color: black;
@@ -345,17 +343,24 @@ footer a{
     z-index: -1;
 }
 .divmov {
-    padding-right: calc(var(--bs-gutter-x)/ 2);
-    padding-left: calc(var(--bs-gutter-x)/ 2);
     display: inline-block;
-    overflow: hidden;
+    /* overflow: hidden; */
     position: relative;
     width: 100%;
+  }
+  
+  .div4{
+   /* overflow: hidden; */
+   width: 100%;
+   margin-left: 0%;
+}
+
+
   }
 img.miniatura{
     opacity: 0.5;
     width: 16rem;
-    position: relative;
+    position: absolute;
     margin-bottom: 1rem;
     /*display: block;
     margin-left: auto;

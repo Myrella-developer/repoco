@@ -4,8 +4,13 @@
 	if (!isset($_SESSION['login']['idDir'])) header("location: ../");
 ?>
     <h2 class="titolGestor">Gestionar Directors</h2>
-    <div class="row cols-12"><button class="btnAfegir fas fa-plus-circle" ng-click="editar('-1')"> AFEGIR</button></div>
-        <div class="row ms-2">    
+    <?php 
+    if(isset($_SESSION['login']['tipus']) && $_SESSION['login']['tipus'] == "a") :?>
+    <div class="row cols-12">
+        <button class="btnAfegir fas fa-plus-circle" ng-click="editar('-1')"> AFEGIR</button>
+    </div>
+    <?php endif; ?>
+       <div class="row ms-2">    
             <div class="col-md-3" ng-repeat="director in directors">
 			    <div class="card cardGestor-ESP mx-auto mt-3" style="width: 18rem;">
 				    <div class="card-content text-center">

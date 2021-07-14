@@ -83,29 +83,6 @@ angular.module("backend")
     }
 })
 
-        // $scope.subirImagen = () => {
-        //     let data = new FormData;
-        //     data.append("url",$scope.url)
-        // }
-        // $scope.getFileDetails=function(e){
-        //     console.log(e.files.length);
-        //     $scope.fileImages=[];
-        //     let data = new FormData();            
-        //     data.append()
-        //     let defered = $q.defer();
-        //     $http.post("models/cases.php",data,{headers:{"Content-type": undefined}, transformRequest: angular.identity})
-        //     .then(function(res){
-        //         defered.resolve(res);
-        //         $scope.datos=res.data;
-        //         console.log($scope.datos);
-        //         console.log(res);
-        //     })
-        //     .catch(function(error){
-        //         console.log(error);
-        //         console.log(error.statusText);
-        //     })
-        // }
-
 
 .controller("RecuperarController", ($q, $scope, $http, $location) => {
     $scope.email = "pancracio@gmail.com";

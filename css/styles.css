@@ -44,6 +44,19 @@ footer a{
     padding: 0.7rem 0 0 0;
     float: right;
 }
+/* .gallery{
+    display: grid;
+    gap: 1rem;
+    grid-auto-rows: 22rem;
+    grid-auto-flow: dense;
+    grid-template-columns: repeat(auto-fill, minmax(min(1000%,25rem)1fr));
+}
+.featured{
+    grid-column: span 2;
+} */
+/* .container-fluid{
+    overflow: hidden;
+} */
 .textoc{
     font-size: 4rem;
     margin-top: 6rem;
@@ -361,7 +374,10 @@ footer a{
         min-width: 500px;
     }
 }*/
+.container-fluid { 
+    /* padding: 0%; */
 
+}
 .mov {
     pointer-events: none;
     position: absolute;

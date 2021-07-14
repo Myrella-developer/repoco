@@ -16,12 +16,12 @@
                             <i class="fa fa-cog" aria-hidden="true" ng-click="editar($index)"></i>
 					    </div>
                     </div> 
-                <a class="btn cardButton" ng-href="http://localhost/repoco/backend/#/edicions/{{especialitat.idEsp}}">Gestionar edicions</a>    
+                <a class="btn cardButton" href="#/edicions/{{especialitat.idEsp}}">Gestionar edicions</a>    
             </div>
         </div>    
     </div>
     <div class="modal fade" id="modalEsp" tabindex="-1" aria-labelledby="labelDigital" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content modalgestorDir">
                 <div class="modal-header">
                     <h3 class="modal-title labelModal" id="labelDigital">Especialitat</h3>

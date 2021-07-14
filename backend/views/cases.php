@@ -13,14 +13,13 @@
 					<div class="icon-block">
                         <i class="fa fa-cog" aria-hidden="true" ng-click="editar($index)"></i>
 					</div>
-                <a class="btn cardButton" ng-href="http://localhost/repoco/backend/#/directors/{{casa.idcasa}}">Director</a>    
                 <a class="btn cardButton" href="#/especialitats/{{casa.idcasa}}">Gestionar especialitats</a>     
             </div>     
 			</div>   
         </div>        
     </div>    
     <div class="modal fade" id="modalCases" tabindex="-1" aria-labelledby="labelDigital" aria-hidden="true">
-        <div class="modal-dialog modal-md">
+        <div class="modal-dialog  modal-dialog-centered">
             <div class="modal-content modalgestorDir">
                 <div class="modal-header">
                     <h3 class="modal-title labelModal" id="labelDigital">CASES D'OFICIS</h3>

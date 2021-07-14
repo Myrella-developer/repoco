@@ -1,4 +1,4 @@
-<div >
+<div class="">
     
     <div class="divmov">
         <img ng-src="multimedia/img/provisionales/{{rutaimg==NULL ? 'prueba3.png' : rutaimg}}" alt="" class="mov" ng-model="rutaimg">
@@ -8,7 +8,7 @@
                     <p  class="text-center">{{idioma=="cat"?titol1:titulo1}}<br>{{idioma=="cat"?titol1a:titulo1a}}</p>
                 </div>  
                    
-                <div class="row row-cols-10 cols-3 mt-5 mb-5">
+                <div class="row row-cols-1 row-cols-sm-3  mt-5 mb-5">
 
                         <div class="col text-center pi imgbanner mt-5" ng-repeat="casa in datosCasas" >
                            
@@ -17,18 +17,18 @@
                         </div>    
                 </div> 
                
-                <div class="row mt-5 offset-1 ">
-                        <div class="col-10 row-cols-10">
+                <div class="row row-cols-1 mt-5 mb-5 offset-1 ">
+                        <div class="col">
                             <p class="pi">{{idioma=="cat"?espai:espacio}}</p>
                         </div>
                         
-                        <div class="col-7 mt-2 textg">
+                        <div class="col mt-2  textg">
                             <p>{{idioma=="cat"?parraf1:parrafo1}}</p>
                         </div>
-                        <div class="col-7 mt-2 textg">
+                        <div class="col mt-2 textg">
                             <p>{{idioma=="cat"?parraf2:parrafo2}}</p>
                         </div>
-                        <div class="col-7 mt-2 mb-5 textg">
+                        <div class="col mt-2 mb-5 textg">
                             <p>{{idioma=="cat"?parraf3:parrafo3}}</p>
                         </div>
                 </div>
@@ -82,16 +82,19 @@
           
 
 
-    <div class="row  segonc  div4 ">
+    <div class="row row-cols-2 segonc  div4 ">
 
-        <div class="col-6  offset-1">
+        <div class="col-6  offset-1 ">
                         <p class="pi ">{{idioma=="cat"?informacio1:informacion1}}<br>{{idioma=="cat"?informacio2:informacion2}}</p>
-                        <button type="button" class="btn btn-danger boxofc mb-5 mt-4" >{{idioma=="cat"?botoncat:botoncast}}</button>
+                        <button type="button" class="btn btn-danger boxofc mb-5 mt-4 d-none d-md-block" >{{idioma=="cat"?botoncat:botoncast}}</button>
+                        
         </div>
         <div class="col-4  ">
                     <img src="multimedia/img/fulla.png" alt="" class="img-fluid">
         </div>
-                
+        <div class="col-12 text-center d-sm-none">
+          <button type="button" class="btn btn-danger boxofc mb-5 mt-4 ">{{idioma=="cat"?botoncat:botoncast}}</button>
+        </div>        
                
     </div>
 

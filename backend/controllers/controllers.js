@@ -277,28 +277,31 @@ angular.module("backend")
     $scope.editar=(posicion, idEdicio)=>{
         if(posicion !== "-1"){
             $rootScope.url = $scope.edicions[posicion].url;
+            console.log($rootScope.url)
             $scope.dataInici = new Date($scope.edicions[posicion].dataInici);
             $scope.dataFi = new Date($scope.edicions[posicion].dataFi);
             $scope.idEdicio=$scope.edicions[posicion].idEdicio;
         }
         else{
             $scope.url = "";
-            $scope.dataInici = new Date();
-            $scope.dataFi = new Date();
+            $scope.dataInici = "";
+            $scope.dataFi = "";
             $scope.idEdicio="";
         }
         $("#modalEdicio").modal('show')
         $rootScope.idEdicio = idEdicio;
     }
 
+    $scope.cambiDataInici = (dataInici) => {
+        $rootScope.dataInici = dataInici.getFullYear() + "-" + (dataInici.getMonth()+1) + "-" + dataInici.getDate()
+    }
+
+    $scope.cambiDataFi = (dataFi) => {
+        $rootScope.dataFi = dataFi.getFullYear() + "-" + (dataFi.getMonth()+1) + "-" + dataFi.getDate()
+    }
 
     $scope.guardar=()=>{    
-        //let dataInici = $scope.dataInici.getFullYear() + "-" + ($scope.dataInici.getMonth()+1) + "-" + $scope.dataInici.getDate()
-        //let dataFi = $scope.dataFi.getFullYear() + "-" + ($scope.dataFi.getMonth()+1) + "-" + $scope.dataFi.getDate()
-
         if($scope.idEdicio==""){
-            console.log($scope.dataInici)
-            /*
             if($rootScope.fotoEdicio == undefined){
                 alert("Escoge una imagen")
             }else if($scope.dataInici == "" || $scope.dataFi == ""){
@@ -306,25 +309,29 @@ angular.module("backend")
             }else{
                 data.append("acc","c");
                 data.append("imgEdicio", $rootScope.fotoEdicio);
-            }*/
+            }
         }
         else{
             if($rootScope.fotoEdicio == undefined){
                 data.append("acc","u");
                 data.append("imgEdicio", $rootScope.url) 
-                console.log($rootScope.url)
             }else{
                 data.append("acc","u");
                 data.append("imgEdicio", $rootScope.fotoEdicio)
-                console.log($rootScope.fotoEdicio)
             }
         }
 
-        //data.append("dataInici", dataInici);
-        //data.append("dataFi", dataFi);
+        if($rootScope.dataInici == undefined || $rootScope.dataFi == undefined){
+            data.append("dataInici", $scope.dataInici);
+            data.append("dataFi", $scope.dataFi);
+        }else{
+            data.append("dataInici", $rootScope.dataInici);
+            data.append("dataFi", $rootScope.dataFi);
+        }
+
         data.append("idEdicio", $rootScope.idEdicio);
         data.append("idEsp", idEsp);
-/*
+
         let defered = $q.defer();
         $http.post("models/edicions.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
         .then((res) =>{
@@ -333,7 +340,7 @@ angular.module("backend")
             $scope.edicions = res.data;
         })
         .catch((err)=>{console.log(err.statusText)})
-        .finally(()=>{$("#modalEdicio").modal('hide')});*/
+        .finally(()=>{$("#modalEdicio").modal('hide')});
     }
 })
 

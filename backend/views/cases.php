@@ -3,7 +3,11 @@
 	session_start();
 	if (!isset($_SESSION['login']['idDir'])) header("location: ../");
 ?>
-    <div class="row ms-2">    
+  
+     <div class="row cols-12">
+        <button class="btnAfegir" ng-href="http://localhost/repoco/backend/#/directors/{{casa.idcasa}}">Directores</button>
+    </div>
+     <div class="row ms-2">    
         <div class="col-md-3" ng-repeat="casa in cases">
             <div class="card cardGestor-ESP mx-auto mt-3" style="width: 18rem;">
             <div class="card-body">

@@ -8,37 +8,39 @@
 	if(isset($_POST['acc']) && $_POST['acc'] == "u"){		
 		$fileNew=explode(".",$_FILES['multimedia']['name']); 
 		$file=$fileNew[0].date("dmYhis").".".$fileNew[1]; 
-		move_uploaded_file($_FILES['multimedia']['tmp_name'],"../img/".$file);
+		move_uploaded_file($_FILES['multimedia']['tmp_name'],"../../multimedia/img/projectes/".$file);
 		
 		$sql = "UPDATE projectes SET titol = '{$_POST['titol']}', titulo = '{$_POST['titulo']}', 
-		descripcio = '{$_POST['descripcio']}', descripcion = '{$_POST['descripcion']}', url = '{$file}',
-		idEdicio = '26'";
+		descripcio = '{$_POST['descripcio']}', descripcion = '{$_POST['descripcion']}', 
+		url = '{$file}',
+		idEdicio = {$_POST['idEdicio']} 
+		WHERE idProjecte = {$_POST['idProjecte']}";
 		
 		$conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);
-		echo $sql;
+	
 		read();
 	}
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "c"){
 		$fileNew=explode(".",$_FILES['multimedia']['name']); 
 		$file=$fileNew[0].date("dmYhis").".".$fileNew[1]; 
-		move_uploaded_file($_FILES['multimedia']['tmp_name'],"../img/".$file);
+		move_uploaded_file($_FILES['multimedia']['tmp_name'],"../../multimedia/img/projectes/".$file);
 
 		$sql = "INSERT INTO projectes (url, titol, titulo, descripcio, descripcion, idEdicio) 
 		VALUES('{$file}', '{$_POST['titol']}', '{$_POST['titulo']}', '{$_POST['descripcio']}', 
-		'{$_POST['descripcion']}', '26'";
+		'{$_POST['descripcion']}', '{$_POST['idEdicio']}')";
 
 		$conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);
-		echo $sql;
+
 		read();
 	}
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "d"){
-		$sqlUnlink = "SELECT url FROM multimedia WHERE idProjecte = {$row['idProjecte']};";
+		$sqlUnlink = "SELECT url FROM projectes WHERE idProjecte = {$_POST['idProjecte']};";
 
 		$conexion = conectar();
 		$resultUnlink = mysqli_query($conexion, $sqlUnlink);
@@ -48,15 +50,14 @@
 		while($row = mysqli_fetch_array($resultUnlink)){
 			$rows[] = $row;
 
-			unlink('../img/'.$row['url']);
+			unlink('../../multimedia/img/projectes/'.$row['url']);
 		}
 
-		$sql = "DELETE FROM `multimedia` WHERE idProjecte = '{$_POST['idProjecte']}'";
-		$sql2 = "DELETE FROM `projectes` WHERE idProjecte = '{$_POST['idProjecte']}'";
+		$sql = "DELETE FROM `projectes` WHERE idProjecte = '{$_POST['idProjecte']}'";
 		$conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
-		$result2 = mysqli_query($conexion, $sql2);
 		desconectar($conexion);
+		
 		read();
 	}
 
@@ -67,7 +68,7 @@
 		$conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);
-		read();
+		updateEdicio();
 	}
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "deleteEdicio"){
@@ -78,47 +79,11 @@
 		$conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);
-		read();
+		updateEdicio();
 	}
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "updateEdicio"){
-		$sqlEsp = "SELECT esp_proj.idEdicio, edicio.idEsp, especialitats.nom
-		FROM esp_proj
-		INNER JOIN edicio 
-		ON edicio.idEdicio = esp_proj.idEdicio
-		INNER JOIN especialitats
-		ON edicio.idEsp = especialitats.idEsp
-		WHERE esp_proj.idProjecte != {$_POST['idProjecte']} 
-		ORDER BY esp_proj.idEdicio";
-
-		$sqlEsp2 = "SELECT esp_proj.idEdicio, edicio.idEsp, especialitats.nom
-		FROM esp_proj
-		INNER JOIN edicio 
-		ON edicio.idEdicio = esp_proj.idEdicio
-		INNER JOIN especialitats
-		ON edicio.idEsp = especialitats.idEsp
-		WHERE esp_proj.idProjecte = {$_POST['idProjecte']} ";
-
-		$conexion = conectar();
-		
-		$resultEsp = mysqli_query($conexion, $sqlEsp);
-		$resultEsp2 = mysqli_query($conexion, $sqlEsp2);
-		desconectar($conexion);
-
-		$rows = array();
-		while($row = mysqli_fetch_array($resultEsp)){
-			$rows[] = $row;
-		}
-
-		$datosExportar = '{"edicionsInexistents" : ' . json_encode($rows) . ', "edicionsExistents" : ';
-
-		$rows = array();
-		while($row = mysqli_fetch_array($resultEsp2)){
-			$rows[] = $row;
-		}
-		$datosExportar .= json_encode($rows) . '}';
-		echo $datosExportar;
-		read();
+		updateEdicio();
 	}
 
 	function read(){
@@ -140,4 +105,42 @@
 		echo json_encode($rows);
 	}
 
+	function updateEdicio(){
+		$sqlSelect = "SELECT esp_proj.idEdicio, edicio.idEsp, especialitats.nom
+		FROM esp_proj
+		INNER JOIN edicio 
+		ON edicio.idEdicio = esp_proj.idEdicio
+		INNER JOIN especialitats
+		ON edicio.idEsp = especialitats.idEsp
+		WHERE esp_proj.idProjecte != {$_POST['idProjecte']} 
+		ORDER BY esp_proj.idEdicio";
+
+		$sqlExistents = "SELECT esp_proj.idEdicio, edicio.idEsp, especialitats.nom
+		FROM esp_proj
+		INNER JOIN edicio 
+		ON edicio.idEdicio = esp_proj.idEdicio
+		INNER JOIN especialitats
+		ON edicio.idEsp = especialitats.idEsp
+		WHERE esp_proj.idProjecte = {$_POST['idProjecte']} ";
+
+		$conexion = conectar();
+		
+		$resultSelect = mysqli_query($conexion, $sqlSelect);
+		$resultExistents = mysqli_query($conexion, $sqlExistents);
+		desconectar($conexion);
+
+		$rows = array();
+		while($row = mysqli_fetch_array($resultSelect)){
+			$rows[] = $row;
+		}
+
+		$datosExportar = '{"edicionsInexistents" : ' . json_encode($rows);
+
+		$rows = array();
+		while($row = mysqli_fetch_array($resultExistents)){
+			$rows[] = $row;
+		}
+		$datosExportar .=', "edicionsExistents" : ' . json_encode($rows) . '}';
+		echo $datosExportar;
+	}
 ?>

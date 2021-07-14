@@ -83,29 +83,6 @@ angular.module("backend")
     }
 })
 
-        // $scope.subirImagen = () => {
-        //     let data = new FormData;
-        //     data.append("url",$scope.url)
-        // }
-        // $scope.getFileDetails=function(e){
-        //     console.log(e.files.length);
-        //     $scope.fileImages=[];
-        //     let data = new FormData();            
-        //     data.append()
-        //     let defered = $q.defer();
-        //     $http.post("models/cases.php",data,{headers:{"Content-type": undefined}, transformRequest: angular.identity})
-        //     .then(function(res){
-        //         defered.resolve(res);
-        //         $scope.datos=res.data;
-        //         console.log($scope.datos);
-        //         console.log(res);
-        //     })
-        //     .catch(function(error){
-        //         console.log(error);
-        //         console.log(error.statusText);
-        //     })
-        // }
-
 
 .controller("RecuperarController", ($q, $scope, $http, $location) => {
     $scope.email = "pancracio@gmail.com";
@@ -280,6 +257,7 @@ angular.module("backend")
     $scope.idEdicio="";
 
     let idEsp = $routeParams.idEsp;
+    let dataIniciEdicio = $routeParams.dataInici;
 	let data= new FormData;
     let defered = $q.defer();
     data.append("acc","r");
@@ -324,6 +302,8 @@ angular.module("backend")
             }else{
                 data.append("acc","c");
                 data.append("imgEdicio", $rootScope.fotoEdicio);
+                data.append("dataInici", dataInici);
+                data.append("dataFi", dataFi);
             }
         }
         else{
@@ -340,9 +320,7 @@ angular.module("backend")
 
         let dataInici = $scope.dataInici.getFullYear() + "-" + ($scope.dataInici.getMonth()+1) + "-" + $scope.dataInici.getDate()
         let dataFi = $scope.dataFi.getFullYear() + "-" + ($scope.dataFi.getMonth()+1) + "-" + $scope.dataFi.getDate()
-
-        data.append("dataInici", dataInici);
-        data.append("dataFi", dataFi);
+        
         data.append("idEdicio", $rootScope.idEdicio);
         data.append("idEsp", idEsp);
 
@@ -355,25 +333,6 @@ angular.module("backend")
         })
         .catch((err)=>{console.log(err.statusText)})
         .finally(()=>{$("#modalEdicio").modal('hide')});
-    }
-
-    $scope.eliminar = (idEdicio) => {
-        let confirmacion = confirm("¿Estás seguro de que deseas eliminar esta edición?");
-        if(confirmacion){
-            data.append("acc", "d");
-            data.append("idEdicio", idEdicio);
-    
-            $http.post("models/edicions.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
-            .then((res) => { 
-                defered.resolve(res);
-                $scope.edicions = res.data;
-                console.log(res.data)
-            })
-            .catch((err) => { console.log(err.statusText) })
-            .finally(() => {})
-        }else{
-            alert("No se ha eliminado la edición")
-        }
     }
 })
 
@@ -408,12 +367,10 @@ angular.module("backend")
             $scope.descripcio=$scope.projectes[posicion].descripcio;
             $scope.descripcion=$scope.projectes[posicion].descripcion;
             $rootScope.url=$scope.projectes[posicion].url;
-            console.log($rootScope.url)
             $scope.titol=$scope.projectes[posicion].titol;
             $scope.titulo=$scope.projectes[posicion].titulo;
             $rootScope.idProjecte=$scope.projectes[posicion].idProjecte;
-            $scope.idProjecte="12"
-            
+           
             data.append("acc","updateEdicio");
             data.append("idProjecte", $rootScope.idProjecte);
             $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
@@ -437,7 +394,7 @@ angular.module("backend")
     }
 
     $scope.guardar=()=>{
-        if($scope.idProjecte==""){
+        if($rootScope.idProjecte==""){
             if($rootScope.projecteMultimedia == undefined){
                 alert("Escull una imatge")
             }else if($scope.descripcio == "" || $scope.descripcion == "" || $scope.titol == "" || $scope.titulo == ""){
@@ -447,8 +404,9 @@ angular.module("backend")
                 data.append("multimedia", $rootScope.projecteMultimedia);
             }
         }else{
+            data.append("acc","u");
+
             if($rootScope.projecteMultimedia == undefined){
-                data.append("acc","u");
                 data.append("multimedia", $rootScope.url);
             }else{
                 data.append("multimedia", $rootScope.projecteMultimedia);
@@ -459,7 +417,7 @@ angular.module("backend")
         data.append("descripcion", $scope.descripcion);
         data.append("titol", $scope.titol);
         data.append("titulo", $scope.titulo);
-        data.append("idEdicio", $scope.sel);
+        data.append("idEdicio", idEdicio);
         data.append("idProjecte", $rootScope.idProjecte);
 
         $http.post("models/projectes.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
@@ -504,8 +462,8 @@ angular.module("backend")
             $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
             .then((res) => { 
                 defered.resolve(res);
-                console.log(res.data)
-                $scope.projectes = res.data;
+                $scope.existents = res.data.edicionsExistents;
+                $scope.inexistents = res.data.edicionsInexistents;
             })
             .catch((err) => { console.log(err.statusText) })
             .finally(() => {})
@@ -524,8 +482,8 @@ angular.module("backend")
             $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
             .then((res) => { 
                 defered.resolve(res);
-                console.log(res.data)
-                $scope.projectes = res.data;
+                $scope.existents = res.data.edicionsExistents;
+                $scope.inexistents = res.data.edicionsInexistents;
             })
             .catch((err) => { console.log(err.statusText) })
             .finally(() => {})
@@ -582,6 +540,8 @@ angular.module("backend")
 
             if($rootScope.archivo == undefined){
                 alert("Selecciona un archivo")
+            }else if($scope.descripcio == "" || $scope.descripcion == ""){
+                alert("Tots els camps son obligatoris");
             }else{
                 data.append("idMult", $rootScope.idMult);
                 data.append("idProjecte", idProjecte);

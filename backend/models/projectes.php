@@ -40,7 +40,7 @@
 	}
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "d"){
-		$sqlUnlink = "SELECT url FROM multimedia WHERE idProjecte = {$_POST['idProjecte']};";
+		$sqlUnlink = "SELECT url FROM projectes WHERE idProjecte = {$_POST['idProjecte']};";
 
 		$conexion = conectar();
 		$resultUnlink = mysqli_query($conexion, $sqlUnlink);
@@ -53,12 +53,11 @@
 			unlink('../../multimedia/img/projectes/'.$row['url']);
 		}
 
-		$sql = "DELETE FROM `multimedia` WHERE idProjecte = '{$_POST['idProjecte']}'";
-		$sql2 = "DELETE FROM `projectes` WHERE idProjecte = '{$_POST['idProjecte']}'";
+		$sql = "DELETE FROM `projectes` WHERE idProjecte = '{$_POST['idProjecte']}'";
 		$conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
-		$result2 = mysqli_query($conexion, $sql2);
 		desconectar($conexion);
+		
 		read();
 	}
 
@@ -69,7 +68,7 @@
 		$conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);
-		read();
+		updateEdicio();
 	}
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "deleteEdicio"){
@@ -80,10 +79,33 @@
 		$conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);
-		read();
+		updateEdicio();
 	}
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "updateEdicio"){
+		updateEdicio();
+	}
+
+	function read(){
+		$sqlProj=
+		"SELECT p.titol, p.titulo, p.descripcio, p.descripcion, p.idProjecte, p.url
+		FROM projectes p
+		WHERE p.idEdicio = '{$_POST['idEdicio']}'
+		";
+
+		$conexion = conectar();
+		$resultProj = mysqli_query($conexion, $sqlProj);
+		desconectar($conexion);
+
+		$rows = array();
+		while($row = mysqli_fetch_array($resultProj)){
+			$rows[] = $row;
+		}
+
+		echo json_encode($rows);
+	}
+
+	function updateEdicio(){
 		$sqlEsp = "SELECT esp_proj.idEdicio, edicio.idEsp, especialitats.nom
 		FROM esp_proj
 		INNER JOIN edicio 
@@ -120,26 +142,5 @@
 		}
 		$datosExportar .= json_encode($rows) . '}';
 		echo $datosExportar;
-		read();
 	}
-
-	function read(){
-		$sqlProj=
-		"SELECT p.titol, p.titulo, p.descripcio, p.descripcion, p.idProjecte, p.url
-		FROM projectes p
-		WHERE p.idEdicio = '{$_POST['idEdicio']}'
-		";
-
-		$conexion = conectar();
-		$resultProj = mysqli_query($conexion, $sqlProj);
-		desconectar($conexion);
-
-		$rows = array();
-		while($row = mysqli_fetch_array($resultProj)){
-			$rows[] = $row;
-		}
-
-		echo json_encode($rows);
-	}
-
 ?>

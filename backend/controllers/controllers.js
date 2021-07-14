@@ -60,7 +60,6 @@ angular.module("backend")
     }
     $scope.guardar=()=>{
         console.log("A modificar:--"+$scope.idcasa+"--");
-
         let data = new FormData;
         if($scope.idcasa=="") data.append("acc","c");
         else data.append("acc","u");
@@ -79,34 +78,8 @@ angular.module("backend")
         })
         .catch((err)=>{console.log(err.statusText)})
         .finally(()=>{});
-
     }
 })
-
-        // $scope.subirImagen = () => {
-        //     let data = new FormData;
-        //     data.append("url",$scope.url)
-        // }
-        // $scope.getFileDetails=function(e){
-        //     console.log(e.files.length);
-        //     $scope.fileImages=[];
-        //     let data = new FormData();            
-        //     data.append()
-        //     let defered = $q.defer();
-        //     $http.post("models/cases.php",data,{headers:{"Content-type": undefined}, transformRequest: angular.identity})
-        //     .then(function(res){
-        //         defered.resolve(res);
-        //         $scope.datos=res.data;
-        //         console.log($scope.datos);
-        //         console.log(res);
-        //     })
-        //     .catch(function(error){
-        //         console.log(error);
-        //         console.log(error.statusText);
-        //     })
-        // }
-
-
 .controller("RecuperarController", ($q, $scope, $http, $location) => {
     $scope.email = "pancracio@gmail.com";
     $scope.nuevaContra = "nueva contra";
@@ -411,8 +384,7 @@ angular.module("backend")
             $scope.titol=$scope.projectes[posicion].titol;
             $scope.titulo=$scope.projectes[posicion].titulo;
             $rootScope.idProjecte=$scope.projectes[posicion].idProjecte;
-            $scope.idProjecte="12"
-            
+           
             data.append("acc","updateEdicio");
             data.append("idProjecte", $rootScope.idProjecte);
             $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
@@ -436,7 +408,7 @@ angular.module("backend")
     }
 
     $scope.guardar=()=>{
-        if($scope.idProjecte==""){
+        if($rootScope.idProjecte==""){
             if($rootScope.projecteMultimedia == undefined){
                 alert("Escull una imatge")
             }else if($scope.descripcio == "" || $scope.descripcion == "" || $scope.titol == "" || $scope.titulo == ""){
@@ -446,11 +418,11 @@ angular.module("backend")
                 data.append("multimedia", $rootScope.projecteMultimedia);
             }
         }else{
+            data.append("acc","u");
+
             if($rootScope.projecteMultimedia == undefined){
-                data.append("acc","u");
                 data.append("multimedia", $rootScope.url);
             }else{
-                data.append("acc","u");
                 data.append("multimedia", $rootScope.projecteMultimedia);
             }
         }
@@ -504,8 +476,8 @@ angular.module("backend")
             $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
             .then((res) => { 
                 defered.resolve(res);
-                console.log(res.data)
-                $scope.projectes = res.data;
+                $scope.existents = res.data.edicionsExistents;
+                $scope.inexistents = res.data.edicionsInexistents;
             })
             .catch((err) => { console.log(err.statusText) })
             .finally(() => {})
@@ -524,8 +496,8 @@ angular.module("backend")
             $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
             .then((res) => { 
                 defered.resolve(res);
-                console.log(res.data)
-                $scope.projectes = res.data;
+                $scope.existents = res.data.edicionsExistents;
+                $scope.inexistents = res.data.edicionsInexistents;
             })
             .catch((err) => { console.log(err.statusText) })
             .finally(() => {})

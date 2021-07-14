@@ -17,6 +17,9 @@ a{
 header{
 	font-size: 1em;
 }
+footer{
+    background-color: #f8f9fa;
+}
 footer a{
     padding: 0;
     
@@ -89,9 +92,7 @@ footer a{
 	padding-left: 15px;
 }
 
-.bfooter{
-    background-color: #6c757d0f;
-}
+
 
 .bfooterb{
     background-color: #e8e8e8;
@@ -190,6 +191,36 @@ footer a{
 .hover {
     cursor: pointer;
 }
+.ulMovil{
+    list-style: none;
+}
+.ulMovil li{
+    font-size: 18px;
+    color: #005e85;
+    display: block;
+    text-align: left;
+    margin: 0 0 15px 0;
+}
+.ulMovil li a{
+    line-height: 22px;
+    padding-left: 8px;
+    color: #005e85;
+}
+
+.listMovil1, .listMovil4{
+    border-left: 4px solid #005e85;
+}
+.listMovil2{
+    border-left: 4px solid #dd5405;
+}
+.listMovil3{
+    border-left: 4px solid #edab1b;
+}
+.listMovil5{
+    border-left: 4px solid #f7453c;
+}
+
+
 .boxofc{
     background-color: rgb(110, 32, 47);
     border-color: #fff;
@@ -415,6 +446,7 @@ font-style: italic!important;
 }
 .logoMovil{
     height: 42px;
+
 }
 @media(max-width: 991px){
 header{
@@ -423,19 +455,30 @@ header{
 .container-fluid{
     margin:0;
     padding-left: 0;
+    padding-right: 0;
 }
 
 .brandLogo,.brandIcons, .menu, .textCentral{
     margin: 0;
 }
-.brandLogo, .menu{
+.brandLogo, .menu, .bfooter{
     margin-left: 2rem;
 }
 .menu{
     margin-right: 2rem;
+    margin-bottom: 0.5rem;
 }
 .idioma{
     margin-right: 1em;
+}
+.enlaceLogo{
+    float: right;
+}
+.bfooter h2{
+    margin-bottom: 1em;
+    text-align: left;
+    font-size: 25px;
+
 }
 
 }

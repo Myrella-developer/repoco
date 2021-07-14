@@ -274,10 +274,10 @@ angular.module("backend")
 })
 
 .controller("EdicionsController", ($q, $http, $scope, $routeParams, $location, $rootScope) => {
-    $scope.url = "";
+    /*$scope.url = "";
     $scope.dataInici = "";
     $scope.dataFi = "";
-    $scope.idEdicio="";
+    $scope.idEdicio="";*/
 
     let idEsp = $routeParams.idEsp;
 	let data= new FormData;
@@ -317,6 +317,8 @@ angular.module("backend")
 
     $scope.guardar=()=>{    
         if($scope.idEdicio==""){
+            console.log($scope.dataInici)
+            /*
             if($rootScope.fotoEdicio == undefined){
                 alert("Escoge una imagen")
             }else if($scope.dataInici == "" || $scope.dataFi == ""){
@@ -324,9 +326,13 @@ angular.module("backend")
             }else{
                 data.append("acc","c");
                 data.append("imgEdicio", $rootScope.fotoEdicio);
-            }
+                data.append("dataInici", dataInici);
+                data.append("dataFi", dataFi);
+            }*/
         }
         else{
+            console.log($scope.dataInici)
+            /*
             if($rootScope.fotoEdicio == undefined){
                 data.append("acc","u");
                 data.append("imgEdicio", $rootScope.url) 
@@ -335,14 +341,14 @@ angular.module("backend")
                 data.append("acc","u");
                 data.append("imgEdicio", $rootScope.fotoEdicio)
                 console.log($rootScope.fotoEdicio)
-            }
+            }*/
         }
 
-        let dataInici = $scope.dataInici.getFullYear() + "-" + ($scope.dataInici.getMonth()+1) + "-" + $scope.dataInici.getDate()
-        let dataFi = $scope.dataFi.getFullYear() + "-" + ($scope.dataFi.getMonth()+1) + "-" + $scope.dataFi.getDate()
-
-        data.append("dataInici", dataInici);
-        data.append("dataFi", dataFi);
+        //let dataInici = $scope.dataInici.getFullYear() + "-" + ($scope.dataInici.getMonth()+1) + "-" + $scope.dataInici.getDate()
+        //let dataFi = $scope.dataFi.getFullYear() + "-" + ($scope.dataFi.getMonth()+1) + "-" + $scope.dataFi.getDate()
+        
+       
+        /*
         data.append("idEdicio", $rootScope.idEdicio);
         data.append("idEsp", idEsp);
 
@@ -354,26 +360,7 @@ angular.module("backend")
             $scope.edicions = res.data;
         })
         .catch((err)=>{console.log(err.statusText)})
-        .finally(()=>{$("#modalEdicio").modal('hide')});
-    }
-
-    $scope.eliminar = (idEdicio) => {
-        let confirmacion = confirm("¿Estás seguro de que deseas eliminar esta edición?");
-        if(confirmacion){
-            data.append("acc", "d");
-            data.append("idEdicio", idEdicio);
-    
-            $http.post("models/edicions.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
-            .then((res) => { 
-                defered.resolve(res);
-                $scope.edicions = res.data;
-                console.log(res.data)
-            })
-            .catch((err) => { console.log(err.statusText) })
-            .finally(() => {})
-        }else{
-            alert("No se ha eliminado la edición")
-        }
+        .finally(()=>{$("#modalEdicio").modal('hide')});*/
     }
 })
 

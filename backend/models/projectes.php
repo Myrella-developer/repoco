@@ -106,7 +106,7 @@
 	}
 
 	function updateEdicio(){
-		$sqlEsp = "SELECT esp_proj.idEdicio, edicio.idEsp, especialitats.nom
+		$sqlSelect = "SELECT esp_proj.idEdicio, edicio.idEsp, especialitats.nom
 		FROM esp_proj
 		INNER JOIN edicio 
 		ON edicio.idEdicio = esp_proj.idEdicio
@@ -115,7 +115,7 @@
 		WHERE esp_proj.idProjecte != {$_POST['idProjecte']} 
 		ORDER BY esp_proj.idEdicio";
 
-		$sqlEsp2 = "SELECT esp_proj.idEdicio, edicio.idEsp, especialitats.nom
+		$sqlExistents = "SELECT esp_proj.idEdicio, edicio.idEsp, especialitats.nom
 		FROM esp_proj
 		INNER JOIN edicio 
 		ON edicio.idEdicio = esp_proj.idEdicio
@@ -125,22 +125,22 @@
 
 		$conexion = conectar();
 		
-		$resultEsp = mysqli_query($conexion, $sqlEsp);
-		$resultEsp2 = mysqli_query($conexion, $sqlEsp2);
+		$resultSelect = mysqli_query($conexion, $sqlSelect);
+		$resultExistents = mysqli_query($conexion, $sqlExistents);
 		desconectar($conexion);
 
 		$rows = array();
-		while($row = mysqli_fetch_array($resultEsp)){
+		while($row = mysqli_fetch_array($resultSelect)){
 			$rows[] = $row;
 		}
 
-		$datosExportar = '{"edicionsInexistents" : ' . json_encode($rows) . ', "edicionsExistents" : ';
+		$datosExportar = '{"edicionsInexistents" : ' . json_encode($rows);
 
 		$rows = array();
-		while($row = mysqli_fetch_array($resultEsp2)){
+		while($row = mysqli_fetch_array($resultExistents)){
 			$rows[] = $row;
 		}
-		$datosExportar .= json_encode($rows) . '}';
+		$datosExportar .=', "edicionsExistents" : ' . json_encode($rows) . '}';
 		echo $datosExportar;
 	}
 ?>

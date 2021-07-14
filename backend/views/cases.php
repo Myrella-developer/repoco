@@ -3,23 +3,45 @@
 	session_start();
 	if (!isset($_SESSION['login']['idDir'])) header("location: ../");
 ?>
-    <div class="row ms-2">    
+  
+     <div class="row cols-12">
+        <button class="btnAfegir" ng-href="http://localhost/repoco/backend/#/directors/{{casa.idcasa}}">Directores</button>
+    </div>
+     <div class="row ms-2">    
         <div class="col-md-3" ng-repeat="casa in cases">
-            <div class="card cardGestor-ESP mx-auto mt-3">
+            <div class="card cardGestor-ESP mx-auto mt-3" style="width: 18rem;">
+            <div class="card-body">
 				<img src="../multimedia/img/casas/{{casa.url}}" class="card-img-top imgCard-Gestor" alt="cases" title="{{casa.descripcio}}"/>                      
-                <div class="card-body card-content">
                     <span class="card-title">{{casa.nom}}</span><br>
                     <p class="card-text">{{casa.descripcio|limitTo:25:0}}</p><span>...</span>
 					<div class="icon-block">
                         <i class="fa fa-cog" aria-hidden="true" ng-click="editar($index)"></i>
 					</div>
-                    <a class="btn cardButton" href="#/especialitats/{{casa.idcasa}}">Gestionar especialitats</a>    
-                </div>   
+                <a class="btn cardButton" href="#/especialitats/{{casa.idcasa}}">Gestionar especialitats</a>     
+            </div>     
 			</div>   
         </div>        
     </div>   
+    
+    <div class="row ms-2">
+        <div class="col-md-3" ng-repeat="especialitat in especialitats">
+            <div class="card cardGestor-ESP mx-auto mt-3" style="width: 18rem;">
+                <div class="card-body">
+                    <img src="../multimedia/img/especialitats/{{especialitat.url}}" class="card-img-top imgCard-Gestor" alt="especialitat" title="{{especialitat.descripcio}}"/>
+                    <span class="card-title">{{especialitat.nom}}</span>
+                    <p class="card-text">{{especialitat.descripcio|limitTo:25:0}}..<i class="fa fa-plus-circle"></i></p>
+                    <div class="icon-block">
+                        <i class="fa fa-cog" aria-hidden="true" ng-click="editar($index)"></i>
+                    </div>
+                </div>
+                <a class="btn cardButton" ng-href="http://localhost/repoco/backend/#/edicions/{{especialitat.idEsp}}">Gestionar edicions</a>    
+            </div>
+        </div>    
+    </div>
+
+
     <div class="modal fade" id="modalCases" tabindex="-1" aria-labelledby="labelDigital" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-md">
             <div class="modal-content modalgestorDir">
                 <div class="modal-header">
                     <h3 class="modal-title labelModal" id="labelDigital">CASES D'OFICIS</h3>
@@ -45,7 +67,7 @@
                         </div>
                         <div class="mb-2">
                           <label for="upload" class="col-form-label labelModal ">Penjar una imatge</label>
-                          <input type="file" id="upload" multiple="true">
+                          <input type="file" id="upload" multiple="true"></input>
                         </div>
                     </form>
                 </div>

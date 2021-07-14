@@ -1,4 +1,13 @@
 angular.module("repoco")
+app.filter('trusted', ['$sce', function ($sce) { 
+
+    return function(url) { 
+
+        return $sce.trustAsResourceUrl("https://www.youtube.com/embed/" + url); 
+
+    }; 
+
+}]) 
 .controller("IndexController", function($scope, $http, $q, $rootScope, $routeParams){
 	$rootScope.idioma="cat";
 	let data = new FormData();
@@ -12,10 +21,10 @@ angular.module("repoco")
 	   .then((res) => { 
 	       defered.resolve(res);
 	       $scope.datosCasas=res.data.datosCasas;
-	       console.log($scope.datosCasas);
+	       // console.log($scope.datosCasas);
 
-		   $scope.datosEspecialidades=res.data.datosEspecialidades;
-		   console.log($scope.datosEspecialidades);
+		   $scope.datosVideos=res.data.datosVideos;
+		   //console.log($scope.datosVideos);
 	   })
 	   .catch((err) => { console.log(err.statusText) })
 	   .finally(() => {});
@@ -26,8 +35,8 @@ angular.module("repoco")
 	   $scope.inicio="Inicio";
 	   $scope.contacte="Contacte";
 	   $scope.contacto="Contacto";
-	   $scope.banner="QUÈ ET TROBARÀS EN AQUESTA WEB";
-	   $scope.banneres="QUÉ ENCONTRARÁS EN ESTA WEB";
+	   $scope.banner="Espai Personal";
+	   $scope.banneres="Espacio Personal";
 	   $scope.titol1="T'OBRIM LA PORTA A";
 	   $scope.titulo1="TE ABRIMOS LA PUERTA A";
 	   $scope.titol1a="LES CASES D'OFICIS";
@@ -74,9 +83,17 @@ angular.module("repoco")
 
 
    		};
-	
+		   $scope.rutavid="";
+		$scope.changevid=(numurl) =>{
+			$scope.rutavid="";
+			console.log(numurl);
+			$scope.rutavid=$scope.datosVideos[numurl].url;
+		console.log($scope.rutavid);
+		}	
 })  
-.controller("LoginController", function($scope, $http, $q, $location, $rootScope){	   
+
+
+.controller("LoginController", function($scope, $http, $q, $location, $rootScope){	
 
     $scope.errorLogin=false;
 
@@ -139,7 +156,7 @@ angular.module("repoco")
 	   .then((res) => { 
 	       defered.resolve(res);
 	       $scope.casa=res.data.casa;
-	       console.log($scope.casa);
+	       // console.log($scope.casa);
 	       $scope.url=$scope.casa[5];
 	       $scope.nom=$scope.casa[1];
 	       $scope.nombre=$scope.casa[2];
@@ -162,7 +179,8 @@ angular.module("repoco")
 	      defered.resolve(res);
 
 	    $scope.dataAnys=res.data.anysEdicio;
-	    console.log($scope.dataAnys);
+	    $scope.actuals=$scope.dataAnys[0].especialitats;
+	    console.log($scope.actuals);
 	     
 	   })
 	   .catch((err) => { console.log(err.statusText) })
@@ -208,6 +226,24 @@ angular.module("repoco")
 	   .catch((err) => { console.log(err.statusText) })
 	   .finally(() => {});
 
+	   data = new FormData();
+	   data.append("acc", "r");
+	   data.append("idcasa",$scope.idCasa);
+
+	   $http.post("models/edicio.php", data, {
+	      headers:{ "Content-type" : undefined }, transformRequest : angular.identity 
+	   })
+	   .then((res) => { 
+	      defered.resolve(res);
+
+	    $scope.dataAnys=res.data.anysEdicio;
+	    $scope.actuals=$scope.dataAnys[0].especialitats;
+	    // console.log($scope.actuals);
+	     
+	   })
+	   .catch((err) => { console.log(err.statusText) })
+	   .finally(() => {});
+
   		data = new FormData();
  
 	   data.append("acc", "anyEsp");
@@ -221,7 +257,7 @@ angular.module("repoco")
 	      defered.resolve(res);
 
 	    $scope.especialitats=res.data;
-	    console.log(res.data);
+	    // console.log(res.data);
 	     
 	   })
 	   .catch((err) => { console.log(err.statusText) })
@@ -255,6 +291,24 @@ angular.module("repoco")
 		   $scope.dcat=$scope.casa[3];
 		   $scope.dcas=$scope.casa[4];
 
+	   })
+	   .catch((err) => { console.log(err.statusText) })
+	   .finally(() => {});
+
+	   data = new FormData();
+	   data.append("acc", "r");
+	   data.append("idcasa",$scope.idCasa);
+
+	   $http.post("models/edicio.php", data, {
+	      headers:{ "Content-type" : undefined }, transformRequest : angular.identity 
+	   })
+	   .then((res) => { 
+	      defered.resolve(res);
+
+	    $scope.dataAnys=res.data.anysEdicio;
+	    $scope.actuals=$scope.dataAnys[0].especialitats;
+	    console.log($scope.actuals);
+	     
 	   })
 	   .catch((err) => { console.log(err.statusText) })
 	   .finally(() => {});
@@ -333,7 +387,8 @@ angular.module("repoco")
 	   .then((res) => { 
 	       defered.resolve(res);
 	      $scope.proyecto=res.data;
-	      console.log($scope.proyecto);
+	      // console.log($scope.proyecto);
+
 	      $scope.casaCat=$scope.proyecto[1];
 	      $scope.casaCas=$scope.proyecto[2];
 	      $scope.imgCasa=$scope.proyecto[3];
@@ -362,15 +417,17 @@ angular.module("repoco")
 	   })
 	   .then((res) => { 
 	       defered.resolve(res);
-	       $scope.galerias=res.data;
-	       console.log($scope.galerias);
+	       $scope.galerias=res.data.galeria;
+	       $scope.participants=res.data.participants;
+	       // console.log($scope.participants);
 	      
 	   })
 	   .catch((err) => { console.log(err.statusText) })
 	   .finally(() => {
 
 	   	$scope.abreModal=function(numImg){
-	   		
+	   		$scope.selCarousel=numImg;
+
 	   	}
 
 

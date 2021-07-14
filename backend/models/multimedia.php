@@ -2,18 +2,7 @@
 	require("../../inc/functions.php");
 	
 	if(isset($_POST['acc']) && $_POST['acc'] == "r"){
-		$sqlMult = "SELECT m.idMult, m.url, m.tipo, m.descripcio, m.descripcion, m.idProjecte
-		FROM multimedia m WHERE m.idProjecte = {$_POST['idProjecte']}";
-
-		$conexion = conectar();
-		$resultMult = mysqli_query($conexion, $sqlMult);
-		desconectar($conexion);
-
-		$rows = array();
-		while($row = mysqli_fetch_array($resultMult)){
-			$rows[] = $row;
-		}
-		echo json_encode($rows);
+		read();
 	}
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "u"){
@@ -27,7 +16,8 @@
 		$conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);
-		echo $sql;
+
+		read();
 	}
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "c"){
@@ -42,6 +32,8 @@
 		$conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);
+
+		read();
 	}
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "d"){
@@ -56,13 +48,30 @@
 			$rows[] = $row;
 			unlink('../../multimedia/img/projectes/'.$row['url']);
 		}
-		echo json_encode($rows);
 
 		$sqlUnlink = "DELETE FROM `multimedia` WHERE idMult = {$_POST['idMult']}";
 
 		$conexion = conectar();
 		$resultUnlink = mysqli_query($conexion, $sqlUnlink);
 		desconectar($conexion);
+
+		read();
+	}
+
+	function read(){
+		$sqlMult = "SELECT m.idMult, m.url, m.tipo, m.descripcio, m.descripcion, m.idProjecte
+		FROM multimedia m WHERE m.idProjecte = {$_POST['idProjecte']}";
+
+		$conexion = conectar();
+		$resultMult = mysqli_query($conexion, $sqlMult);
+		desconectar($conexion);
+
+		$rows = array();
+		while($row = mysqli_fetch_array($resultMult)){
+			$rows[] = $row;
+		}
+
+		echo json_encode($rows);
 	}
 
 ?>

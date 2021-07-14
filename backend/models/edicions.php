@@ -2,19 +2,7 @@
 	require("../../inc/functions.php");
 
     if(isset($_POST['acc']) && $_POST['acc'] == "r"){
-        $sqlEdicions = "SELECT `idEdicio`, `idEsp`, `dataInici`, `dataFi`, `url`
-		FROM edicio WHERE idEsp = {$_POST['idEsp']} 
-		ORDER BY dataInici";
-	
-        $conexion = conectar();
-        $resultEdicions = mysqli_query($conexion, $sqlEdicions);
-        desconectar($conexion);
-		
-        $rows = array();
-		while($row = mysqli_fetch_array($resultEdicions)){
-			$rows[] = $row;
-		}
-		echo json_encode($rows);
+        read();
     }
 
     if(isset($_POST['acc']) && $_POST['acc'] == "u"){
@@ -27,7 +15,7 @@
 		$conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);
-		echo $sql;
+		read();
 	}
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "c"){
@@ -40,26 +28,24 @@
 		$conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);
+
+		read();
 	}
 
-	if(isset($_POST['acc']) && $_POST['acc'] == "d"){
-		$sqlSelect = "SELECT url FROM `edicio` WHERE idEdicio = {$_POST['idEdicio']}";
-
-		$conexion = conectar();
-		$resultSelect = mysqli_query($conexion, $sqlSelect);
-		desconectar($conexion);
-
-		$rows = array();
-		while($row = mysqli_fetch_array($resultSelect)){
+	function read(){
+		$sqlEdicions = "SELECT `idEdicio`, `idEsp`, DATE_FORMAT(`dataInici`,'%d/%m/%Y') AS dataInici, DATE_FORMAT(`dataFi`,'%d/%m/%Y') AS dataFi,
+		`url`
+		FROM edicio WHERE idEsp = {$_POST['idEsp']} 
+		ORDER BY dataInici";
+	
+        $conexion = conectar();
+        $resultEdicions = mysqli_query($conexion, $sqlEdicions);
+        desconectar($conexion);
+		
+        $rows = array();
+		while($row = mysqli_fetch_array($resultEdicions)){
 			$rows[] = $row;
-			unlink('../../multimedia/img/edicions/'.$row['url']);
 		}
 		echo json_encode($rows);
-
-		$sqlUnlink = "DELETE FROM `edicio` WHERE idEdicio = {$_POST['idEdicio']}";
-
-		$conexion = conectar();
-		$resultUnlink = mysqli_query($conexion, $sqlUnlink);
-		desconectar($conexion);
 	}
 ?>

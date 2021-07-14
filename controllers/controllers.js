@@ -24,7 +24,7 @@ app.filter('trusted', ['$sce', function ($sce) {
 	       // console.log($scope.datosCasas);
 
 		   $scope.datosVideos=res.data.datosVideos;
-		   console.log($scope.datosVideos);
+		   //console.log($scope.datosVideos);
 	   })
 	   .catch((err) => { console.log(err.statusText) })
 	   .finally(() => {});

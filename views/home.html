@@ -1,14 +1,14 @@
-<div class="container-fluid">
+<div >
     
     <div class="divmov">
         <img ng-src="multimedia/img/provisionales/{{rutaimg==NULL ? 'prueba3.png' : rutaimg}}" alt="" class="mov" ng-model="rutaimg">
         
-        <div class=""  >
+        <div>
                 <div class="textoc mb-5" id="prueba">
                     <p  class="text-center">{{idioma=="cat"?titol1:titulo1}}<br>{{idioma=="cat"?titol1a:titulo1a}}</p>
                 </div>  
                    
-                <div class="row cols-3 mt-5 mb-5">
+                <div class="row row-cols-10 cols-3 mt-5 mb-5">
 
                         <div class="col text-center pi imgbanner mt-5" ng-repeat="casa in datosCasas" >
                            
@@ -17,7 +17,7 @@
                         </div>    
                 </div> 
                
-                <div class="row row-cols-10 mt-5 offset-1 ">
+                <div class="row mt-5 offset-1 ">
                         <div class="col-10 row-cols-10">
                             <p class="pi">{{idioma=="cat"?espai:espacio}}</p>
                         </div>
@@ -35,7 +35,7 @@
                    
         </div>
     </div>
-    <div class="row row-cols-12 segonc  text-center">
+    <div class=" segonc  text-center">
 
         
       <div class="col-12 divcar">
@@ -82,13 +82,13 @@
           
 
 
-    <div class="row row-cols-2 segonc ">
+    <div class="row  segonc  div4 ">
 
-        <div class="col-6 mt-5  offset-1">
-                        <p class="pi">{{idioma=="cat"?informacio1:informacion1}}<br>{{idioma=="cat"?informacio2:informacion2}}</p>
+        <div class="col-6  offset-1">
+                        <p class="pi ">{{idioma=="cat"?informacio1:informacion1}}<br>{{idioma=="cat"?informacio2:informacion2}}</p>
                         <button type="button" class="btn btn-danger boxofc mb-5 mt-4" >{{idioma=="cat"?botoncat:botoncast}}</button>
         </div>
-        <div class="col-4">
+        <div class="col-4  ">
                     <img src="multimedia/img/fulla.png" alt="" class="img-fluid">
         </div>
                 

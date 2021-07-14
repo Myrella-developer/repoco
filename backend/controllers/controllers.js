@@ -257,7 +257,6 @@ angular.module("backend")
     $scope.idEdicio="";
 
     let idEsp = $routeParams.idEsp;
-    let dataIniciEdicio = $routeParams.dataInici;
 	let data= new FormData;
     let defered = $q.defer();
     data.append("acc","r");
@@ -284,8 +283,8 @@ angular.module("backend")
         }
         else{
             $scope.url = "";
-            $scope.dataInici = "";
-            $scope.dataFi = "";
+            $scope.dataInici = new Date();
+            $scope.dataFi = new Date();
             $scope.idEdicio="";
         }
         $("#modalEdicio").modal('show')
@@ -294,7 +293,12 @@ angular.module("backend")
 
 
     $scope.guardar=()=>{    
+        //let dataInici = $scope.dataInici.getFullYear() + "-" + ($scope.dataInici.getMonth()+1) + "-" + $scope.dataInici.getDate()
+        //let dataFi = $scope.dataFi.getFullYear() + "-" + ($scope.dataFi.getMonth()+1) + "-" + $scope.dataFi.getDate()
+
         if($scope.idEdicio==""){
+            console.log($scope.dataInici)
+            /*
             if($rootScope.fotoEdicio == undefined){
                 alert("Escoge una imagen")
             }else if($scope.dataInici == "" || $scope.dataFi == ""){
@@ -302,9 +306,7 @@ angular.module("backend")
             }else{
                 data.append("acc","c");
                 data.append("imgEdicio", $rootScope.fotoEdicio);
-                data.append("dataInici", dataInici);
-                data.append("dataFi", dataFi);
-            }
+            }*/
         }
         else{
             if($rootScope.fotoEdicio == undefined){
@@ -318,12 +320,11 @@ angular.module("backend")
             }
         }
 
-        let dataInici = $scope.dataInici.getFullYear() + "-" + ($scope.dataInici.getMonth()+1) + "-" + $scope.dataInici.getDate()
-        let dataFi = $scope.dataFi.getFullYear() + "-" + ($scope.dataFi.getMonth()+1) + "-" + $scope.dataFi.getDate()
-        
+        //data.append("dataInici", dataInici);
+        //data.append("dataFi", dataFi);
         data.append("idEdicio", $rootScope.idEdicio);
         data.append("idEsp", idEsp);
-
+/*
         let defered = $q.defer();
         $http.post("models/edicions.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
         .then((res) =>{
@@ -332,7 +333,7 @@ angular.module("backend")
             $scope.edicions = res.data;
         })
         .catch((err)=>{console.log(err.statusText)})
-        .finally(()=>{$("#modalEdicio").modal('hide')});
+        .finally(()=>{$("#modalEdicio").modal('hide')});*/
     }
 })
 
@@ -345,6 +346,8 @@ angular.module("backend")
     $scope.selEsp = "-1";
     
     let idEdicio = $routeParams.idEdicio;
+    let dataIniciEdicio = $routeParams.dataInici;
+
 	let data= new FormData;
     let defered = $q.defer();
     data.append("acc","r");
@@ -373,11 +376,13 @@ angular.module("backend")
            
             data.append("acc","updateEdicio");
             data.append("idProjecte", $rootScope.idProjecte);
+            data.append("dataIniciEdicio", dataIniciEdicio);
             $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
             .then((res) => { 
                 defered.resolve(res);
                 $scope.existents = res.data.edicionsExistents;
                 $scope.inexistents = res.data.edicionsInexistents;
+                console.log(res.data)
             })
             .catch((err) => { console.log(err.statusText) })
             .finally(() => {})

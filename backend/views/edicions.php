@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <div class="row">
-                <div class="col-9"><a class="btn cardButton" ng-href="http://localhost/repoco/backend/#/projectes/{{edicio.idEdicio}}/{{edicio.dataInici}}">Gestionar projectes</a><div>
+                <div class="col-9"><a class="btn cardButton" ng-href="http://localhost/repoco/backend/#/projectes/21/2020-12-31">Gestionar projectes</a><div>
                 </div>
             </div>
         </div>    

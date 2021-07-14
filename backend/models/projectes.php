@@ -106,14 +106,11 @@
 	}
 
 	function updateEdicio(){
-		$sqlSelect = "SELECT esp_proj.idEdicio, edicio.idEsp, especialitats.nom
-		FROM esp_proj
-		INNER JOIN edicio 
-		ON edicio.idEdicio = esp_proj.idEdicio
-		INNER JOIN especialitats
-		ON edicio.idEsp = especialitats.idEsp
-		WHERE esp_proj.idProjecte != {$_POST['idProjecte']} 
-		ORDER BY esp_proj.idEdicio";
+		$sqlSelect = "SELECT `especialitats`.`nom`,`especialitats`.`nombre`, `edicio`.`idEdicio`
+		FROM `especialitats`
+		LEFT JOIN `edicio` ON `edicio`.`idEsp` = `especialitats`.`idEsp`
+		WHERE `edicio`.`dataInici`='{$_POST['dataIniciEdicio']}'
+		AND `edicio`.`idEdicio` NOT IN (SELECT `idEdicio` FROM `esp_proj` WHERE `idProjecte`= {$_POST['idProjecte']})";
 
 		$sqlExistents = "SELECT esp_proj.idEdicio, edicio.idEsp, especialitats.nom
 		FROM esp_proj

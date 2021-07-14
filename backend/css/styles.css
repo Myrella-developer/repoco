@@ -162,17 +162,10 @@ a{
     border-radius: 24px;
     transition: 0.25s;
 }
-<<<<<<< HEAD
 .modalgestorDir input[type="text"], 
 .modalgestorDir input[type="file"]:focus {
     width: 300px;
     border-color: #699bf7;
-=======
-.modalgestorDir input[type="text"]:focus,
-.modalgestorDir input[type="file"]:focus {
-    width: 300px;
-    border-color: #12789a
->>>>>>> aaca70af69aa8f9f3016afbcc6f64efa6f4c46f5
 }
 .modalgestorDir .labelModal{
     display: block;

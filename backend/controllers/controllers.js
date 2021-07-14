@@ -177,11 +177,9 @@ angular.module("backend")
     $scope.contacte = "";
     $scope.pass = "";
     $scope.idDir = "";
-    let idcasa = $routeParams.idcasa;
 	let data= new FormData;
     let defered = $q.defer();
     data.append("acc","r");
-    data.append("idcasa", idcasa);
 
     $http.post("models/directors.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
     .then((res) => { 

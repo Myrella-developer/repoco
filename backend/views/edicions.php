@@ -29,7 +29,7 @@
     </div>
 
     <div class="modal fade" id="modalEdicio">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content modalgestorDir">
                 <div class="modal-header">
                     <h5 class="modal-title labelModal">Edicions</h5>

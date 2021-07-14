@@ -8,7 +8,7 @@
     }
     if(isset($_POST['acc']) && $_POST['acc'] == "u"){
 		$sql = "UPDATE directors SET `nom` = '{$_POST['nom']}', `cog1` = '{$_POST['cog1']}', 
-		`cog2` = '{$_POST['cog2']}', `correu` = '{$_POST['correu']}', `contacte` = '{$_POST['contacte']}',`contrasenya` = '{$_POST['pass']}' WHERE `idDir` = '{$_POST['idDir']}'";
+		`cog2` = '{$_POST['cog2']}', `correu` = '{$_POST['correu']}', `contacte` = '{$_POST['contacte']}' WHERE `idDir` = '{$_POST['idDir']}'";
 		$conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);

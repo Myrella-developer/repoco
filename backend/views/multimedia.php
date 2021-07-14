@@ -26,7 +26,7 @@
     </div>
 
     <div class="modal fade" id="modalMultimedia">
-        <div class="modal-dialog modal-projecte">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content modalgestorDir">
                 <div class="modal-header">
                     <h5 class="modal-title labelModal">Multimedia</h5>

@@ -19,7 +19,7 @@
         </div>        
     </div>    
     <div class="modal fade" id="modalCases" tabindex="-1" aria-labelledby="labelDigital" aria-hidden="true">
-        <div class="modal-dialog modal-md">
+        <div class="modal-dialog  modal-dialog-centered">
             <div class="modal-content modalgestorDir">
                 <div class="modal-header">
                     <h3 class="modal-title labelModal" id="labelDigital">CASES D'OFICIS</h3>

@@ -13,7 +13,6 @@
 					<div class="icon-block">
                         <i class="fa fa-cog" aria-hidden="true" ng-click="editar($index)"></i>
 					</div>
-                <a class="btn cardButton" ng-href="http://localhost/repoco/backend/#/directors/{{casa.idcasa}}">Director</a>    
                 <a class="btn cardButton" href="#/especialitats/{{casa.idcasa}}">Gestionar especialitats</a>     
             </div>     
 			</div>   

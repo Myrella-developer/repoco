@@ -39,11 +39,11 @@
                     <form ng-model="edicions">
                         <div class="mb-2">
                             <label for="message-text" class="col-form-label labelModal">Data Inici</label>
-                            <input type="date" class="edFecha" ng-model="dataInici">
+                            <input type="date" class="edFecha" ng-model="dataInici" ng-change="cambiDataInici(dataInici)">
                         </div>
                         <div class="mb-2">
                             <label for="message-text" class="col-form-label labelModal">Data Fi</label>
-                            <input type="date" class="edFecha" ng-model="dataFi">
+                            <input type="date" class="edFecha" ng-model="dataFi" ng-change="cambiDataFi(dataFi)">
                         </div>
                         <div class="mb-2">
                             <input type="file" onchange="angular.element(this).scope().getFileDetails(this)"><br/>

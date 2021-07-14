@@ -36,6 +36,16 @@
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);
 
+		$fileNew=explode(".",$_FILES['imgEdicio']['name']); 
+		$file=$fileNew[0].date("dmYhis").".".$fileNew[1]; 
+		move_uploaded_file($_FILES['imgEdicio']['tmp_name'],"../../multimedia/img/edicions/".$file); 
+
+		$sql = "INSERT INTO edicio(idEsp, dataInici, dataFi, url) 
+		VALUES('{$_POST['idEsp']}', '{$_POST['dataInici']}', '{$_POST['dataFi']}', '{$file}')";
+		$conexion = conectar();
+		$result = mysqli_query($conexion, $sql);
+		desconectar($conexion);
+
 		read();
 	}
 

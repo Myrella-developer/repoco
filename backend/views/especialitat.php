@@ -16,7 +16,7 @@
                             <i class="fa fa-cog" aria-hidden="true" ng-click="editar($index)"></i>
 					    </div>
                     </div> 
-                <a class="btn cardButton" ng-href="http://localhost/repoco/backend/#/edicions/{{especialitat.idEsp}}">Gestionar edicions</a>    
+                <a class="btn cardButton" href="#/edicions/{{especialitat.idEsp}}">Gestionar edicions</a>    
             </div>
         </div>    
     </div>

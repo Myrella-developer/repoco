@@ -22,7 +22,7 @@
                 </div>
                 <div class="row">
                     <div class="col-2"><i class="fa fa-trash" aria-hidden="true" ng-click="eliminar(projecte.idProjecte)"></i></div>
-                    <div class="col-9"><a class="btn cardButton" ng-href="http://localhost/repoco/backend/#/multimedia/{{projecte.idProjecte}}">Gestionar multimedia</a></div>
+                    <div class="col-9"><a class="btn cardButton" href="#/multimedia/{{projecte.idProjecte}}">Gestionar multimedia</a></div>
                 </div>
             </div>
         </div>    

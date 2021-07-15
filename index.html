@@ -70,10 +70,11 @@
     	<div data-ng-view=""></div>
 
 		<footer>
-			<div class="bfooter">
-				<h2 class="text-lg-center textCentral pt-4 fw-bold">{{idioma=="cat"?footTitol:footTitulo}}</h2>
+			
+			<div class="row bfooter textCentral">
+				<h2 class="text-lg-center  pt-4 fw-bold">{{idioma=="cat"?footTitol:footTitulo}}</h2>
 				<!-- mòvil -->
-				<div class="d-block d-md-none">
+				<div class="col d-block d-md-none">
 					<ul class="ulMovil">
 						<li class="listMovil1">
 							<a href="https://www.barcelonactiva.cat/" target="_blank">{{idioma=="cat"?foot1cat:foot1cas}}<span><i class="bi bi-chevron-right"></i></span></a>
@@ -93,95 +94,100 @@
 					</ul>
 				</div>
 				<!-- tablet i ordinador -->
-				<div class="row row-cols-5 footerLinks textCentral d-none d-md-block">
-					<div class="col boxf">
-						<a href="https://www.barcelonactiva.cat/" target="_blank">
+				<div class="col cajasFooter d-none d-md-block">
+					<div class="row row-cols-5 align-items-center ">
+						<div class="col boxf">
 							<div class="row align-items-center">
-								<div class="col-9 colCajas mt-2">
-									<p>{{idioma=="cat"?foot1cat:foot1cas}}</p>
-								</div>	
-								<div class="col-3 mt-2 colFlecha">
-									<i class="bi bi-chevron-right"></i>
-								</div>	
+								<div class="col-9 colCajas"><p>{{idioma=="cat"?foot1cat:foot1cas}}</p></div>
+								<div class="col-3 colFlecha"><i class="bi bi-chevron-right"></i></div>
 							</div>
-						</a>
-					</div>
-					<div class="col boxf1">
-						<a href="https://treball.barcelonactiva.cat/" target="_blank">
-							<div class="row">
-								<div class="col-9 colCajas mt-2">
+							
+							
+						</div>
+						<div class="col boxf1">
+							<div class="row align-items-center">
+								<div class="col-9 colCajas">
 									<p>{{idioma=="cat"?foot2cat:foot2cas}}</p>
-								</div>	
-								<div class="col-3 mt-2 colFlecha">
+								</div>
+								<div class="col-3 colFlecha">
 									<i class="bi bi-chevron-right"></i>
-								</div>	
-							</div>
-						</a>
-					</div>
-					<div class="col boxf2">
-						<a href="https://emprenedoria.barcelonactiva.cat/emprenedoria/cat/" target="_blank">
-							<div class="row">
-								<div class="col-9 colCajas mt-2">
+								</div>
+							</div>	
+						</div>
+						<div class="col boxf2">
+							<div class="row align-items-center">
+								<div class="col-9 colCajas">
 									<p>{{idioma=="cat"?foot3cat:foot3cas}}</p>
-								</div>	
-								<div class="col-3 mt-2 colFlecha">
-									<i class="bi bi-chevron-right"></i>
-								</div>	
-							</div>
-						</a>		
-					</div>
-					<div class="col boxf3">
-						<a href="https://empreses.barcelonactiva.cat/ca/" target="_blank">
-							<div class="row">
-								<div class="col-9 colCajas mt-2">
+								</div>
+								<div class="col-3 colFlecha">
+									<i class="bi bi-chevron-right"></i>	
+								</div>
+							</div>						
+						</div>
+						<div class="col boxf3">
+							<div class="row align-items-center">
+								<div class="col-9 colCajas">
 									<p>{{idioma=="cat"?foot4cat:foot4cas}}</p>
-								</div>	
-								<div class="col-3 mt-2 colFlecha">
+								</div>
+								<div class="col-3 colFlecha">
 									<i class="bi bi-chevron-right"></i>
 								</div>	
-							</div>
-						</a>
-					</div>
-					<div class="col boxf4">
-						<a href="https://www.barcelonactiva.cat/formacio" target="_blank">
-							<div class="row">
-								<div class="col-9 colCajas mt-2">
+							</div>						
+						</div>
+						<div class="col boxf4">
+							<div class="row align-items-center">
+								<div class="col-9 colCajas">
 									<p>{{idioma=="cat"?foot5cat:foot5cas}}</p>
-								</div>	
-								<div class="col-3 mt-2 colFlecha">
+								</div>
+								<div class="col-3 colFlecha">
 									<i class="bi bi-chevron-right"></i>
-								</div>	
-							</div>
-						</a>	
-					</div>	
+								</div>
+							</div>	
+						</div>
+					</div>					
 				</div>
+			
 			</div>
-					
-			<div class="bfooter">	
-				<div class="row row-cols-10 mt-2 mt-md-5 textCentral footLogos align-items-center">
-					<div class="col-12 col-md-2 text-center text-md-left">
-						<img src="multimedia/img/Logo Basa.jpg" style="width: 160px">
+			<div class="row bfooter textCentral">
+				<div class="col footerLogos">
+					<div class="logoBcnActiva">
+						<a href="https:/www.barcelonactiva.cat" target="_blank"><img src="multimedia/img/Logo Basa.jpg" class="img-fluid"></a>	
 					</div>
-					<div class="col-12 col-md-5 mt-2 mt-md-0 text-center">
-						<a href="https://www.instagram.com/barcelonactiva/" target="_blank"><i class="fab fa-instagram fa-lg iconsFooter"></i></a>
-						<a href="https://twitter.com/barcelonactiva" target="_blank"><i class="fab fa-twitter fa-lg iconsFooter"></i></a>
-						<a href="https://www.linkedin.com/company/barcelona-activa/" target="_blank"><i class="fab fa-linkedin-in fa-lg iconsFooter"></i></a>
-						<a href="https://www.facebook.com/barcelonactiva/" target="_blank"><i class="fab fa-facebook fa-lg iconsFooter"></i></a>
-						<a href="https://www.youtube.com/user/videosbarcelonactiva" target="_blank"><i class="fab fa-youtube fa-lg iconsFooter"></i></a>
-						<a href="https://www.slideshare.net/barcelonactiva" target="_blank"><i class="fab fa-slideshare iconsFooter"></i></a>
+					<div class="redesSociales">
+						<ul class="listaRedes">
+							<li>
+								<a href="https://www.instagram.com/barcelonactiva/" target="_blank" class="btn btn-social-icon rounded-circle"><i class="fab fa-instagram"></i></a>
+							</li>
+							<li>
+								<a href="https://twitter.com/barcelonactiva" target="_blank" class="btn btn-social-icon rounded-circle"><i class="fab fa-twitter"></i></a>
+							</li>
+							<li>
+								<a href="https://www.linkedin.com/company/barcelona-activa/" target="_blank" class="btn btn-social-icon rounded-circle"><i class="fab fa-linkedin-in"></i></a>
+							</li>
+							<li>
+								<a href="https://www.facebook.com/barcelonactiva/" target="_blank" class="btn btn-social-icon rounded-circle"><i class="fab fa-facebook"></i></a>
+							</li>
+							<li>
+								<a href="https://www.youtube.com/user/videosbarcelonactiva" target="_blank" class="btn btn-social-icon rounded-circle"><i class="fab fa-youtube"></i></a>
+							</li>
+							<li>
+								<a href="https://www.slideshare.net/barcelonactiva" target="_blank" class="btn btn-social-icon rounded-circle"><i class="fab fa-slideshare"></i></a>
+							</li>
+						</ul>	
 					</div>
-					<div class="col-12 col-md-5 mt-2 mt-md-0 text-center text-md-end">
+					<div>
 						<ul>
 							<li class="list-inline-item"><a href="#" class="iconsFooter">Contacte</a></li> 
 							<li class="list-inline-item"><a href="#" class="iconsFooter">A la ciutat</a></li>
 							<li class="list-inline-item"><a href="#" class="iconsFooter">Avis legal i privacitat</a></li> 
 						</ul>
 					</div>
+					
 				</div>
 			</div>
-
+					
 			<div class="footer2">
-				<div class="row bfooterb align-items-center" >
+				<div class="row bfooterb textCentral align-items-center" >
 					<div class="col-2 text-start logoFooterajunt"><a href="https://ajuntament.barcelona.cat/ca/">
 						<img src="multimedia/img/logo.svg"></a>
 					</div>
@@ -190,7 +196,8 @@
 						<li class="list-inline-item"><a href="#" class="iconsfooter2">Queixes i suggeriments</a></li> 
 					</div>
 				</div>
-			</div>				
+			</div>
+					
 		</footer>
 	</div>
 

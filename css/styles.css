@@ -232,7 +232,9 @@ footer a{
     border-left: 4px solid #f7453c;
 }
 
-
+.footerLinks{
+    justify-content: space-between;
+}
 .boxofc{
     background-color: rgb(110, 32, 47);
     border-color: #fff;

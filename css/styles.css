@@ -107,10 +107,9 @@ footer a{
 
 
 
-.bfooterb{
+.footer2{
     background-color: #e8e8e8;
-    padding-right: 130px;
-    padding-left: 130px;
+    
   }
 
 .iconsFooter{
@@ -399,7 +398,7 @@ footer a{
 }
 
 
-  }
+
 img.miniatura{
     opacity: 0.5;
     width: 16rem;
@@ -444,12 +443,7 @@ font-style: italic!important;
 .footLogos div, ul{
     padding: 0;
 }
- .brandFooter{
-    margin-left: 130px;
- }
-.brandFooter2{
-    margin-right: 130px;
-}
+
 .cardGestor-ESP{
 	max-width: 400px;
 	border-radius: 7px;
@@ -477,8 +471,15 @@ header{
 .brandLogo,.brandIcons, .menu, .textCentral{
     margin: 0;
 }
-.brandLogo, .menu, .bfooter{
+.brandLogo, .menu, .bfooter, .bfooterb{
     margin-left: 2rem;
+}
+
+.bfooterb{
+    margin-right: 1rem;
+}
+.logoFooterajunt{
+    padding: 0;
 }
 .menu{
     margin-right: 2rem;
@@ -497,10 +498,11 @@ header{
 
 }
 
+
 }
 @media (min-width: 1200px){
 
-.brandLogo, .brandIcons, .menu, .textCentral{
+.brandLogo, .brandIcons, .menu, .textCentral, .bfooterb{
     margin-right: 130px;
     margin-left: 130px;
 

@@ -275,11 +275,6 @@ angular.module("backend")
 })
 
 .controller("EdicionsController", ($q, $http, $scope, $routeParams, $location, $rootScope) => {
-    $scope.url = "";
-    $scope.dataInici = "";
-    $scope.dataFi = "";
-    $scope.idEdicio="";
-
     let idEsp = $routeParams.idEsp;
 	let data= new FormData;
     let defered = $q.defer();
@@ -301,12 +296,10 @@ angular.module("backend")
     $scope.editar=(posicion, idEdicio)=>{
         if(posicion !== "-1"){
             $rootScope.url = $scope.edicions[posicion].url;
-            console.log($rootScope.url)
-            $scope.dataInici = new Date($scope.edicions[posicion].dataInici);
-            $scope.dataFi = new Date($scope.edicions[posicion].dataFi);
+            $scope.dataInici = new Date($scope.edicions[posicion].dataIniciEng);
+            $scope.dataFi = new Date($scope.edicions[posicion].dataFiEng)
             $scope.idEdicio=$scope.edicions[posicion].idEdicio;
-        }
-        else{
+        }else{
             $scope.url = "";
             $scope.dataInici = "";
             $scope.dataFi = "";
@@ -328,11 +321,13 @@ angular.module("backend")
         if($scope.idEdicio==""){
             if($rootScope.fotoEdicio == undefined){
                 alert("Escoge una imagen")
-            }else if($scope.dataInici == "" || $scope.dataFi == ""){
+            }else if($rootScope.dataInici == "" || $rootScope.dataFi == ""){
                 alert("Selecciona data de inici i data de fi")
             }else{
                 data.append("acc","c");
                 data.append("imgEdicio", $rootScope.fotoEdicio);
+                data.append("dataInici", $rootScope.dataInici);
+                data.append("dataFi", $rootScope.dataFi);
             }
         }
         else{
@@ -341,11 +336,13 @@ angular.module("backend")
                 data.append("imgEdicio", $rootScope.url) 
             }else{
                 data.append("acc","u");
-                data.append("imgEdicio", $rootScope.fotoEdicio)
+                data.append("imgEdicioCambio", $rootScope.fotoEdicio)
             }
         }
 
         if($rootScope.dataInici == undefined || $rootScope.dataFi == undefined){
+            $scope.dataInici = $scope.dataInici.getFullYear() + "-" + ($scope.dataInici.getMonth()+1) + "-" + $scope.dataInici.getDate()
+            $scope.dataFi = $scope.dataFi.getFullYear() + "-" + ($scope.dataFi.getMonth()+1) + "-" + $scope.dataFi.getDate()
             data.append("dataInici", $scope.dataInici);
             data.append("dataFi", $scope.dataFi);
         }else{
@@ -369,11 +366,6 @@ angular.module("backend")
 })
 
 .controller("ProjectesController", ($q, $http, $scope, $routeParams, $location, $rootScope) => {
-    $scope.descripcio="";
-    $scope.descripcion="";
-    $scope.idProjecte = "";
-    $scope.titol="";
-    $scope.titulo="";
     $scope.selEsp = "-1";
     
     let idEdicio = $routeParams.idEdicio;
@@ -404,7 +396,7 @@ angular.module("backend")
             $scope.titol=$scope.projectes[posicion].titol;
             $scope.titulo=$scope.projectes[posicion].titulo;
             $rootScope.idProjecte=$scope.projectes[posicion].idProjecte;
-           
+
             data.append("acc","updateEdicio");
             data.append("idProjecte", $rootScope.idProjecte);
             data.append("dataIniciEdicio", dataIniciEdicio);
@@ -413,10 +405,11 @@ angular.module("backend")
                 defered.resolve(res);
                 $scope.existents = res.data.edicionsExistents;
                 $scope.inexistents = res.data.edicionsInexistents;
-                console.log(res.data)
             })
             .catch((err) => { console.log(err.statusText) })
             .finally(() => {})
+
+            $scope.showSelect = true;
         }
         else{
             $scope.descripcio="";
@@ -425,6 +418,8 @@ angular.module("backend")
             $scope.titol="";
             $scope.titulo="";
             $scope.idProjecte=""
+
+            $scope.showSelect = false;
         }
         $("#modalProjecte").modal('show')
     }
@@ -440,12 +435,14 @@ angular.module("backend")
                 data.append("multimedia", $rootScope.projecteMultimedia);
             }
         }else{
-            data.append("acc","u");
-
             if($rootScope.projecteMultimedia == undefined){
                 data.append("multimedia", $rootScope.url);
+                data.append("acc","u");
+            }else if($scope.descripcio == "" || $scope.descripcion == "" || $scope.titol == "" || $scope.titulo == ""){
+                alert("Tots els camps son obligatoris")
             }else{
-                data.append("multimedia", $rootScope.projecteMultimedia);
+                data.append("multimediaCambio", $rootScope.projecteMultimedia);
+                data.append("acc","u");
             }
         }
 
@@ -487,45 +484,37 @@ angular.module("backend")
     }
 
     $scope.onChange = () => {
-        let confirmacion = confirm("¿Estás seguro de que quieres añadir la edición "+$scope.selEsp+"?")
-        if(confirmacion){
-            alert("Edición "+ $scope.selEsp+" añadida");
-            let data= new FormData;
-            let defered = $q.defer();
-            data.append("acc","addEdicio");
-            data.append("idEdicio", $scope.selEsp);
-            data.append("idProjecte", $rootScope.idProjecte);
-            $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
-            .then((res) => { 
-                defered.resolve(res);
-                $scope.existents = res.data.edicionsExistents;
-                $scope.inexistents = res.data.edicionsInexistents;
-            })
-            .catch((err) => { console.log(err.statusText) })
-            .finally(() => {})
-        }
+        let data= new FormData;
+        let defered = $q.defer();
+        data.append("acc","addEdicio");
+        data.append("idEdicio", $scope.selEsp);
+        data.append("idProjecte", $rootScope.idProjecte);
+        data.append("dataIniciEdicio", dataIniciEdicio);
+        $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+        .then((res) => { 
+            defered.resolve(res);
+            $scope.existents = res.data.edicionsExistents;
+            $scope.inexistents = res.data.edicionsInexistents;
+        })
+        .catch((err) => { console.log(err.statusText) })
+        .finally(() => {$scope.selEsp = "-1";})
     }
 
     $scope.onDelete = (idEdicio) => {
-        let confirmacion = confirm("¿Estás seguro de que quieres eliminar la edición "+idEdicio+"?")
-        if(confirmacion){
-            alert("Edición eliminada");
-            let data= new FormData;
-            let defered = $q.defer();
-            data.append("acc","deleteEdicio");
-            data.append("idEdicio", idEdicio);
-            data.append("idProjecte", $rootScope.idProjecte);
-            $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
-            .then((res) => { 
-                defered.resolve(res);
-                $scope.existents = res.data.edicionsExistents;
-                $scope.inexistents = res.data.edicionsInexistents;
-            })
-            .catch((err) => { console.log(err.statusText) })
-            .finally(() => {})
-        }else{
-            alert("Edición salvada");
-        }
+        let data= new FormData;
+        let defered = $q.defer();
+        data.append("acc","deleteEdicio");
+        data.append("idEdicio", idEdicio);
+        data.append("idProjecte", $rootScope.idProjecte);
+        data.append("dataIniciEdicio", dataIniciEdicio);
+        $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+        .then((res) => { 
+            defered.resolve(res);
+            $scope.existents = res.data.edicionsExistents;
+            $scope.inexistents = res.data.edicionsInexistents;
+        })
+        .catch((err) => { console.log(err.statusText) })
+        .finally(() => {$scope.selEsp = "-1";})
     }
 })
 

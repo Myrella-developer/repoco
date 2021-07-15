@@ -6,12 +6,18 @@
     }
 
     if(isset($_POST['acc']) && $_POST['acc'] == "u"){
-		$fileNew=explode(".",$_FILES['imgEdicio']['name']); 
-		$file=$fileNew[0].date("dmYhis").".".$fileNew[1]; 
-		move_uploaded_file($_FILES['imgEdicio']['tmp_name'],"../../multimedia/img/edicions/".$file); 
-
+		if(isset($_POST['imgEdicio'])){
+			$file = $_POST['imgEdicio']; 
+		}
+		if(isset($_FILES['imgEdicioCambio'])){
+			$fileNew=explode(".",$_FILES['imgEdicioCambio']['name']); 
+			$file=$fileNew[0].date("dmYhis").".".$fileNew[1]; 
+			move_uploaded_file($_FILES['imgEdicioCambio']['tmp_name'],"../../multimedia/img/edicions/".$file); 
+		}
+		
 		$sql = "UPDATE edicio SET dataInici = '{$_POST['dataInici']}', datafi = '{$_POST['dataFi']}', 
 		url = '{$file}' WHERE idEdicio = '{$_POST['idEdicio']}'";
+		
 		$conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);
@@ -33,7 +39,7 @@
 	}
 
 	function read(){
-		$sqlEdicions = "SELECT `idEdicio`, `idEsp`, DATE_FORMAT(`dataInici`,'%d/%m/%Y') AS dataInici, DATE_FORMAT(`dataFi`,'%d/%m/%Y') AS dataFi,
+		$sqlEdicions = "SELECT `idEdicio`, `idEsp`, dataInici AS dataIniciEng,  dataFi AS dataFiEng, DATE_FORMAT(`dataInici`,'%d/%m/%Y') AS dataInici, DATE_FORMAT(`dataFi`,'%d/%m/%Y') AS dataFi,
 		`url`
 		FROM edicio WHERE idEsp = {$_POST['idEsp']} 
 		ORDER BY dataInici";

@@ -5,10 +5,15 @@
 		read();
 	}
 
-	if(isset($_POST['acc']) && $_POST['acc'] == "u"){		
-		$fileNew=explode(".",$_FILES['multimedia']['name']); 
-		$file=$fileNew[0].date("dmYhis").".".$fileNew[1]; 
-		move_uploaded_file($_FILES['multimedia']['tmp_name'],"../../multimedia/img/projectes/".$file);
+	if(isset($_POST['acc']) && $_POST['acc'] == "u"){
+		if(isset($_FILES['multimediaCambio'])){
+			$fileNew=explode(".",$_FILES['multimediaCambio']['name']); 
+			$file=$fileNew[0].date("dmYhis").".".$fileNew[1]; 
+			move_uploaded_file($_FILES['multimediaCambio']['tmp_name'],"../../multimedia/img/projectes/".$file);
+		}	
+		if(isset($_POST['multimedia'])){
+			$file = $_POST['multimedia'];
+		}	
 		
 		$sql = "UPDATE projectes SET titol = '{$_POST['titol']}', titulo = '{$_POST['titulo']}', 
 		descripcio = '{$_POST['descripcio']}', descripcion = '{$_POST['descripcion']}', 
@@ -71,6 +76,29 @@
 		read();
 	}
 
+	function read(){
+		$sqlProj=
+		"SELECT p.titol, p.titulo, p.descripcio, p.descripcion, p.idProjecte, p.url
+		FROM projectes p
+		WHERE p.idEdicio = '{$_POST['idEdicio']}'
+		";
+
+		$conexion = conectar();
+		$resultProj = mysqli_query($conexion, $sqlProj);
+		desconectar($conexion);
+
+		$rows = array();
+		while($row = mysqli_fetch_array($resultProj)){
+			$rows[] = $row;
+		}
+
+		echo json_encode($rows);
+	}
+
+	if(isset($_POST['acc']) && $_POST['acc'] == "updateEdicio"){
+		updateEdicio();
+	}
+
 	if(isset($_POST['acc']) && $_POST['acc'] == "addEdicio"){
 		$sql = "INSERT INTO `esp_proj`(`idProjecte`, `idEdicio`) 
 		VALUES ({$_POST['idProjecte']} , {$_POST['idEdicio']} )";
@@ -90,29 +118,6 @@
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);
 		updateEdicio();
-	}
-
-	if(isset($_POST['acc']) && $_POST['acc'] == "updateEdicio"){
-		updateEdicio();
-	}
-
-	function read(){
-		$sqlProj=
-		"SELECT p.titol, p.titulo, p.descripcio, p.descripcion, p.idProjecte, p.url
-		FROM projectes p
-		WHERE p.idEdicio = '{$_POST['idEdicio']}'
-		";
-
-		$conexion = conectar();
-		$resultProj = mysqli_query($conexion, $sqlProj);
-		desconectar($conexion);
-
-		$rows = array();
-		while($row = mysqli_fetch_array($resultProj)){
-			$rows[] = $row;
-		}
-
-		echo json_encode($rows);
 	}
 
 	function updateEdicio(){

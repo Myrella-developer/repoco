@@ -611,4 +611,33 @@ angular.module("backend")
             alert("No se ha eliminado el proyecto");
         }
     }
+
+    $scope.showImg = false;
+    $scope.showVideo = false;
+    $scope.showSound = false;
+    $scope.showExaminar = true;
+
+    $scope.newValue = (value) => {
+        if(value == 'imatge'){
+            $scope.showImg = true;
+            $scope.showVideo = false;
+            $scope.showSound = false;
+
+            $scope.showExaminar = true;
+        }
+        if(value == 'video'){
+            $scope.showVideo = true;
+            $scope.showImg = false;
+            $scope.showSound = false;
+
+            $scope.showExaminar = false;
+        }
+        if(value == 'so'){
+            $scope.showSound = true;
+            $scope.showImg = false;
+            $scope.showVideo = false;
+
+            $scope.showExaminar = true;
+        }
+    }
 })

@@ -43,9 +43,36 @@
                             <textarea rows="4" class="form-control" ng-model="descripcion">{{descripcion}}</textarea>
                         </div>
                         <div class="mb-2">
-                            <h2 class="labelModal">Imatge del projecte</h2>
-                            <img src="../multimedia/img/projectes/{{url}}" width="100"/><br/>
-                            <input type="file" onchange="angular.element(this).scope().getFileDetails(this)">
+                            <label class="labelModal">Tipus de archiu</label>
+
+                            <div ng-click='newValue(value)'>
+                                <input type="radio" id="imatge" name="archiu" ng-model="value" value="imatge">
+                                <label for="imatge">Imatge</label><br/>
+
+                                <input type="radio" id="video" name="archiu" ng-model="value" value="video">
+                                <label for="video">Video</label><br/>
+                                
+                                <input type="radio" id="so" name="archiu" ng-model="value" value="so">
+                                <label for="so">So</label>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <h2 class="labelModal">Archiu del projecte</h2>
+                            <img src="../multimedia/img/projectes/{{url}}" width="320" height="240" ng-show="showImg"/><br/>
+
+                            <div ng-show="showVideo">
+                                <video width="320" height="240" controls>
+                                    <source src="movie.mp4" type="video/mp4">
+                                </video>
+                               
+                                <input type="text" placeholder="Enllaç al video...">
+                            </div><br/>
+
+                            <audio controls ng-show="showSound">
+                                <source src="horse.mp3" type="audio/mpeg">
+                            </audio><br/>
+
+                            <input ng-show="showExaminar" type="file" onchange="angular.element(this).scope().getFileDetails(this)">
                         </div>
                     </form>
                 </div>

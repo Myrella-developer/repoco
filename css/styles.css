@@ -553,7 +553,7 @@ font-style: italic!important;
         font-size: 25px;
 
     }
-
+    
 }
 
 @media screen and (min-width: 577px) and (max-width: 5000px) { 
@@ -561,6 +561,13 @@ font-style: italic!important;
         margin-right: 130px;
         margin-left: 130px;
     
+    }
+    .vidsize{
+        /* width="1485" height="920" */
+        width: 1485px;
+        height: 920px;
+        
+      
     }
 
 } 

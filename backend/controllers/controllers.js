@@ -176,6 +176,7 @@ angular.module("backend")
     $scope.correu = "";
     $scope.contacte = "";
     $scope.pass = "";
+    $scope.newpass = "";
     $scope.idDir = "";
 	let data= new FormData;
     let defered = $q.defer();
@@ -241,10 +242,35 @@ angular.module("backend")
         .then((res) => { 
             defered.resolve(res);
             $scope.directors = res.data;
-            console.log(res.data)
+            console.log(res.data);
         })
         .catch((err) => { console.log(err.statusText) })
         .finally(() => {})
+    }
+    $scope.recupera =(idDir)=>{
+        $("#modalRecontra").modal('show');
+        $scope.idDir=idDir;
+    }
+    $scope.recontra = () => {  
+        console.log( $scope.idDir+"A cambiar:--"+$scope.pass+"--");
+        let data = new FormData;
+        if($scope.pass!="" && ($scope.pass==$scope.newpass)){
+        data.append("acc","reset");
+        data.append("idDir", $scope.idDir);
+        data.append("pass",$scope.pass);
+        data.append("newpass",$scope.newpass);
+
+        $http.post("models/directors.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+        .then((res) => { 
+            defered.resolve(res);
+            $scope.directors = res.data;
+            console.log(res.data);
+        })
+        .catch((err) => { console.log(err.statusText) })
+        .finally(() => {alert ("Canvis realitzats amb èxit");})
+        } 
+        else alert ("Verifica contrasenya");
+    
     }
 })
 
@@ -609,6 +635,35 @@ angular.module("backend")
             .finally(() => {})
         }else{
             alert("No se ha eliminado el proyecto");
+        }
+    }
+
+    $scope.showImg = false;
+    $scope.showVideo = false;
+    $scope.showSound = false;
+    $scope.showExaminar = true;
+
+    $scope.newValue = (value) => {
+        if(value == 'imatge'){
+            $scope.showImg = true;
+            $scope.showVideo = false;
+            $scope.showSound = false;
+
+            $scope.showExaminar = true;
+        }
+        if(value == 'video'){
+            $scope.showVideo = true;
+            $scope.showImg = false;
+            $scope.showSound = false;
+
+            $scope.showExaminar = false;
+        }
+        if(value == 'so'){
+            $scope.showSound = true;
+            $scope.showImg = false;
+            $scope.showVideo = false;
+
+            $scope.showExaminar = true;
         }
     }
 })

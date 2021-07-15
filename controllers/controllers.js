@@ -96,47 +96,29 @@ app.filter('trusted', ['$sce', function ($sce) {
 .controller("LoginController", function($scope, $http, $q, $location, $rootScope){	
 
     $scope.errorLogin=false;
-
     $scope.email="";
-
     $scope.pass="";
-
     $scope.entrar = function(){
-
         if ($scope.email=="" || $scope.pass=="") $scope.errorLogin=true;
-
         else{
-
-        let data = new FormData()
-
-        data.append("acc","entrar");
-
-        data.append("correu", $scope.email);
-
-        data.append("pass", $scope.pass);
-
-        let defered=$q.defer();
-
-        $http.post("models/login.php", data, {headers:{"Content-type" : undefined}, transformRequest: angular.identity})
-
-        .then((res)=>{
-
-            defered.resolve(res);
-
-            $scope.datos=res.data;
-
-            console.log(res.data);
-
-            if (!$scope.datos) {
-
-            	// $scope.errorLogin=true;
-            }
-            else{
-            	window.location.href="./backend/";
-            }
-        })
-        .catch((err)=>{console.log(err.statusText)})
-        .finally(()=>{})
+			let data = new FormData()
+			data.append("acc","entrar");
+			data.append("correu", $scope.email);
+			data.append("pass", $scope.pass);
+			let defered=$q.defer();
+			$http.post("models/login.php", data, {headers:{"Content-type" : undefined}, transformRequest: angular.identity})
+			.then((res)=>{
+				defered.resolve(res);
+				$scope.datos=res.data;
+				if (!$scope.datos) {
+					$scope.errorLogin=true;
+				}
+				else{
+					window.location.href="./backend/";
+				}
+			})
+			.catch((err)=>{console.log(err.statusText)})
+			.finally(()=>{})
         }
     }
 })
@@ -185,7 +167,6 @@ app.filter('trusted', ['$sce', function ($sce) {
 	   })
 	   .catch((err) => { console.log(err.statusText) })
 	   .finally(() => {});
-
 	   $scope.titol="CASES D'OFICIS";
 	   $scope.titulo="CASAS DE OFICIOS";
 	   $scope.titol2="QUÈ ÉS LA CASA D'OFICIS";
@@ -194,15 +175,10 @@ app.filter('trusted', ['$sce', function ($sce) {
 	   $scope.titulo3="Casa de Oficios";
 	   $scope.acat="Anys";
 	   $scope.acas="Años";
-
-	   
-
 })
 .controller("EdicionsController", ($q, $http, $scope, $routeParams) => {
 	$scope.any=$routeParams.any;
 	$scope.idCasa=$routeParams.idCasa;
-
-
 	let data = new FormData();
 	   data.append("acc", "r");
 	   data.append("idcasa",$scope.idCasa);

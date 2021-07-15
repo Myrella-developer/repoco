@@ -8,8 +8,6 @@ body {
     font-family: 'Open Sans', Arial, sans-serif;
     background-color: rgb(255, 255, 255);
 }
-
-
 .titolGestor{
     font-size: 3rem;
     color: #000102;
@@ -50,7 +48,6 @@ a{
     font-weight: bolder;
     border: 1px solid #12789a;
 }
-
 .cardGestor-ESP{
 	max-width: 400px;
 	border-radius: 7px;
@@ -89,6 +86,12 @@ a{
     border-radius: 20px;
     margin: 0 5px;
 }
+.cardGestor-ESP i:hover {
+    background-color:#12789a;
+    color:#fff;
+    text-decoration:none;
+    cursor: pointer;
+}
 .cardGestor-ESP .icon-block{
     float:left;
     width:100%;
@@ -110,12 +113,7 @@ a{
     left: 0.1px;
     border: none;
 }
-.cardGestor-ESP i:hover {
-    background-color:#12789a;
-    color:#fff;
-    text-decoration:none;
-    cursor: pointer;
-}
+
 .cardGestor-ESP .cardButton{  
     border: 0;
     background: linear-gradient(to left, #1d4d7a,  #12789a);
@@ -138,8 +136,7 @@ a{
     font-weight: bold;
     border: 1px solid #12789a;
 }
-.modalgestorDir,
-.modalRec {
+.modalgestorDir{
     width: 30rem;
     padding: 4rem 2rem;
     border-radius: .8rem;

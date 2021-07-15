@@ -1,9 +1,9 @@
 <div class="">
     <?php 
-        session_start();
+        /*session_start();
         if(!isset($_SESSION['login'])) header('Location: ../#');
     
-        if(isset($_SESSION['login']['idDir'])) :
+        if(isset($_SESSION['login']['idDir'])) :*/
     ?>
     <h2 class="titolGestor mt-5" ng-if="multimedia.length > 0">La multimedia de la teva casa</h2>
     <h2 class="titolGestor mt-5" ng-if="multimedia.length == 0">No hi ha archius</h2>
@@ -43,9 +43,36 @@
                             <textarea rows="4" class="form-control" ng-model="descripcion">{{descripcion}}</textarea>
                         </div>
                         <div class="mb-2">
-                            <h2 class="labelModal">Imatge del projecte</h2>
-                            <img src="../multimedia/img/projectes/{{url}}" width="100"/><br/>
-                            <input type="file" onchange="angular.element(this).scope().getFileDetails(this)">
+                            <label class="labelModal">Tipus de archiu</label>
+
+                            <div ng-click='newValue(value)'>
+                                <input type="radio" id="imatge" name="archiu" ng-model="value" value="imatge" ng-checked="checkImagen">
+                                <label for="imatge">Imatge</label><br/>
+
+                                <input type="radio" id="video" name="archiu" ng-model="value" value="video" ng-checked="checkVideo">
+                                <label for="video">Video</label><br/>
+                                
+                                <input type="radio" id="so" name="archiu" ng-model="value" value="so" ng-checked="checkSonido">
+                                <label for="so">So</label>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <h2 class="labelModal">Archiu del projecte</h2>
+                            <img src="../multimedia/img/projectes/{{url}}" width="320" height="240" ng-show="showImg"/><br/>
+
+                            <div ng-show="showVideo">
+                                <video width="320" height="240" controls>
+                                    <source src="{{url}}" type="video/mp4">
+                                </video>
+                               
+                                <input type="text" placeholder="Enllaç al video...">
+                            </div><br/>
+
+                            <audio controls ng-show="showSound">
+                                <source src="..." type="audio/mpeg">
+                            </audio><br/>
+                            <!--src="../multimedia/so/{{url}}"-->
+                            <input ng-show="showExaminar" type="file" onchange="angular.element(this).scope().getFileDetails(this)">
                         </div>
                     </form>
                 </div>
@@ -55,13 +82,6 @@
             </div>
         </div>
     </div>
-    
-    <?php 
-       
-        if(isset($_SESSION['login']['tipus']) && $_SESSION['login']['tipus'] == "a") :
-    ?>
 
-    <h2>Tota la multimedia</h2>
-
-    <?php endif; endif;?>
+    <?php /*endif;*/?>
 </div>

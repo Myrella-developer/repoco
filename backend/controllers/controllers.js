@@ -176,6 +176,7 @@ angular.module("backend")
     $scope.correu = "";
     $scope.contacte = "";
     $scope.pass = "";
+    $scope.newpass = "";
     $scope.idDir = "";
 	let data= new FormData;
     let defered = $q.defer();
@@ -241,10 +242,35 @@ angular.module("backend")
         .then((res) => { 
             defered.resolve(res);
             $scope.directors = res.data;
-            console.log(res.data)
+            console.log(res.data);
         })
         .catch((err) => { console.log(err.statusText) })
         .finally(() => {})
+    }
+    $scope.recupera =(idDir)=>{
+        $("#modalRecontra").modal('show');
+        $scope.idDir=idDir;
+    }
+    $scope.recontra = () => {  
+        console.log( $scope.idDir+"A cambiar:--"+$scope.pass+"--");
+        let data = new FormData;
+        if($scope.pass!="" && ($scope.pass==$scope.newpass)){
+        data.append("acc","reset");
+        data.append("idDir", $scope.idDir);
+        data.append("pass",$scope.pass);
+        data.append("newpass",$scope.newpass);
+
+        $http.post("models/directors.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+        .then((res) => { 
+            defered.resolve(res);
+            $scope.directors = res.data;
+            console.log(res.data);
+        })
+        .catch((err) => { console.log(err.statusText) })
+        .finally(() => {alert ("Canvis realitzats amb èxit");})
+        } 
+        else alert ("Verifica contrasenya");
+    
     }
 })
 
@@ -340,11 +366,6 @@ angular.module("backend")
 })
 
 .controller("ProjectesController", ($q, $http, $scope, $routeParams, $location, $rootScope) => {
-    $scope.descripcio="";
-    $scope.descripcion="";
-    $scope.idProjecte = "";
-    $scope.titol="";
-    $scope.titulo="";
     $scope.selEsp = "-1";
     
     let idEdicio = $routeParams.idEdicio;
@@ -375,7 +396,7 @@ angular.module("backend")
             $scope.titol=$scope.projectes[posicion].titol;
             $scope.titulo=$scope.projectes[posicion].titulo;
             $rootScope.idProjecte=$scope.projectes[posicion].idProjecte;
-           
+
             data.append("acc","updateEdicio");
             data.append("idProjecte", $rootScope.idProjecte);
             data.append("dataIniciEdicio", dataIniciEdicio);
@@ -384,10 +405,11 @@ angular.module("backend")
                 defered.resolve(res);
                 $scope.existents = res.data.edicionsExistents;
                 $scope.inexistents = res.data.edicionsInexistents;
-                console.log(res.data)
             })
             .catch((err) => { console.log(err.statusText) })
             .finally(() => {})
+
+            $scope.showSelect = true;
         }
         else{
             $scope.descripcio="";
@@ -396,6 +418,8 @@ angular.module("backend")
             $scope.titol="";
             $scope.titulo="";
             $scope.idProjecte=""
+
+            $scope.showSelect = false;
         }
         $("#modalProjecte").modal('show')
     }
@@ -411,12 +435,14 @@ angular.module("backend")
                 data.append("multimedia", $rootScope.projecteMultimedia);
             }
         }else{
-            data.append("acc","u");
-
             if($rootScope.projecteMultimedia == undefined){
                 data.append("multimedia", $rootScope.url);
+                data.append("acc","u");
+            }else if($scope.descripcio == "" || $scope.descripcion == "" || $scope.titol == "" || $scope.titulo == ""){
+                alert("Tots els camps son obligatoris")
             }else{
-                data.append("multimedia", $rootScope.projecteMultimedia);
+                data.append("multimediaCambio", $rootScope.projecteMultimedia);
+                data.append("acc","u");
             }
         }
 
@@ -458,45 +484,37 @@ angular.module("backend")
     }
 
     $scope.onChange = () => {
-        let confirmacion = confirm("¿Estás seguro de que quieres añadir la edición "+$scope.selEsp+"?")
-        if(confirmacion){
-            alert("Edición "+ $scope.selEsp+" añadida");
-            let data= new FormData;
-            let defered = $q.defer();
-            data.append("acc","addEdicio");
-            data.append("idEdicio", $scope.selEsp);
-            data.append("idProjecte", $rootScope.idProjecte);
-            $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
-            .then((res) => { 
-                defered.resolve(res);
-                $scope.existents = res.data.edicionsExistents;
-                $scope.inexistents = res.data.edicionsInexistents;
-            })
-            .catch((err) => { console.log(err.statusText) })
-            .finally(() => {})
-        }
+        let data= new FormData;
+        let defered = $q.defer();
+        data.append("acc","addEdicio");
+        data.append("idEdicio", $scope.selEsp);
+        data.append("idProjecte", $rootScope.idProjecte);
+        data.append("dataIniciEdicio", dataIniciEdicio);
+        $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+        .then((res) => { 
+            defered.resolve(res);
+            $scope.existents = res.data.edicionsExistents;
+            $scope.inexistents = res.data.edicionsInexistents;
+        })
+        .catch((err) => { console.log(err.statusText) })
+        .finally(() => {$scope.selEsp = "-1";})
     }
 
     $scope.onDelete = (idEdicio) => {
-        let confirmacion = confirm("¿Estás seguro de que quieres eliminar la edición "+idEdicio+"?")
-        if(confirmacion){
-            alert("Edición eliminada");
-            let data= new FormData;
-            let defered = $q.defer();
-            data.append("acc","deleteEdicio");
-            data.append("idEdicio", idEdicio);
-            data.append("idProjecte", $rootScope.idProjecte);
-            $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
-            .then((res) => { 
-                defered.resolve(res);
-                $scope.existents = res.data.edicionsExistents;
-                $scope.inexistents = res.data.edicionsInexistents;
-            })
-            .catch((err) => { console.log(err.statusText) })
-            .finally(() => {})
-        }else{
-            alert("Edición salvada");
-        }
+        let data= new FormData;
+        let defered = $q.defer();
+        data.append("acc","deleteEdicio");
+        data.append("idEdicio", idEdicio);
+        data.append("idProjecte", $rootScope.idProjecte);
+        data.append("dataIniciEdicio", dataIniciEdicio);
+        $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+        .then((res) => { 
+            defered.resolve(res);
+            $scope.existents = res.data.edicionsExistents;
+            $scope.inexistents = res.data.edicionsInexistents;
+        })
+        .catch((err) => { console.log(err.statusText) })
+        .finally(() => {$scope.selEsp = "-1";})
     }
 })
 
@@ -530,6 +548,18 @@ angular.module("backend")
             $scope.descripcion=$scope.multimedia[posicion].descripcion;
             $scope.idMultimedia=$scope.multimedia[posicion].idMult;
             $scope.url=$scope.multimedia[posicion].url;
+            if($scope.multimedia[posicion].tipo == "v"){
+                $scope.checkVideo = true;
+                $scope.showVideo = true;
+            }
+            if($scope.multimedia[posicion].tipo == "i"){
+                $scope.checkImagen = true;
+                $scope.showImg = true;
+            }
+            if($scope.multimedia[posicion].tipo == "s"){
+                $scope.checkSonido = true;
+                $scope.showSound = true;
+            }
         }
         else{
             $scope.idMultimedia="";
@@ -617,6 +647,35 @@ angular.module("backend")
             .finally(() => {})
         }else{
             alert("No se ha eliminado el proyecto");
+        }
+    }
+
+    $scope.showImg = false;
+    $scope.showVideo = false;
+    $scope.showSound = false;
+    $scope.showExaminar = true;
+
+    $scope.newValue = (value) => {
+        if(value == 'imatge'){
+            $scope.showImg = true;
+            $scope.showVideo = false;
+            $scope.showSound = false;
+
+            $scope.showExaminar = true;
+        }
+        if(value == 'video'){
+            $scope.showVideo = true;
+            $scope.showImg = false;
+            $scope.showSound = false;
+
+            $scope.showExaminar = false;
+        }
+        if(value == 'so'){
+            $scope.showSound = true;
+            $scope.showImg = false;
+            $scope.showVideo = false;
+
+            $scope.showExaminar = true;
         }
     }
 })

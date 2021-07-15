@@ -1,12 +1,12 @@
 
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
-@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
+@import url("https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css");
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro');
 
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Source Sans Pro', sans-serif;;
+    font-family: 'Source Sans Pro', sans-serif;
     background-color: rgb(255, 255, 255);
   
 }
@@ -380,15 +380,7 @@ footer a{
     font-size: 12px;
     color: #696973;
 }
-/*@media (min-width: 992px){
-   .navbar-expand-lg {
-        min-width: 500px;
-    }
-}*/
-/* .container-fluid { 
-    padding: 0%;
 
-} */
 .mov {
     pointer-events: none;
     position: absolute;
@@ -476,49 +468,6 @@ font-style: italic!important;
     color: #fff;
 }
 
-/* @media(max-width: 991px){
-    header{
-        font-size: 14px;
-    }
-    .container-fluid{
-        margin:0;
-        padding-left: 0;
-        padding-right: 0;
-    }
-
-    .brandLogo,.brandIcons, .menu, .textCentral{
-        margin: 0;
-    }
-    .brandLogo, .menu, .bfooter{
-        margin-left: 2rem;
-    }
-    .menu{
-        margin-right: 2rem;
-        margin-bottom: 0.5rem;
-    }
-    .idioma{
-        margin-right: 1em;
-    }
-    .enlaceLogo{
-        float: right;
-    }
-    .bfooter h2{
-        margin-bottom: 1em;
-        text-align: left;
-        font-size: 25px;
-
-    } 
-} */
-
-/* @media (min-width: 1200px){
-
-.brandLogo, .brandIcons, .menu, .textCentral, .bfooterb{
-    margin-right: 130px;
-    margin-left: 130px;
-
-    }
-} */
-
 @media screen and (min-width: 0) and (max-width: 576px) { 
 
     .textoc{
@@ -547,13 +496,6 @@ font-style: italic!important;
         margin:0;
         padding-left: 0;
         padding-right: 0;
-    }
-
-    .brandLogo,.brandIcons, .menu, .textCentral{
-        margin: 0;
-    }
-    .brandLogo, .menu, .bfooter{
-        margin-left: 2rem;
     }
     .menu{
         margin-right: 2rem;

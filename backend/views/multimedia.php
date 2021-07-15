@@ -55,13 +55,6 @@
             </div>
         </div>
     </div>
-    
-    <?php 
-       
-        if(isset($_SESSION['login']['tipus']) && $_SESSION['login']['tipus'] == "a") :
-    ?>
 
-    <h2>Tota la multimedia</h2>
-
-    <?php endif; endif;?>
+    <?php endif;?>
 </div>

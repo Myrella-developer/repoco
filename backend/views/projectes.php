@@ -76,13 +76,6 @@
             </div>
         </div>
     </div>
-    
-    <?php 
-       
-        if(isset($_SESSION['login']['tipus']) && $_SESSION['login']['tipus'] == "a") :
-    ?>
 
-    <h2>Tots els projectes</h2>
-
-    <?php endif; endif;?>
+    <?php endif;?>
 </div>

@@ -249,11 +249,6 @@ angular.module("backend")
 })
 
 .controller("EdicionsController", ($q, $http, $scope, $routeParams, $location, $rootScope) => {
-    $scope.url = "";
-    $scope.dataInici = "";
-    $scope.dataFi = "";
-    $scope.idEdicio="";
-
     let idEsp = $routeParams.idEsp;
 	let data= new FormData;
     let defered = $q.defer();
@@ -275,12 +270,10 @@ angular.module("backend")
     $scope.editar=(posicion, idEdicio)=>{
         if(posicion !== "-1"){
             $rootScope.url = $scope.edicions[posicion].url;
-            console.log($rootScope.url)
-            $scope.dataInici = new Date($scope.edicions[posicion].dataInici);
-            $scope.dataFi = new Date($scope.edicions[posicion].dataFi);
+            $scope.dataInici = new Date($scope.edicions[posicion].dataIniciEng);
+            $scope.dataFi = new Date($scope.edicions[posicion].dataFiEng)
             $scope.idEdicio=$scope.edicions[posicion].idEdicio;
-        }
-        else{
+        }else{
             $scope.url = "";
             $scope.dataInici = "";
             $scope.dataFi = "";

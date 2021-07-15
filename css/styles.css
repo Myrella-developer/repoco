@@ -107,10 +107,9 @@ footer a{
 
 
 
-.bfooterb{
+.footer2{
     background-color: #e8e8e8;
-    padding-right: 130px;
-    padding-left: 130px;
+    
   }
 
 .iconsFooter{
@@ -144,7 +143,7 @@ footer a{
     text-align: center;
     border: 2px solid #12789a;
     padding: 10px 10px;
-    width: 250px;
+    width: 200px;
     outline: none;
     color: rgb(74, 79, 87);
     border-radius: 24px;
@@ -153,11 +152,11 @@ footer a{
 .box h1 {
     color: #12789a;
     text-transform: uppercase;
-    font-weight: 500;
+    font-weight: 500px;
 }
 .box input[type="email"]:focus,
 .box input[type="password"]:focus {
-    width: 300px;
+    width: 200px;
     border-color: #12789a;
 }
 .box input[type="submit"]{
@@ -442,12 +441,7 @@ font-style: italic!important;
 .footLogos div, ul{
     padding: 0;
 }
- .brandFooter{
-    margin-left: 130px;
- }
-.brandFooter2{
-    margin-right: 130px;
-}
+
 .cardGestor-ESP{
 	max-width: 400px;
 	border-radius: 7px;
@@ -498,7 +492,7 @@ font-style: italic!important;
 
 /* @media (min-width: 1200px){
 
-.brandLogo, .brandIcons, .menu, .textCentral{
+.brandLogo, .brandIcons, .menu, .textCentral, .bfooterb{
     margin-right: 130px;
     margin-left: 130px;
 

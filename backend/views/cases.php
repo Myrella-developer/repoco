@@ -37,11 +37,11 @@
                         </div>
                         <div class="mb-2">
                             <label for="message-text" class="col-form-label labelModal">Descripció Case - ESP</label>
-                            <input type="text" class="form-control"  ng-model="descripcio"></input>
+                            <textarea rows="4" class="form-control" ng-model="descripcio"></textarea>
                         </div>
                         <div class="mb-2">
                             <label for="message-text" class="col-form-label labelModal">Descripción Casa - ESP</label>
-                            <input type="text" class="form-control"  ng-model="descripcion"></input>
+                            <textarea rows="4" class="form-control" ng-model="descripcion"></textarea>
                         </div>
                         <div class="mb-2">
                           <label for="upload" class="col-form-label labelModal ">Penjar una imatge</label>

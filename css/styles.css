@@ -201,6 +201,7 @@ footer a{
 }
 .ulMovil{
     list-style: none;
+    padding-left: 0;
 }
 .ulMovil li{
     font-size: 18px;
@@ -449,12 +450,7 @@ font-style: italic!important;
     margin: 0;
 }
 
-.footerLogos{
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    padding: 0;
-}
+
 .logoBcnActiva img{
     max-width: 150px;
     width: 100%;
@@ -523,7 +519,7 @@ font-style: italic!important;
     }
 } */
 
-@media screen and (min-width: 0) and (max-width: 575.98px) { 
+@media screen and (min-width: 0) and (max-width: 576px) { 
 
     .textoc{
         font-size: 2.4em ;
@@ -574,6 +570,12 @@ font-style: italic!important;
         text-align: left;
         font-size: 25px;
     }
+    .footerLogos{
+        text-align: center;
+    }
+    .footerLogos div{
+        margin-top: 0.5em;
+    }
     
 }
 
@@ -586,6 +588,12 @@ font-style: italic!important;
         width: 1485px;
         height: 920px; 
     }
+    .footerLogos{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0;
+}
 
 } 
 

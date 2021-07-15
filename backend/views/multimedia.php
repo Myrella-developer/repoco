@@ -1,9 +1,9 @@
 <div class="">
     <?php 
-        /*session_start();
+        session_start();
         if(!isset($_SESSION['login'])) header('Location: ../#');
     
-        if(isset($_SESSION['login']['idDir'])) :*/
+        if(isset($_SESSION['login']['idDir'])) :
     ?>
     <h2 class="titolGestor mt-5" ng-if="multimedia.length > 0">La multimedia de la teva casa</h2>
     <h2 class="titolGestor mt-5" ng-if="multimedia.length == 0">No hi ha archius</h2>
@@ -57,7 +57,7 @@
                             </div>
                         </div>
                         <div class="mb-2">
-                            <h2 class="labelModal">Archiu del projecte</h2>
+                            <h2>Archiu del projecte</h2>
                             <img src="../multimedia/img/projectes/{{url}}" width="320" height="240" ng-show="showImg"/><br/>
 
                             <div ng-show="showVideo">
@@ -83,5 +83,5 @@
         </div>
     </div>
 
-    <?php /*endif;*/?>
+    <?php endif;?>
 </div>

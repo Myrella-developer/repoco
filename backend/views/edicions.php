@@ -35,6 +35,8 @@
                     <h5 class="modal-title labelModal">Edicions</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+                {{dataFi}}
+                {{dataInici}}
                 <div class="modal-body">
                     <form ng-model="edicions">
                         <div class="mb-2">

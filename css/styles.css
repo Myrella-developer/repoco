@@ -48,8 +48,7 @@ footer a{
     display: grid;
     gap: 1rem;
     grid-auto-rows: 22rem;
-    grid-auto-flow: dense;
-    grid-template-columns: repeat(auto-fill, minmax(min(1000%,25rem)1fr));
+    grid-template-columns: repeat(auto-fill, minmax(15rem,1fr));
 }
 .featured{
     grid-column: span 2;
@@ -104,12 +103,8 @@ footer a{
 	padding-right: 15px;
 	padding-left: 15px;
 }
-
-
-
 .footer2{
-    background-color: #e8e8e8;
-    
+    background-color: #e8e8e8;  
   }
 
 .iconsFooter{
@@ -118,7 +113,6 @@ footer a{
 }
 .iconsfooter2{
     color: #8bacbd;
-
 }
 .box {
     max-width: 25rem;
@@ -352,6 +346,15 @@ footer a{
     border: 0;
     margin-bottom: 50px;
 }
+.cardstyle{
+    margin: 1em;
+    text-align: center;
+    box-shadow:5px 8px 10px #f2f2f2; 
+    padding: 0!important; 
+    margin-top: 1em;
+    margin-top: 20px;
+    
+}
 .filtrar{
 	color: black;
 	border-color: black;
@@ -444,19 +447,8 @@ font-style: italic!important;
     padding: 0;
 }
 
-.cardGestor-ESP{
-	max-width: 400px;
-	border-radius: 7px;
-	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  	transition: 0.3s;
-  	margin-top: 5rem;
-  	border-width: 0px;
-    color: #12789a;
-    background:linear-gradient(to left, rgba(240, 246, 247, 0.246), #eef1f5)
-}
 .logoMovil{
     height: 42px;
-
 }
 /* @media(max-width: 991px){
     header{
@@ -551,7 +543,6 @@ font-style: italic!important;
         margin-bottom: 1em;
         text-align: left;
         font-size: 25px;
-
     }
     
 }
@@ -560,14 +551,10 @@ font-style: italic!important;
     .brandLogo, .brandIcons, .menu, .textCentral{
         margin-right: 130px;
         margin-left: 130px;
-    
     }
     .vidsize{
-        /* width="1485" height="920" */
         width: 1485px;
-        height: 920px;
-        
-      
+        height: 920px; 
     }
 
 } 

@@ -76,6 +76,29 @@
 		read();
 	}
 
+	function read(){
+		$sqlProj=
+		"SELECT p.titol, p.titulo, p.descripcio, p.descripcion, p.idProjecte, p.url
+		FROM projectes p
+		WHERE p.idEdicio = '{$_POST['idEdicio']}'
+		";
+
+		$conexion = conectar();
+		$resultProj = mysqli_query($conexion, $sqlProj);
+		desconectar($conexion);
+
+		$rows = array();
+		while($row = mysqli_fetch_array($resultProj)){
+			$rows[] = $row;
+		}
+
+		echo json_encode($rows);
+	}
+
+	if(isset($_POST['acc']) && $_POST['acc'] == "updateEdicio"){
+		updateEdicio();
+	}
+
 	if(isset($_POST['acc']) && $_POST['acc'] == "addEdicio"){
 		$sql = "INSERT INTO `esp_proj`(`idProjecte`, `idEdicio`) 
 		VALUES ({$_POST['idProjecte']} , {$_POST['idEdicio']} )";
@@ -95,29 +118,6 @@
 		$result = mysqli_query($conexion, $sql);
 		desconectar($conexion);
 		updateEdicio();
-	}
-
-	if(isset($_POST['acc']) && $_POST['acc'] == "updateEdicio"){
-		updateEdicio();
-	}
-
-	function read(){
-		$sqlProj=
-		"SELECT p.titol, p.titulo, p.descripcio, p.descripcion, p.idProjecte, p.url
-		FROM projectes p
-		WHERE p.idEdicio = '{$_POST['idEdicio']}'
-		";
-
-		$conexion = conectar();
-		$resultProj = mysqli_query($conexion, $sqlProj);
-		desconectar($conexion);
-
-		$rows = array();
-		while($row = mysqli_fetch_array($resultProj)){
-			$rows[] = $row;
-		}
-
-		echo json_encode($rows);
 	}
 
 	function updateEdicio(){

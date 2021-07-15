@@ -37,7 +37,7 @@
                 </div>
                 <div class="modal-body">
                     <form ng-model="projectes" enctype="multipart/form-data">
-                        <div class="mb-4">
+                        <div class="mb-4" ng-show="showSelect">
                             <select class="form-control labelModal" ng-model="selEsp" ng-change="onChange()">
                                 <option value="-1">--Selecciona especialitat a afegir--</option>
                                 <option ng-repeat="esp in inexistents" value="{{esp.idEdicio}}">{{esp.nom}}</option>

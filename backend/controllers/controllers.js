@@ -370,7 +370,7 @@ angular.module("backend")
             $scope.titol=$scope.projectes[posicion].titol;
             $scope.titulo=$scope.projectes[posicion].titulo;
             $rootScope.idProjecte=$scope.projectes[posicion].idProjecte;
-           
+
             data.append("acc","updateEdicio");
             data.append("idProjecte", $rootScope.idProjecte);
             data.append("dataIniciEdicio", dataIniciEdicio);
@@ -379,10 +379,11 @@ angular.module("backend")
                 defered.resolve(res);
                 $scope.existents = res.data.edicionsExistents;
                 $scope.inexistents = res.data.edicionsInexistents;
-                console.log(res.data)
             })
             .catch((err) => { console.log(err.statusText) })
             .finally(() => {})
+
+            $scope.showSelect = true;
         }
         else{
             $scope.descripcio="";
@@ -391,6 +392,8 @@ angular.module("backend")
             $scope.titol="";
             $scope.titulo="";
             $scope.idProjecte=""
+
+            $scope.showSelect = false;
         }
         $("#modalProjecte").modal('show')
     }
@@ -406,12 +409,14 @@ angular.module("backend")
                 data.append("multimedia", $rootScope.projecteMultimedia);
             }
         }else{
-            data.append("acc","u");
-
             if($rootScope.projecteMultimedia == undefined){
                 data.append("multimedia", $rootScope.url);
+                data.append("acc","u");
+            }else if($scope.descripcio == "" || $scope.descripcion == "" || $scope.titol == "" || $scope.titulo == ""){
+                alert("Tots els camps son obligatoris")
             }else{
                 data.append("multimediaCambio", $rootScope.projecteMultimedia);
+                data.append("acc","u");
             }
         }
 
@@ -453,45 +458,37 @@ angular.module("backend")
     }
 
     $scope.onChange = () => {
-        let confirmacion = confirm("¿Estás seguro de que quieres añadir la edición "+$scope.selEsp+"?")
-        if(confirmacion){
-            alert("Edición "+ $scope.selEsp+" añadida");
-            let data= new FormData;
-            let defered = $q.defer();
-            data.append("acc","addEdicio");
-            data.append("idEdicio", $scope.selEsp);
-            data.append("idProjecte", $rootScope.idProjecte);
-            $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
-            .then((res) => { 
-                defered.resolve(res);
-                $scope.existents = res.data.edicionsExistents;
-                $scope.inexistents = res.data.edicionsInexistents;
-            })
-            .catch((err) => { console.log(err.statusText) })
-            .finally(() => {})
-        }
+        let data= new FormData;
+        let defered = $q.defer();
+        data.append("acc","addEdicio");
+        data.append("idEdicio", $scope.selEsp);
+        data.append("idProjecte", $rootScope.idProjecte);
+        data.append("dataIniciEdicio", dataIniciEdicio);
+        $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+        .then((res) => { 
+            defered.resolve(res);
+            $scope.existents = res.data.edicionsExistents;
+            $scope.inexistents = res.data.edicionsInexistents;
+        })
+        .catch((err) => { console.log(err.statusText) })
+        .finally(() => {$scope.selEsp = "-1";})
     }
 
     $scope.onDelete = (idEdicio) => {
-        let confirmacion = confirm("¿Estás seguro de que quieres eliminar la edición "+idEdicio+"?")
-        if(confirmacion){
-            alert("Edición eliminada");
-            let data= new FormData;
-            let defered = $q.defer();
-            data.append("acc","deleteEdicio");
-            data.append("idEdicio", idEdicio);
-            data.append("idProjecte", $rootScope.idProjecte);
-            $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
-            .then((res) => { 
-                defered.resolve(res);
-                $scope.existents = res.data.edicionsExistents;
-                $scope.inexistents = res.data.edicionsInexistents;
-            })
-            .catch((err) => { console.log(err.statusText) })
-            .finally(() => {})
-        }else{
-            alert("Edición salvada");
-        }
+        let data= new FormData;
+        let defered = $q.defer();
+        data.append("acc","deleteEdicio");
+        data.append("idEdicio", idEdicio);
+        data.append("idProjecte", $rootScope.idProjecte);
+        data.append("dataIniciEdicio", dataIniciEdicio);
+        $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+        .then((res) => { 
+            defered.resolve(res);
+            $scope.existents = res.data.edicionsExistents;
+            $scope.inexistents = res.data.edicionsInexistents;
+        })
+        .catch((err) => { console.log(err.statusText) })
+        .finally(() => {$scope.selEsp = "-1";})
     }
 })
 

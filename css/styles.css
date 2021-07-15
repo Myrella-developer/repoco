@@ -375,10 +375,10 @@ footer a{
         min-width: 500px;
     }
 }*/
-.container-fluid { 
-    /* padding: 0%; */
+/* .container-fluid { 
+    padding: 0%;
 
-}
+} */
 .mov {
     pointer-events: none;
     position: absolute;
@@ -398,8 +398,6 @@ footer a{
    width: 100%;
    margin-left: 0%;
 }
-
-
 
 img.miniatura{
     opacity: 0.5;
@@ -460,55 +458,110 @@ font-style: italic!important;
     height: 42px;
 
 }
-@media(max-width: 991px){
-header{
-    font-size: 14px;
-}
-.container-fluid{
-    margin:0;
-    padding-left: 0;
-    padding-right: 0;
-}
+/* @media(max-width: 991px){
+    header{
+        font-size: 14px;
+    }
+    .container-fluid{
+        margin:0;
+        padding-left: 0;
+        padding-right: 0;
+    }
 
-.brandLogo,.brandIcons, .menu, .textCentral{
-    margin: 0;
-}
-.brandLogo, .menu, .bfooter, .bfooterb{
-    margin-left: 2rem;
-}
+    .brandLogo,.brandIcons, .menu, .textCentral{
+        margin: 0;
+    }
+    .brandLogo, .menu, .bfooter{
+        margin-left: 2rem;
+    }
+    .menu{
+        margin-right: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    .idioma{
+        margin-right: 1em;
+    }
+    .enlaceLogo{
+        float: right;
+    }
+    .bfooter h2{
+        margin-bottom: 1em;
+        text-align: left;
+        font-size: 25px;
 
-.bfooterb{
-    margin-right: 1rem;
-}
-.logoFooterajunt{
-    padding: 0;
-}
-.menu{
-    margin-right: 2rem;
-    margin-bottom: 0.5rem;
-}
-.idioma{
-    margin-right: 1em;
-}
-.enlaceLogo{
-    float: right;
-}
-.bfooter h2{
-    margin-bottom: 1em;
-    text-align: left;
-    font-size: 25px;
+    } 
+} */
 
-}
-
-
-}
-@media (min-width: 1200px){
+/* @media (min-width: 1200px){
 
 .brandLogo, .brandIcons, .menu, .textCentral, .bfooterb{
     margin-right: 130px;
     margin-left: 130px;
 
-}
+    }
+} */
 
+@media screen and (min-width: 0) and (max-width: 575.98px) { 
+
+    .textoc{
+        font-size: 2.4em ;
+    }
+    .pi{
+        margin-top: 0px;
+        font: 1.5em ;
+    }
+    .housenames{
+        margin-top: 0em;
+    }
+    .textbanner{
+        margin-left: 0.5em;
+    }
+    .textredbox{
+        font-size: 1em;
+    }
+    .buttonredbox{
+        font-size: 0.8em;
+    }
+    header{
+        font-size: 14px;
+    }
+    .container-fluid{
+        margin:0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .brandLogo,.brandIcons, .menu, .textCentral{
+        margin: 0;
+    }
+    .brandLogo, .menu, .bfooter{
+        margin-left: 2rem;
+    }
+    .menu{
+        margin-right: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    .idioma{
+        margin-right: 1em;
+    }
+    .enlaceLogo{
+        float: right;
+    }
+    .bfooter h2{
+        margin-bottom: 1em;
+        text-align: left;
+        font-size: 25px;
 
     }
+
+}
+
+@media screen and (min-width: 577px) and (max-width: 5000px) { 
+    .brandLogo, .brandIcons, .menu, .textCentral{
+        margin-right: 130px;
+        margin-left: 130px;
+    
+    }
+
+} 
+

@@ -21,8 +21,7 @@
                         <i class="fa fa-cog" aria-hidden="true" ng-click="editar($index, edicio.idEdicio)"></i>
                     </div>
                 </div>
-                <div class="row">
-                <div class="col-9"><a class="btn cardButton" href="#/projectes/21/2020-12-31">Gestionar projectes</a><div>
+                <a class="btn cardButton" href="#/projectes/21/2020-12-31">Gestionar projectes</a>
                 </div>
             </div>
         </div>    

@@ -165,7 +165,7 @@ a{
 .modalgestorDir input[type="text"], 
 .modalgestorDir input[type="file"]:focus {
     width: 300px;
-    border-color: #699bf7;
+    border-color: #12789a;
 }
 .modalgestorDir .labelModal{
     display: block;

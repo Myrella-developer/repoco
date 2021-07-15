@@ -5,10 +5,15 @@
 		read();
 	}
 
-	if(isset($_POST['acc']) && $_POST['acc'] == "u"){		
-		$fileNew=explode(".",$_FILES['multimedia']['name']); 
-		$file=$fileNew[0].date("dmYhis").".".$fileNew[1]; 
-		move_uploaded_file($_FILES['multimedia']['tmp_name'],"../../multimedia/img/projectes/".$file);
+	if(isset($_POST['acc']) && $_POST['acc'] == "u"){
+		if(isset($_FILES['multimediaCambio'])){
+			$fileNew=explode(".",$_FILES['multimediaCambio']['name']); 
+			$file=$fileNew[0].date("dmYhis").".".$fileNew[1]; 
+			move_uploaded_file($_FILES['multimediaCambio']['tmp_name'],"../../multimedia/img/projectes/".$file);
+		}	
+		if(isset($_POST['multimedia'])){
+			$file = $_POST['multimedia'];
+		}	
 		
 		$sql = "UPDATE projectes SET titol = '{$_POST['titol']}', titulo = '{$_POST['titulo']}', 
 		descripcio = '{$_POST['descripcio']}', descripcion = '{$_POST['descripcion']}', 

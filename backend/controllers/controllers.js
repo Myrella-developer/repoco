@@ -340,11 +340,6 @@ angular.module("backend")
 })
 
 .controller("ProjectesController", ($q, $http, $scope, $routeParams, $location, $rootScope) => {
-    $scope.descripcio="";
-    $scope.descripcion="";
-    $scope.idProjecte = "";
-    $scope.titol="";
-    $scope.titulo="";
     $scope.selEsp = "-1";
     
     let idEdicio = $routeParams.idEdicio;
@@ -416,7 +411,7 @@ angular.module("backend")
             if($rootScope.projecteMultimedia == undefined){
                 data.append("multimedia", $rootScope.url);
             }else{
-                data.append("multimedia", $rootScope.projecteMultimedia);
+                data.append("multimediaCambio", $rootScope.projecteMultimedia);
             }
         }
 

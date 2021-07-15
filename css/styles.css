@@ -53,9 +53,11 @@ footer a{
 .featured{
     grid-column: span 2;
 } */
-/* .container-fluid{
+.container-fluid{
     overflow: hidden;
-} */
+    overflow-x: hidden;
+    padding: 0;
+}
 .textoc{
     font-size: 4rem;
     margin-top: 6rem;

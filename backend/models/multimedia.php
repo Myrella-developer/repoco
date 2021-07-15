@@ -10,8 +10,12 @@
 		$file=$fileNew[0].date("dmYhis").".".$fileNew[1]; 
 		move_uploaded_file($_FILES['multimedia']['tmp_name'],"../../multimedia/img/projectes/".$file);
 		
+		if($_POST['tipo'] == "video") $tipo = 'v';
+		if($_POST['tipo'] == "imatge") $tipo = 'i';
+		if($_POST['tipo'] == "so") $tipo = 's';
+		
 		$sql = "UPDATE multimedia SET descripcio = '{$_POST['descripcio']}', descripcion = '{$_POST['descripcion']}', 
-		url = '{$file}' WHERE idMult = {$_POST['idMult']}";
+		url = '{$file}', tipo = '{$tipo}' WHERE idMult = {$_POST['idMult']}";
 		
 		$conexion = conectar();
 		$result = mysqli_query($conexion, $sql);
@@ -25,8 +29,14 @@
 		$file=$fileNew[0].date("dmYhis").".".$fileNew[1]; 
 		move_uploaded_file($_FILES['multimedia']['tmp_name'],"../../multimedia/img/projectes/".$file);
 
-		$sql = "INSERT INTO multimedia (url, descripcio, descripcion, idProjecte) 
-		VALUES('{$file}', '{$_POST['descripcio']}', '{$_POST['descripcion']}', '{$_POST['idProjecte']}')
+		if($_POST['tipo'] == "video") $tipo = 'v';
+		if($_POST['tipo'] == "imatge") $tipo = 'i';
+		if($_POST['tipo'] == "so") $tipo = 's';
+		
+
+		$sql = "INSERT INTO multimedia (url, descripcio, descripcion, idProjecte, tipo) 
+		VALUES('{$file}', '{$_POST['descripcio']}', '{$_POST['descripcion']}', '{$_POST['idProjecte']}',
+		'{$tipo}')
 		";
 
 		$conexion = conectar();

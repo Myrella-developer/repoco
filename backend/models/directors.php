@@ -30,6 +30,14 @@
 		desconectar($conexion);
         actualiza();
 	}
+    if(isset($_POST['acc']) && $_POST['acc'] == "reset"){
+		$sql = "UPDATE `directors` SET `contrasenya`='".sha1(md5($_POST['pass']))."' WHERE `directors`.`idDir`= '{$_POST['idDir']}'";
+		$conexion = conectar();
+		$result = mysqli_query($conexion, $sql);
+		desconectar($conexion);
+        actualiza();
+       
+	}
     function actualiza(){
         $mySqlDirectors = "SELECT `idDir`, `nom`, `cog1`, `cog2`, `correu`,`contacte`,`tipus`,`actiu`,`contrasenya` FROM `directors`";
         $conexion = conectar();

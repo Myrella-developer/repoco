@@ -295,11 +295,13 @@ angular.module("backend")
         if($scope.idEdicio==""){
             if($rootScope.fotoEdicio == undefined){
                 alert("Escoge una imagen")
-            }else if($scope.dataInici == "" || $scope.dataFi == ""){
+            }else if($rootScope.dataInici == "" || $rootScope.dataFi == ""){
                 alert("Selecciona data de inici i data de fi")
             }else{
                 data.append("acc","c");
                 data.append("imgEdicio", $rootScope.fotoEdicio);
+                data.append("dataInici", $rootScope.dataInici);
+                data.append("dataFi", $rootScope.dataFi);
             }
         }
         else{
@@ -308,11 +310,13 @@ angular.module("backend")
                 data.append("imgEdicio", $rootScope.url) 
             }else{
                 data.append("acc","u");
-                data.append("imgEdicio", $rootScope.fotoEdicio)
+                data.append("imgEdicioCambio", $rootScope.fotoEdicio)
             }
         }
 
         if($rootScope.dataInici == undefined || $rootScope.dataFi == undefined){
+            $scope.dataInici = $scope.dataInici.getFullYear() + "-" + ($scope.dataInici.getMonth()+1) + "-" + $scope.dataInici.getDate()
+            $scope.dataFi = $scope.dataFi.getFullYear() + "-" + ($scope.dataFi.getMonth()+1) + "-" + $scope.dataFi.getDate()
             data.append("dataInici", $scope.dataInici);
             data.append("dataFi", $scope.dataFi);
         }else{

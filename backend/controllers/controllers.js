@@ -549,13 +549,16 @@ angular.module("backend")
             $scope.idMultimedia=$scope.multimedia[posicion].idMult;
             $scope.url=$scope.multimedia[posicion].url;
             if($scope.multimedia[posicion].tipo == "v"){
-                
+                $scope.checkVideo = true;
+                $scope.showVideo = true;
             }
             if($scope.multimedia[posicion].tipo == "i"){
-
+                $scope.checkImagen = true;
+                $scope.showImg = true;
             }
             if($scope.multimedia[posicion].tipo == "s"){
-
+                $scope.checkSonido = true;
+                $scope.showSound = true;
             }
         }
         else{

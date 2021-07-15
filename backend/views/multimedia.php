@@ -1,9 +1,9 @@
 <div class="">
     <?php 
-        session_start();
+        /*session_start();
         if(!isset($_SESSION['login'])) header('Location: ../#');
     
-        if(isset($_SESSION['login']['idDir'])) :
+        if(isset($_SESSION['login']['idDir'])) :*/
     ?>
     <h2 class="titolGestor mt-5" ng-if="multimedia.length > 0">La multimedia de la teva casa</h2>
     <h2 class="titolGestor mt-5" ng-if="multimedia.length == 0">No hi ha archius</h2>
@@ -46,13 +46,13 @@
                             <label class="labelModal">Tipus de archiu</label>
 
                             <div ng-click='newValue(value)'>
-                                <input type="radio" id="imatge" name="archiu" ng-model="value" value="imatge">
+                                <input type="radio" id="imatge" name="archiu" ng-model="value" value="imatge" ng-checked="checkImagen">
                                 <label for="imatge">Imatge</label><br/>
 
-                                <input type="radio" id="video" name="archiu" ng-model="value" value="video">
+                                <input type="radio" id="video" name="archiu" ng-model="value" value="video" ng-checked="checkVideo">
                                 <label for="video">Video</label><br/>
                                 
-                                <input type="radio" id="so" name="archiu" ng-model="value" value="so">
+                                <input type="radio" id="so" name="archiu" ng-model="value" value="so" ng-checked="checkSonido">
                                 <label for="so">So</label>
                             </div>
                         </div>
@@ -69,9 +69,9 @@
                             </div><br/>
 
                             <audio controls ng-show="showSound">
-                                <source src="../multimedia/so/{{url}}" type="audio/mpeg">
+                                <source src="..." type="audio/mpeg">
                             </audio><br/>
-
+                            <!--src="../multimedia/so/{{url}}"-->
                             <input ng-show="showExaminar" type="file" onchange="angular.element(this).scope().getFileDetails(this)">
                         </div>
                     </form>
@@ -83,5 +83,5 @@
         </div>
     </div>
 
-    <?php endif;?>
+    <?php /*endif;*/?>
 </div>

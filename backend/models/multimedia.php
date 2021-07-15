@@ -25,10 +25,14 @@
 	}
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "c"){
-		$fileNew=explode(".",$_FILES['multimedia']['name']); 
-		$file=$fileNew[0].date("dmYhis").".".$fileNew[1]; 
-		move_uploaded_file($_FILES['multimedia']['tmp_name'],"../../multimedia/img/projectes/".$file);
-
+		if($_POST['tipo'] !== "video"){
+			$fileNew=explode(".",$_FILES['multimedia']['name']); 
+			$file=$fileNew[0].date("dmYhis").".".$fileNew[1]; 
+			move_uploaded_file($_FILES['multimedia']['tmp_name'],"../../multimedia/img/projectes/".$file);
+		}else{
+			$file = $_POST['enlace'];
+		}
+		
 		if($_POST['tipo'] == "video") $tipo = 'v';
 		if($_POST['tipo'] == "imatge") $tipo = 'i';
 		if($_POST['tipo'] == "so") $tipo = 's';

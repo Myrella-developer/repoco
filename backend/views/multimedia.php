@@ -13,7 +13,9 @@
         <div class="col-md-3" ng-repeat="m in multimedia">
             <div class="card cardGestor-ESP mx-auto mt-3" style="width: 18rem;">
                 <div class="card-body">
+
                     <img ng-src="../multimedia/img/projectes/{{m.url}}" class="card-img-top imgCard-Gestor"/>
+                    
                     <h5 class="card-title mt-2 text-center">{{m.url}}</h5>
                     <p class="card-text text-center">{{m.descripcio}}</p>
                     <div class="icon-block">
@@ -65,7 +67,7 @@
                                     <source src="{{url}}" type="video/mp4">
                                 </video>
                                
-                                <input type="text" placeholder="Enllaç al video...">
+                                <input type="text" placeholder="Enllaç al video..." ng-value={{url}}>
                             </div><br/>
 
                             <audio controls ng-show="showSound">

@@ -62,14 +62,14 @@
 
                             <div ng-show="showVideo">
                                 <video width="320" height="240" controls>
-                                    <source src="movie.mp4" type="video/mp4">
+                                    <source src="{{url}}" type="video/mp4">
                                 </video>
                                
                                 <input type="text" placeholder="Enllaç al video...">
                             </div><br/>
 
                             <audio controls ng-show="showSound">
-                                <source src="horse.mp3" type="audio/mpeg">
+                                <source src="../multimedia/so/{{url}}" type="audio/mpeg">
                             </audio><br/>
 
                             <input ng-show="showExaminar" type="file" onchange="angular.element(this).scope().getFileDetails(this)">

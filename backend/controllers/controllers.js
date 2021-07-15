@@ -548,6 +548,15 @@ angular.module("backend")
             $scope.descripcion=$scope.multimedia[posicion].descripcion;
             $scope.idMultimedia=$scope.multimedia[posicion].idMult;
             $scope.url=$scope.multimedia[posicion].url;
+            if($scope.multimedia[posicion].tipo == "v"){
+                
+            }
+            if($scope.multimedia[posicion].tipo == "i"){
+
+            }
+            if($scope.multimedia[posicion].tipo == "s"){
+
+            }
         }
         else{
             $scope.idMultimedia="";

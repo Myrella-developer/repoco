@@ -94,10 +94,10 @@ app.filter('trusted', ['$sce', function ($sce) {
 
 
 .controller("LoginController", function($scope, $http, $q, $location, $rootScope){	
-
     $scope.errorLogin=false;
-    $scope.email="";
-    $scope.pass="";
+    //TODO eliminar al subir a producción
+	$scope.email="@cobd.es";
+    $scope.pass="1234";
     $scope.entrar = function(){
         if ($scope.email=="" || $scope.pass=="") $scope.errorLogin=true;
         else{
@@ -110,7 +110,8 @@ app.filter('trusted', ['$sce', function ($sce) {
 			.then((res)=>{
 				defered.resolve(res);
 				$scope.datos=res.data;
-				if (!$scope.datos) {
+				console.log(res.data);
+				if ($scope.datos=="ko") {
 					$scope.errorLogin=true;
 				}
 				else{
@@ -376,9 +377,6 @@ app.filter('trusted', ['$sce', function ($sce) {
 	      $scope.projCas=$scope.proyecto[13];
 	      $scope.desProcat=$scope.proyecto[14];
 	      $scope.desProcas=$scope.proyecto[15];
-	      
-
-
 
 	   })
 	   .catch((err) => { console.log(err.statusText) })

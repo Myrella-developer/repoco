@@ -46,18 +46,18 @@
                             <label class="labelModal">Tipus de archiu</label>
 
                             <div ng-click='newValue(value)'>
-                                <input type="radio" id="imatge" name="archiu" ng-model="value" value="imatge">
+                                <input type="radio" id="imatge" name="archiu" ng-model="value" value="imatge" ng-checked="checkImagen">
                                 <label for="imatge">Imatge</label><br/>
 
-                                <input type="radio" id="video" name="archiu" ng-model="value" value="video">
+                                <input type="radio" id="video" name="archiu" ng-model="value" value="video" ng-checked="checkVideo">
                                 <label for="video">Video</label><br/>
                                 
-                                <input type="radio" id="so" name="archiu" ng-model="value" value="so">
+                                <input type="radio" id="so" name="archiu" ng-model="value" value="so" ng-checked="checkSonido">
                                 <label for="so">So</label>
                             </div>
                         </div>
                         <div class="mb-2">
-                            <h2 class="labelModal">Archiu del projecte</h2>
+                            <h2>Archiu del projecte</h2>
                             <img src="../multimedia/img/projectes/{{url}}" width="320" height="240" ng-show="showImg"/><br/>
 
                             <div ng-show="showVideo">
@@ -69,9 +69,9 @@
                             </div><br/>
 
                             <audio controls ng-show="showSound">
-                                <source src="../multimedia/so/{{url}}" type="audio/mpeg">
+                                <source src="..." type="audio/mpeg">
                             </audio><br/>
-
+                            <!--src="../multimedia/so/{{url}}"-->
                             <input ng-show="showExaminar" type="file" onchange="angular.element(this).scope().getFileDetails(this)">
                         </div>
                     </form>

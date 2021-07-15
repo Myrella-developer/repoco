@@ -548,14 +548,19 @@ angular.module("backend")
             $scope.descripcion=$scope.multimedia[posicion].descripcion;
             $scope.idMultimedia=$scope.multimedia[posicion].idMult;
             $scope.url=$scope.multimedia[posicion].url;
-            if($scope.multimedia[posicion].tipo == "v"){
-                
-            }
-            if($scope.multimedia[posicion].tipo == "i"){
+            $scope.tipo = $scope.multimedia[posicion].tipo;
 
+            if($scope.tipo == "v"){
+                $scope.checkVideo = true;
+                $scope.showVideo = true;
             }
-            if($scope.multimedia[posicion].tipo == "s"){
-
+            if($scope.tipo == "i"){
+                $scope.checkImagen = true;
+                $scope.showImg = true;
+            }
+            if($scope.tipo == "s"){
+                $scope.checkSonido = true;
+                $scope.showSound = true;
             }
         }
         else{
@@ -569,6 +574,12 @@ angular.module("backend")
     }
 
     $scope.guardar=()=>{
+        if($rootScope.tipoCambio == undefined){
+            data.append("tipo", $scope.tipo);
+        }else{
+            data.append("tipo", $rootScope.tipoCambio);
+        }
+        
         if($scope.idMultimedia==""){
             data.append("acc","c");
 
@@ -583,32 +594,32 @@ angular.module("backend")
                 data.append("descripcio", $scope.descripcio);
                 data.append("descripcion", $scope.descripcion);
                 
-                $http.post("models/multimedia.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
+                /*$http.post("models/multimedia.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
                 .then((res) =>{
                     defered.resolve(res);
                     $scope.multimedia = res.data;
                 })
                 .catch((err)=>{console.log(err.statusText)})
-                .finally(()=>{$("#modalMultimedia").modal('hide')});
+                .finally(()=>{$("#modalMultimedia").modal('hide')});*/
             }
         }else{
             data.append("acc","u");
             if($rootScope.archivo == undefined){
                 if($scope.descripcio == "" || $scope.descripcion == ""){
-                    alert("Les dos descripcions han de ser omplertes")
+                    alert("Les dues descripcions han de ser omplertes")
                 }else{
                     data.append("multimedia", $scope.url);
                     data.append("idMult", $rootScope.idMult);
                     data.append("descripcio", $scope.descripcio);
                     data.append("descripcion", $scope.descripcion);
                    
-                    $http.post("models/multimedia.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
+                    /*$http.post("models/multimedia.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
                     .then((res) =>{
                         defered.resolve(res);
                         $scope.multimedia = res.data;
                     })
                     .catch((err)=>{console.log(err.statusText)})
-                    .finally(()=>{$("#modalMultimedia").modal('hide')});
+                    .finally(()=>{$("#modalMultimedia").modal('hide')});*/
                 }
             }else{
                 data.append("idMult", $rootScope.idMult);
@@ -617,13 +628,13 @@ angular.module("backend")
                 data.append("descripcio", $scope.descripcio);
                 data.append("descripcion", $scope.descripcion);
         
-                $http.post("models/multimedia.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
+                /*$http.post("models/multimedia.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
                 .then((res) =>{
                     defered.resolve(res);
                     $scope.multimedia = res.data;
                 })
                 .catch((err)=>{console.log(err.statusText)})
-                .finally(()=>{$("#modalMultimedia").modal('hide')});
+                .finally(()=>{$("#modalMultimedia").modal('hide')});*/
             }
         }
     }
@@ -653,6 +664,8 @@ angular.module("backend")
     $scope.showExaminar = true;
 
     $scope.newValue = (value) => {
+        $rootScope.tipoCambio = value;
+
         if(value == 'imatge'){
             $scope.showImg = true;
             $scope.showVideo = false;

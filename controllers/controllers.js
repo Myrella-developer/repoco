@@ -126,6 +126,8 @@ app.filter('trusted', ['$sce', function ($sce) {
 .controller("CasesController", ($q, $http, $scope, $routeParams) => {
 	
 	$scope.idCasa=$routeParams.idCasa;
+	$scope.cantidad=6;
+	$scope.oculBoton=true;
 
 	let data = new FormData();
 	   data.append("acc", "r");
@@ -163,11 +165,20 @@ app.filter('trusted', ['$sce', function ($sce) {
 
 	    $scope.dataAnys=res.data.anysEdicio;
 	    $scope.actuals=$scope.dataAnys[0].especialitats;
-	    console.log($scope.actuals);
-	     
+	    // console.log($scope.actuals);
+
 	   })
 	   .catch((err) => { console.log(err.statusText) })
-	   .finally(() => {});
+	   .finally(() => {
+
+	   });
+
+	    $scope.mesAnys=function(){
+
+     	 	$scope.cantidad += 6;
+     	 	
+    	};
+
 	   $scope.titol="CASES D'OFICIS";
 	   $scope.titulo="CASAS DE OFICIOS";
 	   $scope.titol2="QUÈ ÉS LA CASA D'OFICIS";
@@ -176,6 +187,10 @@ app.filter('trusted', ['$sce', function ($sce) {
 	   $scope.titulo3="Casa de Oficios";
 	   $scope.acat="Anys";
 	   $scope.acas="Años";
+	   $scope.veureMes="Veure més";
+	   $scope.verMas="Ver más";
+
+
 })
 .controller("EdicionsController", ($q, $http, $scope, $routeParams) => {
 	$scope.any=$routeParams.any;
@@ -364,7 +379,7 @@ app.filter('trusted', ['$sce', function ($sce) {
 	   .then((res) => { 
 	       defered.resolve(res);
 	      $scope.proyecto=res.data;
-	      // console.log($scope.proyecto);
+	      console.log($scope.proyecto);
 
 	      $scope.casaCat=$scope.proyecto[1];
 	      $scope.casaCas=$scope.proyecto[2];

@@ -50,7 +50,15 @@
 						      <span class="navbar-toggler-icon"></span>
 						    </button>
 						    <div class="collapse navbar-collapse"  id="menuPrincipal">
-						      <ul class="navbar-nav mb-2 mb-lg-0">
+						    	<div class="fondoNavbarMovil"></div>
+						    	<div class="navContenido">
+						    	
+						    		 <button class="btn-close" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-expanded="false" aria-controls="menuPrincipal" aria-label="Cerrar">
+  								</button>
+  								<div class="logomenuMovil">
+  									<img class="logoMov" src="multimedia/img/logoBCNActiva.png" width="170px">
+  								</div>
+						      <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
 						        <li class="nav-item">
 						          <a class="nav-link active fw-bold" aria-current="page" ng-href="#/home">{{idioma=="cat"?inici:inicio}}</a>
 						        </li>
@@ -60,7 +68,8 @@
 						        <li class="nav-item">
 						          <a class="nav-link" ng-href="#/contacte">{{idioma=="cat"?contacte:contacto}}</a>
 						        </li>   
-						      </ul>				
+						      </ul>
+						      </div>				
 						    </div>
 						</nav>
         			</div>

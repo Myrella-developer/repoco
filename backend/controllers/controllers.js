@@ -1,19 +1,12 @@
 angular.module("backend")
 app.filter('trusted', ['$sce', function ($sce) { 
-
     return function(url) { 
-
         return $sce.trustAsResourceUrl("../multimedia/so/" + url); 
-
     }; 
-
 }]) 
 app.filter('trustedVideo', ['$sce', function ($sce) { 
-
     return function(url) { 
-
-        return $sce.trustAsResourceUrl(url); 
-
+        return $sce.trustAsResourceUrl("https://www.youtube.com/embed/" + url); 
     }; 
 
 }]) 
@@ -580,7 +573,7 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
             if($scope.tipo == "i"){
                 $scope.checkImagen = true;
                 $scope.showImg = true;
-
+                $scope.showExaminar = true;
                 $scope.showVideo = false;
                 $scope.showSound = false;
             }

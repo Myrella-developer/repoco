@@ -25,7 +25,7 @@
 </div>
 <div class="textCentral">
 	<h6 class="fw-bold">{{idioma=="cat"?acat:acas}}</h6>
-	<div class="row row-cols-3">
+	<div class="row row-cols-1 row-cols-lg-3">
 		<div class="col position-relative text-center mt-3" ng-repeat="any in dataAnys | limitTo:cantidad">
 			<a href="#/espAny/{{any.inici}}/{{idCasa}}"><img class="miniatura" src="multimedia/img/{{mini==null?'noimatge.png' : 'miniatures/'+mini}}">
 			<p class="anys">{{any.inici|limitTo:4:0}}/{{any.fi|limitTo:2:2}} </p></a>

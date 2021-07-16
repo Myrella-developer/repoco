@@ -127,7 +127,7 @@ app.filter('trusted', ['$sce', function ($sce) {
 	
 	$scope.idCasa=$routeParams.idCasa;
 	$scope.cantidad=6;
-	$scope.oculBoton=true;
+	
 
 	let data = new FormData();
 	   data.append("acc", "r");
@@ -299,7 +299,7 @@ app.filter('trusted', ['$sce', function ($sce) {
 
 	    $scope.dataAnys=res.data.anysEdicio;
 	    $scope.actuals=$scope.dataAnys[0].especialitats;
-	    console.log($scope.actuals);
+	    // console.log($scope.actuals);
 	     
 	   })
 	   .catch((err) => { console.log(err.statusText) })
@@ -332,7 +332,7 @@ app.filter('trusted', ['$sce', function ($sce) {
 	    $scope.nomEsp=$scope.proyectos[0][1];
 	    $scope.desEspcat=$scope.proyectos[0][2];
 	    $scope.desEspcas=$scope.proyectos[0][3];
-	    console.log($scope.proyectos);
+	    // console.log($scope.proyectos);
 	     
 	   })
 	   .catch((err) => { console.log(err.statusText) })

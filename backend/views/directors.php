@@ -22,10 +22,10 @@
                             <i class="fa fa-cog" aria-hidden="true" ng-click="editar($index)"></i>
                             <i class="fas fa-key" aria-hidden="true"ng-click="recupera(director.idDir)" ></i>
                         <?php endif; ?>    
-						    <a href="mailto:{{director.correu}}"> <i class="fa fa-paper-plane"></i></a>
-                            <a href="tel:{{director.contacte}}"><i class="fa fa-phone"></i></a>
-					    </div>
-                    </div>   
+                            <a href="mailto:{{director.correu}}"><i class="fa fa-paper-plane"> {{director.correu}}</i></a>
+                            <a href="tel:{{director.contacte}}"><i class="fa fa-phone">{{director.contacte}}</i></a>
+                        </div>
+                    </div>  
 			    </div>   
 		    </div>
         </div>        

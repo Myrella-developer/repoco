@@ -282,7 +282,7 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
         .catch((err) => { console.log(err.statusText) })
         .finally(() => {swal("Bon treball!", "Ves fer clic al botó!", "success");})
         } 
-        else alert ("Verifica contrasenya");
+        else swal("Atenció!", "Verifica Contrasenya!", "warning");;
     
     }
 })

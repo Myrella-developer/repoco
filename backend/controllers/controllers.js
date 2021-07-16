@@ -119,11 +119,11 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
     $scope.descripcio="";
     $scope.descripcion="";
     $scope.idesp="";
-    let idcasa = $routeParams.idcasa;
+    $scope.idcasa = $routeParams.idcasa;
     let data= new FormData;
     let defered = $q.defer();
     data.append("acc","especialitats");
-    data.append("idcasa",idcasa);
+    data.append("idcasa",$scope.idcasa);
     $http.post("models/especialitat.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
     .then((res) => { 
         defered.resolve(res);
@@ -139,9 +139,7 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
             $scope.nombre=$scope.especialitats[posicion].nombre;
             $scope.descripcio=$scope.especialitats[posicion].descripcio;
             $scope.descripcion=$scope.especialitats[posicion].descripcion;
-            $scope.idesp=$scope.especialitats[posicion].idEsp;
-            $scope.selCasa=$scope.especialitats[posicion].idcasa;
-            console.log($scope.selCasa+ $scope.nom);
+            $scope.idesp=$scope.especialitats[posicion].idEsp;    
         }
         else{
             console.log("añado");
@@ -150,7 +148,7 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
             $scope.nombre="";
             $scope.descripcio="";
             $scope.descripcion="";
-            $scope.selCasa="-1";
+        
         }
         $("#modalEsp").modal('show')
     }
@@ -159,7 +157,7 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
         let data = new FormData;
         if($scope.idesp=="") data.append("acc","c");
         else data.append("acc","u");
-        data.append("idcasa",$scope.selCasa);
+        data.append("idcasa",$scope.idcasa);
         data.append("idEsp",$scope.idesp);
         data.append("nom",$scope.nom);
         data.append("nombre",$scope.nombre);
@@ -171,7 +169,7 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
         .then((res) =>{
             defered.resolve(res);
             $scope.especialitats = res.data.especialitats;
-            console.log(res.data);
+
         })
         .catch((err)=>{console.log(err.statusText)})
         .finally(()=>{});

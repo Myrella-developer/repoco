@@ -90,7 +90,7 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
         })
         .catch((err)=>{console.log(err.statusText)})
         .finally(()=>{});
-
+        swal("Bon treball!", "Ves fer clic al botó!", "success");    
     }
 })
 
@@ -175,6 +175,7 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
         })
         .catch((err)=>{console.log(err.statusText)})
         .finally(()=>{});
+        swal("Bon treball!", "Ves fer clic al botó!", "success");     
     }
     $scope.irEdiciones = () => {
                 $location.path("/ediciones/"+idcasa)
@@ -244,6 +245,7 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
         })
         .catch((err)=>{console.log(err.statusText)})
         .finally(()=>{});
+        swal("Bon treball!", "Ves fer clic al botó!", "success");    
     }
     $scope.eliminar = (idDir) => {
         data.append("acc", "d");
@@ -278,7 +280,7 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
             console.log(res.data);
         })
         .catch((err) => { console.log(err.statusText) })
-        .finally(() => {alert ("Canvis realitzats amb èxit");})
+        .finally(() => {swal("Bon treball!", "Ves fer clic al botó!", "success");})
         } 
         else alert ("Verifica contrasenya");
     

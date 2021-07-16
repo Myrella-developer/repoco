@@ -167,24 +167,17 @@ app.filter('trusted', ['$sce', function ($sce) {
 	    $scope.actuals=$scope.dataAnys[0].especialitats;
 	    // console.log($scope.actuals);
 
-	    $scope.cantidad<=$scope.dataAnys.length ? $scope.oculBoton=false : $scope.oculBoton=true;
-
-	     $scope.mesAnys=function(){
-	   	
-	   		if ($scope.cantidad < $scope.dataAnys.length) {
-     	 		$scope.cantidad += 6;
-     	 		if ($scope.cantidad>=$scope.dataAnys.length) {
-	   				$scope.oculBoton=true;
-	   			};	
-    		};
-    			
-	   	};
-	   
 	   })
 	   .catch((err) => { console.log(err.statusText) })
 	   .finally(() => {
 
 	   });
+
+	    $scope.mesAnys=function(){
+
+     	 	$scope.cantidad += 6;
+     	 	
+    	};
 
 	   $scope.titol="CASES D'OFICIS";
 	   $scope.titulo="CASAS DE OFICIOS";
@@ -197,9 +190,6 @@ app.filter('trusted', ['$sce', function ($sce) {
 	   $scope.veureMes="Veure més";
 	   $scope.verMas="Ver más";
 
-	  
-
-	  
 
 })
 .controller("EdicionsController", ($q, $http, $scope, $routeParams) => {
@@ -389,7 +379,7 @@ app.filter('trusted', ['$sce', function ($sce) {
 	   .then((res) => { 
 	       defered.resolve(res);
 	      $scope.proyecto=res.data;
-	      // console.log($scope.proyecto);
+	      console.log($scope.proyecto);
 
 	      $scope.casaCat=$scope.proyecto[1];
 	      $scope.casaCas=$scope.proyecto[2];

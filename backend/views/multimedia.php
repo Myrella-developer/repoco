@@ -14,7 +14,15 @@
             <div class="card cardGestor-ESP mx-auto mt-3" style="width: 18rem;">
                 <div class="card-body">
 
-                    <img ng-src="../multimedia/img/projectes/{{m.url}}" class="card-img-top imgCard-Gestor"/>
+                    <img ng-src="../multimedia/img/projectes/{{m.url}}" class="card-img-top imgCard-Gestor" ng-if="m.tipo == 'i' "/>
+
+                    <video class="w-100" height="220" controls ng-if="m.tipo == 'v' ">
+                        <source src="{{url}}" type="video/mp4">
+                    </video>
+
+                    <audio controls ng-if="m.tipo == 's' " class="w-100">
+                        <source ng-src="../multimedia/so/m.url" type="audio/mpeg">
+                    </audio>
                     
                     <h5 class="card-title mt-2 text-center">{{m.url}}</h5>
                     <p class="card-text text-center">{{m.descripcio}}</p>
@@ -67,7 +75,7 @@
                                     <source src="{{url}}" type="video/mp4">
                                 </video>
                                
-                                <input type="text" placeholder="Enllaç al video..." ng-value={{url}}>
+                                <input type="text" placeholder="Enllaç al video..." ng-model="url">
                             </div><br/>
 
                             <audio controls ng-show="showSound">

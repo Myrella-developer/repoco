@@ -30,14 +30,13 @@
 			$file=$fileNew[0].date("dmYhis").".".$fileNew[1]; 
 			move_uploaded_file($_FILES['multimedia']['tmp_name'],"../../multimedia/img/projectes/".$file);
 		}else{
-			$file = $_POST['enlace'];
+			$file = $_POST['multimedia'];
 		}
 		
 		if($_POST['tipo'] == "video") $tipo = 'v';
 		if($_POST['tipo'] == "imatge") $tipo = 'i';
 		if($_POST['tipo'] == "so") $tipo = 's';
 		
-
 		$sql = "INSERT INTO multimedia (url, descripcio, descripcion, idProjecte, tipo) 
 		VALUES('{$file}', '{$_POST['descripcio']}', '{$_POST['descripcion']}', '{$_POST['idProjecte']}',
 		'{$tipo}')

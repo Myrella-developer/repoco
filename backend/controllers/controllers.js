@@ -331,9 +331,9 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
     $scope.guardar=()=>{    
         if($scope.idEdicio==""){
             if($rootScope.fotoEdicio == undefined){
-                alert("Escoge una imagen")
+                swal("Escull una imatge", "warning");
             }else if($rootScope.dataInici == "" || $rootScope.dataFi == ""){
-                alert("Selecciona data de inici i data de fi")
+                swal("Selecciona data de inici i data de fi", "warning");
             }else{
                 data.append("acc","c");
                 data.append("imgEdicio", $rootScope.fotoEdicio);
@@ -438,9 +438,9 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
     $scope.guardar=()=>{
         if($rootScope.idProjecte==""){
             if($rootScope.projecteMultimedia == undefined){
-                alert("Escull una imatge")
+                swal("Escull una imatge", "warning");
             }else if($scope.descripcio == "" || $scope.descripcion == "" || $scope.titol == "" || $scope.titulo == ""){
-                alert("Tots els camps son obligatoris")
+                swal("Tots els camps son obligatoris", "warning");
             }else{
                 data.append("acc","c");
                 data.append("multimedia", $rootScope.projecteMultimedia);
@@ -475,23 +475,32 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
     }
 
     $scope.eliminar = (idProjecte) => {
-        let confirmacion = confirm("¿Estás seguro de que quieres eliminar este proyecto?");
-    
-        if(confirmacion){
-            data.append("acc", "d");
-            data.append("idProjecte", idProjecte);
-    
-            $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
-            .then((res) => { 
-                defered.resolve(res);
-                console.log(res.data)
-                $scope.projectes = res.data;
-            })
-            .catch((err) => { console.log(err.statusText) })
-            .finally(() => {})
-        }else{
-            alert("No se ha eliminado el proyecto");
-        }
+        swal({
+            title: "¿Estàs segur de que vols eliminar aquest projecte?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              swal("Projecte eliminat", {
+                icon: "success",
+              });
+              data.append("acc", "d");
+                data.append("idProjecte", idProjecte);
+        
+                $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+                .then((res) => { 
+                    defered.resolve(res);
+                    console.log(res.data)
+                    $scope.projectes = res.data;
+                })
+                .catch((err) => { console.log(err.statusText) })
+                .finally(() => {})
+            } else {
+              swal("No s'ha eliminat el projecte!");
+            }
+        });
     }
 
     $scope.onChange = () => {
@@ -596,10 +605,9 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
     }
 
     $scope.guardar=()=>{
-        /*
         if($rootScope.archivo.size > "150000"){
-            alert("El limit es 150kb, aquesta imatge es de " + $rootScope.archivo.size)
-        }*/
+            swal("El limit es 150kb, aquesta imatge es de " + $rootScope.archivo.size, "warning");
+        }
 
         if($rootScope.tipoCambio == undefined){
             data.append("tipo", $scope.tipo);
@@ -611,9 +619,9 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
             data.append("acc","c");
             
             if($rootScope.archivo == undefined && $scope.showVideo == false){
-                alert("Selecciona un archivo")
+                swal("Selecciona un archiu!", "warning");
             }else if($scope.descripcio == "" || $scope.descripcion == ""){
-                alert("Tots els camps son obligatoris");
+                swal("Tots els camps son obligatoris!", "warning");
             }else{
                 if($rootScope.tipoCambio == "video"){
                     data.append("multimedia", $scope.url);
@@ -638,7 +646,7 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
             data.append("acc","u");
 
             if($scope.descripcio == "" || $scope.descripcion == ""){
-                alert("Les dues descripcions han de ser omplertes")
+                swal("Tots els camps son obligatoris", "warning");
             }
 
             if($rootScope.archivo == undefined){
@@ -663,22 +671,31 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
     }
 
     $scope.eliminar = (idMultimedia) => {
-        let confirmacion = confirm("¿Estás seguro de que quieres eliminar este proyecto?");
-    
-        if(confirmacion){
-            data.append("acc", "d");
-            data.append("idMult", idMultimedia);
-    
-            $http.post("models/multimedia.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
-            .then((res) => { 
-                defered.resolve(res);
-                $scope.multimedia = res.data;
-            })
-            .catch((err) => { console.log(err.statusText) })
-            .finally(() => {})
-        }else{
-            alert("No se ha eliminado el proyecto");
-        }
+        swal({
+            title: "¿Estàs segur de que vols eliminar aquest archiu?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              swal("Archiu eliminat", {
+                icon: "success",
+              });
+              data.append("acc", "d");
+                data.append("idMult", idMultimedia);
+        
+                $http.post("models/multimedia.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
+                .then((res) => { 
+                    defered.resolve(res);
+                    $scope.multimedia = res.data;
+                })
+                .catch((err) => { console.log(err.statusText) })
+                .finally(() => {})
+            } else {
+              swal("No s'ha eliminat l'archiu!");
+            }
+        });
     }
 
     $scope.showImg = false;

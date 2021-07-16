@@ -534,6 +534,7 @@ angular.module("backend")
     .then((res) => { 
         defered.resolve(res);
         $scope.multimedia = res.data;
+        console.log($scope.multimedia)
     })
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})
@@ -549,7 +550,8 @@ angular.module("backend")
             $scope.idMultimedia=$scope.multimedia[posicion].idMult;
             $scope.url=$scope.multimedia[posicion].url;
             $scope.tipo = $scope.multimedia[posicion].tipo;
-            
+            $rootScope.idMult = $scope.multimedia[posicion].idMult;
+
             if($scope.tipo == "v"){
                 $scope.checkVideo = true;
                 $scope.showVideo = true;
@@ -578,9 +580,9 @@ angular.module("backend")
             $scope.descripcio="";
             $scope.descripcion="";
             $scope.url="";
+            $rootScope.idMult = "";
         }
         $("#modalMultimedia").modal('show');
-        $rootScope.idMult = $scope.multimedia[posicion].idMult;
     }
 
     $scope.guardar=()=>{
@@ -598,7 +600,7 @@ angular.module("backend")
             }else if($scope.descripcio == "" || $scope.descripcion == ""){
                 alert("Tots els camps son obligatoris");
             }else{
-                if($scope.tipo || $rootScope.tipoCambio == "video"){
+                if($scope.tipo == "video" || $rootScope.tipoCambio == "video"){
                     data.append("multimedia", $scope.url);
                 }else{
                     data.append("multimedia", $rootScope.archivo);

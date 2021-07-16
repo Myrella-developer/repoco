@@ -13,16 +13,12 @@
         <div class="col-md-3" ng-repeat="m in multimedia">
             <div class="card cardGestor-ESP mx-auto mt-3" style="width: 18rem;">
                 <div class="card-body">
-
                     <img ng-src="../multimedia/img/projectes/{{m.url}}" class="card-img-top imgCard-Gestor" ng-if="m.tipo == 'i' "/>
 
-                    <video class="w-100" height="220" controls ng-if="m.tipo == 'v' ">
-                        <source src="{{url}}" type="video/mp4">
-                    </video>
-
-                    <audio controls ng-if="m.tipo == 's' " class="w-100">
-                        <source ng-src="../multimedia/so/m.url" type="audio/mpeg">
-                    </audio>
+                    <iframe ng-src="{{m.url| trustedVideo}}" class="w-100" height="220" ng-if="m.tipo == 'v' "
+                    ></iframe> 
+                    
+                    <audio controls ng-if="m.tipo == 's' " class="w-100" src="{{m.url| trusted}}"></audio>
                     
                     <h5 class="card-title mt-2 text-center">{{m.url}}</h5>
                     <p class="card-text text-center">{{m.descripcio}}</p>

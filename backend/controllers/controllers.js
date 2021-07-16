@@ -1,4 +1,22 @@
 angular.module("backend")
+app.filter('trusted', ['$sce', function ($sce) { 
+
+    return function(url) { 
+
+        return $sce.trustAsResourceUrl("../multimedia/so/" + url); 
+
+    }; 
+
+}]) 
+app.filter('trustedVideo', ['$sce', function ($sce) { 
+
+    return function(url) { 
+
+        return $sce.trustAsResourceUrl(url); 
+
+    }; 
+
+}]) 
 .controller("IndexController", ($scope,$q,$http,$routeParams) => {  
     $scope.tancar=()=>{
         let data = new FormData;
@@ -518,7 +536,7 @@ angular.module("backend")
     }
 })
 
-.controller("MultimediaController", ($q, $http, $scope, $routeParams, $location, $rootScope) => {
+.controller("MultimediaController", ($q, $http, $scope, $routeParams, $location, $rootScope, $sce) => {
     $scope.idMultimedia = "";
     $scope.descripcio="";
     $scope.descripcion="";

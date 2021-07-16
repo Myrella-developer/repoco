@@ -1,4 +1,22 @@
 angular.module("backend")
+app.filter('trusted', ['$sce', function ($sce) { 
+
+    return function(url) { 
+
+        return $sce.trustAsResourceUrl("../multimedia/so/" + url); 
+
+    }; 
+
+}]) 
+app.filter('trustedVideo', ['$sce', function ($sce) { 
+
+    return function(url) { 
+
+        return $sce.trustAsResourceUrl(url); 
+
+    }; 
+
+}]) 
 .controller("IndexController", ($scope,$q,$http,$routeParams) => {  
     $scope.tancar=()=>{
         let data = new FormData;
@@ -518,7 +536,7 @@ angular.module("backend")
     }
 })
 
-.controller("MultimediaController", ($q, $http, $scope, $routeParams, $location, $rootScope) => {
+.controller("MultimediaController", ($q, $http, $scope, $routeParams, $location, $rootScope, $sce) => {
     $scope.idMultimedia = "";
     $scope.descripcio="";
     $scope.descripcion="";
@@ -549,7 +567,8 @@ angular.module("backend")
             $scope.idMultimedia=$scope.multimedia[posicion].idMult;
             $scope.url=$scope.multimedia[posicion].url;
             $scope.tipo = $scope.multimedia[posicion].tipo;
-            
+            $rootScope.idMult = $scope.multimedia[posicion].idMult;
+
             if($scope.tipo == "v"){
                 $scope.checkVideo = true;
                 $scope.showVideo = true;
@@ -578,9 +597,9 @@ angular.module("backend")
             $scope.descripcio="";
             $scope.descripcion="";
             $scope.url="";
+            $rootScope.idMult = "";
         }
         $("#modalMultimedia").modal('show');
-        $rootScope.idMult = $scope.multimedia[posicion].idMult;
     }
 
     $scope.guardar=()=>{
@@ -598,7 +617,7 @@ angular.module("backend")
             }else if($scope.descripcio == "" || $scope.descripcion == ""){
                 alert("Tots els camps son obligatoris");
             }else{
-                if($scope.tipo || $rootScope.tipoCambio == "video"){
+                if($scope.tipo == "video" || $rootScope.tipoCambio == "video"){
                     data.append("multimedia", $scope.url);
                 }else{
                     data.append("multimedia", $rootScope.archivo);

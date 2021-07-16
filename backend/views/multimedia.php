@@ -13,8 +13,12 @@
         <div class="col-md-3" ng-repeat="m in multimedia">
             <div class="card cardGestor-ESP mx-auto mt-3" style="width: 18rem;">
                 <div class="card-body">
+                    <img ng-src="../multimedia/img/projectes/{{m.url}}" class="card-img-top imgCard-Gestor" ng-if="m.tipo == 'i' "/>
 
-                    <img ng-src="../multimedia/img/projectes/{{m.url}}" class="card-img-top imgCard-Gestor"/>
+                    <iframe ng-src="{{m.url| trustedVideo}}" class="w-100" height="220" ng-if="m.tipo == 'v' "
+                    ></iframe> 
+                    
+                    <audio controls ng-if="m.tipo == 's' " class="w-100" src="{{m.url| trusted}}"></audio>
                     
                     <h5 class="card-title mt-2 text-center">{{m.url}}</h5>
                     <p class="card-text text-center">{{m.descripcio}}</p>
@@ -63,17 +67,14 @@
                             <img src="../multimedia/img/projectes/{{url}}" width="320" height="240" ng-show="showImg"/><br/>
 
                             <div ng-show="showVideo">
-                                <video width="320" height="240" controls>
-                                    <source src="{{url}}" type="video/mp4">
-                                </video>
+                                <iframe ng-src="{{url| trustedVideo}}" width="320" height="240"
+                                ></iframe> 
                                
-                                <input type="text" placeholder="Enllaç al video..." ng-value={{url}}>
+                                <input type="text" placeholder="Enllaç al video..." ng-model="url">
                             </div><br/>
 
-                            <audio controls ng-show="showSound">
-                                <source src="..." type="audio/mpeg">
-                            </audio><br/>
-                            <!--src="../multimedia/so/{{url}}"-->
+                            <audio controls class="w-100" src="{{url| trusted}}" ng-show="showSound"></audio><br/>
+
                             <input ng-show="showExaminar" type="file" onchange="angular.element(this).scope().getFileDetails(this)">
                         </div>
                     </form>

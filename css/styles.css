@@ -58,13 +58,6 @@ footer a{
     overflow-x: hidden;
     padding: 0;
 }
-.textoc{
-    font-size: 4rem;
-    margin-top: 6rem;
-}
-.pi{
-    font-size: 2rem;
-}
 .textg{
     font-size: 20px;  
 }
@@ -338,9 +331,6 @@ footer a{
   margin: 0; 
 }
 
-.textCentral{
-	margin-top: 50px;
-}
 .filtros{
 	color: grey;
 	border-color: grey;
@@ -468,18 +458,21 @@ font-style: italic!important;
 @media screen and (min-width: 0) and (max-width: 576px) { 
 
     .textoc{
-        font-size: 2.4em ;
+        font-size: 1.6em ;
+        padding-top: 20px;
     }
-    .pi{
-        margin-top: 0px;
-        font: 1.5em ;
-    }
+   
     .housenames{
-        margin-top: 0em;
+        font-size: 1.2rem;
+        padding-top: -10%;
     }
     .textbanner{
         margin-left: 0.5em;
     }
+    .textg{
+        font-size: 1rem;
+    }
+
     .textredbox{
         font-size: 1em;
     }
@@ -532,7 +525,34 @@ font-style: italic!important;
     width: 100%;
     justify-content: space-between;
     padding: 0;
-}
-
+    }
+    .fulla{
+        width: 21rem;
+        padding-bottom: 150px;
+        padding-top: 40px;
+    }
+    .redboxtext{
+        padding-top: 90px;  
+        font-size: 2rem;
+    }
+    .boxofc{
+        width: 200px;
+        font-size: 18px;
+    }
+    .textoc{
+        font-size: 4rem;
+        margin-top: 11rem;
+    }
+    .bannermenu{
+        font-size: 2rem;
+        padding-top: 10rem;
+    }
+    .housenames{
+        font-size: 2rem;
+    }
+    .textg{
+        font-size: 1rem;
+        
+    }
 } 
 

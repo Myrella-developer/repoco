@@ -596,6 +596,11 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
     }
 
     $scope.guardar=()=>{
+        /*
+        if($rootScope.archivo.size > "150000"){
+            alert("El limit es 150kb, aquesta imatge es de " + $rootScope.archivo.size)
+        }*/
+
         if($rootScope.tipoCambio == undefined){
             data.append("tipo", $scope.tipo);
         }else{
@@ -604,13 +609,13 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
 
         if($scope.idMultimedia==""){
             data.append("acc","c");
-
+            
             if($rootScope.archivo == undefined && $scope.showVideo == false){
                 alert("Selecciona un archivo")
             }else if($scope.descripcio == "" || $scope.descripcion == ""){
                 alert("Tots els camps son obligatoris");
             }else{
-                if($scope.tipo == "video" || $rootScope.tipoCambio == "video"){
+                if($rootScope.tipoCambio == "video"){
                     data.append("multimedia", $scope.url);
                 }else{
                     data.append("multimedia", $rootScope.archivo);
@@ -631,38 +636,29 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
             }
         }else{
             data.append("acc","u");
-            if($rootScope.archivo == undefined){
-                if($scope.descripcio == "" || $scope.descripcion == ""){
-                    alert("Les dues descripcions han de ser omplertes")
-                }else{
-                    data.append("multimedia", $scope.url);
-                    data.append("idMult", $rootScope.idMult);
-                    data.append("descripcio", $scope.descripcio);
-                    data.append("descripcion", $scope.descripcion);
-                   
-                    $http.post("models/multimedia.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
-                    .then((res) =>{
-                        defered.resolve(res);
-                        $scope.multimedia = res.data;
-                    })
-                    .catch((err)=>{console.log(err.statusText)})
-                    .finally(()=>{$("#modalMultimedia").modal('hide')});
-                }
-            }else{
-                data.append("idMult", $rootScope.idMult);
-                data.append("idProjecte", idProjecte);
-                data.append("multimedia", $rootScope.archivo);
-                data.append("descripcio", $scope.descripcio);
-                data.append("descripcion", $scope.descripcion);
-        
-                $http.post("models/multimedia.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
-                .then((res) =>{
-                    defered.resolve(res);
-                    $scope.multimedia = res.data;
-                })
-                .catch((err)=>{console.log(err.statusText)})
-                .finally(()=>{$("#modalMultimedia").modal('hide')});
+
+            if($scope.descripcio == "" || $scope.descripcion == ""){
+                alert("Les dues descripcions han de ser omplertes")
             }
+
+            if($rootScope.archivo == undefined){
+                data.append("multimedia", $scope.url);
+            }else{
+                data.append("multimedia", $rootScope.archivo);
+            }
+
+            data.append("idMult", $rootScope.idMult);
+            data.append("idProjecte", idProjecte);
+            data.append("descripcio", $scope.descripcio);
+            data.append("descripcion", $scope.descripcion);
+
+            $http.post("models/multimedia.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
+            .then((res) =>{
+                defered.resolve(res);
+                $scope.multimedia = res.data;
+            })
+            .catch((err)=>{console.log(err.statusText)})
+            .finally(()=>{$("#modalMultimedia").modal('hide')});
         }
     }
 
@@ -692,7 +688,7 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
 
     $scope.newValue = (value) => {
         $rootScope.tipoCambio = value;
-
+        
         if(value == 'imatge'){
             $scope.showImg = true;
             $scope.showVideo = false;

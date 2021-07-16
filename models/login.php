@@ -16,7 +16,7 @@
 				$_SESSION['login']['correu'] = $row['correu'];
 			}		
 		}else{
-			echo false;
+			echo "ko";
 		}
 	}
 

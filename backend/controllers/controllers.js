@@ -548,17 +548,29 @@ angular.module("backend")
             $scope.descripcion=$scope.multimedia[posicion].descripcion;
             $scope.idMultimedia=$scope.multimedia[posicion].idMult;
             $scope.url=$scope.multimedia[posicion].url;
-            if($scope.multimedia[posicion].tipo == "v"){
+            $scope.tipo = $scope.multimedia[posicion].tipo;
+            
+            if($scope.tipo == "v"){
                 $scope.checkVideo = true;
                 $scope.showVideo = true;
+
+                $scope.showExaminar = false;
+                $scope.showImg = false;
+                $scope.showSound = false;
             }
-            if($scope.multimedia[posicion].tipo == "i"){
+            if($scope.tipo == "i"){
                 $scope.checkImagen = true;
                 $scope.showImg = true;
+
+                $scope.showVideo = false;
+                $scope.showSound = false;
             }
-            if($scope.multimedia[posicion].tipo == "s"){
+            if($scope.tipo == "s"){
                 $scope.checkSonido = true;
                 $scope.showSound = true;
+
+                $scope.showImg = false;
+                $scope.showVideo = false;
             }
         }
         else{
@@ -572,17 +584,28 @@ angular.module("backend")
     }
 
     $scope.guardar=()=>{
+        if($rootScope.tipoCambio == undefined){
+            data.append("tipo", $scope.tipo);
+        }else{
+            data.append("tipo", $rootScope.tipoCambio);
+        }
+
         if($scope.idMultimedia==""){
             data.append("acc","c");
 
-            if($rootScope.archivo == undefined){
+            if($rootScope.archivo == undefined && $scope.showVideo == false){
                 alert("Selecciona un archivo")
             }else if($scope.descripcio == "" || $scope.descripcion == ""){
                 alert("Tots els camps son obligatoris");
             }else{
+                if($scope.tipo || $rootScope.tipoCambio == "video"){
+                    data.append("multimedia", $scope.url);
+                }else{
+                    data.append("multimedia", $rootScope.archivo);
+                }
+                
                 data.append("idMult", $rootScope.idMult);
                 data.append("idProjecte", idProjecte);
-                data.append("multimedia", $rootScope.archivo);
                 data.append("descripcio", $scope.descripcio);
                 data.append("descripcion", $scope.descripcion);
                 
@@ -598,7 +621,7 @@ angular.module("backend")
             data.append("acc","u");
             if($rootScope.archivo == undefined){
                 if($scope.descripcio == "" || $scope.descripcion == ""){
-                    alert("Les dos descripcions han de ser omplertes")
+                    alert("Les dues descripcions han de ser omplertes")
                 }else{
                     data.append("multimedia", $scope.url);
                     data.append("idMult", $rootScope.idMult);
@@ -656,6 +679,8 @@ angular.module("backend")
     $scope.showExaminar = true;
 
     $scope.newValue = (value) => {
+        $rootScope.tipoCambio = value;
+
         if(value == 'imatge'){
             $scope.showImg = true;
             $scope.showVideo = false;

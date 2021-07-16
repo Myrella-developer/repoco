@@ -1,9 +1,9 @@
 <div class="">
     <?php 
-        /*session_start();
+        session_start();
         if(!isset($_SESSION['login'])) header('Location: ../#');
     
-        if(isset($_SESSION['login']['idDir'])) :*/
+        if(isset($_SESSION['login']['idDir'])) :
     ?>
     <h2 class="titolGestor mt-5" ng-if="multimedia.length > 0">La multimedia de la teva casa</h2>
     <h2 class="titolGestor mt-5" ng-if="multimedia.length == 0">No hi ha archius</h2>
@@ -13,7 +13,9 @@
         <div class="col-md-3" ng-repeat="m in multimedia">
             <div class="card cardGestor-ESP mx-auto mt-3" style="width: 18rem;">
                 <div class="card-body">
+
                     <img ng-src="../multimedia/img/projectes/{{m.url}}" class="card-img-top imgCard-Gestor"/>
+                    
                     <h5 class="card-title mt-2 text-center">{{m.url}}</h5>
                     <p class="card-text text-center">{{m.descripcio}}</p>
                     <div class="icon-block">
@@ -57,7 +59,7 @@
                             </div>
                         </div>
                         <div class="mb-2">
-                            <h2 class="labelModal">Archiu del projecte</h2>
+                            <h2>Archiu del projecte</h2>
                             <img src="../multimedia/img/projectes/{{url}}" width="320" height="240" ng-show="showImg"/><br/>
 
                             <div ng-show="showVideo">
@@ -65,7 +67,7 @@
                                     <source src="{{url}}" type="video/mp4">
                                 </video>
                                
-                                <input type="text" placeholder="Enllaç al video...">
+                                <input type="text" placeholder="Enllaç al video..." ng-value={{url}}>
                             </div><br/>
 
                             <audio controls ng-show="showSound">
@@ -83,5 +85,5 @@
         </div>
     </div>
 
-    <?php /*endif;*/?>
+    <?php endif;?>
 </div>

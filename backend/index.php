@@ -20,29 +20,42 @@
 		<script src="controllers/controllers.js"></script>
 	</head>
 	<body>
-		<div class="container-fluid">
+	<div class="container-fluid">
        		 <header>
-        		<div class="row row-cols-3 brandLogo">
-	        		<div class="col text-start p-0 ">
+        		<div class="row brandLogo">
+	        		<div class="col-3 col-md-4 text-start p-0 align-self-center">
 	        			<a href="https://www.barcelona.cat/ca/" target="_blank" class="fw-bold">www.barcelona.cat</a>
 	        		</div>
-	        		<div class="col text-center p-0">
-	        			<!-- <span><img src="img/world.png" style="width: 25px"></span><span ng-model="idioma">Català</span> -->
+	        		<div class="col-8 col-md-4 text-end text-lg-center p-0 align-self-center">
 	        		</div>
-	        		<div class="col text-end p-0"><img src="img/logo.svg"></div>
+	        		<div class="col-1 col-md-4 text-end p-0"><a href="https://ajuntament.barcelona.cat/ca/" target="_blank" class="enlaceLogo"><img src="../multimedia/img/logoMovil.svg" class="logoMovil d-inline d-md-none"><img src="../multimedia/img/logo.svg" class="d-none d-md-inline"></a></div>
         		</div>
-        		<div class="row filaGris">
-        			<div class="col text-end brandIcons">
-        				<a href="https://www.instagram.com/barcelonactiva/" target="_blank"><i class="bi bi-instagram"></i></a>
-        				<a href="https://twitter.com/barcelonactiva" target="_blank"><i class="bi bi-twitter"></i></a>
-        				<a href="https://www.linkedin.com/company/barcelona-activa/" target="_blank"><i class="bi bi-linkedin"></i></a>
-        				<a href="https://www.facebook.com/barcelonactiva/" target="_blank"><i class="bi bi-facebook"></i></a>
-						<a href="https://www.youtube.com/user/videosbarcelonactiva" target="_blank"><i class="bi bi-youtube"></i></a>
-						<a href="https://www.slideshare.net/barcelonactiva" target="_blank"><i class="fab fa-slideshare"></i></a>
+        	
+        		<div class="row menu">
+        			<div class="col p-0 align-self-center"><a href="https://www.barcelonactiva.cat/" target="_blank"><img src="../multimedia/img/Logo Basa.jpg"></a></div>
+        			<div class="col p-0">
+        				<nav id="navCasa" class="navbar navbar-expand-md navbar-light">
+						    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Toggle navigation">
+						      <span class="navbar-toggler-icon"></span>
+						    </button>
+						    <div class="collapse navbar-collapse"  id="menuPrincipal">
+						      <ul class="navbar-nav mb-2 mb-lg-0">
+						        <li class="nav-item">
+						          <a class="nav-link active fw-bold" aria-current="page" ng-href="#/home">{{idioma=="cat"?inici:inicio}}</a>
+						        </li>
+						        <li class="nav-item" ng-repeat="casa in datosCasas">
+						          <a class="nav-link" href="#/cases/{{casa.idcasa}}">{{idioma=="cat"?casa.nom:casa.nombre}}</a>
+						        </li>
+						        <li class="nav-item">
+						          <a class="nav-link" ng-href="#/contacte">{{idioma=="cat"?contacte:contacto}}</a>
+						        </li>   
+						      </ul>				
+						    </div>
+						</nav>
         			</div>
         		</div>
         	</header>
-    	</div>
+		</div>	
 		<div class="row cols-12"><button class="btnTancar fa fa-sign-out fa-5" ng-click="tancar()"> Tancar</button></div>
 		<div class="row cols-12"><a class="btnTancar" href="#/directors">Director</a></div>
 		<div data-ng-view="row"></div>
@@ -50,7 +63,7 @@
         <footer>
 
 		</footer>
-
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 	</body>
 </html>

@@ -333,7 +333,7 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
     $scope.guardar=()=>{    
         if($scope.idEdicio==""){
             if($rootScope.fotoEdicio == undefined){
-                swal("Escull una imatge", "warning");
+                swal("Escull una imatge", "", "warning");
             }else if($rootScope.dataInici == "" || $rootScope.dataFi == ""){
                 swal("Selecciona data de inici i data de fi", "warning");
             }else{
@@ -431,6 +431,7 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
             $scope.titol="";
             $scope.titulo="";
             $scope.idProjecte=""
+            $rootScope.idProjecte=""
 
             $scope.showSelect = false;
         }
@@ -440,9 +441,9 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
     $scope.guardar=()=>{
         if($rootScope.idProjecte==""){
             if($rootScope.projecteMultimedia == undefined){
-                swal("Escull una imatge", "warning");
+                swal("Escull una imatge", "", "warning");
             }else if($scope.descripcio == "" || $scope.descripcion == "" || $scope.titol == "" || $scope.titulo == ""){
-                swal("Tots els camps son obligatoris", "warning");
+                swal("Tots els camps son obligatoris", "", "warning");
             }else{
                 data.append("acc","c");
                 data.append("multimedia", $rootScope.projecteMultimedia);
@@ -452,10 +453,11 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
                 data.append("multimedia", $rootScope.url);
                 data.append("acc","u");
             }else if($scope.descripcio == "" || $scope.descripcion == "" || $scope.titol == "" || $scope.titulo == ""){
-                alert("Tots els camps son obligatoris")
+                swal("Tots els camps son obligatoris", "", "warning")
             }else{
                 data.append("multimediaCambio", $rootScope.projecteMultimedia);
                 data.append("acc","u");
+                console.log($rootScope.projecteMultimedia)
             }
         }
 
@@ -607,9 +609,9 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
     }
 
     $scope.guardar=()=>{
-        if($rootScope.archivo.size > "150000"){
-            swal("El limit es 150kb, aquesta imatge es de " + $rootScope.archivo.size, "warning");
-        }
+        /*if($rootScope.archivo.size > "150000"){
+            swal("El limit es 150kb, aquesta imatge es de " + $rootScope.archivo.size, "", "warning");
+        }*/
 
         if($rootScope.tipoCambio == undefined){
             data.append("tipo", $scope.tipo);
@@ -621,9 +623,9 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
             data.append("acc","c");
             
             if($rootScope.archivo == undefined && $scope.showVideo == false){
-                swal("Selecciona un archiu!", "warning");
+                swal("Selecciona un archiu!", "", "warning");
             }else if($scope.descripcio == "" || $scope.descripcion == ""){
-                swal("Tots els camps son obligatoris!", "warning");
+                swal("Tots els camps son obligatoris!", "", "warning");
             }else{
                 if($rootScope.tipoCambio == "video"){
                     data.append("multimedia", $scope.url);
@@ -639,7 +641,13 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
                 $http.post("models/multimedia.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
                 .then((res) =>{
                     defered.resolve(res);
-                    $scope.multimedia = res.data;
+                    $scope.idMultimedia="";
+                    $scope.descripcio="";
+                    $scope.descripcion="";
+                    $scope.url="";
+                    $rootScope.idMult = "";
+                    $scope.tipo = "";
+                    $rootScope.tipoCambio = "";
                 })
                 .catch((err)=>{console.log(err.statusText)})
                 .finally(()=>{$("#modalMultimedia").modal('hide')});
@@ -648,7 +656,7 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
             data.append("acc","u");
 
             if($scope.descripcio == "" || $scope.descripcion == ""){
-                swal("Tots els camps son obligatoris", "warning");
+                swal("Tots els camps son obligatoris", "", "warning");
             }
 
             if($rootScope.archivo == undefined){

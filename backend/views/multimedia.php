@@ -13,16 +13,12 @@
         <div class="col-md-3" ng-repeat="m in multimedia">
             <div class="card cardGestor-ESP mx-auto mt-3" style="width: 18rem;">
                 <div class="card-body">
-
                     <img ng-src="../multimedia/img/projectes/{{m.url}}" class="card-img-top imgCard-Gestor" ng-if="m.tipo == 'i' "/>
 
-                    <video class="w-100" height="220" controls ng-if="m.tipo == 'v' ">
-                        <source src="{{url}}" type="video/mp4">
-                    </video>
-
-                    <audio controls ng-if="m.tipo == 's' " class="w-100">
-                        <source ng-src="../multimedia/so/m.url" type="audio/mpeg">
-                    </audio>
+                    <iframe ng-src="{{m.url| trustedVideo}}" class="w-100 imgCard-Gestor" height="230" ng-if="m.tipo == 'v' "
+                    ></iframe> 
+                    
+                    <audio controls ng-if="m.tipo == 's' " class="w-100 imgCard-Gestor" src="{{m.url| trusted}}"></audio>
                     
                     <h5 class="card-title mt-2 text-center">{{m.url}}</h5>
                     <p class="card-text text-center">{{m.descripcio}}</p>
@@ -68,20 +64,23 @@
                         </div>
                         <div class="mb-2">
                             <h2>Archiu del projecte</h2>
-                            <img src="../multimedia/img/projectes/{{url}}" width="320" height="240" ng-show="showImg"/><br/>
-
+                            
+                            <div ng-show="showImg">
+                                Les imatges o fotografies per les miniatures a <b>423 x 399px i un màxim de 150kb</b><br/>
+                                <img src="../multimedia/img/projectes/{{url}}" width="320" height="240"/>
+                            </div><br/>
+                            
                             <div ng-show="showVideo">
-                                <video width="320" height="240" controls>
-                                    <source src="{{url}}" type="video/mp4">
-                                </video>
+                                <p>https://www.youtube.com/watch?v=<b>gdsgg</b></p><br/>
+
+                                <iframe ng-src="{{url| trustedVideo}}" width="320" height="240"
+                                ></iframe> 
                                
                                 <input type="text" placeholder="Enllaç al video..." ng-model="url">
                             </div><br/>
 
-                            <audio controls ng-show="showSound">
-                                <source src="..." type="audio/mpeg">
-                            </audio><br/>
-                            <!--src="../multimedia/so/{{url}}"-->
+                            <audio controls class="w-100" src="{{url| trusted}}" ng-show="showSound"></audio><br/>
+
                             <input ng-show="showExaminar" type="file" onchange="angular.element(this).scope().getFileDetails(this)">
                         </div>
                     </form>

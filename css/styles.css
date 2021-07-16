@@ -457,6 +457,9 @@ font-style: italic!important;
 
 @media screen and (min-width: 0) and (max-width: 576px) { 
 
+    h2, .lineProj{
+        font-size: 0.5em;
+    }
     .textoc{
         font-size: 1.6em ;
         padding-top: 20px;
@@ -489,6 +492,7 @@ font-style: italic!important;
     }
     .menu{
         margin-right: 2rem;
+        margin-left: 1em;
         margin-bottom: 0.5rem;
     }
     .idioma{
@@ -507,6 +511,12 @@ font-style: italic!important;
     }
     .footerLogos div{
         margin-top: 0.5em;
+    }
+    .brandLogo, .textCentral{
+        margin-left: 1em;
+    }
+    .textCentral{
+        margin-right:1em;
     }
     
 }

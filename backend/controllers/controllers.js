@@ -552,7 +552,6 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
     .then((res) => { 
         defered.resolve(res);
         $scope.multimedia = res.data;
-        console.log($scope.multimedia)
     })
     .catch((err) => { console.log(err.statusText) })
     .finally(() => {})

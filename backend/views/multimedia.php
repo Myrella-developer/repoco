@@ -67,17 +67,14 @@
                             <img src="../multimedia/img/projectes/{{url}}" width="320" height="240" ng-show="showImg"/><br/>
 
                             <div ng-show="showVideo">
-                                <video width="320" height="240" controls>
-                                    <source src="{{url}}" type="video/mp4">
-                                </video>
+                                <iframe ng-src="{{url| trustedVideo}}" width="320" height="240"
+                                ></iframe> 
                                
                                 <input type="text" placeholder="Enllaç al video..." ng-model="url">
                             </div><br/>
 
-                            <audio controls ng-show="showSound">
-                                <source src="..." type="audio/mpeg">
-                            </audio><br/>
-                            <!--src="../multimedia/so/{{url}}"-->
+                            <audio controls class="w-100" src="{{url| trusted}}" ng-show="showSound"></audio><br/>
+
                             <input ng-show="showExaminar" type="file" onchange="angular.element(this).scope().getFileDetails(this)">
                         </div>
                     </form>

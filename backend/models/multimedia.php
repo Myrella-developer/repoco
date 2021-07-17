@@ -6,16 +6,27 @@
 	}
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "u"){
-		if($_POST['tipo'] !== "video"){
-			$fileNew=explode(".",$_FILES['multimedia']['name']); 
-			$file=$fileNew[0].date("dmYhis").".".$fileNew[1]; 
-			move_uploaded_file($_FILES['multimedia']['tmp_name'],"../../multimedia/img/projectes/".$file);
-		}else{
+		if(isset($_POST['multimedia'])){
 			$file = $_POST['multimedia'];
+		}else{
+			if($_POST['tipo'] == "i"){
+				$fileNew=explode(".",$_FILES['multimediaCambio']['name']); 
+				$file=$fileNew[0].date("dmYhis").".".$fileNew[1]; 
+				move_uploaded_file($_FILES['multimediaCambio']['tmp_name'],"../../multimedia/img/projectes/".$file);
+			}
+			if($_POST['tipo'] == "s"){
+				$fileNew=explode(".",$_FILES['multimediaCambio']['name']); 
+				$file=$fileNew[0].date("dmYhis").".".$fileNew[1]; 
+				move_uploaded_file($_FILES['multimediaCambio']['tmp_name'],"../../multimedia/so/".$file);
+			}
+			if($_POST['tipo'] == "v"){
+				$file = $_POST['multimediaCambio'];
+			}
 		}
-		if($_POST['tipo'] == "video") $tipo = 'v';
-		if($_POST['tipo'] == "imatge") $tipo = 'i';
-		if($_POST['tipo'] == "so") $tipo = 's';
+		
+		if($_POST['tipo'] == "v") $tipo = 'v';
+		if($_POST['tipo'] == "i") $tipo = 'i';
+		if($_POST['tipo'] == "s") $tipo = 's';
 		
 		$sql = "UPDATE multimedia SET descripcio = '{$_POST['descripcio']}', descripcion = '{$_POST['descripcion']}', 
 		url = '{$file}', tipo = '{$tipo}' WHERE idMult = {$_POST['idMult']}";
@@ -28,12 +39,17 @@
 	}
 
 	if(isset($_POST['acc']) && $_POST['acc'] == "c"){
-		
-		if($_POST['tipo'] !== "video"){
+		if($_POST['tipo'] == "imatge"){
 			$fileNew=explode(".",$_FILES['multimedia']['name']); 
 			$file=$fileNew[0].date("dmYhis").".".$fileNew[1]; 
 			move_uploaded_file($_FILES['multimedia']['tmp_name'],"../../multimedia/img/projectes/".$file);
-		}else{
+		}
+		if($_POST['tipo'] == "so"){
+			$fileNew=explode(".",$_FILES['multimedia']['name']); 
+			$file=$fileNew[0].date("dmYhis").".".$fileNew[1]; 
+			move_uploaded_file($_FILES['multimedia']['tmp_name'],"../../multimedia/so/".$file);
+		}
+		if($_POST['tipo'] == "video"){
 			$file = $_POST['multimedia'];
 		}
 		

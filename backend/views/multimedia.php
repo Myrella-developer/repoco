@@ -18,10 +18,12 @@
                     <iframe ng-src="{{m.url| trustedVideo}}" class="w-100 imgCard-Gestor" height="230" ng-if="m.tipo == 'v' "
                     ></iframe> 
                     
-                    <audio controls ng-if="m.tipo == 's' " class="w-100 imgCard-Gestor" src="{{m.url| trusted}}"></audio>
+                    <audio controls ng-if="m.tipo == 's' " class="w-100 imgCard-Gestor">
+                        <source src="{{m.url| trusted}}">
+                    </audio>
                     
-                    <h5 class="card-title mt-2 text-center">{{m.url}}</h5>
-                    <p class="card-text text-center">{{m.descripcio}}</p>
+                    <h5 class="card-title mt-2 text-center">{{m.descripcio}}</h5>
+                    <p class="card-text text-center">{{m.url}}</p>
                     <div class="icon-block">
                         <i class="fa fa-cog" aria-hidden="true" ng-click="editar($index)"></i>
                         <i class="fa fa-trash" aria-hidden="true" ng-click="eliminar(m.idMult)"></i>

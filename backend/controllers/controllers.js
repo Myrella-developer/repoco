@@ -8,7 +8,6 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
     return function(url) { 
         return $sce.trustAsResourceUrl("https://www.youtube.com/embed/" + url); 
     }; 
-
 }]) 
 .controller("IndexController", ($scope,$q,$http,$routeParams) => {  
     $scope.tancar=()=>{
@@ -315,6 +314,7 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
             $scope.dataInici = "";
             $scope.dataFi = "";
             $scope.idEdicio="";
+            $rootScope.fotoEdicio = "";
         }
         $("#modalEdicio").modal('show')
         $rootScope.idEdicio = idEdicio;
@@ -370,6 +370,11 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
             defered.resolve(res);
             console.log(res.data);
             $scope.edicions = res.data;
+            $scope.url = "";
+            $scope.dataInici = "";
+            $scope.dataFi = "";
+            $scope.idEdicio="";
+            $rootScope.fotoEdicio = "";
         })
         .catch((err)=>{console.log(err.statusText)})
         .finally(()=>{$("#modalEdicio").modal('hide')});
@@ -430,6 +435,8 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
             $scope.titulo="";
             $scope.idProjecte=""
             $rootScope.idProjecte=""
+            $rootScope.projecteMultimedia = ""
+            $rootScope.url = ""
 
             $scope.showSelect = false;
         }
@@ -455,7 +462,6 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
             }else{
                 data.append("multimediaCambio", $rootScope.projecteMultimedia);
                 data.append("acc","u");
-                console.log($rootScope.projecteMultimedia)
             }
         }
 
@@ -469,8 +475,17 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
         $http.post("models/projectes.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
         .then((res) =>{
             defered.resolve(res);
-            console.log(res.data);
             $scope.projectes = res.data;
+
+            $scope.descripcio="";
+            $scope.descripcion="";
+            $scope.idProjecte = "";
+            $scope.titol="";
+            $scope.titulo="";
+            $scope.idProjecte=""
+            $rootScope.idProjecte=""
+            $rootScope.projecteMultimedia = ""
+            $rootScope.url = ""
         })
         .catch((err)=>{console.log(err.statusText)})
         .finally(()=>{$("#modalProjecte").modal('hide')});
@@ -494,7 +509,6 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
                 $http.post("models/projectes.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})
                 .then((res) => { 
                     defered.resolve(res);
-                    console.log(res.data)
                     $scope.projectes = res.data;
                 })
                 .catch((err) => { console.log(err.statusText) })
@@ -639,6 +653,9 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
                 $http.post("models/multimedia.php",data,{headers:{"Content-type" : undefined}, transformRequest: angular.identity})
                 .then((res) =>{
                     defered.resolve(res);
+                    $scope.multimedia = res.data;
+                    console.log(res.data)
+
                     $scope.idMultimedia="";
                     $scope.descripcio="";
                     $scope.descripcion="";
@@ -660,7 +677,7 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
             if($rootScope.archivo == undefined){
                 data.append("multimedia", $scope.url);
             }else{
-                data.append("multimedia", $rootScope.archivo);
+                data.append("multimediaCambio", $rootScope.archivo);
             }
 
             data.append("idMult", $rootScope.idMult);
@@ -672,6 +689,7 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
             .then((res) =>{
                 defered.resolve(res);
                 $scope.multimedia = res.data;
+                console.log(res.data)
             })
             .catch((err)=>{console.log(err.statusText)})
             .finally(()=>{$("#modalMultimedia").modal('hide')});
@@ -687,10 +705,10 @@ app.filter('trustedVideo', ['$sce', function ($sce) {
           })
           .then((willDelete) => {
             if (willDelete) {
-              swal("Archiu eliminat", {
+                swal("Archiu eliminat", {
                 icon: "success",
-              });
-              data.append("acc", "d");
+                });
+                data.append("acc", "d");
                 data.append("idMult", idMultimedia);
         
                 $http.post("models/multimedia.php", data, { headers:{ "Content-type" : undefined }, transformRequest : angular.identity})

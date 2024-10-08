@@ -1,0 +1,630 @@
+
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url("https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: rgb(255, 255, 255);
+  
+}
+a{
+	text-decoration: none;
+	color: black;
+}
+header{
+	font-size: 1em;
+}
+footer{
+    background-color: #f8f9fa;
+}
+footer a{
+    padding: 0;
+    
+}
+
+#card-cases{
+    margin-top: 20px;
+}
+#cardProyectos{
+    padding: 0!important; 
+    margin-top: 1em;
+}
+#cardProyectos h5{
+    padding: 10px!important;
+    text-align: center;
+    box-shadow:5px 8px 10px #f2f2f2;
+}
+#participants{
+    list-style: none;
+}
+#navCasa{
+    padding: 0.7rem 0 0 0;
+    float: right;
+}
+/* .gallery{
+    display: grid;
+    gap: 1rem;
+    grid-auto-rows: 22rem;
+    grid-template-columns: repeat(auto-fill, minmax(15rem,1fr));
+}
+.featured{
+    grid-column: span 2;
+} */
+.container-fluid{
+    overflow: hidden;
+    overflow-x: hidden;
+    padding: 0;
+}
+.textg{
+    font-size: 20px;  
+}
+.segonc{
+    background-color: rgb(110, 32, 47);
+    color: rgb(255, 255, 255);
+    
+}
+.divcar{
+    padding-right: calc(var(--bs-gutter-x)/ -2);
+    padding-left: calc(var(--bs-gutter-x)/ -2);
+}
+.vidc{
+    background-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    
+}
+.filaGris{
+	background-color: #f2f2f2;
+}
+
+.brandIcons{
+	padding-bottom: 0.2rem;
+	padding-top: 0.2rem;
+}
+
+.brandIcons i{
+	margin: 0 4px;
+}
+.filagris a{
+	color: white;
+}
+.espai{
+	background-color: #666;
+	color: white!important;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+.footer2{
+    background-color: #e8e8e8;  
+  }
+
+.iconsFooter{
+    color: #12789a;
+    margin-right: 24px;
+}
+.iconsfooter2{
+    color: #8bacbd;
+}
+.box {
+    max-width: 25rem;
+    padding: 2.5rem;
+    position: relative;
+    top: 50%;
+    left: 20%;
+    background:#fff ;
+    text-align: center;
+    transition: 0.25s;
+    margin-top: 8rem;
+    margin-bottom: 8rem;
+	border-radius: 2rem;
+	background:linear-gradient(to left, rgba(240, 246, 247, 0.246), #eef1f5)
+}
+.box input[type="email"],
+.box input[type="password"] {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #12789a;
+    padding: 10px 10px;
+    width: 200px;
+    outline: none;
+    color: rgb(74, 79, 87);
+    border-radius: 24px;
+    transition: 0.25s
+}
+.box h1 {
+    color: #12789a;
+    text-transform: uppercase;
+    font-weight: 500px;
+}
+.box input[type="email"]:focus,
+.box input[type="password"]:focus {
+    width: 200px;
+    border-color: #12789a;
+}
+.box input[type="submit"]{
+    border: 0;
+    background: linear-gradient(to left, #1d4d7a,  #12789a);
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    padding: 14px 40px;
+    outline: none;
+    color: rgb(227, 232, 240);
+    font-weight: bolder;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer;
+}
+.box input[type="submit"]:hover {
+    background:linear-gradient(to left, rgba(240, 246, 247, 0.246), #eef1f5);
+    color: #12789a;
+    font-weight: bolder;
+    border: 1px solid #12789a;
+}
+.hoverMenu:hover{
+    background-color: black;
+    transition: 1.5s;
+    font-size: 16.8px;
+}
+
+.navbar{
+    border-width: 0;
+}
+.navbar-expand-md{
+    justify-content: space-between;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: black;
+}
+.nav-item{
+	font-size: 14px;
+	letter-spacing: 0;
+	line-height: 24px;
+}
+.hover {
+    cursor: pointer;
+}
+.ulMovil{
+    list-style: none;
+    padding-left: 0;
+}
+.ulMovil li{
+    font-size: 18px;
+    color: #005e85;
+    display: block;
+    text-align: left;
+    margin: 0 0 15px 0;
+}
+.ulMovil li a{
+    line-height: 22px;
+    padding-left: 8px;
+    color: #005e85;
+}
+
+.listMovil1, .listMovil4{
+    border-left: 4px solid #005e85;
+}
+.listMovil2{
+    border-left: 4px solid #dd5405;
+}
+.listMovil3{
+    border-left: 4px solid #edab1b;
+}
+.listMovil5{
+    border-left: 4px solid #f7453c;
+}
+
+.footerLinks{
+    justify-content: space-between;
+}
+.boxofc{
+    background-color: rgb(110, 32, 47);
+    border-color: #fff;
+}
+.cajasFooter{
+    margin-top: 1em;
+}
+
+.boxf{
+    background-color:#8bacbd70;
+    width: 18%;
+    margin:0px;
+    border-left: 15px solid #12789a;
+   min-height: 90px;
+    float: left;
+    font-size: 20px;
+  
+}
+.boxf i{
+    color: #12789a;
+     font-size: 3rem;
+    }
+.boxf p{
+  color:  #12789a;
+  margin: 0;
+}
+
+.boxf2{
+    background-color: #f5d9878a;
+    width: 18%;
+    margin: 0px;
+    border-left: 15px solid #ffc107;
+    min-height: 90px;
+    margin-left: auto;
+    float: left;
+    font-size: 20px;
+    
+}
+.boxf2 i{
+    color: #ffc107;
+    font-size: 3rem;
+    }
+.boxf2 p{
+    color: #ffc107;
+    margin: 0;
+    }
+
+.boxf1{
+    background-color: #f9d1a4a6;
+    width: 18%;
+    margin: 0px;
+    border-left: 15px solid #ff9716;
+    min-height: 90px;
+    float: left;
+    margin-left: auto;
+    font-size: 20px;
+   
+}
+.boxf1 i{
+    color: #ff9716;
+    font-size: 3rem;
+}
+.boxf1 p{
+    color: #ff9716;
+    margin: 0;
+}
+
+.boxf3{
+    background-color:#8bacbd70;
+    width: 18%;
+    margin: 0px;
+    border-left: 15px solid #12789a;
+   min-height: 90px;
+    float: left;
+    font-size: 20px;
+    margin-left: auto;
+    
+}
+.boxf3 i{
+    color: #12789a;
+    font-size: 3rem;
+}
+.boxf3 p{
+   color: #12789a; 
+   margin: 0;
+}
+.boxf4{
+	background-color: #f58f8787;
+    width: 18%;
+    margin: 0px;
+    border-left: 15px solid red;
+    min-height: 90px;
+    float: left;
+    margin-left: auto;
+    font-size: 20px;
+    
+}
+.boxf4 i{
+    color: red;
+    font-size: 3rem;
+    }
+.boxf4 p{
+  color: red; 
+  margin: 0; 
+}
+
+.filtros{
+	color: grey;
+	border-color: grey;
+	border-width: thin;
+	border-style: solid;
+	border-radius: 0;
+}
+
+.card{
+    border: 0;
+    margin-bottom: 50px;
+}
+.cardstyle{
+    margin: 1em;
+    text-align: center;
+    box-shadow:5px 8px 10px #f2f2f2; 
+    padding: 0!important; 
+    margin-top: 1em;
+    margin-top: 20px;
+    
+}
+.filtrar{
+	color: black;
+	border-color: black;
+	border-width: thin;
+	border-style: solid;
+	border-radius: 0;
+	font-size: medium;
+	font-weight: normal;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	padding-left: 5em;
+	padding-right: 5em;
+}
+.idioma{
+    border: 0;
+    font-size: 12px;
+    color: #696973;
+}
+
+.mov {
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+.divmov {
+    display: inline-block;
+    /* overflow: hidden; */
+    position: relative;
+    width: 100%;
+  }
+  
+  .div4{
+   /* overflow: hidden; */
+   width: 100%;
+   margin-left: 0%;
+}
+
+img.miniatura{
+    opacity: 0.5;
+    width: 16rem;
+    margin-bottom: 1rem;
+    
+}
+p.anys{
+    position: absolute;
+    font-size: 45px;
+    top: 24%;
+    left: 30%;
+}
+.nameEspec{
+    font-size: 13.5px;
+}
+.nameEspec a{
+    text-decoration: none;
+    color: white;
+}
+
+.lineProj{
+font-style: italic!important;
+}
+.titProyecto{
+    font-size: 14px;
+}
+.parrProyecto{
+    color: grey;
+}
+.colCajas{
+    padding-right: 0;
+    margin: 0;
+}
+.colFlecha{
+    padding: 0;
+    margin: 0;
+}
+
+
+.logoBcnActiva img{
+    max-width: 150px;
+    width: 100%;
+    height: auto;
+}
+
+.logoMovil{
+    height: 42px;
+}
+.redesSociales ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.listaRedes li{
+    margin: 4px;
+    display: inline-block;
+}
+.btn.btn-social-icon {
+    width: 40px;
+    height: 40px;
+    background: #005e85;
+    color: #fff;
+}
+
+@media screen and (min-width: 0) and (max-width: 576px) {
+
+   .navbar-collapse{
+        width: 100%;
+        min-width: 150px;
+        max-width: 100%;
+        padding: 0;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 999999;
+        left: 100%;
+        transition: all .4s ease;
+}
+.fondoNavbarMovil{
+    background-color: rgba(0,0,0,0.5);
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    /*-webkit-transition: all .1s ease;*/
+}
+.navContenido{
+    position: relative;
+    overflow: visible;
+    height: 100%;
+    width: 100%;
+    max-width: 270px !important;
+    margin-left: auto;
+    background-color: #fff;
+    box-shadow: 0 7px 8px rgb(0 0 0 / 60%);
+    overflow-y: scroll !important;
+    display: block;
+}
+.navbar-collapse.show {
+    left: 0;
+}
+button.btn-close{
+    position: fixed;
+    top: 50px;
+    /*color: white;*/
+    margin-left: -40px;
+    width: 40px;
+    height: 40px;
+    border-radius: 0;
+    /*background: #066287;*/
+    display: block;
+    }
+.logomenuMovil{
+    background: #fff;
+    padding: 10px 10px 15px 10px;
+    margin: 0;
+    position: relative;
+    width: 100%;
+    height: 70px;
+    display: block;
+}
+.nav-item{
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid #d6d6d6; 
+}
+    h2, .lineProj{
+        font-size: 0.5em;
+    }
+    .textoc{
+        font-size: 1.6em ;
+        padding-top: 20px;
+    }
+   
+    .housenames{
+        font-size: 1.2rem;
+        padding-top: -10%;
+    }
+    .textbanner{
+        margin-left: 0.5em;
+    }
+    .textg{
+        font-size: 1rem;
+    }
+
+    .textredbox{
+        font-size: 1em;
+    }
+    .buttonredbox{
+        font-size: 0.8em;
+    }
+    header{
+        font-size: 14px;
+    }
+    .container-fluid{
+        margin:0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .menu{
+        margin-right: 2rem;
+        margin-left: 1em;
+        margin-bottom: 0.5rem;
+    }
+    .idioma{
+        margin-right: 1em;
+    }
+    .enlaceLogo{
+        float: right;
+    }
+    .bfooter h2{
+        margin-bottom: 1em;
+        text-align: left;
+        font-size: 25px;
+    }
+    .footerLogos{
+        text-align: center;
+    }
+    .footerLogos div{
+        margin-top: 0.5em;
+    }
+    .brandLogo, .textCentral{
+        margin-left: 1em;
+    }
+    .textCentral{
+        margin-right:1em;
+    }
+    
+}
+
+@media screen and (min-width: 577px) and (max-width: 5000px) { 
+    .brandLogo, .brandIcons, .menu, .textCentral{
+        margin-right: 130px;
+        margin-left: 130px;
+    }
+    .vidsize{
+        width: 1485px;
+        height: 920px; 
+    }
+    .footerLogos{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0;
+    }
+    .fulla{
+        width: 21rem;
+        padding-bottom: 150px;
+        padding-top: 40px;
+    }
+    .redboxtext{
+        padding-top: 90px;  
+        font-size: 2rem;
+    }
+    .boxofc{
+        width: 200px;
+        font-size: 18px;
+    }
+    .textoc{
+        font-size: 4rem;
+        margin-top: 11rem;
+    }
+    .bannermenu{
+        font-size: 2rem;
+        padding-top: 10rem;
+    }
+    .housenames{
+        font-size: 2rem;
+    }
+    .textg{
+        font-size: 1rem;
+        
+    }
+} 
+

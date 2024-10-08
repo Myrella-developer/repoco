@@ -1,0 +1,82 @@
+<div>
+    
+    <div class="divmov">
+        <img ng-src="multimedia/img/provisionales/{{rutaimg==NULL ? 'prueba3.png' : rutaimg}}" alt="" class="mov" ng-model="rutaimg">
+        
+        <div>
+                <div class="textoc mb-5" id="prueba">
+                    <p  class="text-center">{{idioma=="cat"?titol1:titulo1}}<br>{{idioma=="cat"?titol1a:titulo1a}}</p>
+                </div>  
+                   
+                <div class="row row-cols-1 row-cols-sm-3">
+
+                        <div class="col text-center housenames mt-sm-5" ng-repeat="casa in datosCasas">
+                           <p class="hover"><a ng-href="#/cases/{{casa.idcasa}}" id="numweb" ng-mouseover="changeimg($index)">{{idioma=="cat"?casa.nom:casa.nombre}}</a></p>
+                        </div>    
+                </div> 
+               
+                <div class="row row-cols-1 mt-5 mb-sm-5 offset-sm-1 textbanner">
+                        <div class="col">
+                            <p class="bannermenu">{{idioma=="cat"?banner:banneres}}</p>
+                        </div>
+                        
+                        <div class="col textg">
+                            <p>{{idioma=="cat"?parraf1:parrafo1}}</p>
+                        </div>
+
+                        <div class="col textg">
+                            <p>{{idioma=="cat"?parraf2:parrafo2}}</p>
+                        </div>
+
+                        <div class="col mb-sm-5 textg">
+                            <p>{{idioma=="cat"?parraf3:parrafo3}}</p>
+                        </div>
+                </div>
+                   
+        </div>
+    </div>
+      <!-- TO DO:Falta por resolver el refresco del Vid -->
+      <!-- <div class="modal fade" id="modal0" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-fullscreen modal-fullscreen-sm-down ">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Video a reproducir</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                    
+                        <div class="embed-responsive embed-responsive-16by9"> 
+                        <iframe   class="embed-responsive-item vidsize" ng-src="{{rutavid| trusted}}" allowfullscreen></iframe> 
+                        </div>  
+                      
+                    </div> 
+                </div>
+                
+              </div>
+    </div> -->
+            
+              
+  </div>    
+
+    <div class="row row-cols-2 segonc  div4 ">
+
+        <div class="col-7  redboxtext offset-sm-1 ">
+                        <p class="  textredbox ">{{idioma=="cat"?informacio1:informacion1}}<br>{{idioma=="cat"?informacio2:informacion2}}</p>
+                        <button type="button" class="btn btn-danger boxofc mb-5 mt-4 d-none d-sm-block " >{{idioma=="cat"?botoncat:botoncast}}</button>
+                        
+        </div>
+        <div class="col-3  ">
+                        <img src="multimedia/img/fulla.png" alt=""  class="img-fluid fulla">
+        </div>
+        <div class="col-12 text-center d-sm-none">
+                       <button type="button" class="btn btn-danger boxofc mb-2 mt-2 buttonredbox">{{idioma=="cat"?botoncat:botoncast}}</button>
+        </div>        
+               
+    </div>
+
+</div>
+
+
+
+
+

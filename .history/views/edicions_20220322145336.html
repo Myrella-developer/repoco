@@ -1,0 +1,91 @@
+<!-- <div id="slideCasa" class="carousel slide" data-bs-ride="carousel">
+<div class="carousel-indicators">
+        <button type="button" data-bs-target="#slideCasa" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#slideCasa" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#slideCasa" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="multimedia/img/provisionales/{{url==null?'no-imageSlide.png' : url}}" class="d-block w-100" alt="Casa d'ofici">
+
+        </div>
+        <!-- falta sentencia para img de especialitats -->
+        <div class="carousel-item">
+          <img src="multimedia/img/provisionales/prueba2.png" class="d-block w-100" alt="Foto Especialitat">
+        </div>
+        <div class="carousel-item">
+          <img src="multimedia/img/provisionales/prueba3.png" class="d-block w-100" alt="Foto Especialitat">
+        </div>
+    </div>
+    <div class="position-absolute top-50 start-50 translate-middle">
+        <p>{{idioma=="cat"?titol:titulo}}</p><hr>
+        <h2>{{idioma=="cat"?nom:nombre | uppercase}}</h2>
+    </div>
+</div>
+<div class="row row-cols-2 textCentral  gallery">
+        <div class="col-12 col-md-6 " ng-repeat="esp in especialitats">
+            <a href="#/edEsp/{{idCasa}}/{{esp.idEdicio}}"><div class="card" >
+                <img src="multimedia/img/{{proyecto.url==''?'noimatge.png': 'projectes/'+proyecto.url}}" class="card-img-top" alt="Imagen Proyecto">
+                <div id="cardProyectos" class="card-body">
+                    <h5 class="card-title  border border-1 fw-bold">{{esp.nom}}</h5>
+                </div>
+               </div></a>
+        </div>    
+    </div>  -->
+
+
+    <div class="">
+    
+      <h2 class="titolGestor">Les edicions de la teva Especialitat</h2>
+  
+      <div class="row cols-12"><button class="btnAfegir fas fa-plus-circle" ng-click="editar('-1')"> AFEGIR</button></div>
+  
+      <div class="row ms-2">
+          <div class="col-md-3"  ng-repeat="edicio in edicions">
+              <div class="card cardGestor-ESP mx-auto mt-3" style="width: 18rem;">
+                  <div class="card-body">
+                      <img src="../multimedia/img/noimatge.png" class="card-img-top imgCard-Gestor" ng-if="edicio.url == '' "/>
+                      <img src="../multimedia/img/edicions/{{edicio.url}}" class="card-img-top imgCard-Gestor" ng-if="edicio.url !== '' "/>
+                      <p class="card-text">{{edicio.nom}}</p>
+                      <span class="card-title">{{edicio.dataInici}} - {{edicio.dataFi}}</span>
+                      <div class="icon-block">
+                          <i class="fa fa-cog" aria-hidden="true" ng-click="editar($index, edicio.idEdicio)"></i>
+                      </div>
+                  </div>
+                  <a class="btn cardButton" href="#/projectes/21/2020-12-31">Gestionar projectes</a>
+                  </div>
+              </div>
+          </div>    
+      </div>
+  
+      <div class="modal fade" id="modalEdicio">
+          <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content modalgestorDir">
+                  <div class="modal-header">
+                      <h5 class="modal-title labelModal">Edicions</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      <form ng-model="edicions">
+                          <div class="mb-2">
+                              <label for="message-text" class="col-form-label labelModal">Data Inici</label>
+                              <input type="date" class="edFecha" ng-model="dataInici" ng-change="cambiDataInici(dataInici)">
+                          </div>
+                          <div class="mb-2">
+                              <label for="message-text" class="col-form-label labelModal">Data Fi</label>
+                              <input type="date" class="edFecha" ng-model="dataFi" ng-change="cambiDataFi(dataFi)">
+                          </div>
+                          <div class="mb-2">
+                              <input type="file" onchange="angular.element(this).scope().getFileDetails(this)"><br/>
+                              <img src="../multimedia/img/edicions/{{url}}" width="250" height="150" class="mt-2">
+                          </div>
+                      </form>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btnModal" ng-click="guardar()">Guardar canvis</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  
+  </div>

@@ -1,0 +1,44 @@
+<div>
+    
+    <div class="divmov">
+        <img ng-src="multimedia/img/provisionales/{{rutaimg==NULL ? 'prueba3.png' : rutaimg}}" alt="" class="mov" ng-model="rutaimg">
+        
+        <div>
+                <div class="textoc mb-5" id="prueba">
+                    <p  class="text-center">{{idioma=titulo1}}<br>{{idioma=titulo1a}}</p>
+                </div>  
+                   
+                <div class="row row-cols-1 row-cols-sm-3">
+
+                        <div class="col text-center housenames mt-sm-5" ng-repeat="casa in datosCasas">
+                           <p class="hover"><a ng-href="#/cases/{{casa.idcasa}}" id="numweb" ng-mouseover="changeimg($index)">{{idioma=="cat"?casa.nom:casa.nombre}}</a></p>
+                        </div>    
+                </div> 
+               
+                <div class="row row-cols-1 mt-5 mb-sm-5 offset-sm-1 textbanner">
+                        <div class="col">
+                            <p class="bannermenu">{{idioma=banneres}}</p>
+                        </div>
+                        
+                        <div class="col textg">
+                            <p>{{idioma=="cat"?parraf1:parrafo1}}</p>
+                        </div>
+
+                        <div class="col textg">
+                            <p>{{idioma=="cat"?parraf2:parrafo2}}</p>
+                        </div>
+
+                        <div class="col mb-sm-5 textg">
+                            <p>{{idioma=="cat"?parraf3:parrafo3}}</p>
+                        </div>
+                </div>
+                   
+        </div>
+    </div>            
+  </div>    
+</div>
+
+
+
+
+

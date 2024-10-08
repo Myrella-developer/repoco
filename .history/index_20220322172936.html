@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+	<html data-ng-app="repoco" ng-controller="IndexController" >
+	<head>
+		<meta charset="utf-8">
+		<title>COWORKING BARCELONA</title> 
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" type="text/x-icon" href="multimedia/img/icon.png">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="css/styles.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+		<script src="https://kit.fontawesome.com/a861c3e143.js" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script> 
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+		<script src="js/app.js"></script>
+		<script src="controllers/controllers.js"></script>
+		<script src="js/functions.js"></script>
+	</head>
+	<body >
+		<div class="container-fluid">
+       		 <header>
+        		<div class=" filaGris">
+        			<div class="col text-end brandIcons">
+        				<a href="https://www.instagram.com/" target="_blank"><i class="bi bi-instagram"></i></a>
+        				<a href="https://twitter.com/" target="_blank"><i class="bi bi-twitter"></i></a>
+        				<a href="https://www.linkedin.com/" target="_blank"><i class="bi bi-linkedin"></i></a>
+        				<a href="https://www.facebook.com/" target="_blank"><i class="bi bi-facebook"></i></a>
+						<a href="https://www.youtube.com/" target="_blank"><i class="bi bi-youtube"></i></a>
+						<a ng-href="#/login"><span class="espai">{{idioma=espacio}}</span></a>
+        			</div>
+        		</div>
+        		<div class="redesSociales">
+								<ul class="listaRedes d-sm-none">
+									<li>
+										<a href="https://www.instagram.com/" target="_blank" class="btn btn-social-icon rounded-circle"><i class="fab fa-instagram"></i></a>
+									</li>
+									<li>
+										<a href="https://twitter.com/" target="_blank" class="btn btn-social-icon rounded-circle"><i class="fab fa-twitter"></i></a>
+									</li>
+									<li>
+										<a href="https://www.linkedin.com/" target="_blank" class="btn btn-social-icon rounded-circle"><i class="fab fa-linkedin-in"></i></a>
+									</li>
+									<li>
+										<a href="https://www.facebook.com/" target="_blank" class="btn btn-social-icon rounded-circle"><i class="fab fa-facebook"></i></a>
+									</li>
+									<li>
+										<a href="https://www.youtube.com/" target="_blank" class="btn btn-social-icon rounded-circle"><i class="fab fa-youtube"></i></a>
+									</li>
+								</ul>	
+							</div>			
+
+						
+							
+						</nav>
+        			</div>
+        		</div>
+        	</header>
+    	
+    	<div data-ng-view=""></div>
+
+		<footer>
+			
+			<div class="row bfooter textCentral">
+				<h2 class="text-lg-center  pt-4 fw-bold">{{idioma=="cat"?footTitol:footTitulo}}</h2>
+				<!-- mòvil -->
+				<div class="col d-block d-md-none">
+					<ul class="ulMovil">
+						<li class="listMovil1">
+							<a href="https://www.barcelonactiva.cat/" target="_blank">{{idioma=="cat"?foot1cat:foot1cas}}<span><i class="bi bi-chevron-right"></i></span></a>
+						</li>
+						<li class="listMovil2">
+							<a href="https://treball.barcelonactiva.cat/" target="_blank">{{idioma=="cat"?foot2cat:foot2cas}}<span><i class="bi bi-chevron-right"></i></span></a>
+						</li>
+						<li class="listMovil3">
+							<a href="https://emprenedoria.barcelonactiva.cat/emprenedoria/cat/" target="_blank">{{idioma=="cat"?foot3cat:foot3cas}}<span><i class="bi bi-chevron-right"></i></span></a>
+						</li>
+						<li class="listMovil4">
+							<a href="https://empreses.barcelonactiva.cat/ca/" target="_blank">{{idioma=="cat"?foot4cat:foot4cas}}<span><i class="bi bi-chevron-right"></i></span></a>
+						</li>
+						<li class="listMovil5">
+							<a href="https://www.barcelonactiva.cat/formacio" target="_blank">{{idioma=="cat"?foot5cat:foot5cas}}<span><i class="bi bi-chevron-right"></i></span></a>
+						</li>
+					</ul>
+				</div>
+				
+			<div class="row bfooter textCentral">
+				<div class="col footerLogos">
+					<div class="redesSociales">
+						<ul class="listaRedes">
+							<li>
+								<a href="https://www.instagram.com/" target="_blank" class="btn btn-social-icon rounded-circle"><i class="fab fa-instagram"></i></a>
+							</li>
+							<li>
+								<a href="https://twitter.com/" target="_blank" class="btn btn-social-icon rounded-circle"><i class="fab fa-twitter"></i></a>
+							</li>
+							<li>
+								<a href="https://www.linkedin.com/" target="_blank" class="btn btn-social-icon rounded-circle"><i class="fab fa-linkedin-in"></i></a>
+							</li>
+							<li>
+								<a href="https://www.facebook.com/" target="_blank" class="btn btn-social-icon rounded-circle"><i class="fab fa-facebook"></i></a>
+							</li>
+							<li>
+								<a href="https://www.youtube.com/" target="_blank" class="btn btn-social-icon rounded-circle"><i class="fab fa-youtube"></i></a>
+							</li>
+						</ul>	
+					</div>
+				</div>
+			</div>					
+		</footer>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"  integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+	</body>
+</html>
